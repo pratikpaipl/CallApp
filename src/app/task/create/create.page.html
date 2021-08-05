@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row style="align-items: center;">
+        <ion-col style="flex: 0 0 30px;"> <ion-img style="padding:5px" src="../../../assets/images/back.png" (click)="globle.backPage()"></ion-img> </ion-col>
+        <ion-col>Create</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Start Date</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Due Date</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-radio-group>
+          <ion-list-header>
+            <ion-label>
+              Set Priority
+            </ion-label>
+          </ion-list-header>
+
+          <ion-item>
+            <ion-label>Critical</ion-label>
+            <ion-radio value="cord"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>High</ion-label>
+            <ion-radio value="duesenberg"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Medium</ion-label>
+            <ion-radio value="hudson"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Low</ion-label>
+            <ion-radio value="packard"></ion-radio>
+          </ion-item>
+
+        </ion-radio-group>
+        <!-- <ion-item>
+          <ion-label position="floating">Set Priority</ion-label>
+          <ion-input></ion-input>
+        </ion-item> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="round">+ Add Sub Task</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Assign to*</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Set Reminder</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Mark as recuring</ion-label>
+          <ion-toggle disabled="true"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Mark as recuring</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="round">Create Task</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,16 @@
+ion-content {
+    background  : #000;
+    --background: #000;
+  }
+ ion-list,
+ion-list ion-item {
+    --padding-start: 30px !important;
+    background     : #000 !important;
+    --background   : #000!important;
+    color: white;
+  }
+
+  ion-menu {
+    --width: 170px;
+  }
+  

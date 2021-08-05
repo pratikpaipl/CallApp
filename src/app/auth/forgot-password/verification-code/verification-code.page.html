@@ -1,0 +1,39 @@
+<ion-content #content>
+  <ion-grid class="forms_grids">
+    <top-card fromPage="" imgPath="../../../assets/images/forgot-top.png"> </top-card>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-label class="heading">Forgot Password</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Email ID</ion-label>
+          <ion-input placeholder="yourregisteremail@company.com"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Verification Code</ion-label>
+          <ion-input placeholder="yourregisteremail@company.com"></ion-input>
+        </ion-item>
+        <ion-note>Verification code has been sent to your register emaild Id</ion-note>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="round" (click)="send()">Verify</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-label>Send A New Code</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
