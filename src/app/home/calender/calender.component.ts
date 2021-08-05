@@ -105,7 +105,7 @@ export class CalenderComponent implements OnInit {
       this.daysInNextMonth.push(i + 1);
     }
     var totalDays = this.daysInLastMonth.length + this.daysInThisMonth.length + this.daysInNextMonth.length;
-    if (totalDays < 36) {
+    if (totalDays < 31) {
       for (var i = (7 - lastDayThisMonth); i < ((7 - lastDayThisMonth) + 7); i++) {
         this.daysInNextMonth.push(i);
       }

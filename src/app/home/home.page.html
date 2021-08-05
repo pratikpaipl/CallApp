@@ -1,76 +1,35 @@
-<ion-header>
-  <ion-toolbar>
+<ion-toolbar>
+  <ion-title>
+    {{selected ==0?"Calendar":selected==1?"Dashboard":selected==2?"Notifications":"Settings"}}
+  </ion-title>
+  <ion-buttons slot="primary">
+    <ion-button >
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <!-- <ion-searchbar placeholder="Search Favorites"></ion-searchbar> -->
+</ion-toolbar>
+<!-- <ion-header>
+    <ion-toolbar>
     <ion-title>
       BDO Calendar
     </ion-title>
   </ion-toolbar>
-</ion-header>
-<ion-content #content id="page" [scrollEvents]="true" (ionScroll)="function($event)">
+</ion-header> -->
 
-  <ion-grid>
+<ion-content #content id="page" [scrollEvents]="true" (ionScroll)="function($event)">
+  <!-- <ion-grid>
     <ion-row style="align-items: center;">
       <ion-col style="flex: 0 0 30px;">
         <ion-img style="padding:5px" src="../../../assets/images/back.png" (click)="globle.backPage()"></ion-img>
       </ion-col>
       <ion-col>{{selected}}</ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 
   <calender *ngIf="selected == 0 "></calender>
-  <dashbord *ngIf="selected == 1 "></dashbord>
+  <dashboard *ngIf="selected == 1 "></dashboard>
   <notification *ngIf="selected == 2 "></notification>
   <settings *ngIf="selected == 3 "></settings>
-  <!-- <div class="calendar-header">
-    <ion-row class="calendar-month">
-      <ion-col col-2 (click)="goToLastMonth()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-col>
-      <ion-col col-8>{{currentMonth}} {{currentYear}}</ion-col>
-      <ion-col col-2 (click)="goToNextMonth()">
-        <ion-icon name="arrow-forward"></ion-icon>
-      </ion-col>
-    </ion-row>
-  </div>
-  <div class="calendar-body">
-    <ion-grid>
-      <ion-row class="calendar-weekday">
-        <ion-col>Su</ion-col>
-        <ion-col>Mo</ion-col>
-        <ion-col>Tu</ion-col>
-        <ion-col>We</ion-col>
-        <ion-col>Th</ion-col>
-        <ion-col>Fr</ion-col>
-        <ion-col>Sa</ion-col>
-      </ion-row>
-      <ion-row class="calendar-date">
-        <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month" (click)="goToLastMonth()">{{lastDay}}
-        </ion-col>
-        <ion-col col-1 *ngFor="let day of daysInThisMonth" (click)="selectDate(day)">
-          <span class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>
-          <ng-template #otherDate class="otherDate">
-            {{day}}<br>
-            <div class="event-bullet" *ngIf="checkEvent(day)"></div>
-          </ng-template>
-        </ion-col>
-        <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month" (click)="goToNextMonth()">{{nextDay}}
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <div class="selected-event" *ngIf="isSelected">
-    <ion-list>
-      <ion-item *ngFor="let se of selectedEvent">
-        <ion-buttons end>
-          <button ion-button clear icon-only (click)="deleteEvent(se)">
-            <ion-icon name="close"></ion-icon>
-          </button>
-        </ion-buttons>
-        <h2>{{se.title}}</h2>
-        <h3>{{se.message}}</h3>
-        <p>Start Date: {{se.startDate}}<br>
-          Start Date: {{se.endDate}}</p>
-      </ion-item>
-    </ion-list>
-  </div> -->
 </ion-content>
-<app-page-footer [selected]="selectesPage" (change)="selectesPage($event)"></app-page-footer>
+<app-page-footer [selected]="selected" (change)="selectedPage($event)"></app-page-footer>

@@ -8,9 +8,9 @@ import { AuthGuard } from './authguard.service';
 import { DatePipe } from '@angular/common';
 
 @NgModule({
-  declarations: [TopCardComponent, PageFooterComponent,],
+  declarations: [           TopCardComponent,PageFooterComponent,],
   imports: [CommonModule, IonicModule, FormsModule, ReactiveFormsModule],
-  exports: [CommonModule, IonicModule, TopCardComponent, PageFooterComponent, ReactiveFormsModule,],
+  exports: [CommonModule, IonicModule, TopCardComponent,PageFooterComponent, ReactiveFormsModule,  ],
   providers: [AuthGuard, DatePipe],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })

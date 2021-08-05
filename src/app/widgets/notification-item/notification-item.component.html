@@ -1,0 +1,30 @@
+<ion-row class="p-5-20">
+  <ion-col class="fchild">
+    <div>
+      <ion-img src="../../../assets/images/settings.png"> </ion-img>
+    </div>
+  </ion-col>
+  <ion-col>
+    <ion-row>
+      <ion-col>
+        <ion-label>{{heading}}</ion-label>
+      </ion-col>
+      <ion-col class="time">
+        <ion-label>{{time}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="type==1" >
+      <ion-col>
+        <ion-label>{{subheading}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="type==1">
+      <ion-col>
+          <ion-button>Mark as Complete</ion-button>
+      </ion-col>
+      <ion-col>
+          <ion-button>Reject</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>

@@ -4,18 +4,20 @@ import { GlobalProvider } from 'src/app/shared/GlobalProvider';
 import { StorageService } from 'src/app/shared/StorageService';
 
 @Component({
-  selector: 'dashbord',
-  templateUrl: './dashbord.component.html',
-  styleUrls: ['./dashbord.component.scss'],
+  selector: 'notification-item',
+  templateUrl: './notification-item.component.html',
+  styleUrls: ['./notification-item.component.scss'],
 })
-export class DashbordComponent implements OnInit {
+  export class NotificationItemComponent implements OnInit {
 
   @Input()
-  fromPage: String;
-
+  heading:string;
   @Input()
-  imgPath: String;
-
+  subheading: string;
+  @Input()
+  time:string;
+  @Input()
+  type: number;
 
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();

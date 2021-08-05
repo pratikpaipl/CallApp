@@ -101,15 +101,15 @@ ion-button {
 }
 
 ion-toolbar {
-  background  : white !important;
   color       : #215e80;
-  --background: white !important;
+  background: #f2f6fa;
+  --background: #f2f6fa;
 }
 
-ion-searchbar {
-  --border-radius: 5px !important;
-  --icon-color   : transparent !important;
-}
+// ion-searchbar {
+//   --border-radius: 5px !important;
+//   --icon-color   : transparent !important;
+// }
 
 .auto-scroll {
   flex-wrap : nowrap !important;

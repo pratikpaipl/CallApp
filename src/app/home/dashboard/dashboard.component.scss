@@ -1,0 +1,23 @@
+ion-radio-group{
+  display: flex;
+}
+
+ion-item {
+  --background: white;
+    background: white;
+    margin: 0 5px;
+    --min-height: 40px;
+    border-radius: 5px;
+}
+ion-radio{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+ .item-radio-checked{
+  --background: #cbd7e3;
+    background: #cbd7e3;
+}
+div{
+  display: grid;
+}

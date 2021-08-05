@@ -21,6 +21,9 @@ export class PageFooterComponent implements OnInit {
   }
   async ngOnInit() {
   }
+  onChange(){
+    console.log('OnChange ',this.selected);
+  }
   openFirst() {
     this.menu.enable(true, "first");
     this.menu.open("first");

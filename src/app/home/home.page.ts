@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
   currentMonth: any;
   currentYear: any;
   currentDate: any;
-  selected = 0
+  selected = 1
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, private calendar: Calendar, public store: StorageService, public globle: GlobalProvider, public apiService: ApiService, private route: ActivatedRoute, public popoverController: PopoverController, private eventService: EventService, public toastController: ToastController, public modalController: ModalController, public router: Router) {
 
   }
@@ -47,7 +47,7 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/add-event');
     // this.navCtrl.push(AddEventPage);
   }
-  selectesPage(event) {
+  selectedPage(event) {
     console.log(event)
     this.selected = event.page
   }
