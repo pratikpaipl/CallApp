@@ -1,14 +1,22 @@
 .create-btn {
-    z-index : 1111111;
-    position: relative;
-    bottom  : 0px;
-    height  : 60px;
+	z-index: 1111111;
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	margin: 0 auto;
+	display: block;
+	background: #fff;
+	padding: 12px;
+	border-radius: 50%;
+	left: 50%;
+	top: -25px;
+	transform: translate(-50%, 0);
+	box-shadow: 0px 0px 3px #ccc;
 }
 
 #footer {
     display      : block;
     width        : 100%;
-    margin-bottom: 46px;
 }
 
 #footer_menu {
@@ -23,7 +31,7 @@
     margin         : 0px !important;
     justify-content: space-between;
     align-items    : center;
-    position       : fixed;
+    position       : relative;
     bottom         : 0px;
     left           : 0px;
     width          : 100%;

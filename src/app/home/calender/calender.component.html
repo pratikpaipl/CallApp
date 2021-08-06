@@ -51,7 +51,7 @@
           </ion-label>
           <ng-template #otherDate class="otherDate">
             <ion-label class="dates">
-              <span class="date_number">{{day}}</span>
+              <span class="date_number" [ngClass]="day === 20 || day === 25 ? 'selecteds_dates' : ''">{{day}}</span>
 
               <div class="dates_slotes" *ngIf="day === 1">
                 <span class="cricle">1</span>
@@ -68,7 +68,7 @@
                 <span class="squre">2</span>
               </div>
 
-              <div class="selected_dates_slotes" *ngIf="day >= 20 && day <=25">
+              <div class="selected_dates_slotes" [ngClass]="day === 20 ? 'first' :day === 25 ?'last': ''" *ngIf="day >= 20 && day <=25">
                 <span></span>
               </div>
             </ion-label>
