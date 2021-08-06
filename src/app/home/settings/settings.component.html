@@ -1,5 +1,5 @@
 <ion-grid>
-  <ion-row>
+  <ion-row (click)="onClick(0)">
     <ion-col >
         <ion-img  src="../../../assets/images/settings.png"></ion-img>
     </ion-col>
@@ -20,11 +20,11 @@
     </ion-col>
   </ion-row>
 </ion-grid>
-<menu-item lblValue="Notification Settings"></menu-item>
-<menu-item lblValue="About Us"></menu-item>
-<menu-item lblValue="Rate Us"></menu-item>
-<menu-item lblValue="Customer Support"></menu-item>
-<menu-item lblValue="FAQ's"></menu-item>
-<menu-item lblValue="Refer to friends"></menu-item>
-<menu-item lblValue="Privacy Policy & Agreement"></menu-item>
-<menu-item lblValue="Sync Calendar"></menu-item>
+<menu-item lblValue="Notification Settings" (click)="onClick(1)"></menu-item>
+<menu-item lblValue="About Us"(click)="onClick(2)"></menu-item>
+<menu-item lblValue="Rate Us" (click)="onClick(3)"></menu-item>
+<menu-item lblValue="Customer Support" (click)="onClick(4)"></menu-item>
+<menu-item lblValue="FAQ's" (click)="onClick(5)"></menu-item>
+<menu-item lblValue="Refer to friends" (click)="onClick(6)"></menu-item>
+<menu-item lblValue="Privacy Policy & Agreement" (click)="onClick(7)"></menu-item>
+<menu-item lblValue="Sync Calendar" (click)="onClick(8)"></menu-item>

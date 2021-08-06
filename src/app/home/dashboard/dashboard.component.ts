@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NavigationService } from 'src/app/services/NavigationService';
 import { GlobalProvider } from 'src/app/shared/GlobalProvider';
@@ -21,11 +22,14 @@ export class DashboardComponent implements OnInit {
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
 
-  constructor(public store: StorageService, private navigation: NavigationService, public globle: GlobalProvider) {
+  constructor(public store: StorageService, private navigation: NavigationService, public globle: GlobalProvider, public router: Router) {
   }
 
   async ngOnInit() {
 
+  }
+  callList(type) {
+    this.router.navigateByUrl('/task-list/'+type);
   }
 
   publishBrand() {

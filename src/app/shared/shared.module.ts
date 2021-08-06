@@ -6,11 +6,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AuthGuard } from './authguard.service';
 import { DatePipe } from '@angular/common';
+import { MenuItemComponent } from '../widgets/menu-item/menu-item.component';
+import { ExpandComponent } from '../widgets/expand/expand.component';
 
 @NgModule({
-  declarations: [           TopCardComponent,PageFooterComponent,],
+  declarations: [ MenuItemComponent, TopCardComponent,PageFooterComponent,ExpandComponent],
   imports: [CommonModule, IonicModule, FormsModule, ReactiveFormsModule],
-  exports: [CommonModule, IonicModule, TopCardComponent,PageFooterComponent, ReactiveFormsModule,  ],
+  exports: [CommonModule, IonicModule, TopCardComponent,PageFooterComponent, ReactiveFormsModule,MenuItemComponent,ExpandComponent ],
   providers: [AuthGuard, DatePipe],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })

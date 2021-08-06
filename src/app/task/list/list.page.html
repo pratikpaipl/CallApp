@@ -1,0 +1,28 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="home"></ion-back-button>
+  </ion-buttons>
+  <ion-title>
+    Task
+  </ion-title>
+</ion-toolbar>
+
+<ion-content #content id="page" [scrollEvents]="true" >
+  
+  <ion-list-header *ngIf="data ==1">
+    <ion-label>Completed Tasks</ion-label>
+  </ion-list-header>
+  <ion-list-header *ngIf="data ==2">
+    <ion-label>Pending Tasks</ion-label>
+  </ion-list-header>
+  <ion-list-header *ngIf="data ==3">
+    <ion-label>Rejected Tasks</ion-label>
+  </ion-list-header>
+
+  <task-list-item></task-list-item>
+  <task-list-item></task-list-item>
+  <task-list-item></task-list-item>
+  <task-list-item></task-list-item>
+  <task-list-item></task-list-item>
+  <task-list-item></task-list-item>
+</ion-content>

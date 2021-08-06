@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NavigationService } from 'src/app/services/NavigationService';
 import { GlobalProvider } from 'src/app/shared/GlobalProvider';
@@ -21,13 +22,18 @@ export class SettingsComponent implements OnInit {
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
 
-  constructor(public store: StorageService, private navigation: NavigationService, public globle: GlobalProvider) {
+  constructor(public store: StorageService, private navigation: NavigationService, public globle: GlobalProvider,public router: Router) {
   }
 
   async ngOnInit() {
 
   }
-
+  onClick(pageType){
+    if(pageType !=3 && pageType != 6 && pageType !=8)
+    this.router.navigateByUrl('/'+pageType)
+    else
+    this.globle.showToast('Coming soon !!',1000);
+  }
   publishBrand() {
     this.change.emit('publish');
   }

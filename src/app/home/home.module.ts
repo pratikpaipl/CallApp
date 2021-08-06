@@ -9,6 +9,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuItemComponent } from '../widgets/menu-item/menu-item.component';
 import { NotificationItemComponent } from '../widgets/notification-item/notification-item.component';
+import { TaskItemComponent } from '../widgets/task-item/task-item.component';
 const routes: Routes = [
   {
     path: '',
@@ -17,9 +18,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomePage, DashboardComponent, CalenderComponent, NotificationComponent, SettingsComponent,MenuItemComponent,NotificationItemComponent],
+  declarations: [HomePage, DashboardComponent, CalenderComponent, NotificationComponent, SettingsComponent,TaskItemComponent,NotificationItemComponent],
   imports: [SharedModule, FormsModule, RouterModule.forChild(routes)],
-  exports: [DashboardComponent, CalenderComponent, NotificationComponent, SettingsComponent,MenuItemComponent,NotificationItemComponent],
+  exports: [DashboardComponent, CalenderComponent, NotificationComponent, SettingsComponent,TaskItemComponent,NotificationItemComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomePageModule { }

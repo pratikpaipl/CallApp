@@ -1,0 +1,47 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="home"></ion-back-button>
+  </ion-buttons>
+  <ion-title>
+    Change Password
+  </ion-title>
+</ion-toolbar>
+<ion-content #content>
+  <ion-grid class="forms_grids">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Current Password*</ion-label>
+          <ion-input placeholder="Enter password"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">New Password*</ion-label>
+          <ion-input placeholder="Enter password"></ion-input>
+        </ion-item>
+        <div style="display: grid;">
+          <ion-note>8 characters required</ion-note>
+          <ion-note>Spacial characters required(!, @, #, $, %, -, _)</ion-note>
+          <ion-note>CAPITAL Words required</ion-note>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Re-enter New Password</ion-label>
+          <ion-input placeholder="Re enter password"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="round">Change Password</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
