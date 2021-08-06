@@ -1,0 +1,36 @@
+<div class="footer_panels"></div>
+<div class="create-btn">
+  <ion-img style="width: 60px;margin: 0 auto;" (click)="this.create()" src="../../../assets/images/add.png"></ion-img>
+</div>
+<div id="footer">
+  <ion-radio-group id="footer_menu" [(ngModel)]="selected" (ionChange)="changeMenu($event)">
+    <ion-item>
+      <ion-radio value="0"></ion-radio>
+      <div>
+        <ion-img src="assets/images/calendar.png"></ion-img>
+        <ion-label> Calender</ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-radio value="1"> </ion-radio>
+      <div>
+        <ion-img class="select-menu" src="assets/images/dashboard.png"></ion-img>
+        <ion-label>Dashboard</ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-radio value="2"> </ion-radio>
+      <div>
+        <ion-img src="assets/images/notification.png"></ion-img>
+        <ion-label>Notification</ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-radio value="3"> </ion-radio>
+      <div>
+        <ion-img src="assets/images/settings.png"></ion-img>
+        <ion-label>Settings</ion-label>
+      </div>
+    </ion-item>
+  </ion-radio-group>
+</div>

@@ -1,0 +1,25 @@
+.p-5-20{
+  padding: 15px 20px;
+  border-bottom: 1px solid;
+}
+div{
+  background: #e0f5f0;
+  border-radius: 50%;
+  width: 40px;
+}
+.fchild{
+    flex: 0 0 50px;
+}
+.time{
+  align-items: center;
+  text-align: right;
+    flex: 0 0 65px;
+}
+ ion-img{
+  filter: invert(100%);
+  width: 40px;
+  padding: 10px;
+}
+ion-label{
+  margin-left: 5px;
+}

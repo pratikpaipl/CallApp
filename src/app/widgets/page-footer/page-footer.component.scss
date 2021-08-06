@@ -1,0 +1,73 @@
+.create-btn {
+    z-index : 1111111;
+    position: relative;
+    bottom  : 0px;
+    height  : 60px;
+}
+
+#footer {
+    display      : block;
+    width        : 100%;
+    margin-bottom: 46px;
+}
+
+#footer_menu {
+    padding: 7px 0px 4px 0px !important;
+    display: flex;
+}
+
+#footer_menu {
+    // background     : #202124;
+    background     : #2d5377;
+    padding        : 5px 0px !important;
+    margin         : 0px !important;
+    justify-content: space-between;
+    align-items    : center;
+    position       : fixed;
+    bottom         : 0px;
+    left           : 0px;
+    width          : 100%;
+}
+
+#footer_menu div {
+
+    min-width : 80px;
+    margin    : 0px 5px;
+    text-align: center;
+}
+
+#footer_menu div ion-img {
+    width     : 25px;
+    display   : block;
+    margin    : 0 auto;
+    // filter : brightness(0.5);
+}
+
+#footer_menu div ion-label {
+    font-family: "Poppins-Regular" !important;
+    font-size  : 13px !important;
+    color      : white !important;
+    cursor     : pointer;
+}
+
+ion-item {
+    --inner-padding-end  : 0px;
+    --inner-padding-start: 0px;
+    --padding-start      : 0px;
+    --padding-end        : 0px;
+    --background         : transparent;
+}
+
+ion-item ion-label {
+    color: white !important;
+}
+
+ion-item ion-img {
+    width: 32px;
+}
+
+ion-item ion-radio {
+    width  : 0;
+    height : 0;
+    opacity: 0;
+}

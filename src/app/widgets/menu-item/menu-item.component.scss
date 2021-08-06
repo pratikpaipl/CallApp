@@ -1,0 +1,16 @@
+
+ion-row{
+  padding: 5px 20px;
+}
+ion-col{
+  display: flex;
+  align-items: center;
+}
+ ion-img{
+  filter: invert(100%);
+  width: 50px;
+  padding: 10px;
+}
+ion-label{
+  margin-left: 20px;
+}
