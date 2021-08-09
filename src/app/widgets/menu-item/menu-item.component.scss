@@ -1,16 +1,26 @@
+ion-grid {padding: 0px 10px; padding-top: 15px;}
+.menurow  {
+	margin: 0px !important;
+	padding: 10px 0px;
+	border-top: 1px solid #40678a;
+	align-items: center;
+}
+.menurow ion-col {padding: 0px 10px;}
+.menuicons ion-img {
+	padding: 0px;
+	display: block;
+	width: 100%;
+	filter: invert(100%);
+}
 
-ion-row{
-  padding: 5px 20px;
-}
-ion-col{
-  display: flex;
-  align-items: center;
-}
- ion-img{
-  filter: invert(100%);
-  width: 50px;
-  padding: 10px;
-}
-ion-label{
-  margin-left: 20px;
+.menurow .menuicons {flex: 0 0 50px; max-width: 50px;}
+
+.menus {
+	--margin: 0px !important;
+	--padding: 0px !important;
+	--padding-bottom: 0px !important;
+	--min-height: auto !important;
+	--offset-top: 0px !important;
+	--offset-bottom: 0px !important;
+	--padding-top: 0px !important;
 }
