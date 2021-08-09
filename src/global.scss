@@ -37,6 +37,16 @@ ion-app {
   margin-bottom: env(safe-area-inset-bottom) !important;
 }
 
+.modal-wrapper {
+  --height        : 60%;
+  max-width       : 100% !important;
+  position        : absolute;
+  top             : 40%;
+  display         : block;
+  background-color: transparent !important;
+  background      : transparent !important;
+}
+
 .note .modal-wrapper {
   --height        : 60%;
   max-width       : 100% !important;
@@ -65,9 +75,14 @@ ion-app {
   font-size  : 15px;
 }
 
+ion-title {
+  font-family: "proxima_nova_rgbold";
+}
+
 ion-label {
-  color    : #003962 !important;
-  font-size: 14px !important;
+  color      : #003962 !important;
+  font-size  : 14px !important;
+  font-family: "proxima_nova_rgregular";
 }
 
 ion-input {
@@ -102,7 +117,7 @@ ion-button {
 
 ion-toolbar {
   color       : #215e80;
-  background: #f2f6fa;
+  background  : #f2f6fa;
   --background: #f2f6fa;
 }
 
@@ -133,45 +148,31 @@ ion-content {
   width           : 1%;
 }
 
-.modal-wrapper.ion-overlay-wrapper {
-  max-width: 600px;
-  width    : 100%;
-}
 
-.modal-wrapper ion-label.f-white {
-  margin-left   : 5px !important;
-  font-size     : 16px !important;
-  letter-spacing: 0.8px !important;
-  font-weight   : 400 !important;
-  padding       : 11px !important;
-  line-height   : 22px;
-  height        : auto;
-  display       : block;
-}
 
 .form-control {
   --ion-background-color: transparent;
-  font-family           : 'Poppins-Regular';
+  font-family           : 'proxima_nova_rgregular';
   border                : 1px solid #fff;
   font-size             : 13px;
 }
 
 .disable {
-  font-family: 'Poppins-SemiBold';
+  font-family: 'proxima_nova_ltsemibold';
   font-size  : 13px;
   color      : gray !important;
   cursor     : pointer;
 }
 
 .btn-active {
-  font-family: 'Poppins-SemiBold';
+  font-family: 'proxima_nova_ltsemibold';
   font-size  : 13px;
   color      : #006400 !important;
   cursor     : pointer;
 }
 
 .btn-inactive {
-  font-family: 'Poppins-SemiBold';
+  font-family: 'proxima_nova_ltsemibold';
   cursor     : pointer;
   font-size  : 13px;
   color      : #b80a0a !important;
@@ -188,11 +189,6 @@ ion-content {
   z-index   : 111;
 }
 
-.modal-filter .modal-wrapper {
-  top     : 5% !important;
-  height  : 90% !important;
-  position: relative !important;
-}
 
 .stockImg.round {
   border-radius: 50%;
@@ -231,29 +227,6 @@ ion-content {
   width: auto;
 }
 
-.modal-save-filter .modal-wrapper {
-  border-radius: 4px;
-  width        : 90% !important;
-  max-width    : 444px;
-  height       : 53% !important;
-  max-height   : calc(100% - 64px);
-  position     : relative !important;
-}
-
-.modal-map .modal-wrapper {
-  width : 80% !important;
-  height: 80% !important;
-  border: 1px solid #fff !important;
-}
-
-.modal-share .modal-wrapper {
-  width        : 90% !important;
-  height       : 212px !important;
-  max-width    : 444px;
-  border       : 1px solid #fff !important;
-  border-radius: 5px;
-}
-
 .show-loc>div {
   cursor: pointer;
 }
@@ -268,11 +241,11 @@ ion-content {
 
 .alert-message {
   text-align : left !important;
-  font-family: 'Poppins-Regular';
+  font-family: 'proxima_nova_rgregular';
 }
 
 .alert-title {
-  font-family: 'Poppins-Regular';
+  font-family: 'proxima_nova_rgregular';
 }
 
 .alertCustomCss {
@@ -293,7 +266,7 @@ ion-content {
   span.alert-button-inner {
     justify-content: center !important;
     text-transform : capitalize !important;
-    font-family    : 'Poppins-Regular';
+    font-family    : 'proxima_nova_rgregular';
   }
 
   .alert-head {
@@ -308,7 +281,7 @@ ion-content {
   .alert-title {
     background-color: #b80a0a !important;
     color           : white !important;
-    font-family     : 'Poppins-Regular';
+    font-family     : 'proxima_nova_rgregular';
     padding         : 10px !important;
     letter-spacing  : 0.8px !important;
     font-size       : 18px !important;
@@ -316,7 +289,7 @@ ion-content {
 
   .alert-message {
     text-align          : left !important;
-    font-family         : 'Poppins-Regular';
+    font-family         : 'proxima_nova_rgregular';
     padding-inline-start: 15px !important;
     padding-inline-end  : 15px !important;
     user-select         : text;
@@ -329,7 +302,7 @@ ion-content {
   }
 
   #alert-3-msg {
-    font-family  : 'Poppins-Regular';
+    font-family  : 'proxima_nova_rgregular';
     padding      : 0px 10px !important;
     margin-bottom: 15px;
   }
@@ -346,11 +319,11 @@ ion-radio.sc-ion-select-popover {
 
 .alert-button-inner {
   text-transform: capitalize !important;
-  font-family   : 'Poppins-Regular';
+  font-family   : 'proxima_nova_rgregular';
 }
 
 a {
-  font-family: 'Poppins-Regular';
+  font-family: 'proxima_nova_rgregular';
   color      : #B8B008 !important;
   cursor     : pointer !important;
 }
@@ -374,7 +347,7 @@ ion-item.select-interface-option {
   --background: #006400 !important;
   --end       : 20px !important;
   --start     : auto;
-  font-family : 'Poppins-Regular';
+  font-family : 'proxima_nova_rgregular';
   font-size   : 14px !important;
 }
 
@@ -388,7 +361,7 @@ ion-item.select-interface-option {
   --max-width : 350px;
   --end       : 20px !important;
   --start     : auto;
-  font-family : 'Poppins-Regular';
+  font-family : 'proxima_nova_rgregular';
   font-size   : 16px !important;
 }
 
@@ -410,7 +383,7 @@ ion-item.select-interface-option {
   margin        : 4px 0px !important;
   line-height   : 1.5 !important;
   letter-spacing: 0.00938em !important;
-  font-family   : 'Poppins-Regular';
+  font-family   : 'proxima_nova_rgregular';
   font-size     : 15px !important;
   white-space   : normal !important;
 }
@@ -595,7 +568,7 @@ ion-item {
 .about_info_box ion-label span {
   font-size  : 14px !important;
   color      : #343537;
-  font-family: "Poppins-Regular" !important;
+  font-family: "proxima_nova_rgregular" !important;
 }
 
 .info_content,
@@ -999,7 +972,7 @@ input:-webkit-autofill:active {
 }
 
 .date_number {
-  font-family: "Poppins-Regular" !important;
+  font-family: "proxima_nova_rgregular" !important;
   font-size  : 14px !important;
   cursor     : auto;
 }

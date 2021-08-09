@@ -1,0 +1,47 @@
+.modal-wrapper {
+  --height        : 60%;
+  max-width       : 100% !important;
+  position        : absolute;
+  top             : 40%;
+  display         : block;
+  background-color: transparent !important;
+  background      : transparent !important;
+}
+
+ion-content {
+  background-color   : transparent !important;
+  // background      : red !important;
+  --background       : transparent !important;
+  border-radius      : 20px 20px 0px 0px !important;
+}
+
+
+.ion-padding {
+  --padding-start : 0px;
+  --padding-end   : 0px;
+  --padding-top   : 0px;
+  --padding-bottom: 0px;
+}
+
+ion-grid {
+  border-radius: 20px 20px 0px 0px;
+  background   : red;
+  margin-top   : -20px;
+  padding-top  : 40px;
+}
+
+ion-col {
+  padding    : 0px;
+  text-align : center;
+  align-items: center;
+}
+
+ion-row {
+  text-align : center;
+  align-items: center;
+}
+
+ion-img {
+  width : 170px;
+  margin: 0 auto;
+}
