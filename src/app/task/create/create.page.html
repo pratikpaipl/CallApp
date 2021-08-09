@@ -24,54 +24,51 @@
         <ion-item>
           <ion-label position="floating">Start Date</ion-label>
           <ion-input></ion-input>
+          <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label position="floating">Due Date</ion-label>
           <ion-input></ion-input>
+          <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col class="border">
+        <ion-list-header>
+          <ion-label>
+            Set Priority
+          </ion-label>
+        </ion-list-header>
         <ion-radio-group>
-          <ion-list-header>
-            <ion-label>
-              Set Priority
-            </ion-label>
-          </ion-list-header>
-
           <ion-item>
             <ion-label>Critical</ion-label>
-            <ion-radio value="cord"></ion-radio>
+            <ion-radio value="critical"></ion-radio>
           </ion-item>
 
           <ion-item>
             <ion-label>High</ion-label>
-            <ion-radio value="duesenberg"></ion-radio>
+            <ion-radio value="high"></ion-radio>
           </ion-item>
 
           <ion-item>
             <ion-label>Medium</ion-label>
-            <ion-radio value="hudson"></ion-radio>
+            <ion-radio value="medium"></ion-radio>
           </ion-item>
 
           <ion-item>
             <ion-label>Low</ion-label>
-            <ion-radio value="packard"></ion-radio>
+            <ion-radio value="low"></ion-radio>
           </ion-item>
 
         </ion-radio-group>
-        <!-- <ion-item>
-          <ion-label position="floating">Set Priority</ion-label>
-          <ion-input></ion-input>
-        </ion-item> -->
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button expand="round">+ Add Sub Task</ion-button>
+        <ion-button class="btn-2" (click)="addSubTask()" >+ Add Sub Task</ion-button>
       </ion-col>
     </ion-row>
 
@@ -88,6 +85,7 @@
       <ion-col>
         <ion-item>
           <ion-label>Set Reminder</ion-label>
+          <ion-toggle ></ion-toggle>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -95,18 +93,14 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label>Mark as recuring</ion-label>
-          <ion-toggle disabled="true"></ion-toggle>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Mark as recuring</ion-label>
+          <ion-label>Mark as recurring</ion-label>
+          <ion-toggle ></ion-toggle>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button expand="round">Create Task</ion-button>
+        <ion-button >Create Task</ion-button>
       </ion-col>
     </ion-row>
 

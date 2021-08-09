@@ -1,3 +1,11 @@
+
+.calendar_heading,
+.calendar-date ion-col {
+  border-right : 1px solid #e7eef5;
+  border-bottom: 1px solid #e7eef5;
+  flex         : 0 0 14.28% !important;
+  max-width    : 14.28% !important;
+}
 [col-1] {
   -webkit-box-flex: 0;
   -webkit-flex    : 0 0 8.33333%;
@@ -171,4 +179,36 @@
 .arrow_box ion-icon {
   padding: 0px;
   display: block;
+}
+
+
+.dates_slotes {
+  display        : flex;
+  padding        : 2px;
+  margin-top     : 15px;
+  justify-content: center;
+  align-items    : center;
+}
+
+.dates_slotes span {
+  margin     : 0px 2px;
+  color      : white;
+  width      : 16px;
+  height     : 16px;
+  flex       : 0 0 16px;
+  padding    : 0px;
+  display    : block;
+  line-height: 16px;
+  text-align : center;
+  font-size  : 11px !important;
+}
+
+.dates_slotes .cricle {
+  background   : #3788cf;
+  border-radius: 50%;
+}
+
+.dates_slotes .squre {
+  background   : #003463;
+  border-radius: 2px;
 }

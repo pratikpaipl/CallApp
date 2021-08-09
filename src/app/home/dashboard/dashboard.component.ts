@@ -11,6 +11,9 @@ import { StorageService } from 'src/app/shared/StorageService';
 })
 export class DashboardComponent implements OnInit {
 
+
+  selAction='today'
+
   @Input()
   fromPage: String;
 

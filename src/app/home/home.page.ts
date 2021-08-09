@@ -17,7 +17,7 @@ import { StorageService } from '../shared/StorageService';
 })
 export class HomePage implements OnInit {
   isShowUp = false;
-  selected = 3
+  selected = 0
   constructor( public store: StorageService, public globle: GlobalProvider, public apiService: ApiService, private eventService: EventService, public router: Router) {
 
   }
