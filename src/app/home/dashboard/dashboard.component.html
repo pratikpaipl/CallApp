@@ -6,7 +6,7 @@
   </ion-row>
   <ion-row style="margin: 10px 0px">
     <ion-col>
-      <ion-radio-group>
+      <ion-radio-group [(ngModel)]="selAction" >
         <ion-item>
           <ion-label>Today</ion-label>
           <ion-radio value="today"></ion-radio>
@@ -91,7 +91,7 @@
   </ion-row>
   <ion-row style="margin: 10px 0px">
     <ion-col>
-      <ion-radio-group>
+      <ion-radio-group [(ngModel)]="selAction">
         <ion-item>
           <ion-label>Today</ion-label>
           <ion-radio value="today"></ion-radio>

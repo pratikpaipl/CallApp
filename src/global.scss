@@ -117,8 +117,8 @@ ion-button {
 
 ion-toolbar {
   color       : #215e80;
-  background  : #f2f6fa;
-  --background: #f2f6fa;
+  background  : #fff;
+  --background: #fff;
 }
 
 // ion-searchbar {
@@ -955,13 +955,6 @@ input:-webkit-autofill:active {
   color      : #003463;
 }
 
-.calendar_heading,
-.calendar-date ion-col {
-  border-right : 1px solid #e7eef5;
-  border-bottom: 1px solid #e7eef5;
-  flex         : 0 0 14.28% !important;
-  max-width    : 14.28% !important;
-}
 
 .calendar_heading:last-child {
   border-right: none;
@@ -996,36 +989,6 @@ input:-webkit-autofill:active {
   margin          : 0 auto;
 }
 
-.dates_slotes {
-  display        : flex;
-  padding        : 2px;
-  margin-top     : 15px;
-  justify-content: center;
-  align-items    : center;
-}
-
-.dates_slotes span {
-  margin     : 0px 2px;
-  color      : white;
-  width      : 16px;
-  height     : 16px;
-  flex       : 0 0 16px;
-  padding    : 0px;
-  display    : block;
-  line-height: 16px;
-  text-align : center;
-  font-size  : 11px !important;
-}
-
-.dates_slotes .cricle {
-  background   : #3788cf;
-  border-radius: 50%;
-}
-
-.dates_slotes .squre {
-  background   : #003463;
-  border-radius: 2px;
-}
 
 .selected_dates_slotes {
   position  : absolute;

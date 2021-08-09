@@ -5,11 +5,11 @@ import { GlobalProvider } from 'src/app/shared/GlobalProvider';
 import { StorageService } from 'src/app/shared/StorageService';
 
 @Component({
-  selector: 'calender',
-  templateUrl: './calender.component.html',
-  styleUrls: ['./calender.component.scss'],
+  selector: 'month',
+  templateUrl: './month.component.html',
+  styleUrls: ['./month.component.scss'],
 })
-export class CalenderComponent implements OnInit {
+export class MonthComponent implements OnInit {
 
   eventList: any;
   selectedEvent: any;
