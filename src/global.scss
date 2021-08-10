@@ -114,7 +114,6 @@ ion-button {
 }
 
 .btn-2 {
-  width        : 100%;
   --background : transparent;
   border-color : #215e80;
   color        : #215e80;
@@ -335,6 +334,16 @@ a {
   cursor     : pointer !important;
 }
 
+// ion-item ion-img {
+//   filter  : invert(100%);
+//   position: absolute;
+//   top     : 20%;
+//   right   : 0px;
+//   padding : 5px;
+//   width   : 40px;
+//   cursor  : pointer;
+//   color   : #000;
+// }
 ion-item.select-interface-option.sc-ion-select-popover.item-radio-checked {
   // background: #e0e0e0 !important;
   // --background: #e0e0e0 !important;

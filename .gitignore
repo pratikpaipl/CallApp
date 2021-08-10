@@ -1,5 +1,8 @@
 node_modules
 package-lock.json
+platforms
+plugins
+www
 resources/android/icon
 resources/android/splash
 resources/ios/icon

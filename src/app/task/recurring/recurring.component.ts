@@ -39,7 +39,7 @@ export class RecurringComponent implements OnInit {
 
   }
 
-  publishBrand() {
+  set() {
     this.change.emit('publish');
   }
   back() {

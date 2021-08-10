@@ -44,19 +44,6 @@ div {
 }
 
 
-ion-item ion-img {
-  filter  : invert(100%);
-  filter  : invert(100%);
-  position: absolute;
-  top     : 20%;
-  right   : 0px;
-  z-index : 11;
-  padding : 5px;
-  width   : 40px;
-  cursor  : pointer;
-  color   : #000;
-}
-
 .recurring {
   position  : fixed;
   background: white;
@@ -76,4 +63,15 @@ ion-item ion-img {
   height          : 100vh;
   width           : 100%;
   z-index         : -1;
+}
+
+ion-item ion-img {
+  filter: invert(100%);
+  position: absolute;
+  top: 20%;
+  right: 0px;
+  padding: 5px;
+  width: 40px;
+  cursor: pointer;
+  color: #000;
 }

@@ -1,0 +1,59 @@
+ion-grid {
+	padding      : 20px;
+	background   : white !important;
+	--background : white !important;
+	border-radius: 15px 15px 0 0;
+  padding-top: 110px;
+}
+
+.model_blocks img {
+  display      : block;
+  position     : relative;
+  width        : 100%;
+  max-width    : 190px;
+  margin       : 0 auto;
+  margin-bottom: -100px;
+}
+
+
+.buttons_box {
+  padding-top: 20px;
+}
+
+ion-col {
+  padding    : 0px;
+  text-align : center;
+  align-items: center;
+}
+
+ion-row {
+  text-align : center;
+  align-items: center;
+
+}
+
+.titles {
+  display    : block;
+  padding    : 20px 0;
+  font-weight: 700;
+  color      : #003463;
+  font-size  : 18px !important;
+}
+
+.contents {
+  line-height: 17px;
+  display    : block;
+  font-size  : 15px !important;
+
+}
+
+ion-item ion-img {
+  filter: invert(100%);
+  position: absolute;
+  top: 20%;
+  right: 0px;
+  padding: 5px;
+  width: 40px;
+  cursor: pointer;
+  color: #000;
+}

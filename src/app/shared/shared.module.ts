@@ -9,11 +9,12 @@ import { DatePipe } from '@angular/common';
 import { MenuItemComponent } from '../widgets/menu-item/menu-item.component';
 import { ExpandComponent } from '../widgets/expand/expand.component';
 import { RecurringComponent } from '../task/recurring/recurring.component';
+import { SubTaskComponent } from '../task/sub-task/sub-task.component';
 
 @NgModule({
-  declarations: [MenuItemComponent, TopCardComponent, PageFooterComponent, RecurringComponent, ExpandComponent],
+  declarations: [MenuItemComponent, TopCardComponent, PageFooterComponent, RecurringComponent,SubTaskComponent, ExpandComponent],
   imports: [CommonModule, IonicModule, FormsModule, ReactiveFormsModule],
-  exports: [CommonModule, IonicModule, TopCardComponent, PageFooterComponent, ReactiveFormsModule, MenuItemComponent, RecurringComponent, ExpandComponent],
+  exports: [CommonModule, IonicModule, TopCardComponent, PageFooterComponent, ReactiveFormsModule, MenuItemComponent, RecurringComponent,SubTaskComponent, ExpandComponent],
   providers: [AuthGuard, DatePipe],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })
