@@ -2,7 +2,9 @@
   <ion-toolbar>
     <ion-grid>
       <ion-row style="align-items: center;">
-        <ion-col style="flex: 0 0 30px;"> <ion-img style="padding:5px" src="../../../assets/images/back.png" (click)="globle.backPage()"></ion-img> </ion-col>
+        <ion-col style="flex: 0 0 30px;">
+          <ion-img style="padding:5px" src="../../../assets/images/back.png" (click)="globle.backPage()"></ion-img>
+        </ion-col>
         <ion-col>Create</ion-col>
       </ion-row>
     </ion-grid>
@@ -68,7 +70,7 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button class="btn-2" (click)="addSubTask()" >+ Add Sub Task</ion-button>
+        <ion-button class="btn-2" (click)="addSubTask()">+ Add Sub Task</ion-button>
       </ion-col>
     </ion-row>
 
@@ -85,25 +87,24 @@
       <ion-col>
         <ion-item>
           <ion-label>Set Reminder</ion-label>
-          <ion-toggle ></ion-toggle>
+          <ion-toggle></ion-toggle>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
-        <ion-item>
+        <ion-item (click)="setAsRecurring()">
           <ion-label>Mark as recurring</ion-label>
-          <ion-toggle ></ion-toggle>
+          <ion-toggle></ion-toggle>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button >Create Task</ion-button>
+        <ion-button>Create Task</ion-button>
       </ion-col>
     </ion-row>
-
   </ion-grid>
-
 </ion-content>
+<recurring class="recurring" *ngIf="isRecurring" (change)="setAsRecurring()"></recurring>

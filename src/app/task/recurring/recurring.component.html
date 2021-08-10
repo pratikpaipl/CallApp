@@ -1,0 +1,101 @@
+<ion-grid>
+  <ion-row class="menurow">
+    <ion-col>
+      <ion-label>Mark as Recurring Task</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="border">
+      <ion-radio-group [(ngModel)]="isRecurring">
+        <ion-item>
+          <ion-label>Daily</ion-label>
+          <ion-radio value="daily"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Weekly</ion-label>
+          <ion-radio value="weekly"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Monthly</ion-label>
+          <ion-radio value="monthly"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Yearly</ion-label>
+          <ion-radio value="yearly"></ion-radio>
+        </ion-item>
+
+      </ion-radio-group>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col style="flex: 0 0 ;">
+      <ion-label>Start on</ion-label>
+    </ion-col>
+    <ion-col>
+      <ion-label>July 18 2021 11:00AM</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="isRecurring == 'weekly'">
+    <ion-col>
+      <ion-item>
+        <ion-label>Repeat every week </ion-label>
+        <ion-toggle></ion-toggle>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="isRecurring == 'daily'">
+    <ion-col>
+      <ion-label>Repeat On </ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row style="justify-content: center; flex-wrap: nowrap;">
+    <ion-col *ngFor="let entry of day" style="flex: 0 0 14.28%;max-width: 14.28%;">
+      <ion-item style="width: 100%; position: relative;">
+        <ion-label style=" text-align: center;">{{entry.day}}</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="entry.isCheck"></ion-checkbox>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isRecurring == 'monthly'">
+    <ion-col>
+      <ion-label>Repeat every </ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="isRecurring == 'monthly'">
+    <ion-col class="border">
+      <ion-radio-group>
+        <ion-item>
+          <ion-label>Month</ion-label>
+          <ion-radio value="1"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>3 Month</ion-label>
+          <ion-radio value="3"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>6 Month</ion-label>
+          <ion-radio value="6"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>9 Month</ion-label>
+          <ion-radio value="9"></ion-radio>
+        </ion-item>
+
+      </ion-radio-group>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="publishBrand()">Set</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

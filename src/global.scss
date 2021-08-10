@@ -38,16 +38,20 @@ ion-app {
 }
 
 .modal-wrapper {
-	--height: 380px !important;
-	max-width: 100% !important;
-	position: fixed;
-	top: auto;
-	display: block;
-	background-color: transparent !important;
-	background: transparent !important;
-	bottom: 0px;
-	width: 100% !important;
-	left: 0px !important;
+  --height        : 380px !important;
+  max-width       : 100% !important;
+  position        : fixed;
+  top             : auto;
+  display         : block;
+  background-color: transparent !important;
+  background      : transparent !important;
+  bottom          : 0px;
+  width           : 100% !important;
+  left            : 0px !important;
+}
+
+.sub-task .modal-wrapper {
+  --height: 500px !important;
 }
 
 .note .modal-wrapper {

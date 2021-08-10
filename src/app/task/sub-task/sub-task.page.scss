@@ -26,7 +26,7 @@ ion-content {
 ion-grid {
   border-radius: 15px 15px 0px 0px;
   background   : #fff !important;
-  height       : calc(380px - 80px) !important;
+  height       : calc(500px - 80px) !important;
   padding      : 20px;
   padding-top  : 110px;
 }
@@ -44,6 +44,7 @@ ion-col {
 ion-row {
   text-align : center;
   align-items: center;
+
 }
 
 ion-img {
@@ -51,6 +52,17 @@ ion-img {
   margin: 0 auto;
 }
 
+ion-item ion-img {
+  filter  : invert(100%);
+  position: absolute;
+  top     : 20%;
+  right   : 0px;
+  z-index : 11;
+  padding : 5px;
+  width   : 40px;
+  cursor  : pointer;
+  color   : #000;
+}
 
 .titles {
   display    : block;

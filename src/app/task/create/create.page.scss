@@ -1,53 +1,79 @@
-
-ion-content ion-row{
-    margin: 15px 10px;
+ion-content ion-row {
+  margin: 15px 10px;
 }
-ion-radio-group{
-    display: flex;
-  }
-  
-  ion-item {
-    --background: white;
-      background: white;
-      margin: 0 5px;
-      --min-height: 40px;
-      border-radius: 5px;
-      --padding-start: 0px;
-      --padding-end: 0px;
-      --inner-padding-end: 10px !important;
-      --inner-padding-start: 10px !important;
-      }
-  ion-radio{
-    opacity: 0;
-    width: 0;
-    height: 0;
-    border: 1px solid #002e58;
-    
+
+ion-radio-group {
+  display: flex;
 }
-.border ion-item{
-    border: 1px solid #002e58;
+
+ion-item {
+  --background         : white;
+  background           : white;
+  margin               : 0 5px;
+  --min-height         : 40px;
+  border-radius        : 5px;
+  --padding-start      : 0px;
+  --padding-end        : 0px;
+  --inner-padding-end  : 10px !important;
+  --inner-padding-start: 10px !important;
 }
-.item-radio-checked ion-label{
-      color: white !important;
-  }
-   .item-radio-checked{
-    --background: #002e58;
-      background: #002e58;
-  }
-  div{
-    display: grid;
-  }
+
+ion-radio {
+  opacity: 0;
+  width  : 0;
+  height : 0;
+  border : 1px solid #002e58;
+
+}
+
+.border ion-item {
+  border: 1px solid #002e58;
+}
+
+.item-radio-checked ion-label {
+  color: white !important;
+}
+
+.item-radio-checked {
+  --background: #002e58;
+  background  : #002e58;
+}
+
+div {
+  display: grid;
+}
 
 
-  ion-item ion-img{
-    filter: invert(100%);
-    filter: invert(100%);
-    position: absolute;
-    top: 20%;
-    right: 0px;
-    z-index: 11;
-    padding: 5px;
-    width: 40px;
-    cursor: pointer;
-    color: #000;
-  }
+ion-item ion-img {
+  filter  : invert(100%);
+  filter  : invert(100%);
+  position: absolute;
+  top     : 20%;
+  right   : 0px;
+  z-index : 11;
+  padding : 5px;
+  width   : 40px;
+  cursor  : pointer;
+  color   : #000;
+}
+
+.recurring {
+  position  : fixed;
+  background: white;
+  width     : 100%;
+  left      : 0;
+  bottom    : 0;
+  z-index   : 111;
+}
+
+.recurring::after {
+  background-color: rgba(0, 0, 0, 0.5);
+  content         : '';
+  display         : block;
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  height          : 100vh;
+  width           : 100%;
+  z-index         : -1;
+}
