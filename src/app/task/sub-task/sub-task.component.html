@@ -7,35 +7,34 @@
       </ion-col>
     </ion-row>
     <form [formGroup]="myForm">
-      <div *ngFor="let control of myForm.controls | keyvalue">
-
-        <ion-row>
-          <ion-col text-center>
-            <ion-item>
-              <ion-label position="floating">Sub Task 1*</ion-label>
-              <ion-input  [formControlName]="control.key"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item  >
-              <ion-label position="floating">Start Date*</ion-label>
-              <ion-datetime></ion-datetime>
-              <ion-img src="../../../assets/images/calendar.png"></ion-img>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-icon (click)="removeControl(control)" name="close-circle"></ion-icon>
+      <div class="subtask_block">
+        <div class="list_element" *ngFor="let control of myForm.controls | keyvalue">
+          <ion-row>
+            <ion-col text-center>
+              <ion-item>
+                <ion-label position="floating">Sub Task 1*</ion-label>
+                <ion-input  [formControlName]="control.key"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item  >
+                <ion-label position="floating">Start Date*</ion-label>
+                <ion-datetime></ion-datetime>
+                <ion-img src="../../../assets/images/calendar.png"></ion-img>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-icon class="remove_filds" name="remove-circle-outline" (click)="removeControl(control)"></ion-icon>
+        </div>
       </div>
     </form>
   
 
     <ion-row style="justify-content: flex-end;">
-      <ion-col style="flex: 0 0 150px; max-width: 150px; margin-top: 10px;">
-        <ion-item>
+      <ion-col style="flex: 0 0 140px; max-width: 140px; margin-top: 10px;">
           <ion-button class="btn-2" (click)="addControl()">Add Sub Tasks</ion-button>
-        </ion-item>
       </ion-col>
     </ion-row>
 

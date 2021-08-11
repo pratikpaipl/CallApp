@@ -56,3 +56,64 @@ ion-checkbox {
 	--background: #cad6df;
 	background  : #cad6df;
 }
+
+
+
+
+.titles {
+	color: #002e58 !important;
+	font-size: 17px !important;
+	font-weight: 700;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.week_block {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	margin: 0px -3px;
+	padding: 12px 0px;
+}
+.week_cols {
+	flex: 0 0 14.29%;
+	max-width: 14.29%;
+	padding: 0px 3px;
+}
+.week_cols ion-item {
+	margin: 0px !important;
+	border-radius: 2px;
+	--min-height: none !important;
+	--padding-start: 0px;
+	--padding-end: 0px;
+	--inner-padding-end: 0px !important;
+	--inner-padding-start: 0px !important;
+	cursor: pointer;
+}
+.week_cols ion-item {
+	--background: #ccd6e0 !important;
+}
+.week_cols ion-item ion-label {
+	width: 100%;
+	display: block !important;
+	font-size: 13px !important;
+	margin: 0px !important;
+	padding: 10px 0px !important;
+}
+
+
+
+.weekly_items {
+	display: flex !important;
+	--inner-padding-end: 0px !important;
+	--inner-padding-start: 0px !important;
+	margin: 0px !important;
+	--min-height: none !important;
+	justify-content: space-between;
+}
+.weekly_items ion-toggle {
+	padding-right: 0;
+}
+
+.monthly_boxs {
+	padding-bottom: 10px;
+}

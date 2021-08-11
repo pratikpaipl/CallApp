@@ -1042,3 +1042,23 @@ input:-webkit-autofill:active {
   width        : 80%;
   left         : 0;
 }
+
+.recurring ion-grid {
+	padding: 30px 15px 20px 15px !important;
+}
+
+.recurring ion-grid  ion-radio-group {
+	display: flex;
+	margin: 0 -5px;
+}
+
+.recurring .date_row {
+	display: flex;
+	flex-wrap: nowrap;
+	padding: 10px 0;
+	justify-content: space-between;
+}
+
+.recurring .date_row .content {
+	white-space: nowrap;
+}

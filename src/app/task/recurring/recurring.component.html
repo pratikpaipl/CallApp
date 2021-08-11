@@ -1,7 +1,7 @@
 <ion-grid>
   <ion-row class="menurow">
     <ion-col>
-      <ion-label>Mark as Recurring Task</ion-label>
+      <ion-label class="titles">Mark as Recurring Task</ion-label>
     </ion-col>
   </ion-row>
   <ion-row>
@@ -31,17 +31,17 @@
     </ion-col>
   </ion-row>
 
-  <ion-row>
-    <ion-col style="flex: 0 0 ;">
-      <ion-label>Start on</ion-label>
+  <ion-row class="date_row">
+    <ion-col style="flex: 0 0;">
+      <ion-label class="content">Start on</ion-label>
     </ion-col>
-    <ion-col style="justify-content: flex-end;">
-      <ion-label>July 18 2021 11:00AM</ion-label>
+    <ion-col style="text-align: right;">
+      <ion-label class="content">July 18 2021 11:00AM</ion-label>
     </ion-col>
   </ion-row>
   <ion-row *ngIf="isRecurring == 'weekly'">
     <ion-col>
-      <ion-item>
+      <ion-item class="weekly_items">
         <ion-label>Repeat every week </ion-label>
         <ion-toggle></ion-toggle>
       </ion-item>
@@ -52,9 +52,9 @@
       <ion-label>Repeat On </ion-label>
     </ion-col>
   </ion-row>
-  <ion-row style="justify-content: center; flex-wrap: nowrap;">
-    <ion-col *ngFor="let entry of day" style="flex: 0 0 14.28%;max-width: 14.28%;">
-      <ion-item style="width: 100%; position: relative;">
+  <ion-row class="week_block">
+    <ion-col class="week_cols" *ngFor="let entry of day">
+      <ion-item class="week_box" style="width: 100%; position: relative;">
         <ion-label style=" text-align: center;">{{entry.day}}</ion-label>
         <ion-checkbox slot="end" [(ngModel)]="entry.isCheck"></ion-checkbox>
       </ion-item>
@@ -62,11 +62,11 @@
   </ion-row>
 
   <ion-row *ngIf="isRecurring == 'monthly'">
-    <ion-col>
+    <ion-col class="monthly_boxs">
       <ion-label>Repeat every </ion-label>
     </ion-col>
   </ion-row>
-  <ion-row *ngIf="isRecurring == 'monthly'">
+  <ion-row class="monthly_boxs" *ngIf="isRecurring == 'monthly'">
     <ion-col class="border">
       <ion-radio-group>
         <ion-item>
