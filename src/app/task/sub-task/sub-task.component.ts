@@ -11,6 +11,9 @@ export class SubTaskComponent implements OnInit {
   modelId: number;
 
 
+  @Input()
+  startDate:any;  
+
   public myForm: FormGroup;
   private subTaskCount: number = 1;
   @Output()

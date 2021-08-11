@@ -16,6 +16,9 @@ export class RecurringComponent implements OnInit {
   lblValue: String;
 
   @Input()
+  startDate: string;
+
+  @Input()
   imgPath: String;
 
 

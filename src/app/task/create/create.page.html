@@ -25,14 +25,14 @@
       <ion-col>
         <ion-item>
           <ion-label position="floating">Start Date</ion-label>
-          <ion-datetime></ion-datetime>
+          <ion-datetime [(ngModel)]="startDate" [min]="minDate"></ion-datetime>
           <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label position="floating">Due Date</ion-label>
-          <ion-datetime></ion-datetime>
+          <ion-label position="floating" >Due Date</ion-label>
+          <ion-datetime [min]="startDate"></ion-datetime>
           <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
       </ion-col>
@@ -107,5 +107,5 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-<recurring class="recurring" *ngIf="isRecurring" (change)="setAsRecurring()"></recurring>
-<sub-task class="recurring" *ngIf="isSubTask" (change)="addSubTask()"></sub-task>
+<recurring class="recurring" [startDate]="startDate" *ngIf="isRecurring" (change)="setAsRecurring()"></recurring>
+<sub-task class="recurring" [startDate]="startDate"  *ngIf="isSubTask" (change)="addSubTask()"></sub-task>

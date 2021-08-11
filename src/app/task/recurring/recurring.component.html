@@ -36,7 +36,7 @@
       <ion-label class="content">Start on</ion-label>
     </ion-col>
     <ion-col style="text-align: right;">
-      <ion-label class="content">July 18 2021 11:00AM</ion-label>
+      <ion-label class="content">{{startDate |  date : "MMM dd yyyy hh:mm a"}}</ion-label>
     </ion-col>
   </ion-row>
   <ion-row *ngIf="isRecurring == 'weekly'">
@@ -47,12 +47,12 @@
       </ion-item>
     </ion-col>
   </ion-row>
-  <ion-row *ngIf="isRecurring == 'daily'">
+  <ion-row *ngIf="isRecurring == 'weekly'">
     <ion-col>
       <ion-label>Repeat On </ion-label>
     </ion-col>
   </ion-row>
-  <ion-row class="week_block">
+  <ion-row class="week_block" *ngIf="isRecurring == 'weekly'">
     <ion-col class="week_cols" *ngFor="let entry of day">
       <ion-item class="week_box" style="width: 100%; position: relative;">
         <ion-label style=" text-align: center;">{{entry.day}}</ion-label>

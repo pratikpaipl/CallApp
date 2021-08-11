@@ -90,6 +90,11 @@ ion-checkbox {
 	cursor: pointer;
 }
 .week_cols ion-item {
+	border-radius: 5px;
+	--background: transparent !important;
+}
+.week_cols ion-item item-checkbox-checked{
+	border-radius: 5px;
 	--background: #ccd6e0 !important;
 }
 .week_cols ion-item ion-label {

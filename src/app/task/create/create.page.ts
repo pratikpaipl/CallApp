@@ -16,7 +16,8 @@ export class CreatePage implements OnInit {
   showSub = false;
   isRecurring = false;
   isSubTask = false;
-
+  startDate:any= new Date().toISOString();
+  minDate:any= new Date().toISOString();
   constructor(public globle: GlobalProvider, public store: StorageService, public modalController: ModalController, public apiService: ApiService, public router: Router, private eventService: EventService,) {
 
   }

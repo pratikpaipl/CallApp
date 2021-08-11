@@ -8,7 +8,7 @@
     </ion-row>
     <form [formGroup]="myForm">
       <div class="subtask_block">
-        <div class="list_element" *ngFor="let control of myForm.controls | keyvalue">
+        <div class="list_element" *ngFor="let control of myForm.controls | keyvalue; let i = index">
           <ion-row>
             <ion-col text-center>
               <ion-item>
@@ -19,14 +19,14 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-item  >
+              <ion-item>
                 <ion-label position="floating">Start Date*</ion-label>
-                <ion-datetime></ion-datetime>
+                <ion-datetime [min]="startDate" [(ngModel)]="startDate"  [ngModelOptions]="{standalone: true}" ></ion-datetime>
                 <ion-img src="../../../assets/images/calendar.png"></ion-img>
               </ion-item>
             </ion-col>
           </ion-row>
-          <ion-icon class="remove_filds" name="remove-circle-outline" (click)="removeControl(control)"></ion-icon>
+          <ion-icon *ngIf="i != 0" class="remove_filds" name="remove-circle-outline" (click)="removeControl(control)"></ion-icon>
         </div>
       </div>
     </form>
