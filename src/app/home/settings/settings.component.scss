@@ -27,8 +27,6 @@ ion-row ion-col:last-child ion-img{
     transform: rotate(180deg);
 }
 
-
-
 ion-grid {
 	padding: 0px 10px !important;
 }
@@ -36,6 +34,7 @@ ion-grid {
 	display: flex;
 	flex-wrap: nowrap;
   margin: 0px -10px;
+  margin-bottom: 20px;
 }
 .user_img_blocks {
 	flex: 0 0 90px;
