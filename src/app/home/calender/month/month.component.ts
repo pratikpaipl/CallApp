@@ -75,6 +75,7 @@ export class MonthComponent implements OnInit {
   goToNextMonth() {
     this.date = new Date(this.date.getFullYear(), this.date.getMonth() + 2, 0);
     this.getDaysOfMonth();
+
   }
   getDaysOfMonth() {
     this.daysInThisMonth = new Array();
@@ -110,6 +111,7 @@ export class MonthComponent implements OnInit {
         this.daysInNextMonth.push(i);
       }
     }
+    this.change.emit({ changeView: false, selectedDay:  this.currentDate, month: this.currentMonth, year:this.currentYear });
   }
   checkEvent(day) {
     var hasEvent = false;
@@ -134,9 +136,7 @@ export class MonthComponent implements OnInit {
       }
     });
 
-    this.change.emit({ changeView: true, selectedDay: thisDate1 });
-
-
+    this.change.emit({ changeView: true, selectedDay: thisDate1, month: this.monthNames[this.date.getMonth()], year:this.currentYear });
   }
 
   async ngOnInit() {
@@ -144,11 +144,8 @@ export class MonthComponent implements OnInit {
     this.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     this.getDaysOfMonth();
     this.loadEventThisMonth();
-  }
+ }
 
-  publishBrand() {
-    this.change.emit('publish');
-  }
   back() {
     this.navigation.back();
   }
