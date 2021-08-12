@@ -1,6 +1,6 @@
 <ion-toolbar>
-  <ion-title>
-    {{selected ==0?"Calendar":selected==1?"Dashboard":selected==2?"Notifications":"Settings"}}
+  <ion-title (click)="titleClick()">
+    {{selected ==0?""+currentMonth+" "+currentYear:selected==1?"Dashboard":selected==2?"Notifications":"Settings"}}
   </ion-title>
   <ion-buttons slot="primary">
     <ion-button>
@@ -13,13 +13,6 @@
     </ion-button>
   </ion-buttons>
 </ion-toolbar>
-<!-- <ion-header>
-    <ion-toolbar>
-    <ion-title>
-      BDO Calendar
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
 
 <ion-content #content id="page" [scrollEvents]="true" (ionScroll)="function($event)">
   <month *ngIf="selected == 0 && !showWeek" (change)="changeView($event)"></month>

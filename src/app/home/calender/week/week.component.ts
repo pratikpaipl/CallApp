@@ -10,12 +10,9 @@ import * as moment from 'moment-timezone';
   styleUrls: ['./week.component.scss'],
 })
 export class WeekComponent implements OnInit {
-
-  
  
   govDueDates=[];
   tasks=[];
-
 
   @Input()
   selectedDate: any;
@@ -54,7 +51,6 @@ export class WeekComponent implements OnInit {
   {
     this.date.add(1, 'weeks');
     this.getWeeks(this.date);
-    console.log('Week No:'+Math.ceil(this.date.date() / 7) );
   }
   previousWeek()
   {
@@ -71,7 +67,7 @@ export class WeekComponent implements OnInit {
     for (var i = 0; i <= 6; i++) {
       const day = moment(weekStart).add(i, 'days').format("DD")
       const dayMonth = moment(weekStart).add(i, 'days').format("DD-MM")
-        console.log(' day ==>  ',day);
+        // console.log(' day ==>  ',day);
         const isCurrent = (dayMonth == today);
           // this.days.push(moment(weekStart).add(i, 'days').format("ddd[\r\n]DD"));
           this.days.push({day:day,lbl:moment(weekStart).add(i, 'days').format("ddd"),isCurrent:isCurrent});

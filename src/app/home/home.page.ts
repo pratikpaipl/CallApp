@@ -17,6 +17,9 @@ import * as moment from 'moment-timezone';
   }
 })
 export class HomePage implements OnInit {
+
+  currentMonth:any
+  currentYear:any
   isShowUp = false;
   showWeek = false;
   selected = 0
@@ -49,9 +52,16 @@ export class HomePage implements OnInit {
   updateScroll(event) {
     this.isShowUp = event;
   }
+  titleClick(){
+    if(this.selected == 0 && this.showWeek){
+      this.showWeek = false;
+    }
+  }
   changeView(event) {
     console.log('Change View ', event);
     this.selectedDate = event.selectedDay;
     this.showWeek = event.changeView;
+    this.currentMonth = event.month;
+    this.currentYear = event.year;
   }
 }
