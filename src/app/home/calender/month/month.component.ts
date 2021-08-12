@@ -133,6 +133,10 @@ export class MonthComponent implements OnInit {
         this.selectedEvent.push(event);
       }
     });
+
+    this.change.emit({ changeView: true, selectedDay: thisDate1 });
+
+
   }
 
   async ngOnInit() {

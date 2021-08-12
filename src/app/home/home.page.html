@@ -3,7 +3,7 @@
     {{selected ==0?"Calendar":selected==1?"Dashboard":selected==2?"Notifications":"Settings"}}
   </ion-title>
   <ion-buttons slot="primary">
-    <ion-button >
+    <ion-button>
       <ion-icon slot="icon-only" name="search"></ion-icon>
     </ion-button>
   </ion-buttons>
@@ -18,16 +18,8 @@
 </ion-header> -->
 
 <ion-content #content id="page" [scrollEvents]="true" (ionScroll)="function($event)">
-  <!-- <ion-grid>
-    <ion-row style="align-items: center;">
-      <ion-col style="flex: 0 0 30px;">
-        <ion-img style="padding:5px" src="../../../assets/images/back.png" (click)="globle.backPage()"></ion-img>
-      </ion-col>
-      <ion-col>{{selected}}</ion-col>
-    </ion-row>
-  </ion-grid> -->
-
-  <month *ngIf="selected == 0 "></month>
+  <month *ngIf="selected == 0 && !showWeek" (change)="changeView($event)"></month>
+  <week [selectedDate]="selectedDate" *ngIf="selected == 0 && showWeek"></week>
   <dashboard *ngIf="selected == 1 "></dashboard>
   <notification *ngIf="selected == 2 "></notification>
   <settings *ngIf="selected == 3 "></settings>

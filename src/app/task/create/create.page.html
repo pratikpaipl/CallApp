@@ -31,7 +31,7 @@
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label position="floating" >Due Date</ion-label>
+          <ion-label position="floating">Due Date</ion-label>
           <ion-datetime [min]="startDate"></ion-datetime>
           <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
@@ -70,7 +70,10 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button style="width: 80%; display: block; margin: 0 auto;" class="btn-2" (click)="addSubTask()">+ Add Sub Task</ion-button>
+        <ion-button style="width: 100%;
+    display: block;
+    margin: 15px auto 5px auto;
+    max-width: 250px;" class="btn-2" (click)="addSubTask()">+ Add Sub Task</ion-button>
       </ion-col>
     </ion-row>
 
@@ -84,7 +87,7 @@
     </ion-row>
 
     <ion-row>
-      <ion-col>
+      <ion-col style="margin-top: 10px;">
         <ion-item>
           <ion-label>Set Reminder</ion-label>
           <ion-toggle></ion-toggle>
@@ -93,7 +96,7 @@
     </ion-row>
 
     <ion-row>
-      <ion-col>
+      <ion-col style="margin-top: 10px;">
         <ion-item (click)="setAsRecurring()">
           <ion-label>Mark as recurring</ion-label>
           <ion-toggle></ion-toggle>
@@ -101,11 +104,11 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <ion-button>Create Task</ion-button>
+      <ion-col style="margin: 10px auto;">
+        <ion-button style="width: 80%; margin: 0 auto; display: block;">Create Task</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
 <recurring class="recurring" [startDate]="startDate" *ngIf="isRecurring" (change)="setAsRecurring()"></recurring>
-<sub-task class="recurring" [startDate]="startDate"  *ngIf="isSubTask" (change)="addSubTask()"></sub-task>
+<sub-task class="recurring" [startDate]="startDate" *ngIf="isSubTask" (change)="addSubTask()"></sub-task>

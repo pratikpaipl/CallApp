@@ -1044,21 +1044,25 @@ input:-webkit-autofill:active {
 }
 
 .recurring ion-grid {
-	padding: 30px 15px 20px 15px !important;
+  padding: 30px 15px 20px 15px !important;
 }
 
-.recurring ion-grid  ion-radio-group {
-	display: flex;
-	margin: 0 -5px;
+.recurring img~ion-grid {
+  padding-top: 110px !important;
+}
+
+.recurring ion-grid ion-radio-group {
+  display: flex;
+  margin : 0 -5px;
 }
 
 .recurring .date_row {
-	display: flex;
-	flex-wrap: nowrap;
-	padding: 10px 0;
-	justify-content: space-between;
+  display        : flex;
+  flex-wrap      : nowrap;
+  padding        : 10px 0;
+  justify-content: space-between;
 }
 
 .recurring .date_row .content {
-	white-space: nowrap;
+  white-space: nowrap;
 }

@@ -6,6 +6,7 @@ import { ApiService } from './../services/api.service';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { GlobalProvider } from '../shared/GlobalProvider';
 import { StorageService } from '../shared/StorageService';
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'app-home',
@@ -17,8 +18,10 @@ import { StorageService } from '../shared/StorageService';
 })
 export class HomePage implements OnInit {
   isShowUp = false;
+  showWeek = false;
   selected = 0
-  constructor( public store: StorageService, public globle: GlobalProvider, public apiService: ApiService, private eventService: EventService, public router: Router) {
+  selectedDate: any = moment()
+  constructor(public store: StorageService, public globle: GlobalProvider, public apiService: ApiService, private eventService: EventService, public router: Router) {
 
   }
   ngOnInit(): void {
@@ -41,5 +44,10 @@ export class HomePage implements OnInit {
   }
   updateScroll(event) {
     this.isShowUp = event;
+  }
+  changeView(event) {
+    console.log('Change View ', event);
+    this.selectedDate = event.selectedDay;
+    this.showWeek = event.changeView;
   }
 }

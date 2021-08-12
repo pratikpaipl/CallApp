@@ -10,7 +10,7 @@ ion-item {
   --background         : white;
   background           : white;
   margin               : 0 5px;
-  --min-height         : 40px;
+  --min-height         : 38px;
   border-radius        : 5px;
   --padding-start      : 0px;
   --padding-end        : 0px;
@@ -66,13 +66,19 @@ div {
 }
 
 ion-item ion-img {
-  filter: invert(100%);
+  filter  : invert(100%);
   position: absolute;
-  top: 20%;
-  right: 0px;
-  padding: 5px;
-  width: 35px;
-  cursor: pointer;
-  color: #000;
+  top     : 20%;
+  right   : 0px;
+  padding : 5px;
+  width   : 35px;
+  cursor  : pointer;
+  color   : #000;
 }
 
+ion-list-header {
+  padding      : 0 5px;
+  margin       : 0px;
+  min-height   : auto;
+  margin-bottom: 10px;
+}
