@@ -215,6 +215,7 @@ margin: 0 auto;
   .dates_slotes {
     display: flex;
     justify-content: center;
+    padding: 5px;
   }
 .dates_slotes span {
   margin     : 0px 2px;
@@ -237,4 +238,24 @@ margin: 0 auto;
 .dates_slotes .squre {
   border-radius: 2px;
   background: #92afcc;
+}
+
+.gov ion-row{
+  margin: 10px 0 0 0;
+}
+.gov ion-checkbox {
+  margin-inline-end: 10px;
+  margin: 0px 10px 0px 0px !important;
+}
+
+.gov ion-item {
+  --inner-padding-end: 0px;
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --min-height:25px
+}
+
+.gov .head-lbl{
+  color: #96abbe !important;
+  padding-left: 32px;
 }

@@ -4,9 +4,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/authguard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' }, //stockist
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, //stockist
   {
-    path: 'home',
+    path: 'home', canActivate: [AuthGuard],
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
@@ -34,43 +34,43 @@ const routes: Routes = [
     loadChildren: () => import('./auth/forgot-password/verification-code/verification-code.module').then(m => m.VerificationCodePageModule)
   },
   {
-    path: 'create',
+    path: 'create', canActivate: [AuthGuard],
     loadChildren: () => import('./task/create/create.module').then(m => m.CreatePageModule)
   },
   {
-    path: 'task-list/:type',
+    path: 'task-list/:type', canActivate: [AuthGuard],
     loadChildren: () => import('./task/list/list.module').then(m => m.ListPageModule)
   },
   {
-    path: 'view',
+    path: 'view', canActivate: [AuthGuard],
     loadChildren: () => import('./task/view/view.module').then(m => m.ViewPageModule)
   },
   {
-    path: '0',
+    path: '0', canActivate: [AuthGuard],
     loadChildren: () => import('./home/settings/profile/profile.module').then(m => m.ProfilePageModule)
   },
   {
-    path: 'change-pass',
+    path: 'change-pass', canActivate: [AuthGuard],
     loadChildren: () => import('./home/settings/profile/change-pass/change-pass.module').then(m => m.ChangePasswordPageModule)
   },
   {
-    path: '1',
+    path: '1', canActivate: [AuthGuard],
     loadChildren: () => import('./home/settings/notification-settings/notification-settings.module').then(m => m.NotificationSettingsPageModule)
   },
   {
-    path: '2',
+    path: '2', canActivate: [AuthGuard],
     loadChildren: () => import('./home/settings/about/about.module').then(m => m.AboutPageModule)
   },
   {
-    path: '4',
+    path: '4', canActivate: [AuthGuard],
     loadChildren: () => import('./home/settings/support/support.module').then(m => m.SupportPageModule)
   },
   {
-    path: '5',
+    path: '5', canActivate: [AuthGuard],
     loadChildren: () => import('./home/settings/faq/faq.module').then(m => m.FaqPageModule)
   },
   {
-    path: '7',
+    path: '7', canActivate: [AuthGuard],
     loadChildren: () => import('./home/settings/privacy/privacy.module').then(m => m.PrivacyPageModule)
   },
   {

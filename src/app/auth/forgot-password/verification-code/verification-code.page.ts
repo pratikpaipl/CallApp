@@ -14,7 +14,7 @@ declare const getActionsFromMessage
 })
 export class VerificationCodePage {
 
-  constructor(public globle: GlobalProvider, public store: StorageService, public apiService: ApiService, private route: ActivatedRoute, public router: Router, private menu: MenuController, private eventService: EventService,) {
+  constructor(public global: GlobalProvider, public store: StorageService, public apiService: ApiService, private route: ActivatedRoute, public router: Router, private menu: MenuController, private eventService: EventService,) {
   }
 
   send() {

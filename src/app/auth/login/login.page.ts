@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
   fnameErr = ''
 
 
-  constructor(public globle: GlobalProvider, public actionSheetController: ActionSheetController, public modalController: ModalController, public store: StorageService, public apiService: ApiService, private route: ActivatedRoute, public router: Router, private menu: MenuController, private eventService: EventService,) {
+  constructor(public global: GlobalProvider, public actionSheetController: ActionSheetController, public modalController: ModalController, public store: StorageService, public apiService: ApiService, private route: ActivatedRoute, public router: Router, private menu: MenuController, private eventService: EventService,) {
     this.eventService.publishFormShowContact(false);
   }
 
@@ -55,7 +55,20 @@ export class LoginPage implements OnInit {
   }
 
   home() {
-    this.router.navigateByUrl('/home');
+    // this.router.navigateByUrl('/home');
+  }
+  login() {
+    this.apiService.getAuthToken().subscribe(async response => {
+      let res: any = response;
+      console.log('Response ',res);
+      if (res.success) {
+        localStorage.setItem('access_token',res.access_token)
+        this.router.navigateByUrl('/home', { replaceUrl: true });
+      }
+    }, (error: Response) => {
+      let err: any = error;
+      // this.global.showToast(err.error.message, 4000);
+    });
   }
   signup() {
     this.router.navigateByUrl('/register');

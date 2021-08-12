@@ -27,6 +27,10 @@ export class HomePage implements OnInit {
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }
+  logout(){
+    localStorage.removeItem('access_token')
+    this.router.navigateByUrl('/login', { replaceUrl: true });    
+  }
   list() {
     this.router.navigateByUrl('/task-list');
   }

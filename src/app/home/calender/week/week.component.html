@@ -1,23 +1,32 @@
 <div class="calendar-header">
   <ion-row class="calendar-month">
-    <ion-col class="arrow_box" (click)="previousweek()">
+    <ion-col class="arrow_box" (click)="previousWeek()">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-col>
     <ion-col class="month_box">
-      <ion-label>{{date.format('MMMM ')}}{{date.format('YYYY ')}} Week-{{weekno}}</ion-label>
+      <ion-label
+        >{{ date.format("MMMM ") }}{{ date.format("YYYY ") }} Week-{{
+          weekNo
+        }}</ion-label
+      >
     </ion-col>
-    <ion-col class="arrow_box" (click)="nextweek()">
+    <ion-col class="arrow_box" (click)="nextWeek()">
       <ion-icon name="arrow-forward"></ion-icon>
     </ion-col>
   </ion-row>
 </div>
 
-<ion-grid >
+<ion-grid>
   <ion-row class="calendar-weekday">
-    <ion-col [ngClass]="item.isCurrent?'current calendar_heading':'other calendar_heading'" *ngFor="let item of days" >
-      <div >
-        <ion-label class="heading" >{{item.lbl}}</ion-label>
-        <ion-label class="date">{{item.day}}</ion-label>
+    <ion-col
+      [ngClass]="
+        item.isCurrent ? 'current calendar_heading' : 'other calendar_heading'
+      "
+      *ngFor="let item of days"
+    >
+      <div>
+        <ion-label class="heading">{{ item.lbl }}</ion-label>
+        <ion-label class="date">{{ item.day }}</ion-label>
         <div class="dates_slotes" *ngIf="item.day === '08'">
           <span class="cricle">1</span>
           <span class="squre">2</span>
@@ -30,40 +39,65 @@
       </div>
     </ion-col>
   </ion-row>
- 
-  </ion-grid>
-  <ion-grid class="gov-due">
-    <ion-row>
-      <ion-col>
-        <ion-label class="headig">Gov. Due Dates</ion-label>
-        <ion-grid>
-          <ion-row>
-            <ion-col class="text-center" > <ion-img src="../../../../assets/images/govduedate.png"></ion-img>
-            <ion-label>No Gov. Due Date today</ion-label> </ion-col>
-            </ion-row>
-          </ion-grid>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-    <ion-grid  class="task-list" >
-    <ion-row >
-      <ion-col>
-        <ion-label  class="headig">Tasks</ion-label>
-        <ion-grid>
-          <ion-row>
-            <ion-col class="text-center"> <ion-img src="../../../../assets/images/today-notask.png"></ion-img>
+</ion-grid>
+<ion-grid class="gov-due">
+  <ion-row>
+    <ion-col>
+      <ion-label class="headig">Gov. Due Dates</ion-label>
+      <ion-grid class="gov">
+        <ion-row *ngIf="govDueDates.length == 0">
+          <ion-col class="text-center">
+            <ion-img src="../../../../assets/images/govduedate.png"></ion-img>
+            <ion-label>No Gov. Due Date today</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of govDueDates">
+          <ion-col>
+              <ion-label class="head-lbl">{{item.lbl}}</ion-label>
+              <ion-item>
+                <ion-label>{{item.value}}</ion-label>
+                <ion-checkbox slot="start" [(ngModel)]="item.isCheck" ></ion-checkbox>
+              </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid class="task-list">
+  <ion-row>
+    <ion-col>
+      <ion-label class="headig">Tasks</ion-label>
+      <ion-grid>
+        <ion-row *ngIf="tasks.length == 0">
+          <ion-col class="text-center">
+            <ion-img src="../../../../assets/images/today-notask.png"></ion-img>
             <ion-label>No Task today</ion-label>
           </ion-col>
-            </ion-row>
-          </ion-grid>    
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-grid class="task-note-bottom">
-    <ion-row >
-      <ion-col class="text-center">
-            <ion-label>Upcoming tasks on 13th</ion-label>
-      </ion-col>
-    </ion-row>
-    
-  </ion-grid>
+        </ion-row>
+        <ion-row *ngFor="let item of tasks">
+            <ion-col>
+                <ion-label>{{item.task}}</ion-label>
+                <ion-label>{{item.date}}</ion-label>
+                <ion-label>Sub -Tasks</ion-label>
+                <ion-item *ngFor="let sub of item.subtask">
+                  <ion-label>{{sub.task}}</ion-label>
+                  <ion-label >{{sub.date}}</ion-label>
+                </ion-item>     
+                
+                <ion-button>Mark as Complete</ion-button>
+                
+            </ion-col>          
+        </ion-row>
+
+      </ion-grid>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid class="task-note-bottom">
+  <ion-row>
+    <ion-col class="text-center">
+      <ion-label>Upcoming tasks on 13th</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -2,13 +2,10 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
-  BaseUrl: 'https://dev.pi2.life/api/',
-  shareUrl: 'https://dev.pi2.life/',
-  brandImgUrl: 'https://dev.pi2.life/uploads/brand/',
-  // BaseUrl: 'https://qa.pi2.life/api/',
-  // shareUrl: 'https://qa.pi2.life/',
+  BaseUrl: 'http://calendarapp.cardmanager.in/api/',
   production: false
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
