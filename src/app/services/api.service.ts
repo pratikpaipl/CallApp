@@ -4,6 +4,9 @@ import { environment } from 'src/environments/environment';
 import { Platform } from '@ionic/angular';
 import { GlobalProvider } from '../shared/GlobalProvider';
 import { StorageService } from '../shared/StorageService';
+import * as moment from 'moment-timezone';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +16,19 @@ export class ApiService {
   }
   getAuthToken(): any {
     return this.callGet("get-Jwt-token");
+  }
+
+  getDate(date){
+    return moment(date).format('DD-MM-yyyy')
+  }
+
+  getTaskList(startDate,endDate): any {
+
+    const postData = new FormData();
+      postData.append('start_date',this.getDate(startDate))
+      postData.append('due_date',this.getDate(endDate))
+
+    return this.callPost("task-list-by-date",postData);
   }
   callPost(endPoint, postData) {
     postData.append('LanguageCode', 'eng')

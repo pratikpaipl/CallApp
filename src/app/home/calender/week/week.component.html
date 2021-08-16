@@ -14,25 +14,43 @@
   </ion-row>
 </div>
 
+
 <ion-grid>
   <ion-row class="calendar-weekday">
-    <ion-col [ngClass]="item.isCurrent ? 'current calendar_heading' : 'other calendar_heading'"
-             *ngFor="let item of days">
+    <ion-col [ngClass]=" item.isCurrent ? 'current calendar_heading' :item.selected ? 'sel calendar_heading':'other calendar_heading' " *ngFor="let item of days;let i = index" (click)="onClick(item,i)" >
       <div>
         <ion-label class="heading">{{ item.lbl }}</ion-label>
         <ion-label class="date">{{ item.day }}</ion-label>
-        <div class="dates_slotes" *ngIf="item.day === '08'">
+        <!-- {{item.task}} -->
+        <div class="dates_slotes" *ngIf="item.task.length != undefined && item.task.length !=0">
+          <!-- <span class="cricle">1</span> -->
+          <span class="squre">{{item.task.length}}</span>
+        </div>
+
+        <!-- <div class="dates_slotes" *ngIf="item.day === '13'">
           <span class="cricle">1</span>
           <span class="squre">2</span>
-        </div>
-        <div class="dates_slotes" *ngIf="item.day === '13'">
-          <span class="cricle">1</span>
-          <span class="squre">2</span>
-        </div>
+        </div> -->
       </div>
     </ion-col>
   </ion-row>
 </ion-grid>
+    <!-- <ion-radio-group class="calendar-weekday">
+             <ion-item [ngClass]="item.isCurrent ? 'current calendar_heading' : 'other calendar_heading'"
+             *ngFor="let item of days">
+                <ion-label class="heading">{{ item.lbl }}</ion-label>
+                <ion-label class="date">{{ item.day }}</ion-label>
+                <div class="dates_slotes" *ngIf="item.day.task.length !=0">
+                  <span class="cricle">1</span>
+                  <span class="squre">2</span>
+                </div>
+                <div class="dates_slotes" *ngIf="item.day === '13'">
+                  <span class="cricle">1</span>
+                  <span class="squre">2</span>
+                </div>
+                <ion-radio ></ion-radio>
+              </ion-item>
+            </ion-radio-group> -->
 
 <ion-grid class="gov-due">
   <ion-row>
@@ -72,70 +90,71 @@
         </ion-segment-button>
       </ion-segment>
       <ion-grid class="p-0">
-        <ion-row *ngIf="tasks.length == 0">
+        <ion-row *ngIf="tasks == undefined || tasks.length == 0">
           <ion-col class="text-center">
             <ion-img src="../../../../assets/images/today-notask.png"></ion-img>
             <ion-label>No Task today</ion-label>
           </ion-col>
         </ion-row>
-        <div class="grid_content" *ngIf="selectedTaskTab =='toyou'">
+        <div class="grid_content" *ngIf="tasks != undefined && selectedTaskTab =='toyou'">
           <ion-row class="tast_row" *ngFor="let item of tasks">
             <ion-col size="12" class="tasks_cols">
-              <ion-label class="titles">{{item.task}}</ion-label>
-              <ion-label class="contents">{{item.date}}</ion-label>
+              <ion-label class="titles">{{item.taskname}}</ion-label>
+              <ion-label class="contents">{{ formateDate(item.duedate)}}</ion-label>
             </ion-col>
-            <ion-col size="12" class="tasks_cols">
+            <ion-col size="12" class="tasks_cols" *ngIf="item.child_task.length > 0">
               <ion-label class="titles">Sub -Tasks</ion-label>
-              <ion-grid *ngFor="let sub of item.subtask" class="p-0 subtask_list">
+              <ion-grid *ngFor="let sub of item.child_task" class="p-0 subtask_list">
                 <ion-row class="p-0">
                   <ion-col class="p-0">
-                    <ion-label class="content">{{sub.task}}</ion-label>
-                    <ion-label class="contents">{{sub.date}}</ion-label>
+                    <ion-label class="content">{{sub.taskname}}</ion-label>
+                    <ion-label class="contents">{{formateDate(sub.duedate)}}</ion-label>
                   </ion-col>
                 </ion-row>
               </ion-grid>
-
             </ion-col>
-
+            <ion-col size="12">
+              <ion-grid class="p-0" *ngIf="item.task_assigned_users != undefined">
+                <ion-row>
+                  <ion-col>
+                    <ion-img style="width: 30px; filter: invert(1);" src="../../../../assets/images/settings.png">
+                    </ion-img>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label class="titles">Assiged to you </ion-label>
+                    <ion-label class="content">Rajesh kumar</ion-label>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label class="titles">Priority</ion-label>
+                    <ion-label class="content">MEdium</ion-label>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label class="titles">Attachment</ion-label>
+                    <ion-label class="content">02</ion-label>
+                  </ion-col>
+                  <ion-col>
+                    <ion-img style="width: 20px;     filter: invert(1);" src="../../../../assets/images/settings.png">
+                    </ion-img>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-button>Mark as Complete</ion-button>
+                  </ion-col>
+                  <ion-col>
+                    <ion-button>Reject</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+    
+            </ion-col>
           </ion-row>
-          <ion-grid class="p-0">
-            <ion-row>
-              <ion-col>
-                <ion-img style="width: 30px; filter: invert(1);" src="../../../../assets/images/settings.png">
-                </ion-img>
-              </ion-col>
-              <ion-col>
-                <ion-label class="titles">Assiged to you </ion-label>
-                <ion-label class="content">Rajesh kumar</ion-label>
-              </ion-col>
-              <ion-col>
-                <ion-label class="titles">Priority</ion-label>
-                <ion-label class="content">MEdium</ion-label>
-              </ion-col>
-              <ion-col>
-                <ion-label class="titles">Attachment</ion-label>
-                <ion-label class="content">02</ion-label>
-              </ion-col>
-              <ion-col>
-                <ion-img style="width: 20px;     filter: invert(1);" src="../../../../assets/images/settings.png">
-                </ion-img>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-button>Mark as Complete</ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button>Reject</ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
         </div>
-        <div class="grid_content" *ngIf="selectedTaskTab =='byyou'">
+        <div class="grid_content" *ngIf="tasks != undefined && selectedTaskTab =='byyou'">
           <ion-row class="tast_row" *ngFor="let item of tasks">
             <ion-col size="12" class="tasks_cols">
               <ion-grid class="p-0">
-                <ion-row>
+                <ion-row *ngIf="item.assigned_by_user_data != undefined">
                   <ion-col>
                     <ion-img style="width: 30px; filter: invert(1);" src="../../../../assets/images/settings.png">
                     </ion-img>
@@ -162,12 +181,12 @@
                     <ion-grid class="p-0">
                       <ion-row>
                         <ion-col>
-                          <ion-label>{{item.task}}</ion-label>
+                          <ion-label>{{item.taskname}}</ion-label>
                         </ion-col>
                       </ion-row>
                       <ion-row>
                         <ion-col>
-                          <ion-label>{{item.date}}</ion-label>
+                          <ion-label>{{ formateDate(item.duedate)}}</ion-label>
                         </ion-col>
                         <ion-col>
                           <ion-img style="width: 20px; filter: invert(1);" src="../../../../assets/images/settings.png">
@@ -176,12 +195,12 @@
                       </ion-row>
                     </ion-grid>
 
-                    <ion-grid class="p-0">
+                    <ion-grid class="p-0" *ngIf="item.child_task.length > 0">
                       <ion-label class="titles">Sub -Tasks</ion-label>
-                      <ion-row class="tast_row" *ngFor="let sub of item.subtask">
+                      <ion-row class="tast_row" *ngFor="let sub of item.child_task">
                         <ion-col size="12" class="tasks_cols">
-                          <ion-label class="content">{{sub.task}}</ion-label>
-                          <ion-label class="contents">{{sub.date}}</ion-label>
+                          <ion-label class="content">{{sub.taskname}}</ion-label>
+                          <ion-label class="contents">{{formateDate(sub.duedate)}}</ion-label>
                         </ion-col>
                       </ion-row>
                     </ion-grid>
@@ -196,10 +215,10 @@
   </ion-row>
 </ion-grid>
 
-<ion-grid class="task-note-bottom">
+<ion-grid class="task-note-bottom" *ngIf="tasks != undefined && tasks.length == 0">
   <ion-row>
-    <ion-col class="text-center">
-      <ion-label>Upcoming tasks on 13th</ion-label>
+    <ion-col class="text-center"  >
+      <ion-label>Upcoming tasks on {{upcomingDate}}</ion-label>
     </ion-col>
   </ion-row>
 </ion-grid>

@@ -39,12 +39,12 @@ export class LoadingInterceptorService {
             this.activeRequests++;
             let token;
 
-            token = localStorage.getItem('token');
+            token = localStorage.getItem('access_token');
 
             if (token) {
                 request = request.clone({
                     setHeaders: {
-                        'Authorization': 'bearer ' + token,
+                        'Authorization': 'Bearer ' + token,
                         'Access-Control-Allow-Origin': '*',
                         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
                         'Access-Control-Allow-Headers': "Access-Control-Allow-Headers,Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",

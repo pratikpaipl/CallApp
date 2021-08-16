@@ -9,6 +9,7 @@ import { NavigationService } from '../services/NavigationService';
 @Injectable()
 export class GlobalProvider {
 
+    userData:any={}
     CountryCodes = [];
     CountryCodes_0 = [];
     regEmail: any;
@@ -22,6 +23,9 @@ export class GlobalProvider {
 
         this.regEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
         this.regWeb = /^((http|ftp|https):\/\/)?([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?$/
+
+
+        this.userData =  localStorage.getItem('user-data') !=undefined ?JSON.parse(localStorage.getItem('user-data')):{}
 
     }
 
@@ -224,7 +228,7 @@ export class GlobalProvider {
                                 localStorage.removeItem('token');
                                 this.eventService.publishFormRefresh(false);
                                 setTimeout(() => {
-                                    this.router.navigateByUrl('/auth#login');
+                                    this.router.navigateByUrl('/login',{replaceUrl:true});
                                 }, 200);
                                 // this.router.navigateByUrl('/explore#all', { replaceUrl: true });
                             }
