@@ -1,10 +1,12 @@
-.heading{
+.heading {
   color: #adbfd6 !important;
 }
-.date{
+
+.date {
   color: #003962 !important;
 }
-.calendar_heading ion-col{
+
+.calendar_heading ion-col {
   margin: 5px;
 }
 
@@ -18,23 +20,29 @@
   color    : #999999;
   font-size: 90%;
 }
-.other-month-date{
-  color    : #bbcddf;
+
+.other-month-date {
+  color: #bbcddf;
 }
+
 .current {
   background-color: #38536b;
-  border-radius: 5px;
+  border-radius   : 5px;
 }
+
 .sel {
   background-color: #003463;
-  border-radius: 5px;
+  border-radius   : 5px;
 }
-.current ion-label{
-  color           : #fff !important;
+
+.current ion-label {
+  color: #fff !important;
 }
-.sel ion-label{
-  color           : #fff !important;
+
+.sel ion-label {
+  color: #fff !important;
 }
+
 .calendar-header {
   background-color: #003463;
   color           : #fff;
@@ -65,48 +73,58 @@
   padding: 0px;
   display: block;
 }
-.headig{
+
+.headig {
   font-family: "proxima_nova_rgbold";
-    padding: 0px;
-    font-weight: bold;
+  padding    : 0px;
+  font-weight: bold;
 }
-.gov-due{
-  margin-top: 10px;
+
+.gov-due {
+  margin-top   : 10px;
   border-radius: 10px;
-  padding: 15px;
-  background: white;
+  padding      : 15px;
+  background   : white;
 }
+
 .gov-due .gov {
-	padding: 0px !important;
+  padding: 0px !important;
 }
+
 .gov-due ion-img {
-width: 150px;
-margin: 0 auto;
+  width : 150px;
+  margin: 0 auto;
 }
-.task-list{
-  margin-top: 3px;
+
+.task-list {
+  margin-top   : 3px;
   border-radius: 0px 0px 0px 0px;
-  padding: 15px;
-  background: white;
+  padding      : 15px 15px 0px 15px;
+  background   : white;
 }
- .text-center{
+
+.text-center {
   text-align: center;
 }
+
 .task-list ion-img {
-  width: 230px;
+  width : 230px;
   margin: 0 auto;
-  }
-  .task-note-bottom{
-    margin-top: 5px;
-    border-radius: 0px 0px 0px 0px;
-    padding: 15px;
-    background: white;
-  }
-  .dates_slotes {
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-  }
+}
+
+.task-note-bottom {
+  margin-top   : 5px;
+  border-radius: 0px 0px 0px 0px;
+  padding      : 15px;
+  background   : white;
+}
+
+.dates_slotes {
+  display        : flex;
+  justify-content: center;
+  padding        : 5px;
+}
+
 .dates_slotes span {
   margin     : 0px 2px;
   color      : white;
@@ -127,113 +145,172 @@ margin: 0 auto;
 
 .dates_slotes .squre {
   border-radius: 2px;
-  background: #92afcc;
+  background   : #92afcc;
 }
 
-.gov ion-row{
+.gov ion-row {
   margin: 10px 0 0 0;
 }
+
 .gov ion-checkbox {
-	-webkit-margin-end: 10px;
-	margin-inline-end: 10px;
-	margin: 0px 10px 0px 0px !important;
-  --border-color: #003463;
-	--background-checked: #65c184;
-	--border-color-checked: #65c184;
+  -webkit-margin-end    : 10px;
+  margin-inline-end     : 10px;
+  margin                : 0px 10px 0px 0px !important;
+  --border-color        : #003463;
+  --background-checked  : #65c184;
+  --border-color-checked: #65c184;
 }
 
 .gov ion-item {
   --inner-padding-end: 0px;
-  --padding-start: 0px;
-  --padding-end: 0px;
-  --min-height:25px
+  --padding-start    : 0px;
+  --padding-end      : 0px;
+  --min-height       : 25px
 }
 
-.gov .head-lbl{
-  color: #96abbe !important;
+.gov .head-lbl {
+  color       : #96abbe !important;
   padding-left: 30px;
 }
 
 .task-list {
-	position: relative;
+  position: relative;
 }
 
 .task-list::after {
-    content: "";
-    display: block;
-    background: #f2f6fa;
-    position: absolute;
-    width: 100%;
-    height: 8px;
-    left: 0;
-    top: 78px;
-    z-index: 1;
+  content   : "";
+  display   : block;
+  background: #f2f6fa;
+  position  : absolute;
+  width     : 100%;
+  height    : 8px;
+  left      : 0;
+  top       : 78px;
+  z-index   : 1;
 }
 
 ion-segment {
-	z-index: 2;
+  z-index: 2;
 }
 
 ion-segment-button {
-	--ion-color-primary: transparent;
-	background: transparent;
-	position: relative;
+  --ion-color-primary: transparent;
+  background         : transparent;
+  position           : relative;
 }
+
 ion-segment-button ion-label {
-	color: #96abbe !important;
-	text-transform: capitalize !important;
+  color         : #96abbe !important;
+  text-transform: capitalize !important;
 }
+
 ion-segment-button.segment-button-checked ion-label {
-	color: #003463 !important;
-	text-transform: capitalize !important;
+  color         : #003463 !important;
+  text-transform: capitalize !important;
 }
+
 ion-segment-button.segment-button-checked::after {
-	content: "";
-	display: block;
-	background: #003463;
-	position: absolute;
-	bottom: 0px;
-	width: 20px;
-	height: 5px;
-	border-radius: 10px;
-	left: 50%;
-	transform: translate(-50%, 0%);
+  content      : "";
+  display      : block;
+  background   : #003463;
+  position     : absolute;
+  bottom       : 0px;
+  width        : 20px;
+  height       : 5px;
+  border-radius: 10px;
+  left         : 50%;
+  transform    : translate(-50%, 0%);
 }
 
 
 .tasks_cols {
-	padding: 18px 0px;
-	position: relative;
+  padding : 18px 0px;
+  position: relative;
 }
+
 .tasks_cols::after {
-	content: "";
-	display: block;
-	position: absolute;
-	background: #f2f6fa;
-	width: calc(100% + 30px);
-	height: 3px;
-	left: -15px;
-	bottom: 0px;
+  content   : "";
+  display   : block;
+  position  : absolute;
+  background: #f2f6fa;
+  width     : calc(100% + 30px);
+  height    : 3px;
+  left      : -15px;
+  bottom    : 0px;
 }
 
 .grid_content .titles {
-	font-weight: bold;
-	display: block;
-	line-height: 15px;
-	margin-bottom: 7px;
+  font-weight  : bold;
+  display      : block;
+  line-height  : 15px;
+  margin-bottom: 7px;
 }
 
 .grid_content .contents {
-	color: #96abbe !important;
-  display: block;
-	line-height: 15px;
+  color      : #96abbe !important;
+  display    : block;
+  line-height: 15px;
 }
+
 .grid_content .content {
-  display: block;
-	line-height: 15px;
-  	margin-bottom: 5px;
+  display      : block;
+  line-height  : 15px;
+  margin-bottom: 5px;
 }
 
 .subtask_list {
-	margin-top: 18px;
+  margin-top: 18px;
+}
+
+ion-button {
+  --padding-start: 0px;
+  --padding-end  : 0px;
+  background     : transparent;
+  --background   : transparent;
+  --border       : none;
+  --box-shadow   : none;
+  margin         : 0px;
+  margin-inline  : 0px;
+}
+
+.complete {
+  color: green;
+}
+
+.complete ion-icon {
+  color: green;
+}
+
+
+
+.reject {
+  color: red;
+}
+
+.reject ion-icon {
+  color: red;
+}
+
+.row-border {
+  width        : calc(100% + 30px);
+  border-top   : 2px solid #f2f6fa;
+  border-bottom: 2px solid #f2f6fa;
+  position     : relative;
+  left         : -15px;
+}
+
+ion-icon {
+  margin-right: 5px;
+}
+
+.row-border::after {
+  content   : '';
+  display   : block;
+  width     : 2px;
+  height    : 100%;
+  background: #f2f6fa;
+  position  : absolute;
+  left      : 50%;
+  top       : 0px;
+  transform : translate(-50%, 0%);
 }

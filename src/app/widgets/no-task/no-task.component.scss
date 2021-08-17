@@ -1,0 +1,26 @@
+ion-grid {padding: 0px 10px; }
+.menurow  {
+	margin: 0px !important;
+	padding: 10px 0px;
+	border-top: 1px solid #40678a;
+	align-items: center;
+}
+.menurow ion-col {padding: 0px 10px;}
+.menuicons ion-img {
+	padding: 0px;
+	display: block;
+	width: 100%;
+	filter: invert(100%);
+}
+
+.menurow .menuicons {flex: 0 0 50px; max-width: 50px;}
+
+.menus {
+	--margin: 0px !important;
+	--padding: 0px !important;
+	--padding-bottom: 0px !important;
+	--min-height: auto !important;
+	--offset-top: 0px !important;
+	--offset-bottom: 0px !important;
+	--padding-top: 0px !important;
+}

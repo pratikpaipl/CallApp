@@ -41,7 +41,7 @@ export class MonthComponent implements OnInit {
     private calendar: Calendar,
     private navigation: NavigationService,
     public globle: GlobalProvider
-  ) {}
+  ) { }
 
   goToLastMonth() {
     this.date = new Date(this.date.getFullYear(), this.date.getMonth(), 0);
@@ -216,13 +216,13 @@ export class MonthComponent implements OnInit {
 
             for (let j = 0; j < this.eventList[element].length; j++) {
               const sub = this.eventList[element][j];
-              // this.daysInThisMonth[i].startdate = this.getDay(sub.startdate);
-              // this.daysInThisMonth[i].duedate = this.getDay(sub.duedate);
-              this.daysInThisMonth[i].startdate+''+j; this.getDayNumber(sub.startdate);
-              this.daysInThisMonth[i].duedate+''+j; this.getDayNumber(sub.duedate);
+              this.daysInThisMonth[i].startdate = this.getDayNumber(sub.startdate);
+              this.daysInThisMonth[i].duedate = this.getDayNumber(sub.duedate);
+              // this.daysInThisMonth[i].startdate+''+j; this.getDayNumber(sub.startdate);
+              // this.daysInThisMonth[i].duedate+''+j; this.getDayNumber(sub.duedate);
             }
           }
-          // console.log('Response ',this.daysInThisMonth);
+          console.log('Response ', this.daysInThisMonth);
         }
       },
       (error: Response) => {
@@ -233,8 +233,8 @@ export class MonthComponent implements OnInit {
   }
   getDayNumber(day) {
     // console.log("DAte ", moment(day).format("D"));
-    // return parseInt(moment(day).format("D"));
-    return  moment(day).format("D");
+    return parseInt(moment(day).format("D"));
+    // return moment(day).format("D");
   }
   back() {
     this.navigation.back();
