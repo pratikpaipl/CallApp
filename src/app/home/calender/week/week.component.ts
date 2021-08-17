@@ -91,13 +91,14 @@ export class WeekComponent implements OnInit {
               this.days[i].selected = true
               this.tasks = this.eventList[element];
               this.setData()
-            } else {
+            }
+             else {
               this.days[i].selected = false
             }
           }
           if (this.tasks.length == 0) {
             this.tasks = this.days[0].task;
-            this.days[0].selected = true
+            // this.days[0].selected = true
             this.setData()
           }
         }
@@ -120,6 +121,10 @@ export class WeekComponent implements OnInit {
         this.assiedByYou.push(element)
       }
     }
+
+    console.log('Assigned to you ',this.assiedToYou);
+    console.log('Assigned by you ',this.assiedByYou);
+
   }
   formateDate(date) {
     return moment(date).format('DD MMM yyyy');

@@ -56,18 +56,18 @@
             <!-- <span class="cricle">1</span> -->
             <span class="squre">{{day.task}}</span>
           </div>
-          <div class="selected_dates_slotes"
+          <!-- <div class="selected_dates_slotes"
                [ngClass]="day.day === day.startdate  ? 'first' :day.day === day.duedate ?'last': ''"
                *ngIf="day.day >= day.startdate  || day.day <= day.dayduedate">
             <span></span>
-          </div>
+          </div> -->
         </ion-label>
         <ng-template #otherDate class="otherDate">
           <ion-label class="dates">
-            <!-- <span class="date_number" >{{day.day}}</span> -->
-            <span *ngIf="day.task !=0 " class="date_number"
+            <span class="date_number" >{{day.day}}</span>
+            <!-- <span *ngIf="day.task !=0 " class="date_number"
                   [ngClass]="day.day === day.startdate || day.day === day.duedate ? 'selecteds_dates' : ''">{{day.day}}</span>
-            <span *ngIf="day.task ==0 " class="date_number">{{day.day}}</span>
+            <span *ngIf="day.task ==0 " class="date_number">{{day.day}}</span> -->
 
             <div class="dates_slotes" *ngIf="day.task != 0">
               <!-- <span class="cricle">1</span> -->
@@ -89,12 +89,14 @@
                   <span></span>
                 </div>
               </div> -->
+
+
             <!-- <div *ngIf="day.task !=0 "> -->
-            <div class="selected_dates_slotes"
+            <!-- <div class="selected_dates_slotes"
                  [ngClass]="day.day === day.startdate  ? 'first' :day.day === day.duedate ?'last': ''"
                  *ngIf="day.day >= day.startdate  || day.day <= day.dayduedate">
               <span></span>
-            </div>
+            </div> -->
             <!-- </div> -->
           </ion-label>
           <!-- <div class="event-bullet" *ngIf="checkEvent(day.day)"></div> -->

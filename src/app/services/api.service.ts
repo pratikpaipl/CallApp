@@ -23,12 +23,26 @@ export class ApiService {
   }
 
   getTaskList(startDate,endDate): any {
-
     const postData = new FormData();
       postData.append('start_date',this.getDate(startDate))
       postData.append('due_date',this.getDate(endDate))
-
     return this.callPost("task-list-by-date",postData);
+  }
+  createTask(desc,priority,startDate,endDate): any {
+    const postData = new FormData();
+      postData.append('entityid',this.global.userData.entity_type_id)
+      postData.append('general_user_id',this.global.userData.general_user_id)
+      postData.append('applicationid','1')
+      postData.append('taskname','File GSTR1 for 2020-21 for the Haryana, Maharashtra, Chennai')
+      postData.append('taskdescription',desc)
+      postData.append('taskpriority',priority)
+      postData.append('isgrouptask','0')
+      postData.append('completionstatus','1')
+      postData.append('startdate',this.getDate(startDate))
+      postData.append('duedate',this.getDate(endDate))
+      postData.append('latestcomments','no update')
+      postData.append('parentid','1')
+    return this.callPost("task-create",postData);
   }
   callPost(endPoint, postData) {
     postData.append('LanguageCode', 'eng')

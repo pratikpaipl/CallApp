@@ -17,7 +17,7 @@
       <ion-col>
         <ion-item>
           <ion-label position="floating">Description</ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="desc"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -32,7 +32,7 @@
       <ion-col>
         <ion-item>
           <ion-label position="floating">Due Date</ion-label>
-          <ion-datetime [min]="startDate"></ion-datetime>
+          <ion-datetime [min]="startDate" [(ngModel)]="dueDate"></ion-datetime>
           <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
       </ion-col>
@@ -105,7 +105,7 @@
     </ion-row>
     <ion-row>
       <ion-col style="margin: 10px auto;">
-        <ion-button style="width: 80%; margin: 0 auto; display: block;">Create Task</ion-button>
+        <ion-button style="width: 80%; margin: 0 auto; display: block;" (click)="createTask()"> Create Task</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

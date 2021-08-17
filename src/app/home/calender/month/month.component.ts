@@ -222,7 +222,7 @@ export class MonthComponent implements OnInit {
               // this.daysInThisMonth[i].duedate+''+j; this.getDayNumber(sub.duedate);
             }
           }
-          console.log('Response ', this.daysInThisMonth);
+          // console.log('Response ', this.daysInThisMonth);
         }
       },
       (error: Response) => {
