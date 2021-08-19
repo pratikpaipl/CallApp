@@ -4,9 +4,11 @@
       <ion-icon name="arrow-back"></ion-icon>
     </ion-col>
     <ion-col class="month_box">
-      <ion-label>{{ date.format("MMMM ") }}{{ date.format("YYYY ") }} Week-{{
-          weekNo
-        }}</ion-label>
+      <!-- <ion-item style="--background: transparent; color: white;">
+        <ion-datetime displayFormat="MMMM YYYY" [(ngModel)]="selMonthYear" [min]="cDate" (ionChange)="changeSelDate()"></ion-datetime>
+         &nbsp;Week-{{weekNo}}
+      </ion-item> -->
+      <ion-label>{{ date.format("MMMM ") }}{{ date.format("YYYY ") }} Week-{{weekNo}}</ion-label>
     </ion-col>
     <ion-col class="arrow_box" (click)="nextWeek()">
       <ion-icon name="arrow-forward"></ion-icon>
@@ -23,9 +25,9 @@
         <ion-label class="heading">{{ item.lbl }}</ion-label>
         <ion-label class="date">{{ item.day }}</ion-label>
         <!-- {{item.task}} -->
-        <div class="dates_slotes" *ngIf="item.task.length != undefined && item.task.length !=0">
-          <!-- <span class="cricle">1</span> -->
-          <span class="squre">{{item.task.length}}</span>
+        <div class="dates_slotes" *ngIf="item.task.length !=0 || item.gTotal != 0">
+          <span class="cricle" *ngIf="item.gTotal !=undefined && item.gTotal != 0">{{item.gTotal}}</span>
+          <span class="squre" *ngIf="item.task.length !=0">{{item.task.length}}</span>
         </div>
 
         <!-- <div class="dates_slotes" *ngIf="item.day === '13'">
@@ -66,9 +68,9 @@
         </ion-row>
         <ion-row *ngFor="let item of govDueDates">
           <ion-col>
-            <ion-label class="head-lbl">{{item.lbl}}</ion-label>
+            <ion-label class="head-lbl">{{item.heading}}</ion-label>
             <ion-item>
-              <ion-label>{{item.value}}</ion-label>
+              <ion-label>{{item.content}}</ion-label>
               <ion-checkbox slot="start" [(ngModel)]="item.isCheck"></ion-checkbox>
             </ion-item>
           </ion-col>

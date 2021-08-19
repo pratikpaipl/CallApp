@@ -22,6 +22,12 @@ export class ApiService {
     return moment(date).format('DD-MM-yyyy')
   }
 
+  allDueDates(startDate,endDate): any {
+    const postData = new FormData();
+      postData.append('start_date',this.getDate(startDate))
+      postData.append('end_date',this.getDate(endDate))
+    return this.callPost("get-all-due-dates",postData);
+  }
   getTaskList(startDate,endDate): any {
     const postData = new FormData();
       postData.append('start_date',this.getDate(startDate))

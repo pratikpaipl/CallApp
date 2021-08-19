@@ -118,6 +118,7 @@ export class MonthComponent implements OnInit {
       month: this.currentMonth,
       year: this.currentYear,
     });
+    this.getAllDueDates();
     this.getTaskList();
   }
   checkEvent(day) {
@@ -192,6 +193,36 @@ export class MonthComponent implements OnInit {
       "December",
     ];
     this.getDaysOfMonth();
+   
+  }
+  getAllDueDates() {
+    var startDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
+    var endDate = new Date(
+      this.date.getFullYear(),
+      this.date.getMonth() + 1,
+      0
+    );
+
+    this.apiService.allDueDates(startDate, endDate).subscribe(
+      async (response) => {
+        let res: any = response;
+        // console.log('Response ',res);
+        if (res.success) {
+          var keys = Object.keys(res.data);
+          this.eventList = res.data;
+          for (let i = 0; i < keys.length; i++) {
+            const element = keys[i];
+            // console.log('Response ', ' '+i ,' ' , this.eventList[element].length);
+            this.daysInThisMonth[i].gTotal = this.eventList[element].total;
+            this.daysInThisMonth[i].gov_due_data = this.eventList[element].gov_due_data;
+          }
+        }
+      },
+      (error: Response) => {
+        let err: any = error;
+        // this.global.showToast(err.error.message, 4000);
+      }
+    );
   }
   getTaskList() {
     var startDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1);

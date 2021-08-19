@@ -18,11 +18,15 @@ export class WeekComponent implements OnInit {
   assiedToYou = [];
   assiedByYou = [];
   selectedTaskTab = 'toyou'
+
+  selMonthYear:any;
+
   @Input()
   selectedDate: any;
 
   days = [];
   date = moment();
+  cDate = moment();
   weekNo = Math.ceil(this.date.date() / 7);
 
   @Input()
@@ -50,15 +54,24 @@ export class WeekComponent implements OnInit {
   }
   async ngOnInit() {
     this.date = moment(this.selectedDate);
+    this.selMonthYear = this.date.format("DD MMMM YYYY") 
+    console.log('selected Month ',this.selMonthYear);
+    this.weekNo = Math.ceil(this.date.date() / 7);
+    this.getWeeks(this.date);
+  }
+  changeSelDate(){
+    console.log('selected Month ',this.selMonthYear);
+    this.date = moment(this.selMonthYear);
+    console.log('selected Month ',this.selMonthYear);
     this.weekNo = Math.ceil(this.date.date() / 7);
     this.getWeeks(this.date);
   }
   nextWeek() {
-    this.date.add(1, 'weeks');
+    this.date =   this.date.add(1, 'weeks');
     this.getWeeks(this.date);
   }
   previousWeek() {
-    this.date.subtract(1, 'weeks');
+    this.date =  this.date.subtract(1, 'weeks');
     this.getWeeks(this.date);
   }
   public getWeeks(currentDate) {
@@ -75,6 +88,35 @@ export class WeekComponent implements OnInit {
     };
 
     this.getTaskList(weekStart, weekEnd)
+    this.getAllDueDates(weekStart, weekEnd)
+  }
+  getAllDueDates(startDate, endDate) {
+    this.apiService.allDueDates(startDate, endDate).subscribe(
+      async (response) => {
+        let res: any = response;
+        this.govDueDates=[];
+        // console.log('Response ',res);
+        if (res.success) {
+          var keys = Object.keys(res.data);
+          for (let i = 0; i < keys.length; i++) {
+            const element = keys[i];
+            this.days[i].gTotal = res.data[element].total;
+            this.days[i].govDate = res.data[element].gov_due_data;
+            console.log('Gov Due Date ',res.data[element])
+            if (this.days[i].day == moment(this.selectedDate).format("DD")) {
+              this.govDueDates = res.data[element].gov_due_data;
+            }
+          }
+          // if (this.govDueDates.length == 0) {
+          //   this.govDueDates = this.days[0].govDate;
+          // }
+        }
+      },
+      (error: Response) => {
+        let err: any = error;
+        // this.global.showToast(err.error.message, 4000);
+      }
+    );
   }
   getTaskList(startDate, endDate) {
     this.apiService.getTaskList(startDate, endDate).subscribe(
@@ -132,6 +174,7 @@ export class WeekComponent implements OnInit {
   onClick(item, i) {
     console.log('item ', item.task)
     this.tasks = item.task;
+    this.govDueDates = item.govDate;
 
     this.setData();
 
