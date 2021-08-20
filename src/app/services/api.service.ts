@@ -28,6 +28,13 @@ export class ApiService {
       postData.append('end_date',this.getDate(endDate))
     return this.callPost("get-all-due-dates",postData);
   }
+  dueDateMarkCompletes(ids,remark): any {
+    const postData = new FormData();
+      postData.append('legislationactformsid',ids.join(','))
+      postData.append('compliancestatus',"1")
+      postData.append('complianceremarks',remark)
+    return this.callPost("duedate-mark-complete",postData);
+  }
   getTaskList(startDate,endDate): any {
     const postData = new FormData();
       postData.append('start_date',this.getDate(startDate))

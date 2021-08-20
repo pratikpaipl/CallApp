@@ -5,6 +5,8 @@ import { GlobalProvider } from 'src/app/shared/GlobalProvider';
 import { StorageService } from 'src/app/shared/StorageService';
 import * as moment from 'moment-timezone';
 import { ApiService } from 'src/app/services/api.service';
+import { ModalController } from '@ionic/angular';
+import { ConfirmationPage } from 'src/app/modals/confirmation/confirmation.page';
 @Component({
   selector: 'week',
   templateUrl: './week.component.html',
@@ -20,6 +22,8 @@ export class WeekComponent implements OnInit {
   selectedTaskTab = 'toyou'
 
   selMonthYear:any;
+
+  remarks=''
 
   @Input()
   selectedDate: any;
@@ -39,7 +43,7 @@ export class WeekComponent implements OnInit {
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
-  constructor(public store: StorageService, private apiService: ApiService, private calendar: Calendar, private navigation: NavigationService, public global: GlobalProvider) {
+  constructor(public store: StorageService, private apiService: ApiService,public modalController: ModalController, private calendar: Calendar, private navigation: NavigationService, public global: GlobalProvider) {
     // this.govDueDates.push({ lbl: 'Tax Manager', value: 'Last Date for 1st installment of Advance Tax', isCheck: false })
     // this.govDueDates.push({ lbl: 'Enable GST 2.0', value: 'New relaxations on GSTR6A dates release today and will applicable from Sept 2021', isCheck: true })
 
@@ -163,21 +167,69 @@ export class WeekComponent implements OnInit {
         this.assiedByYou.push(element)
       }
     }
-
-    console.log('Assigned to you ',this.assiedToYou);
-    console.log('Assigned by you ',this.assiedByYou);
-
   }
   formateDate(date) {
     return moment(date).format('DD MMM yyyy');
   }
+  markAsComplete(){
+    console.log('item ', this.govDueDates)
+      let selIds=[];
+    for (let i = 0; i <  this.govDueDates.length; i++) {
+      const element =  this.govDueDates[i];
+      if(element.isCheck != undefined && element.isCheck){
+        selIds.push(element.legislationactformsid)
+      }
+    }
+
+    if(selIds.length == 0 ){
+      this.global.showToast('Please select at least one due date ',1500)
+    }else if(this.remarks.trim() == ''){
+      this.global.showToast('Please enter compliance remarks',1500)
+    }else{
+      this.openModal(selIds)
+    }
+    console.log('selIds ', selIds)
+  }
+
+  async openModal(selIds) {
+    const modal = await this.modalController.create({
+      component: ConfirmationPage,
+      cssClass: 'alert-success',
+      componentProps: {
+        msg:'Are you sure you want to complete <br /> checked gov due dates?'
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+
+      console.log('data returned ',dataReturned)
+      if (dataReturned.data == 1) {
+        this.completeDueDate(selIds)
+      }
+    });
+
+    return await modal.present();
+  }
+  completeDueDate(seiId) {
+    this.apiService.dueDateMarkCompletes(seiId,this.remarks).subscribe(
+      async (response) => {
+        let res: any = response;
+        if (res.success) {
+          this.remarks=''
+          this.getWeeks(this.date);
+         }
+         this.global.showToast(res.message, 4000);
+      },
+      (error: Response) => {
+        let err: any = error;
+        this.global.showToast(err.error.message, 4000);
+      }
+    );
+  }
   onClick(item, i) {
-    console.log('item ', item.task)
     this.tasks = item.task;
     this.govDueDates = item.govDate;
-
     this.setData();
-
     // this.days[i].selected=true
     for (let k = 0; k < this.days.length; k++) {
       this.days[k].selected = (k == i);

@@ -38,22 +38,6 @@
     </ion-col>
   </ion-row>
 </ion-grid>
-<!-- <ion-radio-group class="calendar-weekday">
-             <ion-item [ngClass]="item.isCurrent ? 'current calendar_heading' : 'other calendar_heading'"
-             *ngFor="let item of days">
-                <ion-label class="heading">{{ item.lbl }}</ion-label>
-                <ion-label class="date">{{ item.day }}</ion-label>
-                <div class="dates_slotes" *ngIf="item.day.task.length !=0">
-                  <span class="cricle">1</span>
-                  <span class="squre">2</span>
-                </div>
-                <div class="dates_slotes" *ngIf="item.day === '13'">
-                  <span class="cricle">1</span>
-                  <span class="squre">2</span>
-                </div>
-                <ion-radio ></ion-radio>
-              </ion-item>
-            </ion-radio-group> -->
 
 <ion-grid class="gov-due">
   <ion-row>
@@ -73,6 +57,19 @@
               <ion-label>{{item.content}}</ion-label>
               <ion-checkbox slot="start" [(ngModel)]="item.isCheck"></ion-checkbox>
             </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row  *ngIf="govDueDates.length != 0" >
+          <ion-col size="12" class="p-0">
+           <ion-item >
+            <ion-label position="floating">Compliance remarks</ion-label>
+            <ion-input [(ngModel)]="remarks"></ion-input>
+           </ion-item>
+          </ion-col>
+          <ion-col class="p-0">
+            <ion-button class="complete" (click)="markAsComplete()">
+              <ion-icon name="checkmark-circle-outline" ></ion-icon> Mark as Complete
+            </ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
