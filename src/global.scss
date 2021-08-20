@@ -956,7 +956,8 @@ input:-webkit-autofill:active {
 .dates {
   display    : block;
   width      : 100%;
-  padding    : 9px 5px;
+  // padding    : 9px 5px;
+  padding    : 20px 5px;
   line-height: normal;
   color      : #003463;
   height     : 100%;
@@ -964,7 +965,7 @@ input:-webkit-autofill:active {
 }
 
 .calendar_heading ion-label {
-  padding    : 5px;
+  padding    : 10px;
   text-align : center;
   display    : block;
   font-weight: 700;

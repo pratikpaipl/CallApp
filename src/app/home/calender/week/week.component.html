@@ -82,19 +82,19 @@
     <ion-col>
       <ion-label class="headig">Tasks</ion-label>
       <ion-segment [(ngModel)]="selectedTaskTab" (ionChange)="segmentChanged($event)">
-        <ion-segment-button value="toyou">
-          <ion-label>Assiged to you</ion-label>
+        <ion-segment-button value="toYou">
+          <ion-label>Assigned to you</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="byyou">
-          <ion-label>Assiged by you</ion-label>
+        <ion-segment-button value="byYou">
+          <ion-label>Assigned by you</ion-label>
         </ion-segment-button>
       </ion-segment>
       <ion-grid class="p-0">
-        <div class="grid_content" *ngIf="tasks != undefined && selectedTaskTab =='toyou'">
+        <div class="grid_content" *ngIf="tasks != undefined && selectedTaskTab =='toYou'">
 
-          <no-task *ngIf="assiedToYou.length == 0"></no-task>
+          <no-task *ngIf="assignedToYou.length == 0"></no-task>
 
-          <ion-row class="tast_row" *ngFor="let item of assiedToYou">
+          <ion-row class="tast_row" *ngFor="let item of assignedToYou">
             <ion-col size="12" class="tasks_cols">
               <ion-label class="titles">{{item.taskname}}</ion-label>
               <ion-label class="contents">{{ formateDate(item.duedate)}}</ion-label>
@@ -118,7 +118,7 @@
                     </ion-img>
                   </ion-col>
                   <ion-col>
-                    <ion-label class="titles">Assiged to you </ion-label>
+                    <ion-label class="titles">Assigned to you </ion-label>
                     <ion-label class="content">{{item.task_assigned_users.assigned_by_user_data.full_name}}</ion-label>
                   </ion-col>
                   <ion-col>
@@ -151,9 +151,9 @@
             </ion-col>
           </ion-row>
         </div>
-        <div class="grid_content" *ngIf="tasks != undefined && selectedTaskTab =='byyou'">
-          <no-task *ngIf="assiedByYou.length == 0"></no-task>
-          <ion-row class="tast_row" *ngFor="let item of assiedByYou">
+        <div class="grid_content" *ngIf="tasks != undefined && selectedTaskTab =='byYou'">
+          <no-task *ngIf="assignedByYou.length == 0"></no-task>
+          <ion-row class="tast_row" *ngFor="let item of assignedByYou">
             <ion-col size="12" class="tasks_cols">
               <ion-grid class="p-0">
                 <ion-row *ngIf="item.task_assigned_users.assigned_user_data != undefined">
@@ -162,12 +162,12 @@
                     </ion-img>
                   </ion-col>
                   <ion-col>
-                    <ion-label class="titles">Assiged to you </ion-label>
+                    <ion-label class="titles">Assigned to you </ion-label>
                     <ion-label class="content">{{item.task_assigned_users.assigned_user_data.full_name}}</ion-label>
                   </ion-col>
                   <ion-col>
                     <ion-label class="titles">Priority</ion-label>
-                    <ion-label class="content">MEdium</ion-label>
+                    <ion-label class="content">Medium</ion-label>
                   </ion-col>
                   <ion-col>
                     <ion-label class="titles">Attachment</ion-label>

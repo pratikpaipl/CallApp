@@ -17,8 +17,8 @@ export class WeekComponent implements OnInit {
   govDueDates = [];
   upcomingDate: any;
   tasks = [];
-  assiedToYou = [];
-  assiedByYou = [];
+  assignedToYou = [];
+  assignedByYou = [];
   selectedTaskTab = 'toyou'
 
   selMonthYear:any;
@@ -44,11 +44,6 @@ export class WeekComponent implements OnInit {
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
   constructor(public store: StorageService, private apiService: ApiService,public modalController: ModalController, private calendar: Calendar, private navigation: NavigationService, public global: GlobalProvider) {
-    // this.govDueDates.push({ lbl: 'Tax Manager', value: 'Last Date for 1st installment of Advance Tax', isCheck: false })
-    // this.govDueDates.push({ lbl: 'Enable GST 2.0', value: 'New relaxations on GSTR6A dates release today and will applicable from Sept 2021', isCheck: true })
-
-    // this.tasks.push({ task: 'File GSTR1 for 2020-21 for the Haryana, Maharashtra, Chennai', date: '22nd july 2021', subtask: [{ task: 'Upload the Respective Trade Name Sale Register,', date: '20th july 2021' }, { task: 'Save to GSTIN & Get approval on the respective records', date: '21th july 2021' }] });
-    // this.tasks.push({task:'File GSTR1 for 2020-21 for the Haryana, Maharashtra, Chennai',date:'22nd july 2021',subtask:[{task:'Upload the Respective Trade Name Sale Register,',date:'20th july 2021'},{task:'Save to GSTIN & Get approval on the respective records',date:'21th july 2021'}]});
   }
   deleteEvent(ev) {
 
@@ -156,15 +151,15 @@ export class WeekComponent implements OnInit {
     );
   }
   setData() {
-    this.assiedToYou = [];
-    this.assiedByYou = [];
+    this.assignedToYou = [];
+    this.assignedByYou = [];
     for (let k = 0; k < this.tasks.length; k++) {
       const element = this.tasks[k];
       if (element.is_assigned_to_you == 1) {
-        this.assiedToYou.push(element)
+        this.assignedToYou.push(element)
       }
       if (element.is_assigned_by_you == 1) {
-        this.assiedByYou.push(element)
+        this.assignedByYou.push(element)
       }
     }
   }
