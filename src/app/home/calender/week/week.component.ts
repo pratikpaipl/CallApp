@@ -19,7 +19,7 @@ export class WeekComponent implements OnInit {
   tasks = [];
   assignedToYou = [];
   assignedByYou = [];
-  selectedTaskTab = 'toyou'
+  selectedTaskTab = 'toYou'
 
   selMonthYear:any;
 
