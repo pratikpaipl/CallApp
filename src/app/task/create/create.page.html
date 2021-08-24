@@ -3,7 +3,7 @@
     <ion-grid>
       <ion-row style="align-items: center;">
         <ion-col style="flex: 0 0 30px;">
-          <ion-img style="padding:5px" src="../../../assets/images/back.png" (click)="globle.backPage()"></ion-img>
+          <ion-img style="padding:5px" src="../../../assets/images/back.png" (click)="global.backPage()"></ion-img>
         </ion-col>
         <ion-col>Create</ion-col>
       </ion-row>
@@ -13,6 +13,14 @@
 <ion-content>
 
   <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input [(ngModel)]="name"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col>
         <ion-item>
@@ -44,27 +52,11 @@
             Set Priority
           </ion-label>
         </ion-list-header>
-        <ion-radio-group>
-          <ion-item>
-            <ion-label>Critical</ion-label>
-            <ion-radio value="critical"></ion-radio>
+        <ion-radio-group [(ngModel)]="selPriority" [value]="selPriority" (ngModelChange)="onSelectedPriority()" >
+          <ion-item *ngFor="let item of taskPriority">
+            <ion-label>{{item.taskpriority}}</ion-label>
+            <ion-radio value="{{item.taskpriority_id}}"></ion-radio>
           </ion-item>
-
-          <ion-item>
-            <ion-label>High</ion-label>
-            <ion-radio value="high"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Medium</ion-label>
-            <ion-radio value="medium"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Low</ion-label>
-            <ion-radio value="low"></ion-radio>
-          </ion-item>
-
         </ion-radio-group>
       </ion-col>
     </ion-row>
@@ -80,8 +72,13 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label position="floating">Assign to*</ion-label>
-          <ion-input></ion-input>
+          <!-- <tag-input [ngModel]="userIds" ></tag-input> -->
+          <ion-item style="width: 100%;">
+            <ion-label position="floating">Assign to*</ion-label>
+      <ion-select multiple="true" [(ngModel)]="selectedUser" (ionChange)="selectedUsers(selectedUsers)" placeholder="Please select users">
+          <ion-select-option  *ngFor="let item of userIds" [value]="item" >{{item.full_name}}</ion-select-option>
+      </ion-select>
+          </ion-item>
         </ion-item>
       </ion-col>
     </ion-row>

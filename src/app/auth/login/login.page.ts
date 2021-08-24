@@ -83,6 +83,9 @@ export class LoginPage implements OnInit {
       component: SuccessPage,
       cssClass: 'alert-success',
       componentProps: {
+          btnLbl:'Back to Login',
+          isSub:true,
+          msg:'Go back to Login and enter your New Password'
       }
     });
 

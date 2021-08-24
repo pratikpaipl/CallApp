@@ -7,8 +7,12 @@ import { ModalController, NavParams } from '@ionic/angular';
   styleUrls: ['./success.page.scss'],
 })
 export class SuccessPage implements OnInit {
-  modalTitle: string;
-  modelId: number;
+  // btnLbl:string='Back to Login';
+  // msg: string='Go back to Login and enter your New Password';
+
+  isSub:boolean=false;
+  btnLbl:string;
+  msg: string;
 
   constructor(
     private modalController: ModalController,
@@ -17,8 +21,9 @@ export class SuccessPage implements OnInit {
 
   ngOnInit() {
     console.table(this.navParams);
-    this.modelId = this.navParams.data.paramID;
-    this.modalTitle = this.navParams.data.paramTitle;
+    this.msg = this.navParams.data.msg;
+    this.isSub = this.navParams.data.isSub;
+    this.btnLbl = this.navParams.data.btnLbl;
   }
 
   async closeModal() {

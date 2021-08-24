@@ -21,8 +21,6 @@ import { NavigationService } from './services/NavigationService';
 import { LoadingInterceptorService } from './services/interceptor/LoadingInterceptorService';
 import { LoadingComponent } from './services/loading/loading.component';
 import { AuthGuard } from './shared/authguard.service';
-import { IonicStorageModule } from '@ionic/storage-angular';
-import { Drivers } from '@ionic/storage';
 import { Storage } from '@ionic/storage-angular';
 import { GlobalProvider } from './shared/GlobalProvider';
 import { LoginGuard } from './shared/loginguard.service';
@@ -31,11 +29,8 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
   entryComponents: [],
-  imports: [BrowserModule, FormsModule,
-    IonicModule.forRoot({ mode: 'md', rippleEffect: false }), IonicStorageModule.forRoot({
-      name: '__pi2life',
-      driverOrder: [Drivers.SecureStorage, Drivers.IndexedDB, Drivers.LocalStorage]
-    }), HttpClientModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, 
+    IonicModule.forRoot({ mode: 'md', rippleEffect: false }), HttpClientModule, AppRoutingModule],
   providers: [Storage, GlobalProvider, StatusBar, Network,  Badge, OneSignal, Camera, NetworkInterface,  AuthGuard, LoginGuard, Keyboard,
     SplashScreen,  Calendar,   InAppBrowser, EventService, NavigationService, 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

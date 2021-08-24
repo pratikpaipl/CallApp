@@ -67,10 +67,12 @@ export class WeekComponent implements OnInit {
   }
   nextWeek() {
     this.date =   this.date.add(1, 'weeks');
+    this.selectedDate =this.date
     this.getWeeks(this.date);
   }
   previousWeek() {
     this.date =  this.date.subtract(1, 'weeks');
+    this.selectedDate =this.date
     this.getWeeks(this.date);
   }
   public getWeeks(currentDate) {
@@ -86,7 +88,7 @@ export class WeekComponent implements OnInit {
       this.days.push({ day: day, lbl: moment(weekStart).add(i, 'days').format("ddd"), task: [], isCurrent: isCurrent });
     };
 
-    this.getTaskList(weekStart, weekEnd)
+    //this.getTaskList(weekStart, weekEnd)
     this.getAllDueDates(weekStart, weekEnd)
   }
   getAllDueDates(startDate, endDate) {
@@ -100,12 +102,17 @@ export class WeekComponent implements OnInit {
           for (let i = 0; i < keys.length; i++) {
             const element = keys[i];
             this.days[i].gTotal = res.data[element].total;
+            this.days[i].total_task = res.data[element].total_task;
             this.days[i].govDate = res.data[element].gov_due_data;
             console.log('Gov Due Date ',res.data[element])
             if (this.days[i].day == moment(this.selectedDate).format("DD")) {
+              this.days[i].selected = true
               this.govDueDates = res.data[element].gov_due_data;
+            } else {
+              this.days[i].selected = false
             }
           }
+          
           // if (this.govDueDates.length == 0) {
           //   this.govDueDates = this.days[0].govDate;
           // }
@@ -211,6 +218,7 @@ export class WeekComponent implements OnInit {
         let res: any = response;
         if (res.success) {
           this.remarks=''
+          this.selectedDate =this.date
           this.getWeeks(this.date);
          }
          this.global.showToast(res.message, 4000);

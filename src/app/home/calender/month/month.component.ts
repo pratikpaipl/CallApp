@@ -119,7 +119,7 @@ export class MonthComponent implements OnInit {
       year: this.currentYear,
     });
     this.getAllDueDates();
-    this.getTaskList();
+    //this.getTaskList();
   }
   checkEvent(day) {
     var hasEvent = false;
@@ -214,6 +214,7 @@ export class MonthComponent implements OnInit {
             const element = keys[i];
             // console.log('Response ', ' '+i ,' ' , this.eventList[element].length);
             this.daysInThisMonth[i].gTotal = this.eventList[element].total;
+            this.daysInThisMonth[i].total_task = this.eventList[element].total_task;
             this.daysInThisMonth[i].gov_due_data = this.eventList[element].gov_due_data;
           }
         }

@@ -53,9 +53,9 @@
           <!-- <span *ngIf="day.task !=0 " class="date_number" [ngClass]="day.day === day.startdate || day.day === day.duedate ? 'selecteds_dates' : ''">{{day.day}}</span>
           <span *ngIf="day.task ==0 " class="date_number" >{{day.day}}</span> -->
 
-          <div class="dates_slotes" *ngIf="day.gTotal != 0 || day.task != 0">
+          <div class="dates_slotes" *ngIf="day.gTotal != 0 || day.total_task != 0">
             <span class="cricle" *ngIf="day.gTotal !=undefined && day.gTotal != 0">{{day.gTotal}}</span>
-            <span class="squre" *ngIf="day.task != 0">{{day.task}}</span>
+            <span class="squre" *ngIf="day.total_task != 0">{{day.total_task}}</span>
           </div>
 
           <!-- <div class="selected_dates_slotes"
@@ -71,9 +71,9 @@
                   [ngClass]="day.day === day.startdate || day.day === day.duedate ? 'selecteds_dates' : ''">{{day.day}}</span>
             <span *ngIf="day.task ==0 " class="date_number">{{day.day}}</span> -->
 
-            <div class="dates_slotes" *ngIf="day.gTotal != 0 || day.task != 0">
+            <div class="dates_slotes" *ngIf="day.gTotal != 0 || day.total_task != 0">
               <span class="cricle" *ngIf="day.gTotal !=undefined && day.gTotal != 0">{{day.gTotal}}</span>
-              <span class="squre" *ngIf="day.task != 0">{{day.task}}</span>
+              <span class="squre" *ngIf="day.total_task != 0">{{day.total_task}}</span>
             </div>
 
            
