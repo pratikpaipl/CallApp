@@ -24,16 +24,10 @@
       <div>
         <ion-label class="heading">{{ item.lbl }}</ion-label>
         <ion-label class="date">{{ item.day }}</ion-label>
-        <!-- {{item.task}} -->
         <div class="dates_slotes" *ngIf="item.total_task !=0 || item.gTotal != 0">
           <span class="cricle" *ngIf="item.gTotal !=undefined && item.gTotal != 0">{{item.gTotal}}</span>
           <span class="squre" *ngIf="item.total_task !=0">{{item.total_task}}</span>
         </div>
-
-        <!-- <div class="dates_slotes" *ngIf="item.day === '13'">
-          <span class="cricle">1</span>
-          <span class="squre">2</span>
-        </div> -->
       </div>
     </ion-col>
   </ion-row>
@@ -101,11 +95,15 @@
           <ion-row class="tast_row" *ngFor="let item of assignedToYou">
             <ion-col size="12" class="tasks_cols">
               <ion-label class="titles">{{item.taskname}}</ion-label>
-              <ion-label class="contents">{{ formateDate(item.duedate)}}</ion-label>
+              <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
             </ion-col>
-            <ion-col size="12" class="tasks_cols" *ngIf="item.child_task.length > 0">
-              <ion-label class="titles">Sub -Tasks</ion-label>
-              <ion-grid *ngFor="let sub of item.child_task" class="p-0 subtask_list">
+            <ion-col size="12"  *ngIf="item.child_task.length > 0">
+              <ion-row class="p-0">
+                <ion-col class="p-0">
+              <ion-label class="titles">Sub - Tasks</ion-label>
+                </ion-col>
+                </ion-row>
+              <ion-grid *ngFor="let sub of item.child_task" class="p-0 ">
                 <ion-row class="p-0">
                   <ion-col class="p-0">
                     <ion-label class="content">{{sub.taskname}}</ion-label>
@@ -115,7 +113,7 @@
               </ion-grid>
             </ion-col>
             <ion-col size="12">
-              <ion-grid class="p-0" *ngIf="item.task_assigned_users.assigned_by_user_data != undefined">
+              <ion-grid class="p-0" *ngIf="item.assigned_by_user_details != undefined">
                 <ion-row style="padding: 10px 0px 0px 0px;">
                   <ion-col style="flex: 0 0 40px;">
                     <ion-img style="width: 30px; filter: invert(1);" src="../../../../assets/images/settings.png">
@@ -123,11 +121,11 @@
                   </ion-col>
                   <ion-col>
                     <ion-label class="titles">Assigned to you </ion-label>
-                    <ion-label class="content">{{item.task_assigned_users.assigned_by_user_data.full_name}}</ion-label>
+                    <ion-label class="content">{{item.assigned_by_user_details.full_name}}</ion-label>
                   </ion-col>
                   <ion-col>
                     <ion-label class="titles">Priority</ion-label>
-                    <ion-label class="content">MEdium</ion-label>
+                    <ion-label class="content">{{item.task_priority}}</ion-label>
                   </ion-col>
                   <ion-col>
                     <ion-label class="titles">Attachment</ion-label>
@@ -160,18 +158,18 @@
           <ion-row class="tast_row" *ngFor="let item of assignedByYou">
             <ion-col size="12" class="tasks_cols">
               <ion-grid class="p-0">
-                <ion-row *ngIf="item.task_assigned_users.assigned_user_data != undefined">
+                <ion-row *ngIf="item.assigned_user_details != undefined">
                   <ion-col style="flex: 0 0 40px;">
                     <ion-img style="width: 30px; filter: invert(1);" src="../../../../assets/images/settings.png">
                     </ion-img>
                   </ion-col>
                   <ion-col>
                     <ion-label class="titles">Assigned to you </ion-label>
-                    <ion-label class="content">{{item.task_assigned_users.assigned_user_data.full_name}}</ion-label>
+                    <ion-label class="content">{{item.assigned_user_details.full_name}}</ion-label>
                   </ion-col>
                   <ion-col>
                     <ion-label class="titles">Priority</ion-label>
-                    <ion-label class="content">Medium</ion-label>
+                    <ion-label class="content">{{item.task_priority}}</ion-label>
                   </ion-col>
                   <ion-col>
                     <ion-label class="titles">Attachment</ion-label>
@@ -192,7 +190,7 @@
                       </ion-row>
                       <ion-row>
                         <ion-col>
-                          <ion-label>{{ formateDate(item.duedate)}}</ion-label>
+                          <ion-label>{{ formateDate(item.due_date)}}</ion-label>
                         </ion-col>
                         <ion-col>
                           <ion-img style="width: 20px; filter: invert(1);" src="../../../../assets/images/settings.png">
@@ -202,9 +200,9 @@
                     </ion-grid>
 
                     <ion-grid class="p-0" *ngIf="item.child_task.length > 0">
-                      <ion-label class="titles">Sub -Tasks</ion-label>
-                      <ion-row class="tast_row" *ngFor="let sub of item.child_task">
-                        <ion-col size="12" class="tasks_cols">
+                      <ion-label style="padding-top: 10px;" class="titles">Sub - Tasks</ion-label>
+                      <ion-row  *ngFor="let sub of item.child_task">
+                        <ion-col size="12" >
                           <ion-label class="content">{{sub.taskname}}</ion-label>
                           <ion-label class="contents">{{formateDate(sub.duedate)}}</ion-label>
                         </ion-col>

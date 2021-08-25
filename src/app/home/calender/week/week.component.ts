@@ -96,18 +96,22 @@ export class WeekComponent implements OnInit {
       async (response) => {
         let res: any = response;
         this.govDueDates=[];
+        this.tasks=[];
         // console.log('Response ',res);
         if (res.success) {
           var keys = Object.keys(res.data);
           for (let i = 0; i < keys.length; i++) {
             const element = keys[i];
-            this.days[i].gTotal = res.data[element].total;
+            this.days[i].gTotal = res.data[element].total_due_date;
             this.days[i].total_task = res.data[element].total_task;
             this.days[i].govDate = res.data[element].gov_due_data;
+            this.days[i].task = res.data[element].task_data;
             console.log('Gov Due Date ',res.data[element])
             if (this.days[i].day == moment(this.selectedDate).format("DD")) {
               this.days[i].selected = true
+              this.tasks = res.data[element].task_data
               this.govDueDates = res.data[element].gov_due_data;
+              this.setData()
             } else {
               this.days[i].selected = false
             }

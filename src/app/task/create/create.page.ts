@@ -6,6 +6,8 @@ import { ApiService } from '../../services/api.service';
 import { GlobalProvider } from '../../shared/GlobalProvider';
 import { StorageService } from '../../shared/StorageService';
 import { ModalController } from '@ionic/angular';
+import { ConfirmationPage } from 'src/app/modals/confirmation/confirmation.page';
+import { SuccessPage } from 'src/app/modals/success/success.page';
 
 @Component({
   selector: 'app-create',
@@ -14,7 +16,8 @@ import { ModalController } from '@ionic/angular';
 })
 export class CreatePage implements OnInit {
 
-  name:any='File GSTR1 for 2020-21 for the Haryana, Maharashtra, Chennai';
+  // name:any='File GSTR1 for 2020-21 for the Haryana, Maharashtra, Chennai';
+  name:any='';
   desc:any='';
   userIds=[];
   selectedUser:any
@@ -97,9 +100,6 @@ export class CreatePage implements OnInit {
     else{
       this.apiService.createTask(this.name,this.desc,this.selPriority,this.startDate, this.dueDate,this.selectedUser).subscribe( (response) => {
           let res: any = response;
-          // if (res.success) {
-  
-          //  }
           this.messagePop(res.message);
         },
         (error: Response) => {
@@ -112,12 +112,14 @@ export class CreatePage implements OnInit {
   }
   messagePop(message: any) {
     console.log('Open Message ',message);
-    this.global.showToast(message, 4000);
-    // this.openModal(message);
+    // this.global.showToast(message, 4000);
+    this.openModal(message);
   }
+
+
 async openModal(msg) {
     const modal = await this.modalController.create({
-      component: SuccessPageModule,
+      component: SuccessPage,
       cssClass: 'alert-success',
       componentProps: {
         msg:msg,
@@ -129,6 +131,10 @@ async openModal(msg) {
     modal.onDidDismiss().then((dataReturned) => {
 
       console.log('data returned ',dataReturned)
+      this.name=''
+      this.desc=''
+      this.dueDate=''
+      this.selectedUser=''
       if (dataReturned.data == 1) {
         // this.completeDueDate(selIds)
       }

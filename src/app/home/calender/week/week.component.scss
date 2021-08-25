@@ -175,7 +175,9 @@ ion-item ion-label {
 .task-list {
   position: relative;
 }
+.tast_row{
 
+}
 .task-list::after {
   content   : "";
   display   : block;
@@ -223,7 +225,7 @@ ion-segment-button.segment-button-checked::after {
 
 
 .tasks_cols {
-  padding : 18px 0px;
+  padding : 10px 0px;
   position: relative;
 }
 
@@ -233,7 +235,17 @@ ion-segment-button.segment-button-checked::after {
   position  : absolute;
   background: #f2f6fa;
   width     : calc(100% + 30px);
-  height    : 3px;
+  height    : 2px;
+  left      : -15px;
+  bottom    : 0px;
+}
+.tast_row::after {
+  content   : "";
+  display   : block;
+  position  : absolute;
+  background: #f2f6fa;
+  width     : calc(100% + 30px);
+  height    : 5px;
   left      : -15px;
   bottom    : 0px;
 }

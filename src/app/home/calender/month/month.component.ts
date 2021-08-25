@@ -213,7 +213,7 @@ export class MonthComponent implements OnInit {
           for (let i = 0; i < keys.length; i++) {
             const element = keys[i];
             // console.log('Response ', ' '+i ,' ' , this.eventList[element].length);
-            this.daysInThisMonth[i].gTotal = this.eventList[element].total;
+            this.daysInThisMonth[i].gTotal = this.eventList[element].total_due_date;
             this.daysInThisMonth[i].total_task = this.eventList[element].total_task;
             this.daysInThisMonth[i].gov_due_data = this.eventList[element].gov_due_data;
           }
