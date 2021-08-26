@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SubTaskComponent } from './sub-task.component';
+import { SubTaskPage } from './sub-task.page';
 
-describe('SubTaskComponent', () => {
-  let component: SubTaskComponent;
-  let fixture: ComponentFixture<SubTaskComponent>;
+describe('SubTaskPage', () => {
+  let component: SubTaskPage;
+  let fixture: ComponentFixture<SubTaskPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SubTaskComponent],
+      declarations: [SubTaskPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SubTaskComponent);
+    fixture = TestBed.createComponent(SubTaskPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

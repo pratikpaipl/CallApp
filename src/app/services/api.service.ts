@@ -35,11 +35,8 @@ export class ApiService {
       postData.append('complianceremarks',remark)
     return this.callPost("duedate-mark-complete",postData);
   }
-  getTaskList(startDate,endDate): any {
-    const postData = new FormData();
-      postData.append('start_date',this.getDate(startDate))
-      postData.append('due_date',this.getDate(endDate))
-    return this.callPost("task-list-by-date",postData);
+  createSubTask(postData): any {
+    return this.callPost("create-subtask",postData);
   }
   genUserList(): any {
     return this.callGet("get-gen-user-list");
@@ -55,7 +52,7 @@ export class ApiService {
       postData.append('completionstatus','1')
       postData.append('start_date',this.getDate(startDate))
       postData.append('due_date',this.getDate(endDate))
-      postData.append('assigned_to',ids.map(function(a) {return a.generaluser_id;}))
+      postData.append('assigned_to',ids)
     return this.callPost("task-create",postData);
   }
   callPost(endPoint, postData) {

@@ -48,9 +48,10 @@
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-res": "^0.15.2",
     "crypto-js": "^4.0.0",
+    "ionic-tags-input": "0.1.1",
+    "ionic4-auto-complete": "^2.9.9",
     "lodash": "^4.17.20",
     "moment-timezone": "^0.5.32",
-    "ionic-tags-input": "0.1.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

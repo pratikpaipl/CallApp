@@ -8,6 +8,10 @@ import { StorageService } from '../../shared/StorageService';
 import { ModalController } from '@ionic/angular';
 import { ConfirmationPage } from 'src/app/modals/confirmation/confirmation.page';
 import { SuccessPage } from 'src/app/modals/success/success.page';
+import { AutoCompleteOptions } from 'ionic4-auto-complete';
+import { UserService } from 'src/app/services/user.service';
+import { UserModel } from 'src/app/models/Users';
+import { SubTaskPage } from '../sub-task/sub-task.page';
 
 @Component({
   selector: 'app-create',
@@ -16,10 +20,13 @@ import { SuccessPage } from 'src/app/modals/success/success.page';
 })
 export class CreatePage implements OnInit {
 
+  public options:AutoCompleteOptions;
+
+  public userIds:any[] = [];
+  public selected:UserModel[] = [];
   // name:any='File GSTR1 for 2020-21 for the Haryana, Maharashtra, Chennai';
   name:any='';
   desc:any='';
-  userIds=[];
   selectedUser:any
   taskPriority=[];
   selPriority:any;
@@ -29,20 +36,47 @@ export class CreatePage implements OnInit {
   startDate:any= new Date().toISOString();
   dueDate:any;
   minDate:any= new Date().toISOString();
-  constructor(public global: GlobalProvider, private apiService: ApiService, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
+  constructor(public global: GlobalProvider, private apiService: ApiService, public userService:UserService, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
 
   }
   ngOnInit(): void {
 
     this.getTaskPriority();
-    this.getGenUserList();
+
+    this.options = new AutoCompleteOptions();
+
+    this.options.autocomplete = 'on';
+    this.options.debounce = 750;
+    this.options.placeholder = 'Type user name to search..';
+    this.options.type = 'add-friend.svg';
   }
 
   setAsRecurring() {
     this.isRecurring = !this.isRecurring;
   }
-  addSubTask() {
-    this.isSubTask = !this.isSubTask;
+  // addSubTask() {
+  //   this.isSubTask = !this.isSubTask;
+  // }
+
+  async addSubTask() {
+    const modal = await this.modalController.create({
+      component: SubTaskPage,
+      cssClass: 'alert-success',
+      componentProps: {
+          btnLbl:'Back to Login',
+          isSub:true,
+          msg:'Go back to Login and enter your New Password'
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        // this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+
+    return await modal.present();
   }
 
   getTaskPriority() {
@@ -66,26 +100,9 @@ export class CreatePage implements OnInit {
   onSelectedPriority(){
     console.log('onSelectedPriority ',this.selPriority)
   }
-  getGenUserList() {
-    this.apiService.genUserList().subscribe(
-      async (response) => {
-        let res: any = response;
-        if (res.success) {
-          this.userIds=res.data
-          // this.users=this.userIds.
-        }
-      },
-      (error: Response) => {
-        let err: any = error;
-        // this.global.showToast(err.error.message, 4000);
-      }
-    );
-  }
-  selectedUsers(item){
-    // console.log('Selected--  ',this.selectedUser.map(function(a) {return a.generaluser_id;}));
-    // console.log('Selected Items ',item.generaluser_id.join(','));
-  }
+ 
   createTask(){
+    console.log('this.selected ',this.selected )
     if(this.name == undefined || this.name ==''){
         this.global.showToast('Please enter name ',1500)
      }else if(this.desc == undefined || this.desc ==''){
@@ -94,11 +111,11 @@ export class CreatePage implements OnInit {
       else if(this.dueDate == undefined){
       this.global.showToast('Please select due date ',1500)
     }
-      else if(this.selectedUser == undefined || this.selectedUser ==''){
+      else if(this.selected == undefined || this.selected.length ==0){
       this.global.showToast('Please select user ',1500)
     }
     else{
-      this.apiService.createTask(this.name,this.desc,this.selPriority,this.startDate, this.dueDate,this.selectedUser).subscribe( (response) => {
+      this.apiService.createTask(this.name,this.desc,this.selPriority,this.startDate, this.dueDate,Array.prototype.map.call(this.selected, s => s.generaluser_id).toString()).subscribe( (response) => {
           let res: any = response;
           this.messagePop(res.message);
         },
@@ -108,7 +125,6 @@ export class CreatePage implements OnInit {
         }
       );
     }
-
   }
   messagePop(message: any) {
     console.log('Open Message ',message);

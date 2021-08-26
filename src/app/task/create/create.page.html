@@ -71,15 +71,29 @@
 
     <ion-row>
       <ion-col>
-        <ion-item>
           <!-- <tag-input [ngModel]="userIds" ></tag-input> -->
-          <ion-item style="width: 100%;">
-            <ion-label position="floating">Assign to*</ion-label>
+          
+          <ion-label position="floating">Assign to*</ion-label>
+          
+          <ion-auto-complete  [(model)]="selected"
+          [multi]="true"
+          [dataProvider]="userService"
+          [disabled]="false"
+          [options]="options"
+          [maxResults]="6"
+          [useIonInput]="true"
+          [removeButtonColor]="'dark'"></ion-auto-complete>          
+
+          <!-- <ion-auto-complete  [maxResults]="6" [(model)]="selected"
+           [(model)]="userIds" [multi]="true" [dataProvider]="userService"
+          [disabled]="false" [options]="options"></ion-auto-complete>           -->
+
+          <!-- <ion-item style="width: 100%;">
+           
       <ion-select multiple="true" [(ngModel)]="selectedUser" (ionChange)="selectedUsers(selectedUsers)" placeholder="Please select users">
           <ion-select-option  *ngFor="let item of userIds" [value]="item" >{{item.full_name}}</ion-select-option>
       </ion-select>
-          </ion-item>
-        </ion-item>
+          </ion-item> -->
       </ion-col>
     </ion-row>
 
@@ -108,4 +122,4 @@
   </ion-grid>
 </ion-content>
 <recurring class="recurring" [startDate]="startDate" *ngIf="isRecurring" (change)="setAsRecurring()"></recurring>
-<sub-task class="recurring" [startDate]="startDate" *ngIf="isSubTask" (change)="addSubTask()"></sub-task>
+<!-- <sub-task class="recurring" [startDate]="startDate" *ngIf="isSubTask" (change)="addSubTask()"></sub-task> -->

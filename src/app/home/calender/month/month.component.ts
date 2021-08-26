@@ -225,48 +225,8 @@ export class MonthComponent implements OnInit {
       }
     );
   }
-  getTaskList() {
-    var startDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
-    var endDate = new Date(
-      this.date.getFullYear(),
-      this.date.getMonth() + 1,
-      0
-    );
-
-    this.apiService.getTaskList(startDate, endDate).subscribe(
-      async (response) => {
-        let res: any = response;
-        // console.log('Response ',res);
-        if (res.success) {
-          var keys = Object.keys(res.data);
-          this.eventList = res.data;
-
-          for (let i = 0; i < keys.length; i++) {
-            const element = keys[i];
-            // console.log('Response ', ' '+i ,' ' , this.eventList[element].length);
-            this.daysInThisMonth[i].task = this.eventList[element].length;
-
-            for (let j = 0; j < this.eventList[element].length; j++) {
-              const sub = this.eventList[element][j];
-              this.daysInThisMonth[i].startdate = this.getDayNumber(sub.startdate);
-              this.daysInThisMonth[i].duedate = this.getDayNumber(sub.duedate);
-              // this.daysInThisMonth[i].startdate+''+j; this.getDayNumber(sub.startdate);
-              // this.daysInThisMonth[i].duedate+''+j; this.getDayNumber(sub.duedate);
-            }
-          }
-          // console.log('Response ', this.daysInThisMonth);
-        }
-      },
-      (error: Response) => {
-        let err: any = error;
-        // this.global.showToast(err.error.message, 4000);
-      }
-    );
-  }
   getDayNumber(day) {
-    // console.log("DAte ", moment(day).format("D"));
     return parseInt(moment(day).format("D"));
-    // return moment(day).format("D");
   }
   back() {
     this.navigation.back();

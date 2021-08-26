@@ -128,39 +128,6 @@ export class WeekComponent implements OnInit {
       }
     );
   }
-  getTaskList(startDate, endDate) {
-    this.apiService.getTaskList(startDate, endDate).subscribe(
-      async (response) => {
-        let res: any = response;
-        this.tasks = [];
-        if (res.success) {
-          var keys = Object.keys(res.data);
-          this.eventList = res.data;
-          for (let i = 0; i < keys.length; i++) {
-            const element = keys[i];
-            this.days[i].task = this.eventList[element];
-            if (this.days[i].day == moment(this.selectedDate).format("DD")) {
-              this.days[i].selected = true
-              this.tasks = this.eventList[element];
-              this.setData()
-            }
-             else {
-              this.days[i].selected = false
-            }
-          }
-          if (this.tasks.length == 0) {
-            this.tasks = this.days[0].task;
-            // this.days[0].selected = true
-            this.setData()
-          }
-        }
-      },
-      (error: Response) => {
-        let err: any = error;
-        // this.global.showToast(err.error.message, 4000);
-      }
-    );
-  }
   setData() {
     this.assignedToYou = [];
     this.assignedByYou = [];

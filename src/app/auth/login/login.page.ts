@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { GlobalProvider } from '../../shared/GlobalProvider';
 import { StorageService } from '../../shared/StorageService';
-import { NotePage } from 'src/app/modals/note/note.page';
 import { SuccessPage } from 'src/app/modals/success/success.page';
 declare const getActionsFromMessage
 @Component({
