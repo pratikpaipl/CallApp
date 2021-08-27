@@ -68,15 +68,22 @@ ion-item ion-img {
 	position     : relative;
 	padding-right: 30px;
 }
-
-.remove_filds {
-	font-size: 20px;
-	color    : red;
-	width    : 20px;
-	position : absolute;
-	top      : 50%;
-	z-index  : 11;
-	right    : 0px;
-	transform: translate(0%, -50%);
-	padding  : 0px;
-}
+.remove_filds{
+    font-size: 20px;
+    color: red;
+    width: 20px;
+    // position: absolute;
+    right: 0px;
+    margin: 5px;
+ }
+// .remove_filds {
+// 	font-size: 20px;
+// 	color    : red;
+// 	width    : 20px;
+// 	position : absolute;
+// 	top      : 50%;
+// 	z-index  : 11;
+// 	right    : 0px;
+// 	transform: translate(0%, -50%);
+// 	padding  : 0px;
+// }

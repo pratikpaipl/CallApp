@@ -61,6 +61,20 @@
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col  size="12" *ngIf="subTasks.length >0">
+        <ion-list-header>
+          <ion-label>
+            Sub Tasks
+          </ion-label>
+        </ion-list-header>
+        <ion-list>
+          <ion-item style="--inner-padding-end: 0px !important;" *ngFor="let entry of subTasks">
+            <ion-label>{{entry.name}}</ion-label>
+            <ion-label style="text-align: end;">{{ this.apiService.getDate(entry.value)}}</ion-label>
+            <ion-checkbox style="margin-inline-end: 0px;--border-radius: 50%;" slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>
       <ion-col>
         <ion-button style="width: 100%;
     display: block;
@@ -71,10 +85,7 @@
 
     <ion-row>
       <ion-col>
-          <!-- <tag-input [ngModel]="userIds" ></tag-input> -->
-          
           <ion-label position="floating">Assign to*</ion-label>
-          
           <ion-auto-complete  [(model)]="selected"
           [multi]="true"
           [dataProvider]="userService"
@@ -83,17 +94,6 @@
           [maxResults]="6"
           [useIonInput]="true"
           [removeButtonColor]="'dark'"></ion-auto-complete>          
-
-          <!-- <ion-auto-complete  [maxResults]="6" [(model)]="selected"
-           [(model)]="userIds" [multi]="true" [dataProvider]="userService"
-          [disabled]="false" [options]="options"></ion-auto-complete>           -->
-
-          <!-- <ion-item style="width: 100%;">
-           
-      <ion-select multiple="true" [(ngModel)]="selectedUser" (ionChange)="selectedUsers(selectedUsers)" placeholder="Please select users">
-          <ion-select-option  *ngFor="let item of userIds" [value]="item" >{{item.full_name}}</ion-select-option>
-      </ion-select>
-          </ion-item> -->
       </ion-col>
     </ion-row>
 
@@ -122,4 +122,4 @@
   </ion-grid>
 </ion-content>
 <recurring class="recurring" [startDate]="startDate" *ngIf="isRecurring" (change)="setAsRecurring()"></recurring>
-<!-- <sub-task class="recurring" [startDate]="startDate" *ngIf="isSubTask" (change)="addSubTask()"></sub-task> -->
+<sub-task class="recurring" [startDate]="startDate" [endDate]="dueDate"   *ngIf="isSubTask" (change)="returnTask($event)"></sub-task>

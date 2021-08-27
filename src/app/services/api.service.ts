@@ -44,15 +44,8 @@ export class ApiService {
   taskPriority(): any {
     return this.callGet("task-priority");
   }
-  createTask(name,desc,priority,startDate,endDate,ids): any {
-    const postData = new FormData();
-      postData.append('taskname',name)
-      postData.append('taskdescription',desc)
-      postData.append('taskpriority_id',priority)
-      postData.append('completionstatus','1')
-      postData.append('start_date',this.getDate(startDate))
-      postData.append('due_date',this.getDate(endDate))
-      postData.append('assigned_to',ids)
+  createTask(postData): any {
+    
     return this.callPost("task-create",postData);
   }
   callPost(endPoint, postData) {

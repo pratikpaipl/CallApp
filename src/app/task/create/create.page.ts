@@ -11,7 +11,6 @@ import { SuccessPage } from 'src/app/modals/success/success.page';
 import { AutoCompleteOptions } from 'ionic4-auto-complete';
 import { UserService } from 'src/app/services/user.service';
 import { UserModel } from 'src/app/models/Users';
-import { SubTaskPage } from '../sub-task/sub-task.page';
 
 @Component({
   selector: 'app-create',
@@ -28,6 +27,7 @@ export class CreatePage implements OnInit {
   name:any='';
   desc:any='';
   selectedUser:any
+  subTasks:any=[]
   taskPriority=[];
   selPriority:any;
   showSub = false;
@@ -36,7 +36,7 @@ export class CreatePage implements OnInit {
   startDate:any= new Date().toISOString();
   dueDate:any;
   minDate:any= new Date().toISOString();
-  constructor(public global: GlobalProvider, private apiService: ApiService, public userService:UserService, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
+  constructor(public global: GlobalProvider, public apiService: ApiService, public userService:UserService, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
 
   }
   ngOnInit(): void {
@@ -54,30 +54,40 @@ export class CreatePage implements OnInit {
   setAsRecurring() {
     this.isRecurring = !this.isRecurring;
   }
-  // addSubTask() {
-  //   this.isSubTask = !this.isSubTask;
-  // }
-
-  async addSubTask() {
-    const modal = await this.modalController.create({
-      component: SubTaskPage,
-      cssClass: 'alert-success',
-      componentProps: {
-          btnLbl:'Back to Login',
-          isSub:true,
-          msg:'Go back to Login and enter your New Password'
-      }
-    });
-
-    modal.onDidDismiss().then((dataReturned) => {
-      if (dataReturned !== null) {
-        // this.dataReturned = dataReturned.data;
-        //alert('Modal Sent Data :'+ dataReturned);
-      }
-    });
-
-    return await modal.present();
+  addSubTask() {
+    this.isSubTask = !this.isSubTask;
   }
+  returnTask(event) {
+    if(event.isSub !=undefined && event.isSub){
+      this.isSubTask =false
+        this.subTasks=[];
+        console.log('Sub Task List',event.value)
+        this.subTasks = event.value.contacts
+    }else if(event.isSub !=undefined && !event.isSub){
+      this.isSubTask =false
+    }
+  }
+
+  // async addSubTask() {
+  //   const modal = await this.modalController.create({
+  //     component: SubTaskPage,
+  //     cssClass: 'alert-success',
+  //     componentProps: {
+  //         btnLbl:'Back to Login',
+  //         isSub:true,
+  //         msg:'Go back to Login and enter your New Password'
+  //     }
+  //   });
+
+  //   modal.onDidDismiss().then((dataReturned) => {
+  //     if (dataReturned !== null) {
+  //       // this.dataReturned = dataReturned.data;
+  //       //alert('Modal Sent Data :'+ dataReturned);
+  //     }
+  //   });
+
+  //   return await modal.present();
+  // }
 
   getTaskPriority() {
     this.apiService.taskPriority().subscribe(
@@ -115,7 +125,26 @@ export class CreatePage implements OnInit {
       this.global.showToast('Please select user ',1500)
     }
     else{
-      this.apiService.createTask(this.name,this.desc,this.selPriority,this.startDate, this.dueDate,Array.prototype.map.call(this.selected, s => s.generaluser_id).toString()).subscribe( (response) => {
+
+      const postData = new FormData();
+      postData.append('taskname',this.name)
+      postData.append('taskdescription',this.desc)
+      postData.append('taskpriority_id',this.selPriority)
+      postData.append('completionstatus','1')
+      postData.append('start_date',this.apiService.getDate(this.startDate))
+      postData.append('due_date',this.apiService.getDate(this.dueDate))
+      postData.append('assigned_to',Array.prototype.map.call(this.selected, s => s.generaluser_id).toString())
+
+      for (let i = 0; i < this.subTasks.length; i++) {
+        const element = this.subTasks[i];
+        if(element.isChecked !=undefined && element.isChecked){
+          postData.append('subtask['+i+'][taskname]', element.name)
+          postData.append('subtask['+i+'][start_date]', this.apiService.getDate(element.value))
+        }
+
+      }
+      console.log('Data ',this.subTasks);
+      this.apiService.createTask(postData).subscribe( (response) => {
           let res: any = response;
           this.messagePop(res.message);
         },
@@ -151,6 +180,8 @@ async openModal(msg) {
       this.desc=''
       this.dueDate=''
       this.selectedUser=''
+      this.subTasks=''
+      this.dueDate =undefined
       if (dataReturned.data == 1) {
         // this.completeDueDate(selIds)
       }
