@@ -29,11 +29,10 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
   entryComponents: [],
-  imports: [BrowserModule, FormsModule, 
+  imports: [BrowserModule, FormsModule,   
     IonicModule.forRoot({ mode: 'md', rippleEffect: false }), HttpClientModule, AppRoutingModule],
   providers: [Storage, GlobalProvider, StatusBar, Network,  Badge, OneSignal, Camera, NetworkInterface,  AuthGuard, LoginGuard, Keyboard,
-    SplashScreen,  Calendar,   InAppBrowser, EventService, NavigationService, 
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SplashScreen,  Calendar,   InAppBrowser, EventService, NavigationService,      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptorService, multi: true },
   ],

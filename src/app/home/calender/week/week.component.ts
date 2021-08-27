@@ -96,18 +96,22 @@ export class WeekComponent implements OnInit {
       async (response) => {
         let res: any = response;
         this.govDueDates = [];
+        this.tasks = [];
         // console.log('Response ',res);
         if (res.success) {
           var keys = Object.keys(res.data);
           for (let i = 0; i < keys.length; i++) {
             const element = keys[i];
-            this.days[i].gTotal = res.data[element].total;
+            this.days[i].gTotal = res.data[element].total_due_date;
             this.days[i].total_task = res.data[element].total_task;
             this.days[i].govDate = res.data[element].gov_due_data;
+            this.days[i].task = res.data[element].task_data;
             console.log('Gov Due Date ', res.data[element])
             if (this.days[i].day == moment(this.selectedDate).format("DD")) {
               this.days[i].selected = true
+              this.tasks = res.data[element].task_data
               this.govDueDates = res.data[element].gov_due_data;
+              this.setData()
             } else {
               this.days[i].selected = false
             }
@@ -116,39 +120,6 @@ export class WeekComponent implements OnInit {
           // if (this.govDueDates.length == 0) {
           //   this.govDueDates = this.days[0].govDate;
           // }
-        }
-      },
-      (error: Response) => {
-        let err: any = error;
-        // this.global.showToast(err.error.message, 4000);
-      }
-    );
-  }
-  getTaskList(startDate, endDate) {
-    this.apiService.getTaskList(startDate, endDate).subscribe(
-      async (response) => {
-        let res: any = response;
-        this.tasks = [];
-        if (res.success) {
-          var keys = Object.keys(res.data);
-          this.eventList = res.data;
-          for (let i = 0; i < keys.length; i++) {
-            const element = keys[i];
-            this.days[i].task = this.eventList[element];
-            if (this.days[i].day == moment(this.selectedDate).format("DD")) {
-              this.days[i].selected = true
-              this.tasks = this.eventList[element];
-              this.setData()
-            }
-            else {
-              this.days[i].selected = false
-            }
-          }
-          if (this.tasks.length == 0) {
-            this.tasks = this.days[0].task;
-            // this.days[0].selected = true
-            this.setData()
-          }
         }
       },
       (error: Response) => {

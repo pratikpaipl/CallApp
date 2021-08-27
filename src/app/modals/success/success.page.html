@@ -7,7 +7,7 @@
           <ion-label class="titles"> Successful!</ion-label>
         </ion-col>
       </ion-row>
-      <ion-row *ngIf="isSub">
+      <ion-row  *ngIf="isSub">
         <ion-col text-center>
           <ion-label class="contents"> Password Rest Successful,</ion-label>
         </ion-col>
@@ -19,7 +19,7 @@
       </ion-row>
       <ion-row>
         <ion-col text-center class="buttons_box">
-          <ion-button expand="round" >{{btnLbl}}</ion-button>
+          <ion-button expand="round" (click)="closeModal()" >{{btnLbl}}</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

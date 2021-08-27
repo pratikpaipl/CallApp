@@ -35,11 +35,8 @@ export class ApiService {
       postData.append('complianceremarks',remark)
     return this.callPost("duedate-mark-complete",postData);
   }
-  getTaskList(startDate,endDate): any {
-    const postData = new FormData();
-      postData.append('start_date',this.getDate(startDate))
-      postData.append('due_date',this.getDate(endDate))
-    return this.callPost("task-list-by-date",postData);
+  createSubTask(postData): any {
+    return this.callPost("create-subtask",postData);
   }
   genUserList(): any {
     return this.callGet("get-gen-user-list");
@@ -49,19 +46,13 @@ export class ApiService {
   }
   createTask(name,desc,priority,startDate,endDate,ids): any {
     const postData = new FormData();
-      postData.append('entityid',this.global.userData.entity_type_id)
-      postData.append('general_user_id',this.global.userData.general_user_id)
-      postData.append('applicationid','1')
       postData.append('taskname',name)
       postData.append('taskdescription',desc)
       postData.append('taskpriority_id',priority)
-      postData.append('isgrouptask','0')
       postData.append('completionstatus','1')
       postData.append('start_date',this.getDate(startDate))
       postData.append('due_date',this.getDate(endDate))
-      postData.append('assigned_to',ids.map(function(a) {return a.generaluser_id;}))
-      postData.append('latestcomments','no update')
-      postData.append('parentid','1')
+      postData.append('assigned_to',ids)
     return this.callPost("task-create",postData);
   }
   callPost(endPoint, postData) {
