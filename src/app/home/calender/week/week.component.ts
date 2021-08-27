@@ -21,9 +21,9 @@ export class WeekComponent implements OnInit {
   assignedByYou = [];
   selectedTaskTab = 'toYou'
 
-  selMonthYear:any;
+  selMonthYear: any;
 
-  remarks=''
+  remarks = ''
 
   @Input()
   selectedDate: any;
@@ -43,7 +43,7 @@ export class WeekComponent implements OnInit {
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
-  constructor(public store: StorageService, private apiService: ApiService,public modalController: ModalController, private calendar: Calendar, private navigation: NavigationService, public global: GlobalProvider) {
+  constructor(public store: StorageService, private apiService: ApiService, public modalController: ModalController, private calendar: Calendar, private navigation: NavigationService, public global: GlobalProvider) {
   }
   deleteEvent(ev) {
 
@@ -53,26 +53,26 @@ export class WeekComponent implements OnInit {
   }
   async ngOnInit() {
     this.date = moment(this.selectedDate);
-    this.selMonthYear = this.date.format("DD MMMM YYYY") 
-    console.log('selected Month ',this.selMonthYear);
+    this.selMonthYear = this.date.format("DD MMMM YYYY")
+    console.log('selected Month ', this.selMonthYear);
     this.weekNo = Math.ceil(this.date.date() / 7);
     this.getWeeks(this.date);
   }
-  changeSelDate(){
-    console.log('selected Month ',this.selMonthYear);
+  changeSelDate() {
+    console.log('selected Month ', this.selMonthYear);
     this.date = moment(this.selMonthYear);
-    console.log('selected Month ',this.selMonthYear);
+    console.log('selected Month ', this.selMonthYear);
     this.weekNo = Math.ceil(this.date.date() / 7);
     this.getWeeks(this.date);
   }
   nextWeek() {
-    this.date =   this.date.add(1, 'weeks');
-    this.selectedDate =this.date
+    this.date = this.date.add(1, 'weeks');
+    this.selectedDate = this.date
     this.getWeeks(this.date);
   }
   previousWeek() {
-    this.date =  this.date.subtract(1, 'weeks');
-    this.selectedDate =this.date
+    this.date = this.date.subtract(1, 'weeks');
+    this.selectedDate = this.date
     this.getWeeks(this.date);
   }
   public getWeeks(currentDate) {
@@ -88,14 +88,14 @@ export class WeekComponent implements OnInit {
       this.days.push({ day: day, lbl: moment(weekStart).add(i, 'days').format("ddd"), task: [], isCurrent: isCurrent });
     };
 
-    //this.getTaskList(weekStart, weekEnd)
+    // this.getTaskList(weekStart, weekEnd)
     this.getAllDueDates(weekStart, weekEnd)
   }
   getAllDueDates(startDate, endDate) {
     this.apiService.allDueDates(startDate, endDate).subscribe(
       async (response) => {
         let res: any = response;
-        this.govDueDates=[];
+        this.govDueDates = [];
         // console.log('Response ',res);
         if (res.success) {
           var keys = Object.keys(res.data);
@@ -104,7 +104,7 @@ export class WeekComponent implements OnInit {
             this.days[i].gTotal = res.data[element].total;
             this.days[i].total_task = res.data[element].total_task;
             this.days[i].govDate = res.data[element].gov_due_data;
-            console.log('Gov Due Date ',res.data[element])
+            console.log('Gov Due Date ', res.data[element])
             if (this.days[i].day == moment(this.selectedDate).format("DD")) {
               this.days[i].selected = true
               this.govDueDates = res.data[element].gov_due_data;
@@ -112,7 +112,7 @@ export class WeekComponent implements OnInit {
               this.days[i].selected = false
             }
           }
-          
+
           // if (this.govDueDates.length == 0) {
           //   this.govDueDates = this.days[0].govDate;
           // }
@@ -140,7 +140,7 @@ export class WeekComponent implements OnInit {
               this.tasks = this.eventList[element];
               this.setData()
             }
-             else {
+            else {
               this.days[i].selected = false
             }
           }
@@ -173,21 +173,21 @@ export class WeekComponent implements OnInit {
   formateDate(date) {
     return moment(date).format('DD MMM yyyy');
   }
-  markAsComplete(){
+  markAsComplete() {
     console.log('item ', this.govDueDates)
-      let selIds=[];
-    for (let i = 0; i <  this.govDueDates.length; i++) {
-      const element =  this.govDueDates[i];
-      if(element.isCheck != undefined && element.isCheck){
+    let selIds = [];
+    for (let i = 0; i < this.govDueDates.length; i++) {
+      const element = this.govDueDates[i];
+      if (element.isCheck != undefined && element.isCheck) {
         selIds.push(element.legislationactformsid)
       }
     }
 
-    if(selIds.length == 0 ){
-      this.global.showToast('Please select at least one due date ',1500)
-    }else if(this.remarks.trim() == ''){
-      this.global.showToast('Please enter compliance remarks',1500)
-    }else{
+    if (selIds.length == 0) {
+      this.global.showToast('Please select at least one due date ', 1500)
+    } else if (this.remarks.trim() == '') {
+      this.global.showToast('Please enter compliance remarks', 1500)
+    } else {
       this.openModal(selIds)
     }
     console.log('selIds ', selIds)
@@ -198,13 +198,13 @@ export class WeekComponent implements OnInit {
       component: ConfirmationPage,
       cssClass: 'alert-success',
       componentProps: {
-        msg:'Are you sure you want to complete <br /> checked gov due dates?'
+        msg: 'Are you sure you want to complete <br /> checked gov due dates?'
       }
     });
 
     modal.onDidDismiss().then((dataReturned) => {
 
-      console.log('data returned ',dataReturned)
+      console.log('data returned ', dataReturned)
       if (dataReturned.data == 1) {
         this.completeDueDate(selIds)
       }
@@ -213,15 +213,15 @@ export class WeekComponent implements OnInit {
     return await modal.present();
   }
   completeDueDate(seiId) {
-    this.apiService.dueDateMarkCompletes(seiId,this.remarks).subscribe(
+    this.apiService.dueDateMarkCompletes(seiId, this.remarks).subscribe(
       async (response) => {
         let res: any = response;
         if (res.success) {
-          this.remarks=''
-          this.selectedDate =this.date
+          this.remarks = ''
+          this.selectedDate = this.date
           this.getWeeks(this.date);
-         }
-         this.global.showToast(res.message, 4000);
+        }
+        this.global.showToast(res.message, 4000);
       },
       (error: Response) => {
         let err: any = error;
