@@ -193,7 +193,7 @@ export class MonthComponent implements OnInit {
       "December",
     ];
     this.getDaysOfMonth();
-   
+
   }
   getAllDueDates() {
     var startDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
