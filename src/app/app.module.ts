@@ -26,6 +26,8 @@ import { GlobalProvider } from './shared/GlobalProvider';
 import { LoginGuard } from './shared/loginguard.service';
 import { Calendar } from '@ionic-native/calendar/ngx';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
   entryComponents: [],

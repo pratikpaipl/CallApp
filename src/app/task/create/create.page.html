@@ -12,34 +12,34 @@
 </ion-header>
 <ion-content>
 
-  <ion-grid>
+  <ion-grid class="forms_grids">
     <ion-row>
       <ion-col>
-        <ion-item>
-          <ion-label position="floating">Name</ion-label>
+        <ion-label position="floating">Name</ion-label>
+        <ion-item class="field">
           <ion-input [(ngModel)]="name"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-item>
-          <ion-label position="floating">Description</ion-label>
+        <ion-label position="floating">Description</ion-label>
+        <ion-item class="field">
           <ion-input [(ngModel)]="desc"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-item>
-          <ion-label position="floating">Start Date</ion-label>
+        <ion-label position="floating">Start Date</ion-label>
+        <ion-item class="field">
           <ion-datetime [(ngModel)]="startDate" [min]="minDate"></ion-datetime>
           <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
       </ion-col>
       <ion-col>
-        <ion-item>
-          <ion-label position="floating">Due Date</ion-label>
+        <ion-label position="floating">Due Date</ion-label>
+        <ion-item class="field">
           <ion-datetime [min]="startDate" [(ngModel)]="dueDate"></ion-datetime>
           <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
@@ -76,24 +76,16 @@
         </ion-list>
       </ion-col>
       <ion-col>
-        <ion-button style="width: 100%;
-    display: block;
-    margin: 15px auto 5px auto;
-    max-width: 250px;" class="btn-2" (click)="addSubTask()">+ Add Sub Task</ion-button>
+        <ion-button  class="btn-2" (click)="addSubTask()">+ Add Sub Task</ion-button>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
-          <ion-label position="floating">Assign to*</ion-label>
-          <ion-auto-complete  [(model)]="selected"
-          [multi]="true"
-          [dataProvider]="userService"
-          [disabled]="false"
-          [options]="options"
-          [maxResults]="6"
-          [useIonInput]="true"
-          [removeButtonColor]="'dark'"></ion-auto-complete>          
+          <!-- <ion-label position="floating">Assign to*</ion-label> -->
+          <ng-select [(ngModel)]="selectedUser" multiple="true"  placeholder="Assign to*" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeUser($event)">
+          <ng-option *ngFor="let user of userIds" [value]="user.generaluser_id"> {{user.full_name}}</ng-option>
+        </ng-select>
       </ion-col>
     </ion-row>
 

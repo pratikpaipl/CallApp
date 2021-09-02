@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-grid class="head">
+    <ion-row>
+      <ion-col text-center>
+        <ion-label class="titles"> Government Due Dates</ion-label>
+        <ion-label class="contents">Customize the dates</ion-label>
+      </ion-col>
+    </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <ion-list >
+    <!-- <ion-item *ngFor="let entry of FilterOption">
+      <ion-label>{{entry.val}}</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+    </ion-item> -->
+    <ion-item >
+      <ion-label>All</ion-label>
+      <ion-checkbox slot="start" ></ion-checkbox>
+    </ion-item>
+    <ion-item >
+      <ion-label>Income Tax</ion-label>
+      <ion-checkbox slot="start" ></ion-checkbox>
+    </ion-item>
+    <ion-item >
+      <ion-label>GST</ion-label>
+      <ion-checkbox slot="start" ></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-grid class="foot">
+    <ion-row>
+      <ion-col text-center class="buttons_box">
+        <ion-button expand="round" (click)="closeModal()" >Apply</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-footer>

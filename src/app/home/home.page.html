@@ -3,15 +3,15 @@
     {{selected ==0?""+currentMonth+" "+currentYear:selected==1?"Dashboard":selected==2?"Notifications":"Settings"}}
   </ion-title>
   <ion-buttons slot="primary">
-    <ion-button>
+    <ion-button style="    --color: #333333 !important;">
       <ion-icon slot="icon-only" name="search"></ion-icon>
     </ion-button>
   </ion-buttons>
-  <ion-buttons slot="primary">
+  <!-- <ion-buttons slot="primary">
     <ion-button (click)="logout()">
       <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
     </ion-button>
-  </ion-buttons>
+  </ion-buttons> -->
 </ion-toolbar>
 
 <ion-content #content id="page" [scrollEvents]="true" (ionScroll)="function($event)">

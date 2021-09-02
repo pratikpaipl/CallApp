@@ -1,5 +1,5 @@
 <div class="calendar-header">
-  <ion-row class="calendar-month">
+  <!-- <ion-row class="calendar-month">
     <ion-col class="arrow_box" (click)="goToLastMonth()">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-col>
@@ -9,32 +9,54 @@
     <ion-col class="arrow_box" (click)="goToNextMonth()">
       <ion-icon name="arrow-forward"></ion-icon>
     </ion-col>
+  </ion-row> -->
+  <ion-row >
+    <ion-col style="flex: 0 0 30px;">
+      <ion-img (click)="openFilter()" src="../../../../assets/images/filter.png"></ion-img>
+    </ion-col>
+    <ion-col style="min-width: 103px;">
+      <span>
+        <ion-label> <div class="compliance"></div>&nbsp;Compliance</ion-label>
+      </span>
+    </ion-col>
+    <ion-col style="flex: 0 0 87px;">
+      <span style="background:#e7e7e7;">
+        <ion-label> <div class="extention"></div>&nbsp;Extention</ion-label>
+      </span>
+    </ion-col>
+    <ion-col >
+      <span>
+        <ion-label > <div class="task"></div>&nbsp;Tasks</ion-label>
+      </span>
+    </ion-col>
+    
   </ion-row>
 </div>
 
 <div class="calendar-body">
-  <ion-grid>
+  <ion-grid style="background: white; margin: 15px;">
+    
     <ion-row class="calendar-weekday">
       <ion-col class="calendar_heading">
-        <ion-label>S</ion-label>
+        <ion-label>Sun</ion-label>
       </ion-col>
       <ion-col class="calendar_heading">
-        <ion-label>M</ion-label>
+        <ion-label>Mon</ion-label>
       </ion-col>
       <ion-col class="calendar_heading">
-        <ion-label>T</ion-label>
+        <ion-label>Tue</ion-label>
       </ion-col>
       <ion-col class="calendar_heading">
-        <ion-label>W</ion-label>
+        <ion-label>Wed</ion-label>
       </ion-col>
       <ion-col class="calendar_heading">
-        <ion-label>T</ion-label>
+        <ion-label>Thu</ion-label>
       </ion-col>
       <ion-col class="calendar_heading">
-        <ion-label>F</ion-label>
+        <ion-label>Fri</ion-label>
       </ion-col>
       <ion-col class="calendar_heading">
-        <ion-label>S</ion-label>
+        <ion-label>Sat</ion-label>
       </ion-col>
     </ion-row>
 
@@ -48,14 +70,14 @@
       <ion-col col-1 *ngFor="let day of daysInThisMonth" (click)="selectDate(day.day)">
 
 
-        <ion-label class="dates" *ngIf="currentDate === day.day; else otherDate">
-          <span class="date_number currentDate">{{day.day}}</span>
+        <ion-label style="background: #e7f8ff; border-bottom: 3px solid #02a5e2;" class="dates" *ngIf="currentDate === day.day; else otherDate">
+          <span class="date_number" >{{day.day}}</span>
           <!-- <span *ngIf="day.task !=0 " class="date_number" [ngClass]="day.day === day.startdate || day.day === day.duedate ? 'selecteds_dates' : ''">{{day.day}}</span>
           <span *ngIf="day.task ==0 " class="date_number" >{{day.day}}</span> -->
 
-          <div class="dates_slotes" *ngIf="day.gTotal != 0 || day.total_task != 0">
+          <div class="dates_slotes" style="margin-top: 10px;" *ngIf="day.gTotal != 0 || day.total_task != 0">
             <span class="cricle" *ngIf="day.gTotal !=undefined && day.gTotal != 0">{{day.gTotal}}</span>
-            <span class="squre" *ngIf="day.total_task != 0">{{day.total_task}}</span>
+            <span class="squre" *ngIf="day.total_task !=undefined && day.total_task != 0">{{day.total_task}}</span>
           </div>
 
           <!-- <div class="selected_dates_slotes"
@@ -73,7 +95,7 @@
 
             <div class="dates_slotes" *ngIf="day.gTotal != 0 || day.total_task != 0">
               <span class="cricle" *ngIf="day.gTotal !=undefined && day.gTotal != 0">{{day.gTotal}}</span>
-              <span class="squre" *ngIf="day.total_task != 0">{{day.total_task}}</span>
+              <span class="squre" *ngIf="day.total_task !=undefined && day.total_task != 0">{{day.total_task}}</span>
             </div>
 
            

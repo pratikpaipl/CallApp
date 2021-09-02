@@ -1,0 +1,91 @@
+ion-content {
+  background-color   : transparent !important;
+  // background      : red !important;
+  --background       : transparent !important;
+  border-radius      : 20px 20px 0px 0px !important;
+}
+
+
+.ion-padding {
+  --padding-start : 0px;
+  --padding-end   : 0px;
+  --padding-top   : 0px;
+  --padding-bottom: 0px;
+}
+
+
+.model_blocks img {
+  display      : block;
+  position     : relative;
+  width        : 100%;
+  max-width    : 190px;
+  margin       : 0 auto;
+  margin-bottom: -100px;
+}
+.head {
+  border-radius: 15px 15px 0px 0px;
+  background   : #fff !important;
+  padding      : 20px;
+ }
+
+ .header-md::after{
+  left: 0;
+  bottom: 0px;
+  background-position: left 0 top -2px;
+  position: absolute;
+  width: 100%;
+  height: 0px;
+  background-image: none;
+  background-repeat: repeat-x;
+  content: "";
+ }
+.cont {
+  background   : #fff !important;
+  padding      : 20px;
+  height: 100vh;
+  }
+    .foot{
+      padding: 0px 20px 20px 20px;
+      background: white !important;
+    }
+
+.buttons_box {
+  padding-top: 20px;
+}
+
+ion-col {
+  padding    : 0px;
+  text-align : left;
+  align-items: center;
+}
+
+ion-row {
+  text-align : center;
+  align-items: center;
+}
+
+ion-img {
+  width : 170px;
+  margin: 0 auto;
+}
+
+
+.titles {
+  font-family: 'proxima_nova_rgbold' !important;
+  font-size  : 18px !important;
+}
+
+.contents {
+  display: block;
+  line-height: 17px;
+  font-family: 'proxima_nova_rgregular';
+  font-size  : 14px !important;
+  color      : #657c91 !important;
+}
+ion-checkbox{
+  --background-checked: #333333;
+    --border-color-checked: #333333;
+}
+ion-item.item-label.item-checkbox-checked {
+  font-family: "proxima_nova_rgbold" !important;
+}

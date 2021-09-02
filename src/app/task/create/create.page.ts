@@ -1,4 +1,3 @@
-import { SuccessPageModule } from './../../modals/success/success.module';
 import { EventService } from '../../services/EventService';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -6,10 +5,7 @@ import { ApiService } from '../../services/api.service';
 import { GlobalProvider } from '../../shared/GlobalProvider';
 import { StorageService } from '../../shared/StorageService';
 import { ModalController } from '@ionic/angular';
-import { ConfirmationPage } from 'src/app/modals/confirmation/confirmation.page';
 import { SuccessPage } from 'src/app/modals/success/success.page';
-import { AutoCompleteOptions } from 'ionic4-auto-complete';
-import { UserService } from 'src/app/services/user.service';
 import { UserModel } from 'src/app/models/Users';
 
 @Component({
@@ -19,11 +15,9 @@ import { UserModel } from 'src/app/models/Users';
 })
 export class CreatePage implements OnInit {
 
-  public options:AutoCompleteOptions;
 
   public userIds:any[] = [];
   public selected:UserModel[] = [];
-  // name:any='File GSTR1 for 2020-21 for the Haryana, Maharashtra, Chennai';
   name:any='';
   desc:any='';
   selectedUser:any
@@ -36,19 +30,14 @@ export class CreatePage implements OnInit {
   startDate:any= new Date().toISOString();
   dueDate:any;
   minDate:any= new Date().toISOString();
-  constructor(public global: GlobalProvider, public apiService: ApiService, public userService:UserService, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
+  constructor(public global: GlobalProvider, public apiService: ApiService, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
 
   }
   ngOnInit(): void {
 
     this.getTaskPriority();
-
-    this.options = new AutoCompleteOptions();
-
-    this.options.autocomplete = 'on';
-    this.options.debounce = 750;
-    this.options.placeholder = 'Type user name to search..';
-    this.options.type = 'add-friend.svg';
+    this.getUsers();
+    // this.options.placeholder = 'Type user name to search..';
   }
 
   setAsRecurring() {
@@ -106,6 +95,23 @@ export class CreatePage implements OnInit {
         // this.global.showToast(err.error.message, 4000);
       }
     );
+  }
+  getUsers() {
+    this.apiService.genUserList().subscribe(
+      async (response) => {
+        let res: any = response;
+        if (res.success) {
+          this.userIds = await res.data
+        }
+      },
+      (error: Response) => {
+        let err: any = error;
+        // this.global.showToast(err.error.message, 4000);
+      }
+    );
+  }
+  onChangeUser(event) {
+    console.log('onChangeUser ', event);
   }
   onSelectedPriority(){
     console.log('onSelectedPriority ',this.selPriority)

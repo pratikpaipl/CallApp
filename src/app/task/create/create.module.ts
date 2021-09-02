@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CreatePage } from './create.page';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AutoCompleteModule } from 'ionic4-auto-complete';
-import { UserService } from 'src/app/services/user.service';
 
 const routes: Routes = [
   {
@@ -15,11 +14,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    SharedModule, FormsModule, AutoCompleteModule,
+    SharedModule, FormsModule, NgSelectModule,
     RouterModule.forChild(routes)],
   declarations: [CreatePage],
    providers: [
-    UserService
-  ]
+  ],schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CreatePageModule { }

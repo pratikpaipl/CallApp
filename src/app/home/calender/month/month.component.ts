@@ -5,6 +5,8 @@ import { NavigationService } from "src/app/services/NavigationService";
 import { GlobalProvider } from "src/app/shared/GlobalProvider";
 import { StorageService } from "src/app/shared/StorageService";
 import * as moment from "moment-timezone";
+import { ModalController } from "@ionic/angular";
+import { FilterPage } from "src/app/modals/filter/filter.page";
 
 @Component({
   selector: "month",
@@ -38,11 +40,31 @@ export class MonthComponent implements OnInit {
   constructor(
     public store: StorageService,
     private apiService: ApiService,
-    private calendar: Calendar,
+    private calendar: Calendar, public modalController: ModalController,
     private navigation: NavigationService,
     public globle: GlobalProvider
   ) { }
 
+  async openFilter(){
+    const modal = await this.modalController.create({
+      component: FilterPage,
+      cssClass: 'filter',
+      componentProps: {
+          btnLbl:'Back to Login',
+          isSub:true,
+          msg:'Go back to Login and enter your New Password'
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        // this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+
+    return await modal.present();
+  }
   goToLastMonth() {
     this.date = new Date(this.date.getFullYear(), this.date.getMonth(), 0);
     this.getDaysOfMonth();

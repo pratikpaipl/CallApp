@@ -31,16 +31,34 @@
 
 @import '~@ionic/angular/css/flex-utils.css';
 
-@import '../node_modules/ionic4-auto-complete/auto-complete';
-
+// @import '../node_modules/ionic4-auto-complete/auto-complete';
+@import "~@ng-select/ng-select/themes/material.theme.css";
 
 ion-button {
   --border-style: none;
   --border-width: 0;
 }
 
-ion-auto-complete {
-  border-bottom: 1px solid var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))));
+// ion-auto-complete {
+//   border-bottom: 1px solid var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))));
+// }
+
+// .ng-select {
+//   padding-bottom: 0em !important;
+// }
+
+// .ng-select .ng-select-container {
+//   margin-top: -15px;
+// }
+span.ng-value-label {
+  color: white;
+}
+span.ng-value-icon.left {
+  color: black;
+}
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  background: black !important;
+  
 }
 
 .label {
@@ -67,6 +85,9 @@ ion-app {
   bottom          : 0px;
   width           : 100% !important;
   left            : 0px !important;
+}
+.filter .modal-wrapper {
+  --height        : 356px !important;
 }
 
 .sub-task .modal-wrapper {
@@ -97,23 +118,26 @@ ion-app {
 }
 
 .heading {
-  font-weight: bold;
-  font-size  : 15px;
+  color: #333333 !important;
+  font-family: 'proxima_nova_rgbold';
+  font-size  : 18px;
 }
 
 ion-title {
+  color: #333333 !important;
   font-family: "proxima_nova_rgbold";
 }
 
 ion-label {
-  color      : #003962 !important;
+  color      : #333333 !important;
   font-size  : 14px !important;
   font-family: "proxima_nova_rgregular";
 }
 
 ion-input {
   font-size: 14px !important;
-  color    : #003965 !important;
+  color      : #333333 !important;
+  font-family: "proxima_nova_rgregular";
 }
 
 ion-note {
@@ -125,27 +149,39 @@ ion-note {
 ion-button {
   text-transform : capitalize;
   width          : 100%;
-  --background   : #215e80;
+  // --background   : #215e80;
+  --background   : #02a5e2;
   font-size      : 15px;
-  --border-radius: 5px;
-  font-weight    : bold;
-  height         : 44px;
+  --border-radius: 0px;
+  font-family: "proxima_nova_rgbold";
+    height         : 50px;
 }
 
 .btn-2 {
   --background : transparent;
-  border-color : #215e80;
-  color        : #215e80;
+  border-color : #02a5e2;
+  color        : #02a5e2;
   border       : 1px solid;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 ion-toolbar {
-  color       : #215e80;
+  color       : #02a5e2;
   background  : #fff;
   --background: #fff;
 }
-
+.footer-md::before {
+  left: 0;
+   top: 0px; 
+  bottom: auto;
+  background-position: left 0 top 0;
+  position: absolute;
+  width: 100%;
+   height: 0px; 
+  background-image: none;
+  background-repeat: repeat-x;
+  content: "";
+}
 // ion-searchbar {
 //   --border-radius: 5px !important;
 //   --icon-color   : transparent !important;
@@ -780,16 +816,26 @@ span {
   max-width: 530px;
 }
 
+.forms_grids .field {
+  margin-top: 5px;
+  border: 1px solid #657c91;
+}
 .forms_grids ion-item {
-  --padding-start: 0px !important;
-  padding        : 0px !important;
-  --padding-end  : 0px !important;
-  position       : relative;
+  // --padding-start: 0px !important;
+  // padding        : 0px !important;
+  // --padding-end  : 0px !important;
+  // position       : relative;
+  --border-color: transparent;
+  --highlight-height: 0px;
+  --padding-start: 10px !important;
+  padding: 5px !important;
+  --padding-end: 10px !important;
+  position: relative;
 }
 
 .forms_grids ion-item .passwordIcon {
   position: absolute;
-  top     : 50%;
+  // top     : 50%;
   right   : 0px;
   z-index : 11;
   cursor  : pointer;
@@ -818,11 +864,10 @@ span {
   display   : block !important;
   margin-top: 5px;
 }
-
-.forms_grids .form-group ion-label {
-  color: #7f7f7f !important;
+.forgot-password{
+  font-family: 'proxima_nova_rgbold';
+  color: #02a5e2 !important;
 }
-
 
 .forms_grids .form-group .item-has-focus ion-label {
   color: #202124 !important;
@@ -975,35 +1020,93 @@ input:-webkit-autofill:active {
 .dates {
   display    : block;
   width      : 100%;
-  // padding    : 9px 5px;
-  padding    : 20px 5px;
+  padding    : 10px 5px;
   line-height: normal;
-  color      : #003463;
   height     : 100%;
   text-align : center;
 }
 
 .calendar_heading ion-label {
-  padding    : 10px;
-  text-align : center;
-  display    : block;
-  font-weight: 700;
-  color      : #003463;
+  padding: 10px 5px;
+  text-align: center;
+  font-family: 'proxima_nova_rgbold';
+  display: block;
 }
 
 
 .calendar_heading:last-child {
-  border-right: none;
+  border-right: none !important;
 }
 
 .calendar-date ion-col:nth-child(7n) {
-  border-right: none;
+  border-right: none !important;
 }
 
 .date_number {
   font-family: "proxima_nova_rgregular" !important;
-  font-size  : 14px !important;
+  font-size  : 16px !important;
   cursor     : auto;
+}
+
+
+.dates_slotes {
+  display        : flex;
+  padding        : 2px;
+  margin-top     : 15px;
+  justify-content: center;
+  align-items    : center;
+}
+
+.dates_slotes span {
+  margin     : 0px 2px;
+
+  width      : 16px;
+  height     : 16px;
+  flex       : 0 0 16px;
+  padding    : 0px;
+  display    : block;
+  line-height: 16px;
+  text-align : center;
+  font-size  : 11px !important;
+}
+
+.dates_slotes .cricle {
+  background   : #e7faf9;
+  color      : #218f8b;
+  border   : 1px solid #218f8b;
+  border-radius: 50%;
+}
+
+.dates_slotes .squre {
+  background: #fff0e2;
+  color      : #df8639;
+  border: 1px solid #df8639;
+  border-radius: 2px;
+}
+.dates_slotes .extention {
+  background: #fff3f5;
+  color      : #7e0417;
+  border: 1px solid #7e0417;
+  border-radius: 50%;
+}
+
+.compliance{
+  background   : #e7faf9;
+  color      : #218f8b;
+  border   : 1px solid #218f8b;
+  border-radius: 50%;
+}
+.task{
+  background: #fff0e2;
+  color: #df8639;
+  border: 1px solid #df8639;
+  border-radius: 2px;
+}
+.extention{
+  background: #fff3f5;
+  color      : #7e0417;
+  border: 1px solid #7e0417;
+  border-radius: 50%;
 }
 
 .currentDate,

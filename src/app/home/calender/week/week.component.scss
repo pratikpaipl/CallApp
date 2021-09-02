@@ -1,10 +1,28 @@
-.heading {
-  color: #adbfd6 !important;
-}
+// .heading {
+//   color: #adbfd6 !important;
+// }
 
-.date {
-  color: #003962 !important;
+// .date {
+//   color: #003962 !important;
+// }
+.calendar_heading,
+.calendar-date ion-col {
+  border-right : 1px solid #e7eef5;
+  border-bottom: 1px solid #e7eef5;
+  flex         : 0 0 14.28% !important;
+  max-width    : 14.28% !important;
 }
+[col-1] {
+  -webkit-box-flex: 0;
+  -webkit-flex    : 0 0 8.33333%;
+  -ms-flex        : 0 0 8.33333%;
+  flex            : 0 0 14.285714285714286%;
+  width           : 14.285714285714286%;
+  max-width       : 14.285714285714286%;
+}
+// ion-col.calendar_heading {
+//   border-right: 0px solid #e7eef5;
+// }
 
 .calendar_heading ion-col {
   margin: 5px;
@@ -24,48 +42,52 @@
 .other-month-date {
   color: #bbcddf;
 }
-
+.week-current{
+  background: #e7f8ff;
+  border-bottom: 3px solid #02a5e2;  
+}
 .current {
-  background-color: #38536b;
-  border-radius   : 5px;
+  // background-color: #38536b;
+  // border-radius   : 5px;
+  background: transparent;
+  border-bottom: 0px solid #02a5e2;
 }
 
 .sel {
-  background-color: #003463;
-  border-radius   : 5px;
-}
-
-.current ion-label {
-  color: #fff !important;
-}
-
-.sel ion-label {
-  color: #fff !important;
+  background: #e7f8ff;
+  // border-bottom: 3px solid #02a5e2;
 }
 
 .calendar-header {
-  background-color: #003463;
-  color           : #fff;
-  padding         : 5px 15px;
+  // background-color: #003463;
+  // color           : #fff;
+  padding: 0px 15px;
 }
 
 .arrow_box {
+  // flex: 0 0 20px;
   flex: 0 0 20px;
+    background: #4c657c91;
+    padding: 10px;
 }
 
 .month_box {
-  flex      : 0 0 100%;
-  max-width : calc(100% - 40px);
+  // flex      : 0 0 100%;
+  // max-width : calc(100% - 40px);
+  flex: 0 0 130px;
+  max-width: 130px;
   text-align: center;
+  background: white;
+  padding: 10px;
 }
 
 .month_box ion-label {
-  color: white !important;
+ font-family: 'proxima_nova_rgbold' !important;
 }
 
 .calendar-month {
   align-items    : center;
-  justify-content: space-between;
+  // justify-content: space-between;
   flex-wrap      : nowrap;
 }
 
@@ -116,34 +138,6 @@
   background   : white;
 }
 
-.dates_slotes {
-  display        : flex;
-  justify-content: center;
-  padding        : 5px;
-}
-
-.dates_slotes span {
-  margin     : 0px 2px;
-  color      : white;
-  width      : 16px;
-  height     : 16px;
-  flex       : 0 0 16px;
-  padding    : 0px;
-  display    : block;
-  line-height: 16px;
-  text-align : center;
-  font-size  : 11px !important;
-}
-
-.dates_slotes .cricle {
-  background   : #3788cf;
-  border-radius: 50%;
-}
-
-.dates_slotes .squre {
-  border-radius: 2px;
-  background   : #92afcc;
-}
 
 .gov ion-row {
   margin: 10px 0 0 0;
