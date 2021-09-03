@@ -9,15 +9,16 @@ import { SuccessPage } from 'src/app/modals/success/success.page';
 import { UserModel } from 'src/app/models/Users';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.page.html',
-  styleUrls: ['./create.page.scss'],
+  selector: 'create-task',
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.scss'],
 })
-export class CreatePage implements OnInit {
+export class CreateComponent implements OnInit {
 
 
   public userIds:any[] = [];
   public selected:UserModel[] = [];
+  tags:any='';
   name:any='';
   desc:any='';
   selectedUser:any

@@ -1,23 +1,26 @@
-ion-content ion-row {
-  margin: 15px 0px;
+// ion-content ion-row {
+//   margin: 0px 0px 15px 0px;
+// }
+.bottom-space{
+  margin-bottom: 15px;
 }
 
 ion-radio-group {
   display: flex;
 }
 
-ion-item {
+// ion-item {
   
-  --background         : white;
-  background           : white;
-  margin               : 0 5px;
-  --min-height         : 38px;
-  border-radius        : 5px;
-  --padding-start      : 0px;
-  --padding-end        : 0px;
-  --inner-padding-end  : 10px !important;
-  --inner-padding-start: 10px !important;
-}
+//   --background         : white;
+//   background           : white;
+//   margin               : 0 5px;
+//   --min-height         : 38px;
+//   border-radius        : 5px;
+//   --padding-start      : 0px;
+//   --padding-end        : 0px;
+//   --inner-padding-end  : 10px !important;
+//   --inner-padding-start: 10px !important;
+// }
 
 ion-radio {
   opacity: 0;
@@ -67,9 +70,8 @@ div {
 }
 
 ion-item ion-img {
-  filter  : invert(100%);
   position: absolute;
-  top     : 20%;
+  top     :10%;
   right   : 0px;
   padding : 5px;
   width   : 35px;

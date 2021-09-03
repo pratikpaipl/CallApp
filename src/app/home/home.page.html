@@ -1,8 +1,8 @@
-<ion-toolbar>
+<ion-toolbar *ngIf="selected!=4">
   <ion-title (click)="titleClick()">
-    {{selected ==0?""+currentMonth+" "+currentYear:selected==1?"Dashboard":selected==2?"Notifications":"Settings"}}
+    {{selected ==0?""+currentMonth+" "+currentYear:selected==1?"Dashboard":selected==2?"Create Task":selected==3?"Notifications":"Settings"}}
   </ion-title>
-  <ion-buttons slot="primary">
+  <ion-buttons *ngIf="selected != 2" slot="primary">
     <ion-button style="    --color: #333333 !important;">
       <ion-icon slot="icon-only" name="search"></ion-icon>
     </ion-button>
@@ -18,7 +18,8 @@
   <month *ngIf="selected == 0 && !showWeek" (change)="changeView($event)"></month>
   <week [selectedDate]="selectedDate" *ngIf="selected == 0 && showWeek"></week>
   <dashboard *ngIf="selected == 1 "></dashboard>
-  <notification *ngIf="selected == 2 "></notification>
-  <settings *ngIf="selected == 3 "></settings>
+  <create-task *ngIf="selected == 2 "></create-task>
+  <notification *ngIf="selected == 3 "></notification>
+  <settings *ngIf="selected == 4 "></settings>
 </ion-content>
 <app-page-footer style="position: relative;" [selected]="selected" (change)="selectedPage($event)"></app-page-footer>

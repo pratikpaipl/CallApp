@@ -11,11 +11,13 @@ import { ExpandComponent } from '../widgets/expand/expand.component';
 import { RecurringComponent } from '../task/recurring/recurring.component';
 import { SubTaskComponent } from '../task/sub-task/sub-task.compnent';
 import { NoTaskComponent } from '../widgets/no-task/no-task.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { CreateComponent } from '../home/create/create.component';
 
 @NgModule({
-  declarations: [MenuItemComponent, TopCardComponent, PageFooterComponent, NoTaskComponent, RecurringComponent, SubTaskComponent, ExpandComponent],
-  imports: [CommonModule, IonicModule, FormsModule, ReactiveFormsModule],
-  exports: [CommonModule, IonicModule, TopCardComponent, PageFooterComponent, ReactiveFormsModule, MenuItemComponent, NoTaskComponent, RecurringComponent, SubTaskComponent, ExpandComponent],  providers: [AuthGuard, DatePipe],
+  declarations: [MenuItemComponent, TopCardComponent, PageFooterComponent, NoTaskComponent,CreateComponent, RecurringComponent, SubTaskComponent, ExpandComponent],
+  imports: [CommonModule, IonicModule, FormsModule,NgSelectModule, ReactiveFormsModule],
+  exports: [CommonModule, IonicModule, TopCardComponent, PageFooterComponent, ReactiveFormsModule, MenuItemComponent, NoTaskComponent,CreateComponent, RecurringComponent, SubTaskComponent, ExpandComponent],  providers: [AuthGuard, DatePipe],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

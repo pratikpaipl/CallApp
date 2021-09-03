@@ -3,12 +3,16 @@
     <ion-col class="user_img_blocks">
         <div class="user_img_box">
             <div class="user_img">
-              <ion-img src="../../../assets/images/settings.png"></ion-img>
+              <!-- <ion-img src="../../../assets/images/settings.png"></ion-img> -->
+              <ion-label style="text-transform: capitalize;
+              font-size: 50px !important;
+              margin: 0 auto;
+              line-height: 80px; color: white !important">{{globle.userData.full_name.substring(0,1)}}</ion-label>
             </div>            
-            <div class="chosefile">
+            <!-- <div class="chosefile">
                 <input type="file" class="user_file">
                 <ion-img src="../../../assets/images/cam.png"></ion-img>
-            </div>
+            </div> -->
         </div>        
     </ion-col>
     <ion-col class="user_content">
@@ -20,11 +24,11 @@
     </ion-col>
   </ion-row>
 </ion-grid>
-<menu-item class="menus" lblValue="Notification Settings" (click)="onClick(1)"></menu-item>
-<menu-item class="menus" lblValue="About Us"(click)="onClick(2)"></menu-item>
-<menu-item class="menus" lblValue="Rate Us" (click)="onClick(3)"></menu-item>
-<menu-item class="menus" lblValue="Customer Support" (click)="onClick(4)"></menu-item>
-<menu-item class="menus" lblValue="FAQ's" (click)="onClick(5)"></menu-item>
-<menu-item class="menus" lblValue="Refer to friends" (click)="onClick(6)"></menu-item>
-<menu-item class="menus" lblValue="Privacy Policy & Agreement" (click)="onClick(7)"></menu-item>
-<menu-item class="menus" lblValue="Sync Calendar" (click)="onClick(8)"></menu-item>
+<menu-item class="menus" lblValue="Notification Settings" imgPath="../../../assets/images/m_notification.png" (click)="onClick(1)"></menu-item>
+<menu-item class="menus" lblValue="About Us" imgPath="../../../assets/images/m_about.png" (click)="onClick(2)"></menu-item>
+<menu-item class="menus" lblValue="Rate Us" imgPath="../../../assets/images/m_rateus.png" (click)="onClick(3)"></menu-item>
+<menu-item class="menus" lblValue="Customer Support" imgPath="../../../assets/images/m_customer_service.png" (click)="onClick(4)"></menu-item>
+<menu-item class="menus" lblValue="FAQ's" imgPath="../../../assets/images/m_faq.png" (click)="onClick(5)"></menu-item>
+<!-- <menu-item class="menus" lblValue="Refer to friends" imgPath="../../../assets/images/m_notification.png" (click)="onClick(6)"></menu-item> -->
+<menu-item class="menus" lblValue="Privacy Policy & Agreement" imgPath="../../../assets/images/m_privacy_policy.png" (click)="onClick(7)"></menu-item>
+<menu-item class="menus" lblValue="Sync Calendar" imgPath="../../../assets/images/m_sync.png" (click)="onClick(8)"></menu-item>

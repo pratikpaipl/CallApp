@@ -1,7 +1,7 @@
 <div class="footer_panels"></div>
-  <div class="create-btn">
+  <!-- <div class="create-btn">
     <ion-img  (click)="this.create()" src="../../../assets/images/plus.png"></ion-img>
-  </div>
+  </div> -->
 <div id="footer">
   <ion-radio-group id="footer_menu" [(ngModel)]="selected" (ionChange)="changeMenu($event)">
     <ion-item>
@@ -11,22 +11,29 @@
         <ion-label> Calender</ion-label>
       </div>
     </ion-item>
-    <ion-item style="    margin-right: 40px;">
+    <ion-item>
       <ion-radio value="1"> </ion-radio>
       <div>
         <ion-img class="select-menu" src="assets/images/dashboard.png"></ion-img>
         <ion-label>Dashboard</ion-label>
       </div>
     </ion-item>
-    <ion-item>
+    <ion-item >
       <ion-radio value="2"> </ion-radio>
+      <div style="margin: 0px 0px 8px 0px;">
+        <ion-img class="select-menu" style="width: 40px !important;"  src="assets/images/plus.png"></ion-img>
+        <!-- <ion-label style="opacity: 0;" >Create</ion-label> -->
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-radio value="3"> </ion-radio>
       <div>
         <ion-img src="assets/images/notification.png"></ion-img>
         <ion-label>Notification</ion-label>
       </div>
     </ion-item>
     <ion-item>
-      <ion-radio value="3"> </ion-radio>
+      <ion-radio value="4"> </ion-radio>
       <div>
         <ion-img src="assets/images/settings.png"></ion-img>
         <ion-label>Settings</ion-label>

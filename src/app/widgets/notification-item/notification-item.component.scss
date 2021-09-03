@@ -1,6 +1,11 @@
+ion-grid{
+  background: white;
+    // border-radius: 14px 15px 6px 6px;
+    margin: 5px 10px;
+    // padding: 10px 10px 10px 10px;
+}
 .p-5-20{
-  padding: 15px 20px;
-  border-bottom: 1px solid;
+  padding: 8px;
 }
 div{
   background: #e0f5f0;
@@ -15,11 +20,14 @@ div{
   text-align: right;
     flex: 0 0 65px;
 }
- ion-img{
-  filter: invert(100%);
-  width: 40px;
-  padding: 10px;
+ion-button {
+  --background: transparent;
+  --box-shadow: 0 0px 3px -1px rgba(0, 0, 0, 0.2), 0 0px 0px 0px rgba(0, 0, 0, 0.14), 0 -1px 4px 0 rgba(0, 0, 0, 0.12);
+  background: transparent;
 }
-ion-label{
-  margin-left: 5px;
+.complete {
+  color: #02a5e2;
+}
+.reject {
+  color: #ed1a3b;
 }

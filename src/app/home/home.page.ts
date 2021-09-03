@@ -55,6 +55,8 @@ export class HomePage implements OnInit {
   titleClick(){
     if(this.selected == 0 && this.showWeek){
       this.showWeek = false;
+    }else if(this.selected == 0 && this.showWeek){
+      
     }
   }
   changeView(event) {

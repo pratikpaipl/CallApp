@@ -2,15 +2,13 @@ ion-grid {padding: 0px 10px; }
 .menurow  {
 	margin: 0px !important;
 	padding: 10px 0px;
-	border-top: 1px solid #40678a;
+	border-top: 1px solid #657c91;
 	align-items: center;
 }
 .menurow ion-col {padding: 0px 10px;}
 .menuicons ion-img {
-	padding: 0px;
-	display: block;
-	width: 100%;
-	filter: invert(100%);
+	padding: 5px;
+    width: 32px;
 }
 
 .menurow .menuicons {flex: 0 0 50px; max-width: 50px;}
@@ -23,4 +21,7 @@ ion-grid {padding: 0px 10px; }
 	--offset-top: 0px !important;
 	--offset-bottom: 0px !important;
 	--padding-top: 0px !important;
+}
+ion-grid{
+	background: white;
 }

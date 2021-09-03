@@ -13,7 +13,7 @@ import { StorageService } from 'src/app/shared/StorageService';
 export class PageFooterComponent implements OnInit {
 
   @Input()
-  selected: any;
+  selected: any="0";
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();
 

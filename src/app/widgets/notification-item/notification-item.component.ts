@@ -11,6 +11,10 @@ import { StorageService } from 'src/app/shared/StorageService';
   export class NotificationItemComponent implements OnInit {
 
   @Input()
+  brRadius:string;
+  @Input()
+  imgPath:string;
+  @Input()
   heading:string;
   @Input()
   subheading: string;
