@@ -1,5 +1,5 @@
 ion-grid{
-	background: white;
+	background: #f2f2f2;
 }
 ion-row{
   text-align: center;
@@ -11,30 +11,18 @@ ion-row ion-col ion-row ion-col{
 ion-row ion-col ion-row{
   text-align: left;
 }
-ion-row ion-col:first-child{
-    flex: 0 0 120px;
-}
 ion-row ion-col:first-child ion-img{
     filter: invert(100%);
     padding: 20px;
 }
-ion-col div{
-  display: flex;
-}
-ion-row ion-col:last-child{
-  flex: 0 0 40px;
-}
 ion-row ion-col:last-child ion-img{
-  width: 30px;
+  width: 20px;
     padding: 5px;
     transform: rotate(180deg);
 }
 
 .user_row {
-	display: flex;
-	flex-wrap: nowrap;
-  margin: 10px 0px;
-//   margin-bottom: 20px;
+  margin: 10px;
 }
 .user_img_blocks {
 	flex: 0 0 90px;
@@ -43,15 +31,9 @@ ion-row ion-col:last-child ion-img{
 	width: 100%;
 }
 
-.user_img_box {
-	display: block !important;
-	width: 90px;
-	height: 90px;
-	position: relative;
-}
 .user_img {
-	width: 90px;
-    height: 90px;
+	width: 70px;
+    height: 70px;
     border: 1px solid #7e0417;
     background: #7e0417;
     border-radius: 10px;
@@ -95,20 +77,9 @@ ion-row ion-col:last-child ion-img{
   cursor:pointer;
 }
 
-.user_img_blocks {
-	padding: 0px 10px;
-	flex: 0 0 110px !important;
-	max-width: 110px !important;
-	width: 110px !important;
-}
-
 .user_content ion-label {
 	display: block;
 	text-align: left;
-}
-
-.user_content {
-	padding: 0px 10px;
 }
 
 .right_button {
@@ -117,8 +88,21 @@ ion-row ion-col:last-child ion-img{
 	max-width: 40px !important;
 	text-align: left !important;
 }
-
-.right_button ion-img {
-	padding: 0px !important;
-	width: 100% !important;
+.nmLbl{
+	text-transform: capitalize; font-size: 50px !important; margin: 0 auto; line-height: 70px; color: white !important
+}
+.name{
+	font-size: 15px !important;
+	text-transform: capitalize;
+	font-family: 'proxima_nova_rgbold' !important;
+}
+.address{
+	font-size: 13px !important;
+	font-family: 'proxima_nova_rgregular' !important;
+	opacity: 0.5;
+}
+.version{
+	color: #003463;
+	text-align: center;
+	opacity: 0.4;
 }

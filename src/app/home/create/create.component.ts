@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { GlobalProvider } from '../../shared/GlobalProvider';
 import { StorageService } from '../../shared/StorageService';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { SuccessPage } from 'src/app/modals/success/success.page';
 import { UserModel } from 'src/app/models/Users';
+import { SubTaskComponent } from 'src/app/task/sub-task/sub-task.compnent';
 
 @Component({
   selector: 'create-task',
@@ -31,7 +32,7 @@ export class CreateComponent implements OnInit {
   startDate:any= new Date().toISOString();
   dueDate:any;
   minDate:any= new Date().toISOString();
-  constructor(public global: GlobalProvider, public apiService: ApiService, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
+  constructor(public global: GlobalProvider, public apiService: ApiService,private popoverCtrl: PopoverController, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
 
   }
   ngOnInit(): void {
@@ -44,8 +45,21 @@ export class CreateComponent implements OnInit {
   setAsRecurring() {
     this.isRecurring = !this.isRecurring;
   }
-  addSubTask() {
-    this.isSubTask = !this.isSubTask;
+  async addSubTask() {
+    // this.isSubTask = !this.isSubTask;
+
+    const popover = await this.popoverCtrl.create({
+      component: SubTaskComponent,
+      //  componentProps: {
+      //   "title": popData.title,
+      //   "sub": popData.sub,
+      //   "img": popData.img,
+      //   "button": popData.button,
+      // },
+      translucent: true,
+      backdropDismiss: true
+    });
+    return await popover.present();
   }
   returnTask(event) {
     if(event.isSub !=undefined && event.isSub){

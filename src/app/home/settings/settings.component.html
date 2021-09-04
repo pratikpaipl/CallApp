@@ -4,10 +4,7 @@
         <div class="user_img_box">
             <div class="user_img">
               <!-- <ion-img src="../../../assets/images/settings.png"></ion-img> -->
-              <ion-label style="text-transform: capitalize;
-              font-size: 50px !important;
-              margin: 0 auto;
-              line-height: 80px; color: white !important">{{globle.userData.full_name.substring(0,1)}}</ion-label>
+              <ion-label class="nmLbl">{{globle.userData.full_name.substring(0,1)}}</ion-label>
             </div>            
             <!-- <div class="chosefile">
                 <input type="file" class="user_file">
@@ -16,19 +13,26 @@
         </div>        
     </ion-col>
     <ion-col class="user_content">
-            <ion-label>{{globle.userData.full_name}}</ion-label>
-            <ion-label>{{globle.userData.company_name}}</ion-label>
+            <ion-label class="name">{{globle.userData.full_name}}</ion-label>
+            <ion-label class="address">{{globle.userData.company_name}}</ion-label>
     </ion-col>
     <ion-col class="right_button" (click)="onClick(0)">
-        <ion-img  src="../../../assets/images/back.png"></ion-img>
+        <ion-img  src="../../../assets/images/vector.png"></ion-img>
     </ion-col>
   </ion-row>
 </ion-grid>
-<menu-item class="menus" lblValue="Notification Settings" imgPath="../../../assets/images/m_notification.png" (click)="onClick(1)"></menu-item>
-<menu-item class="menus" lblValue="About Us" imgPath="../../../assets/images/m_about.png" (click)="onClick(2)"></menu-item>
-<menu-item class="menus" lblValue="Rate Us" imgPath="../../../assets/images/m_rateus.png" (click)="onClick(3)"></menu-item>
-<menu-item class="menus" lblValue="Customer Support" imgPath="../../../assets/images/m_customer_service.png" (click)="onClick(4)"></menu-item>
-<menu-item class="menus" lblValue="FAQ's" imgPath="../../../assets/images/m_faq.png" (click)="onClick(5)"></menu-item>
+<menu-item class="menus" bHight="1px solid #657c91" lblValue="Notification Settings" imgPath="../../../assets/images/m_notification.png" (click)="onClick(1)"></menu-item>
+<menu-item class="menus" bHight="1px solid #657c91" lblValue="About Us" imgPath="../../../assets/images/m_about.png" (click)="onClick(2)"></menu-item>
+<menu-item class="menus" bHight="1px solid #657c91" lblValue="Rate Us" imgPath="../../../assets/images/m_rateus.png" (click)="onClick(3)"></menu-item>
+<menu-item class="menus" bHight="1px solid #657c91" lblValue="Customer Support" imgPath="../../../assets/images/m_customer_service.png" (click)="onClick(4)"></menu-item>
+<menu-item class="menus" bHight="1px solid #657c91" lblValue="FAQ's" imgPath="../../../assets/images/m_faq.png" (click)="onClick(5)"></menu-item>
 <!-- <menu-item class="menus" lblValue="Refer to friends" imgPath="../../../assets/images/m_notification.png" (click)="onClick(6)"></menu-item> -->
-<menu-item class="menus" lblValue="Privacy Policy & Agreement" imgPath="../../../assets/images/m_privacy_policy.png" (click)="onClick(7)"></menu-item>
-<menu-item class="menus" lblValue="Sync Calendar" imgPath="../../../assets/images/m_sync.png" (click)="onClick(8)"></menu-item>
+<menu-item class="menus" bHight="1px solid #657c91" lblValue="Privacy Policy & Agreement" imgPath="../../../assets/images/m_privacy_policy.png" (click)="onClick(7)"></menu-item>
+<menu-item class="menus" bHight="0px" lblValue="Sync Calendar" imgPath="../../../assets/images/m_sync.png" (click)="onClick(8)"></menu-item>
+<ion-grid style="padding: 10px;">
+  <ion-row>
+    <ion-col>
+        <ion-label class="version">Version 1.0.0</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>

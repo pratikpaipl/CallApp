@@ -89,6 +89,7 @@ ion-segment ion-label {
     color    : white !important;
     cursor   : pointer;
     padding  : 5px;
+    text-transform: capitalize;
 }
 
 ion-segment-button {
@@ -98,16 +99,14 @@ ion-segment-button {
 ion-segment-button ion-img {
     width : 25px;
     margin: 0 auto;
+    padding: 2px;
 }
 
 .segment-button-checked {
     background       : #4d4d4d;
     --indicator-color: white;
+    --indicator-height: 3px;
 }
-
-// ion-item ion-img {
-//     width: 32px;
-// }
 
 ion-item ion-radio {
     width  : 0;

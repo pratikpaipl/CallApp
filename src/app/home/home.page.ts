@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
   currentYear:any
   isShowUp = false;
   showWeek = false;
-  selected = 0
+  selected = 2
   selectedDate: any = moment()
   constructor(public store: StorageService, public globle: GlobalProvider, public apiService: ApiService, private eventService: EventService, public router: Router) {
 

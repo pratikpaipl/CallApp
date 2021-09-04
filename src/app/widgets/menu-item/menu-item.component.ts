@@ -14,6 +14,9 @@ import { StorageService } from 'src/app/shared/StorageService';
   lblValue: String;
 
   @Input()
+  bHight: String='0px';
+
+  @Input()
   imgPath: String;
 
 
