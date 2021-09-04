@@ -1,14 +1,15 @@
 .create-btn {
-    z-index: 1111111;
-    position: absolute;
-    width: 45px;
-    margin: 0 auto;
-    display: block;
-    padding: 0px;
-    left: 50%;
-    top: 5px;
+    z-index  : 1111111;
+    position : absolute;
+    width    : 45px;
+    margin   : 0 auto;
+    display  : block;
+    padding  : 0px;
+    left     : 50%;
+    top      : 5px;
     transform: translate(-50%, 0);
 }
+
 // .create-btn {
 // 	z-index: 1111111;
 // 	position: absolute;
@@ -26,8 +27,8 @@
 // }
 
 #footer {
-    display      : block;
-    width        : 100%;
+    display: block;
+    width  : 100%;
 }
 
 #footer_menu {
@@ -38,7 +39,7 @@
 #footer_menu {
     background     : #333333;
     // padding: 5px 10px !important;
-    padding: 5px 0px 0px 0px !important;
+    padding        : 5px 0px 0px 0px !important;
     margin         : 0px !important;
     justify-content: space-between;
     align-items    : center;
@@ -49,33 +50,59 @@
 }
 
 #footer_menu div {
-    margin: 0px 10px 0px 10px;
+    margin    : 0px 10px 0px 10px;
     text-align: center;
 }
 
 #footer_menu div ion-img {
-    width     : 25px;
-    display   : block;
-    margin    : 0 auto;
+    width  : 25px;
+    display: block;
+    margin : 0 auto;
 }
 
 #footer_menu div ion-label {
-    font-size  : 10px !important;
-    color      : white !important;
-    cursor     : pointer;
-    padding: 5px;
+    font-size: 10px !important;
+    color    : white !important;
+    cursor   : pointer;
+    padding  : 5px;
 }
 
 ion-item {
-    border-bottom: 2px solid #333333;
+    border-bottom        : 2px solid #333333;
     --inner-padding-end  : 0px;
     --inner-padding-start: 0px;
     --padding-start      : 0px;
     --padding-end        : 0px;
     --background         : transparent;
 }
-.item-radio-checked{
+
+.item-radio-checked {
     border-bottom: 3px solid white;
+}
+
+ion-segment {
+    background: #333;
+}
+
+ion-segment ion-label {
+    font-size: 10px !important;
+    color    : white !important;
+    cursor   : pointer;
+    padding  : 5px;
+}
+
+ion-segment-button {
+    min-width: 40px;
+}
+
+ion-segment-button ion-img {
+    width : 25px;
+    margin: 0 auto;
+}
+
+.segment-button-checked {
+    background       : #4d4d4d;
+    --indicator-color: white;
 }
 
 // ion-item ion-img {

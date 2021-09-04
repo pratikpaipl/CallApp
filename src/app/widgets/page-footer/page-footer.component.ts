@@ -13,7 +13,7 @@ import { StorageService } from 'src/app/shared/StorageService';
 export class PageFooterComponent implements OnInit {
 
   @Input()
-  selected: any="0";
+  selected: any = "0";
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
@@ -21,8 +21,8 @@ export class PageFooterComponent implements OnInit {
   }
   async ngOnInit() {
   }
-  onChange(){
-    console.log('OnChange ',this.selected);
+  onChange() {
+    console.log('OnChange ', this.selected);
   }
   openFirst() {
     this.menu.enable(true, "first");
@@ -32,7 +32,10 @@ export class PageFooterComponent implements OnInit {
     this.router.navigateByUrl('/create');
   }
   changeMenu(event) {
-    console.log('Event ', event.detail.value);
+    this.change.emit({ page: event.detail.value })
+  }
+  segmentChanged(event) {
+    // console.log('Event ', event.detail.value);
     this.change.emit({ page: event.detail.value })
   }
 }
