@@ -1,3 +1,4 @@
+import { RecurringComponent } from './../../task/recurring/recurring.component';
 import { EventService } from '../../services/EventService';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -27,8 +28,6 @@ export class CreateComponent implements OnInit {
   taskPriority=[];
   selPriority:any;
   showSub = false;
-  isRecurring = false;
-  isSubTask = false;
   startDate:any= new Date().toISOString();
   dueDate:any;
   minDate:any= new Date().toISOString();
@@ -42,57 +41,51 @@ export class CreateComponent implements OnInit {
     // this.options.placeholder = 'Type user name to search..';
   }
 
-  setAsRecurring() {
-    this.isRecurring = !this.isRecurring;
-  }
-  async addSubTask() {
-    // this.isSubTask = !this.isSubTask;
-
+  async setAsRecurring() {
     const popover = await this.popoverCtrl.create({
-      component: SubTaskComponent,
-      //  componentProps: {
-      //   "title": popData.title,
-      //   "sub": popData.sub,
-      //   "img": popData.img,
-      //   "button": popData.button,
-      // },
+      component: RecurringComponent,
+        componentProps: {
+          startDate:this.startDate,
+          endDate:this.dueDate,
+          subTasks:this.subTasks
+        },
       translucent: true,
-      backdropDismiss: true
+      backdropDismiss: false
     });
+
+    popover.onDidDismiss().then((result) => {
+      console.log('Recurring ',result['data']);
+      // this.viewType = result['data'];
+      
+    });
+
     return await popover.present();
   }
-  returnTask(event) {
-    if(event.isSub !=undefined && event.isSub){
-      this.isSubTask =false
-        this.subTasks=[];
-        console.log('Sub Task List',event.value)
-        this.subTasks = event.value.contacts
-    }else if(event.isSub !=undefined && !event.isSub){
-      this.isSubTask =false
-    }
+  async addSubTask() {
+    const popover = await this.popoverCtrl.create({
+      component: SubTaskComponent,
+        componentProps: {
+          startDate:this.startDate,
+          endDate:this.dueDate,
+          subTasks:this.subTasks
+        },
+      translucent: true,
+      backdropDismiss: false
+    });
+
+    popover.onDidDismiss().then((result) => {
+      console.log(result['data']);
+      // this.viewType = result['data'];
+
+      if(result['data'].isSub !=undefined && result['data'].isSub){
+          this.subTasks=[];
+          console.log('Sub Task List',result['data'].value)
+          this.subTasks = result['data'].value.contacts
+      }
+    });
+
+    return await popover.present();
   }
-
-  // async addSubTask() {
-  //   const modal = await this.modalController.create({
-  //     component: SubTaskPage,
-  //     cssClass: 'alert-success',
-  //     componentProps: {
-  //         btnLbl:'Back to Login',
-  //         isSub:true,
-  //         msg:'Go back to Login and enter your New Password'
-  //     }
-  //   });
-
-  //   modal.onDidDismiss().then((dataReturned) => {
-  //     if (dataReturned !== null) {
-  //       // this.dataReturned = dataReturned.data;
-  //       //alert('Modal Sent Data :'+ dataReturned);
-  //     }
-  //   });
-
-  //   return await modal.present();
-  // }
-
   getTaskPriority() {
     this.apiService.taskPriority().subscribe(
       async (response) => {
@@ -134,9 +127,10 @@ export class CreateComponent implements OnInit {
  
   createTask(){
     console.log('this.selected ',this.selected )
-    if(this.name == undefined || this.name ==''){
-        this.global.showToast('Please enter name ',1500)
-     }else if(this.desc == undefined || this.desc ==''){
+    // if(this.name == undefined || this.name ==''){
+    //     this.global.showToast('Please enter name ',1500)
+    //  }else 
+     if(this.desc == undefined || this.desc ==''){
         this.global.showToast('Please enter description ',1500)
       }
       else if(this.dueDate == undefined){

@@ -119,5 +119,3 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-<recurring class="recurring" [startDate]="startDate" *ngIf="isRecurring" (change)="setAsRecurring()"></recurring>
-<sub-task class="recurring" [startDate]="startDate" [endDate]="dueDate"   *ngIf="isSubTask" (change)="returnTask($event)"></sub-task>
