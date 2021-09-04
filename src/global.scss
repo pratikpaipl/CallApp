@@ -38,12 +38,13 @@ ion-button {
   --border-style: none;
   --border-width: 0;
 }
-.popover-content  {
-  top: auto !important;
+.popover-content {
+  top: auto !important; 
   left: 0px !important;
-  transform-origin: left top;
   right: 0px;
-  --width: 100%;
+  bottom: 0px;
+  --width:100%;
+  border-radius: 15px 15px 0px 0px !important;
 }
 // ion-auto-complete {
 //   border-bottom: 1px solid var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))));
