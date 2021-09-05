@@ -1,9 +1,77 @@
-ion-grid{
-  background: white;
-    // border-radius: 14px 15px 6px 6px;
-    margin: 5px 10px;
-    // padding: 10px 10px 10px 10px;
+ion-grid {
+	margin: 0px;
 }
+
+.notifull {
+	padding: 8px;
+	margin: 0px;
+}
+.notifull.bg {
+	background: #fff;
+	
+}
+.notifull.bg.border-r {
+  border-radius: 10px 10px 0px 0px;
+}
+.notifull ion-row {
+  padding: 7px;
+  background: #fff;
+}
+.icons {
+	flex: 0 0 50px;
+	max-width: 50px;
+	padding-right: 15px;
+}
+
+.contents ion-label {
+	display: block;
+	line-height: 15px;
+}
+
+.text-gray {
+	color: #bbcddf !important;
+}
+.contents ion-label.time.text-gray {
+	text-align: left !important;
+	margin-top: 13px;
+	color: #ccc !important;
+}
+.notifull.sub_card .noti_card {
+	/* box-shadow: 0 0px 3px -1px rgba(0, 0, 0, 0.2), 0 0px 0px 0px rgba(0, 0, 0, 0.14), 0 -1px 4px 0 rgba(0, 0, 0, 0.12); */
+	border: 1px solid #bfc6cc;
+}
+
+.notifull.sub_card .button_box ion-button {
+	--background: transparent;
+	background: transparent;
+	border-right: 1px solid #bfc6cc;
+	--box-shadow: none !important;
+  margin: 0px !important;
+
+}
+.notifull.sub_card .button_box {
+	padding: 0px !important;
+  border: 1px solid #bfc6cc;
+  border-right: none;
+  border-top: none;
+}
+.notifull ion-row.noti_card.nobg {
+	background: transparent;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
 .p-5-20{
   padding: 8px;
 }

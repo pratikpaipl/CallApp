@@ -16,29 +16,30 @@ ion-row ion-col:first-child ion-img{
     padding: 20px;
 }
 ion-row ion-col:last-child ion-img{
-  width: 20px;
-    padding: 5px;
+  width: 10px;
+    padding: 0px;
     transform: rotate(180deg);
 }
 
 .user_row {
-  margin: 10px;
+	margin: 0;
+	padding: 2px 6px;
 }
 .user_img_blocks {
-	flex: 0 0 90px;
-	max-width: 90px;
+	flex: 0 0 75px;
+	max-width: 75px;
 	position: relative;
 	width: 100%;
 }
 
 .user_img {
-	width: 70px;
-    height: 70px;
-    border: 1px solid #7e0417;
-    background: #7e0417;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 0px 1px #7e0417;
+	width: 60px;
+	height: 60px;
+	border: 1px solid #7e0417;
+	background: #7e0417;
+	border-radius: 6px;
+	overflow: hidden;
+	box-shadow: 0px 0px 1px #7e0417;
 }
 .user_img ion-img {
 	padding: 15px !important;
@@ -83,13 +84,17 @@ ion-row ion-col:last-child ion-img{
 }
 
 .right_button {
-	flex: 0 0 40px !important;
-	padding: 0px 10px !important;
-	max-width: 40px !important;
-	text-align: left !important;
+	flex: 0 0 10px !important;
+    padding: 0px !important;
+    max-width: 10px !important;
+    text-align: left !important;
 }
-.nmLbl{
-	text-transform: capitalize; font-size: 50px !important; margin: 0 auto; line-height: 70px; color: white !important
+.nmLbl {
+	text-transform: capitalize;
+	font-size: 30px !important;
+	margin: 0 auto;
+	line-height: 60px;
+	color: white !important;
 }
 .name{
 	font-size: 15px !important;
