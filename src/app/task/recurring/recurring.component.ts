@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { PopoverController, NavParams } from '@ionic/angular';
 import { NavigationService } from 'src/app/services/NavigationService';
 import { GlobalProvider } from 'src/app/shared/GlobalProvider';
 import { StorageService } from 'src/app/shared/StorageService';
@@ -12,21 +13,11 @@ export class RecurringComponent implements OnInit {
 
   isRecurring: any = 'daily'
 
-  @Input()
-  lblValue: String;
-
-  @Input()
-  startDate: string;
-
-  @Input()
-  imgPath: String;
-
-
-  @Output()
-  change: EventEmitter<Object> = new EventEmitter<Object>();
+  data: any;
+  startDate: any;
   day = []
 
-  constructor(public store: StorageService, private navigation: NavigationService, public globle: GlobalProvider) {
+  constructor(public store: StorageService, private navigation: NavigationService,public popover:PopoverController,public navParams: NavParams , public globle: GlobalProvider) {
 
     this.day.push({ day: 'Sun', isCheck: false })
     this.day.push({ day: 'Mon', isCheck: false })
@@ -39,13 +30,14 @@ export class RecurringComponent implements OnInit {
   }
 
   async ngOnInit() {
-
+    this.data = this.navParams.data;
+    this.startDate=this.data.startDate;
   }
 
   set() {
-    this.change.emit('publish');
+    this.popover.dismiss({ isSub:1});
   }
-  back() {
-    this.navigation.back();
+  closeModal() {
+    this.popover.dismiss({ isSub:0});
   }
 }

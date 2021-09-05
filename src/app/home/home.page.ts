@@ -18,21 +18,25 @@ import * as moment from 'moment-timezone';
 })
 export class HomePage implements OnInit {
 
-  currentMonth:any
-  currentYear:any
+  selMonthYear: any = new Date().toISOString();
+
   isShowUp = false;
   showWeek = false;
-  selected = 2
-  selectedDate: any = moment()
+  selected = 0
+
+  minDate: any = new Date().toISOString()
+  maxDate = moment().add(3, 'y').format('YYYY');
+
+  selectedDate: any = new Date().toISOString()
   constructor(public store: StorageService, public globle: GlobalProvider, public apiService: ApiService, private eventService: EventService, public router: Router) {
 
   }
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }
-  logout(){
+  logout() {
     localStorage.removeItem('access_token')
-    this.router.navigateByUrl('/login', { replaceUrl: true });    
+    this.router.navigateByUrl('/login', { replaceUrl: true });
   }
   list() {
     this.router.navigateByUrl('/task-list');
@@ -52,18 +56,16 @@ export class HomePage implements OnInit {
   updateScroll(event) {
     this.isShowUp = event;
   }
-  titleClick(){
-    if(this.selected == 0 && this.showWeek){
+  titleClick() {
+    if (this.selected == 0 && this.showWeek) {
       this.showWeek = false;
-    }else if(this.selected == 0 && this.showWeek){
-      
+    } else if (this.selected == 0 && this.showWeek) {
+
     }
   }
   changeView(event) {
     console.log('Change View ', event);
-    this.selectedDate = event.selectedDay;
     this.showWeek = event.changeView;
-    this.currentMonth = event.month;
-    this.currentYear = event.year;
+    this.selMonthYear = event.selDate;
   }
 }

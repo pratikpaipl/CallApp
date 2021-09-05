@@ -1,3 +1,4 @@
+import { PopoverController, NavParams } from '@ionic/angular';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
 
@@ -12,30 +13,28 @@ export class SubTaskComponent implements OnInit {
 
   public form: FormGroup;
   public contactList: FormArray;
+  data: any;
   
   // returns all form groups under contacts
   get contactFormGroup() {
     return this.form.get('contacts') as FormArray;
   }
 
-  @Input()
+  // @Input()
   startDate:any;  
-  @Input()
+  // @Input()
   endDate:any;  
 
   private subTaskCount: number = 1;
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
-  constructor(private fb: FormBuilder ) { 
-
+  constructor(private fb: FormBuilder,public popover:PopoverController,public navParams: NavParams ) { 
+  
 
   }
-  createContact(): FormGroup {
-    return this.fb.group({
-      name: [null, Validators.compose([Validators.required])],
-      value: [null, Validators.compose([Validators.required])]
-    });
+  createContact(name,value): FormGroup {
+    return this.fb.group({ name: [name, Validators.compose([Validators.required])], value: [value, Validators.compose([Validators.required])] });
   }
 
 
@@ -56,7 +55,7 @@ export class SubTaskComponent implements OnInit {
 
   // add a contact form group
 addContact() {
-  this.contactList.push(this.createContact());
+  this.contactList.push(this.createContact(null,null));
 }
 
 
@@ -73,23 +72,37 @@ getContactsFormGroup(index): FormGroup {
 
   ngOnInit() {
 
-    if(this.endDate == undefined || this.endDate ==''){
-      this.endDate = this.startDate
+    this.data = this.navParams.data;
+    this.startDate=this.data.startDate;
+    this.endDate=this.data.endDate;
+    console.log("nav params ", this.data);
+    if (this.endDate == undefined) {
+      console.log("endDate ",this.data.startDate);
+      this.endDate =this.data.startDate;
+      console.log("endDate ",this.endDate);
     }
-
     this.form = this.fb.group({
       parentId: [],
-      contacts: this.fb.array([this.createContact()])
+      contacts: this.fb.array([])
     });
   
-  // set contactlist to the form control containing contacts
     this.contactList = this.form.get('contacts') as FormArray;
+
+    for (let i = 0; i < this.data.subTasks.length; i++) {
+      const element = this.data.subTasks[i];
+      this.contactList.push(this.createContact(element.name,element.value));
+    }
+    if(this.data.subTasks.length == 0){
+      this.contactList.push(this.createContact(null,null));
+    }
   }
   
   submit(){
-      this.change.emit({ isSub:1, value:this.form.value});
-  }
-  closeModal(){
-    this.change.emit({ isSub:0});
+      // this.change.emit({ isSub:1, value:this.form.value});
+      this.popover.dismiss({ isSub:1, value:this.form.value});
+    }
+    closeModal(){
+    this.popover.dismiss({ isSub:0});
+    // this.change.emit({ isSub:0});
   }
 }
