@@ -46,6 +46,9 @@ ion-button {
   --width:100%;
   border-radius: 15px 15px 0px 0px !important;
 }
+ion-segment-button{
+  text-transform: capitalize;
+}
 // ion-auto-complete {
 //   border-bottom: 1px solid var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))));
 // }

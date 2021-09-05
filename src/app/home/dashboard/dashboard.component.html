@@ -57,7 +57,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin: 10px 0px; background: white; padding: 10px">
+  <ion-row class="spacing">
     <ion-col>
       <ion-row>
         <ion-col>
@@ -84,12 +84,20 @@
     </ion-col>
   </ion-row>
 
-  <ion-row>
+  <ion-row class="spacing" >
     <ion-col>
       <ion-label>Track Tasks (assigned by you) </ion-label>
+      <ion-segment [(ngModel)]="selAction" >
+        <ion-segment-button value="today">
+          <ion-label>Today</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="upcoming">
+          <ion-label>Upcoming</ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </ion-col>
   </ion-row>
-  <ion-row style="margin: 10px 0px">
+  <!-- <ion-row style="margin: 10px 0px">
     <ion-col>
       <ion-radio-group [(ngModel)]="selAction">
         <ion-item>
@@ -102,7 +110,7 @@
         </ion-item>
       </ion-radio-group>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
  <task-item></task-item>
  <task-item></task-item>
  <task-item></task-item>

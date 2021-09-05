@@ -91,9 +91,7 @@
       </ion-segment>
       <ion-grid class="p-0">
         <div class="grid_content" *ngIf="tasks != undefined && selectedTaskTab =='toYou'">
-
           <no-task *ngIf="assignedToYou.length == 0"></no-task>
-
           <ion-row class="tast_row" *ngFor="let item of assignedToYou">
             <ion-col size="12" class="tasks_cols">
               <ion-label class="titles">{{item.taskname}}</ion-label>

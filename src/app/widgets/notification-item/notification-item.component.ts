@@ -22,6 +22,8 @@ import { StorageService } from 'src/app/shared/StorageService';
   time:string;
   @Input()
   type: number;
+  @Input()
+  day: number;
 
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();

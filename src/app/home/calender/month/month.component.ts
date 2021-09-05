@@ -73,7 +73,8 @@ export class MonthComponent implements OnInit {
         btnLbl: 'Back to Login',
         isSub: true,
         msg: 'Go back to Login and enter your New Password'
-      }
+      },
+      backdropDismiss:false
     });
 
     modal.onDidDismiss().then((dataReturned) => {
