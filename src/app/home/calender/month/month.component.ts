@@ -28,6 +28,11 @@ export class MonthComponent implements OnInit {
   currentYear: any;
   currentDate: any;
 
+
+  @Input()
+  selectedDate: any;
+
+
   @Input()
   fromPage: String;
 
@@ -43,16 +48,31 @@ export class MonthComponent implements OnInit {
     private calendar: Calendar, public modalController: ModalController,
     private navigation: NavigationService,
     public globle: GlobalProvider
-  ) { }
+  ) {
+    this.monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+  }
 
-  async openFilter(){
+  async openFilter() {
     const modal = await this.modalController.create({
       component: FilterPage,
       cssClass: 'filter',
       componentProps: {
-          btnLbl:'Back to Login',
-          isSub:true,
-          msg:'Go back to Login and enter your New Password'
+        btnLbl: 'Back to Login',
+        isSub: true,
+        msg: 'Go back to Login and enter your New Password'
       }
     });
 
@@ -197,24 +217,19 @@ export class MonthComponent implements OnInit {
       year: this.currentYear,
     });
   }
+  ngOnChanges() {
+    console.log('ngOnChanges selectedDate ', this.selectedDate);
+    this.date = new Date(this.selectedDate);
 
-  async ngOnInit() {
-    this.date = new Date();
-    this.monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
     this.getDaysOfMonth();
+  }
+  async ngOnInit() {
+
+    // this.date = new Date(this.selectedDate);
+    console.log('ngOnInit selectedDate ', this.selectedDate);
+    console.log('selectedDate ', this.date);
+
+
 
   }
   getAllDueDates() {

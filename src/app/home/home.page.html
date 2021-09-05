@@ -1,6 +1,10 @@
 <ion-toolbar *ngIf="selected!=4">
   <ion-title (click)="titleClick()">
-    {{selected ==0?""+currentMonth+" "+currentYear:selected==1?"Dashboard":selected==2?"Create Task":selected==3?"Notifications":"Settings"}}
+    <!-- [min]="minDate"  -->
+    <ion-datetime *ngIf="selected ==0" [max]="maxDate" #datePicker text-center displayFormat="MMM YYYY"
+                  [(ngModel)]="selectedDate">
+    </ion-datetime>
+    {{selected==1?"Dashboard":selected==2?"Create Task":selected==3?"Notifications":selected==4?"Settings":''}}
   </ion-title>
   <ion-buttons *ngIf="selected != 2" slot="primary">
     <ion-button style="    --color: #333333 !important;">
@@ -15,7 +19,7 @@
 </ion-toolbar>
 
 <ion-content #content id="page" [scrollEvents]="true" (ionScroll)="function($event)">
-  <month *ngIf="selected == 0 && !showWeek" (change)="changeView($event)"></month>
+  <month *ngIf="selected == 0 && !showWeek" [selectedDate]="selectedDate" (change)="changeView($event)"></month>
   <week [selectedDate]="selectedDate" *ngIf="selected == 0 && showWeek"></week>
   <dashboard *ngIf="selected == 1 "></dashboard>
   <create-task *ngIf="selected == 2 "></create-task>
