@@ -1,35 +1,23 @@
 <div class="calendar-header">
-  <!-- <ion-row class="calendar-month">
-    <ion-col class="arrow_box" (click)="goToLastMonth()">
-      <ion-icon name="arrow-back"></ion-icon>
-    </ion-col>
-    <ion-col class="month_box">
-      <ion-label>{{currentMonth}} {{currentYear}}</ion-label>
-    </ion-col>
-    <ion-col class="arrow_box" (click)="goToNextMonth()">
-      <ion-icon name="arrow-forward"></ion-icon>
-    </ion-col>
-  </ion-row> -->
   <ion-row>
-    <ion-col style="flex: 0 0 30px;">
+    <ion-col>
       <ion-img (click)="openFilter()" src="../../../../assets/images/filter.png"></ion-img>
     </ion-col>
-    <ion-col style="min-width: 103px;">
+    <ion-col>
       <span>
-        <ion-label> <div class="compliance"></div>&nbsp;Compliance</ion-label>
+        <ion-label><div class="compliance"></div>&nbsp;Compliance</ion-label>
       </span>
     </ion-col>
-    <ion-col style="flex: 0 0 87px;">
+    <ion-col>
       <span style="background:#e7e7e7;">
         <ion-label> <div class="extention"></div>&nbsp;Extention</ion-label>
       </span>
     </ion-col>
-    <ion-col >
+    <ion-col>
       <span>
-        <ion-label > <div class="task"></div>&nbsp;Tasks</ion-label>
+        <ion-label><div class="task"></div>&nbsp;Tasks</ion-label>
       </span>
     </ion-col>
-    
   </ion-row>
 </div>
 

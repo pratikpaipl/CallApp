@@ -1,10 +1,7 @@
 
-// .calendar_heading ion-col {
-//   border-right : 0x solid #e7eef5;
-//   border-bottom: 1px solid #e7eef5;
-//   flex         : 0 0 14.28% !important;
-//   max-width    : 14.28% !important;
-// }
+
+
+
 .calendar_heading,
 .calendar-date ion-col {
   border-right : 1px solid #e7eef5;
@@ -50,12 +47,16 @@ ion-col.calendar_heading {
 }
 
 .calendar-header span ion-label{
-  margin: 5px;
+  margin: 0px;
+  display: block;
+  white-space: nowrap;
+  font-size: 13px !important;
 }
-.calendar-header span ion-label div{
-  width: 10px;
-  height: 10px;
-  display: table-cell;
+.calendar-header span ion-label div {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	margin-right: 2px;
 }
 .event-bullet {
   margin          : 2px auto;
@@ -199,4 +200,27 @@ ion-col.calendar_heading {
   padding: 0px;
   display: block;
 }
+
+
+
+.calendar-header ion-row {
+	margin: 0px -3px;
+  align-items: center;
+}
+.calendar-header ion-row ion-col {
+	padding: 0px 3px;
+	flex: 0 0;
+}
+
+.calendar-header ion-row ion-col span {
+	display: block;
+  white-space: nowrap;
+  padding: 2px 5px !important;
+  width: auto !important;
+  height: 24px;
+  line-height: 20px;
+}
+
+
+
 

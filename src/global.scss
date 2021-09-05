@@ -94,7 +94,7 @@ ion-app {
   left            : 0px !important;
 }
 .filter .modal-wrapper {
-  --height        : 356px !important;
+	--height: 277px !important;
 }
 
 .sub-task .modal-wrapper {
@@ -154,14 +154,13 @@ ion-note {
 }
 
 ion-button {
-  text-transform : capitalize;
-  width          : 100%;
-  // --background   : #215e80;
-  --background   : #02a5e2;
-  font-size      : 15px;
-  --border-radius: 0px;
-  font-family: "proxima_nova_rgbold";
-    height         : 50px;
+	text-transform: capitalize;
+	width: 100%;
+	--background: #02a5e2;
+	font-size: 16px;
+	--border-radius: 0px;
+	font-family: "proxima_nova_rgbold";
+	height: 42px;
 }
 
 .btn-2 {
@@ -444,13 +443,15 @@ ion-item.select-interface-option {
 }
 
 .filter ion-item {
-  --min-height        : none !important;
-  --inner-padding-end : 10px;
-  --inner-border-width: 0 0 0 0;
-  --highlight-height  : 0px;
-  --padding-start     : 10px;
-  --margin            : 0px !important;
+	--min-height: none !important;
+	--inner-padding-end: 15px;
+	--inner-border-width: 0 0 0 0;
+	--highlight-height: 0px;
+	--padding-start: 15px;
+	--margin: 0px !important;
 }
+
+
 
 .filter ion-list {
   padding-top   : 0px;
@@ -1036,12 +1037,12 @@ input:-webkit-autofill:active {
 }
 
 .calendar_heading ion-label {
-  padding: 10px 5px;
-  text-align: center;
-  font-family: 'proxima_nova_rgbold';
-  display: block;
+	padding: 10px 5px;
+	text-align: center;
+	display: block;
+	font-family: "proxima_nova_rgregular";
+	font-weight: 600;
 }
-
 
 .calendar_heading:last-child {
   border-right: none !important;
@@ -1201,3 +1202,9 @@ input:-webkit-autofill:active {
 
 
 .p-0 {padding: 0px !important;}
+
+ion-datetime {
+	--padding-start: 0px !important;
+	font-size: 15px;
+	font-weight: 700;
+}
