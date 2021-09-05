@@ -42,11 +42,23 @@ ion-grid {
 }
 
 .notifull.sub_card .button_box ion-button {
-	--background: transparent;
-	background: transparent;
-	border-right: 1px solid #bfc6cc;
-	--box-shadow: none !important;
-  margin: 0px !important;
+
+
+  --background: transparent;
+background: transparent;
+border-right: 1px solid #bfc6cc;
+--box-shadow: none !important;
+margin: 0px !important;
+font-size: 13px !important;
+--padding-top: 0;
+--padding-bottom: 0;
+--padding-start: 0;
+--padding-end: 0;
+
+ion-icon {
+	margin-right: 5px;
+	font-size: 20px !important;
+}
 
 }
 .notifull.sub_card .button_box {
