@@ -4,7 +4,7 @@
         <div class="user_img_box">
             <div class="user_img">
               <!-- <ion-img src="../../../assets/images/settings.png"></ion-img> -->
-              <ion-label class="nmLbl">{{globle.userData.full_name.substring(0,1)}}</ion-label>
+              <ion-label class="nmLbl">{{firstLater()}}</ion-label>
             </div>            
             <!-- <div class="chosefile">
                 <input type="file" class="user_file">
@@ -13,8 +13,8 @@
         </div>        
     </ion-col>
     <ion-col class="user_content">
-            <ion-label class="name">{{globle.userData.full_name}}</ion-label>
-            <ion-label class="address">{{globle.userData.company_name}}</ion-label>
+            <ion-label class="name">{{global.userData.full_name}}</ion-label>
+            <ion-label class="address">{{global.userData.company_name}}</ion-label>
     </ion-col>
     <ion-col class="right_button" (click)="onClick(0)">
         <ion-img  src="../../../assets/images/vector.png"></ion-img>

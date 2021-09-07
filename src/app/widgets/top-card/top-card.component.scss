@@ -1,3 +1,11 @@
 ion-row {
-  margin: 8px 0px 0px 0px;
+  margin: 10px;
+  align-items: center;
+}
+
+ion-col:first-child{
+  flex: 0 0 30px;
+}
+ion-col:first-child ion-img{
+  padding: 5px;
 }
