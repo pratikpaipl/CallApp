@@ -144,13 +144,16 @@ export class WeekComponent implements OnInit {
   formateDate(date) {
     return moment(date).format('DD MMM yyyy');
   }
+  checkAnyOneEnable(){
+    return this.govDueDates.find(x => x.is_disabled == 0)
+  }
   markAsComplete() {
     console.log('item ', this.govDueDates)
     let selIds = [];
     for (let i = 0; i < this.govDueDates.length; i++) {
       const element = this.govDueDates[i];
       if (element.isCheck != undefined && element.isCheck) {
-        selIds.push(element.legislationactformsid)
+        selIds.push(element.legislationact_forms_id)
       }
     }
 
@@ -175,7 +178,7 @@ export class WeekComponent implements OnInit {
 
     modal.onDidDismiss().then((dataReturned) => {
 
-      console.log('data returned ', dataReturned)
+      console.log('data returned ', selIds)
       if (dataReturned.data == 1) {
         this.completeDueDate(selIds)
       }

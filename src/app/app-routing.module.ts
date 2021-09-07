@@ -6,7 +6,7 @@ import { AuthGuard } from './shared/authguard.service';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, //stockist
   {
-    path: 'home', canActivate: [AuthGuard],
+    path: 'home',// canActivate: [AuthGuard],
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {

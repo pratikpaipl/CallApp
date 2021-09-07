@@ -105,7 +105,7 @@
 .gov-due {
   margin-top   : 10px;
   border-radius: 10px 10px 0px 0px;
-    padding: 15px 15px 0px 15px;
+    padding: 15px 15px 10px 15px;
   background   : white;
 }
 
@@ -139,18 +139,18 @@
 }
 
 
-.gov ion-row {
-  margin: 10px 0 0 0;
-}
+// .gov ion-row {
+//   margin: 10px 0 0 0;
+// }
 
-.gov ion-checkbox {
-  -webkit-margin-end    : 10px;
-  margin-inline-end     : 10px;
-  margin                : 0px 10px 0px 0px !important;
-  --border-color        : #003463;
-  --background-checked  : #65c184;
-  --border-color-checked: #65c184;
-}
+// .gov ion-checkbox {
+//   -webkit-margin-end    : 10px;
+//   margin-inline-end     : 10px;
+//   margin                : 0px 10px 0px 0px !important;
+//   --border-color        : #003463;
+//   --background-checked  : #65c184;
+//   --border-color-checked: #65c184;
+// }
 
 .gov ion-item {
   --inner-padding-end: 0px;
@@ -161,11 +161,33 @@
 ion-item ion-label {
   opacity: 1 !important;
 }
-.gov .head-lbl {
-  color       : #96abbe !important;
+.titles{
+  letter-spacing: 0.5px;
+  font-family: 'proxima_nova_rgbold' !important;
+}
+.viewbtn{
+  float: right;
+  color: #02a5e2 !important;
+}
+ion-label.gray{
+  color: #80657c91 !important;
+  font-size: 13px !important;
+  display: block;
+  line-height: normal;
   padding-left: 30px;
 }
-
+ion-checkbox {
+  --background-checked: #333333;
+  --border-color-checked: #333333;
+  -webkit-margin-end: 10px;
+  margin-inline-end: 10px;
+  margin-right: 10px;
+  margin-top: 8px !important;
+  margin-bottom: 0px !important;
+  border-radius: 0px !important;
+  --border-radius: 0px !important;
+  margin-left: 0px !important;
+}
 .task-list {
   position: relative;
 }
