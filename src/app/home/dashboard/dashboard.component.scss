@@ -26,6 +26,121 @@ ion-radio{
   --background: #cbd7e3;
     background: #cbd7e3;
 }
-div{
-  display: grid;
+
+
+
+.card_chart {
+	align-items: flex-end;
+	background: #e8e8e8;
+}
+
+.chart_box {
+	padding: 15px;
+	background: #fff;
+	min-height: 140px;
+	text-align: center;
+}
+
+.chart_box ion-label {
+	color: #02a5e2 !important;
+	font-size: 15px !important;
+	font-weight: 600;
+	letter-spacing: 0.8px;
+}
+
+.chart_indicator div {
+	padding: 14px 10px 4px 10px;
+}
+.card_chart .titles {
+	font-size: 16px !important;
+	font-weight: 600;
+	color: #333 !important;
+	display: block;
+	line-height: 14px !important;
+}
+
+.card_chart .titles span {
+	color: #ccc;
+	font-size: 13px !important;
+	display: inline-block;
+	vertical-align: bottom;
+	font-weight: 400;
+}
+
+
+.due_date {
+	background: #fff;
+	margin-top: 15px;
+	padding: 15px 15px 0px 15px;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.saprator {
+	background: #33657c91;
+	width: 40px;
+	height: 2px;
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	top: -6px;
+}
+
+
+ion-checkbox{
+	--background-checked: #333333;
+	--border-color-checked: #333333;
+	margin-inline-end: 10px;
+	margin-right: 10px;
+	margin-top: 8px !important;
+	margin-bottom:0px !important;
+	border-radius: 0px !important;
+  --border-radius: 0px !important;
+  margin-left: 0px !important;
+  }
+  
+  
+  ion-item {
+	--background: white;
+	background: white;
+	margin: 0px;
+	--min-height: auto !important;
+	border-radius: 0px;
+	padding: 0px !important;
+	--padding-start: 0 !important;
+	--inner-padding-end: 0px !important;
+	--inner-border-width: 0px !important;
+	display: flex !important;
+align-items: flex-start !important;
+}
+
+ion-label.gray {
+	color: #80657c91 !important;
+	font-size: 13px !important;
+	display: block;
+	line-height: normal;
+	padding-left: 30px;
+}
+
+ion-item ion-label {
+	display: block !important;
+	white-space: normal !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	padding-top: 5px !important;
+	padding-bottom: 15px !important;
+}
+
+
+.due_date_head {
+	justify-content: space-between;
+}
+
+.due_date_head .titles {
+	font-weight: 700;
+	letter-spacing: 0.5px;
+}
+.due_date_head .titles span {font-weight: 400;}
+.viewbtn {
+	float: right;
+	color: #02a5e2 !important;
 }
