@@ -52,7 +52,13 @@ ion-item ion-img {
 	overflow  : hidden;
 	overflow-y: auto;
 }
-
+.btn-blue  {
+    color: #02a5e2 !important;
+    font-family: "proxima_nova_rgbold";
+    font-size: 15px !important;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
 .list_element {
 	position     : relative;
 	padding-right: 30px;

@@ -126,7 +126,7 @@ export class CreateComponent implements OnInit {
   }
  
   createTask(){
-    console.log('this.selected ',this.selected )
+    console.log('this.selected ',this.selectedUser )
     // if(this.name == undefined || this.name ==''){
     //     this.global.showToast('Please enter name ',1500)
     //  }else 
@@ -136,7 +136,7 @@ export class CreateComponent implements OnInit {
       else if(this.dueDate == undefined){
       this.global.showToast('Please select due date ',1500)
     }
-      else if(this.selected == undefined || this.selected.length ==0){
+      else if(this.selectedUser == undefined || this.selectedUser.length ==0){
       this.global.showToast('Please select user ',1500)
     }
     else{
@@ -148,7 +148,7 @@ export class CreateComponent implements OnInit {
       postData.append('completionstatus','1')
       postData.append('start_date',this.apiService.getDate(this.startDate))
       postData.append('due_date',this.apiService.getDate(this.dueDate))
-      postData.append('assigned_to',Array.prototype.map.call(this.selected, s => s.generaluser_id).toString())
+      postData.append('assigned_to',Array.prototype.map.call(this.selectedUser, s => s.generaluser_id).toString())
 
       for (let i = 0; i < this.subTasks.length; i++) {
         const element = this.subTasks[i];
