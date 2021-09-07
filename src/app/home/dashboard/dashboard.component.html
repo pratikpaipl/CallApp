@@ -1,10 +1,8 @@
-<ion-grid>
- 
+<ion-grid> 
   <ion-row class="card_chart">
     <ion-col size="5" class="chart_box">
         <ion-label (click)="callList(0)">12 Tasks</ion-label>
         <canvas #barChart></canvas>
-
     </ion-col>
     <ion-col size="7" class="chart_indicator">
       <ion-row>
@@ -31,7 +29,6 @@
       </ion-row>
     </ion-col>
   </ion-row>
-
   <ion-row class="due_date">
       <ion-col size="12">
           <span class="saprator"></span>
@@ -60,7 +57,6 @@
           </ion-list>
       </ion-col>
   </ion-row>
-
   <ion-row class="spacing" style="padding: 15px;">
     <ion-col size="12">
       <ion-row class="due_date_head">
@@ -81,6 +77,7 @@
       </ion-segment>
     </ion-col>
   </ion-row>
+
   <!-- <ion-row style="margin: 10px 0px">
     <ion-col>
       <ion-radio-group [(ngModel)]="selAction">
@@ -95,6 +92,7 @@
       </ion-radio-group>
     </ion-col>
   </ion-row> -->
+  
   <task-item></task-item>
   <task-item></task-item>
   <task-item></task-item>
