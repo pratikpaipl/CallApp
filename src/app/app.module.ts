@@ -25,16 +25,15 @@ import { Storage } from '@ionic/storage-angular';
 import { GlobalProvider } from './shared/GlobalProvider';
 import { LoginGuard } from './shared/loginguard.service';
 import { Calendar } from '@ionic-native/calendar/ngx';
-
 import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
   entryComponents: [],
-  imports: [BrowserModule, FormsModule,   
+  imports: [BrowserModule, FormsModule,
     IonicModule.forRoot({ mode: 'md', rippleEffect: false }), HttpClientModule, AppRoutingModule],
-  providers: [Storage, GlobalProvider, StatusBar, Network,  Badge, OneSignal, Camera, NetworkInterface,  AuthGuard, LoginGuard, Keyboard,
-    SplashScreen,  Calendar,   InAppBrowser, EventService, NavigationService,      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  providers: [Storage, GlobalProvider, StatusBar, Network, Badge, OneSignal, Camera, NetworkInterface, AuthGuard, LoginGuard, Keyboard,
+    SplashScreen, Calendar, InAppBrowser, EventService, NavigationService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptorService, multi: true },
   ],

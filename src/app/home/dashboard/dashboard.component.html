@@ -6,7 +6,7 @@
   </ion-row>
   <ion-row style="margin: 10px 0px">
     <ion-col>
-      <ion-radio-group [(ngModel)]="selAction" >
+      <ion-radio-group [(ngModel)]="selAction">
         <ion-item>
           <ion-label>Today</ion-label>
           <ion-radio value="today"></ion-radio>
@@ -29,6 +29,7 @@
   <ion-row>
     <ion-col style="background: white; padding: 10px">
       <ion-label (click)="callList(0)">12 Tasks</ion-label>
+      <canvas #barChart></canvas>
     </ion-col>
     <ion-col>
       <ion-row>
@@ -76,18 +77,17 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-label
-            >Quartky statement of TDS deposited for the quarter
+          <ion-label>Quartky statement of TDS deposited for the quarter
             ending</ion-label>
         </ion-col>
       </ion-row>
     </ion-col>
   </ion-row>
 
-  <ion-row class="spacing" >
+  <ion-row class="spacing">
     <ion-col>
       <ion-label>Track Tasks (assigned by you) </ion-label>
-      <ion-segment [(ngModel)]="selAction" >
+      <ion-segment [(ngModel)]="selAction">
         <ion-segment-button value="today">
           <ion-label>Today</ion-label>
         </ion-segment-button>
@@ -111,7 +111,7 @@
       </ion-radio-group>
     </ion-col>
   </ion-row> -->
- <task-item></task-item>
- <task-item></task-item>
- <task-item></task-item>
+  <task-item></task-item>
+  <task-item></task-item>
+  <task-item></task-item>
 </ion-grid>
