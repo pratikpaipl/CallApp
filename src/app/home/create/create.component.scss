@@ -1,6 +1,3 @@
-// ion-content ion-row {
-//   margin: 0px 0px 15px 0px;
-// }
 .bottom-space{
   margin-bottom: 15px;
 }
@@ -9,18 +6,6 @@ ion-radio-group {
   display: flex;
 }
 
-// ion-item {
-  
-//   --background         : white;
-//   background           : white;
-//   margin               : 0 5px;
-//   --min-height         : 38px;
-//   border-radius        : 5px;
-//   --padding-start      : 0px;
-//   --padding-end        : 0px;
-//   --inner-padding-end  : 10px !important;
-//   --inner-padding-start: 10px !important;
-// }
 
 ion-radio {
   opacity: 0;
@@ -37,10 +22,31 @@ ion-radio {
 .item-radio-checked ion-label {
   color: white !important;
 }
+.forms_grids ion-radio-group {
+	flex-wrap: wrap !important;
+	display: flex !important;
+	margin: 0px -4px !important;
+}
+.forms_grids ion-radio-group ion-item {
+	--border-color: transparent;
+	--highlight-height: 0px;
+	--padding-start: 0px;
+	--padding-end: 0px;
+	position: relative;
+	--inner-padding-end: 0px;
+  margin: 0px 4px;
+}
+
+.forms_grids ion-radio-group ion-item ion-label {
+	padding: 5px;
+	margin: 0px !important;
+	display: block !important;
+	border: none !important;
+}
 
 .item-radio-checked {
-  --background: #002e58;
-  background  : #002e58;
+  --background: #7e0417;
+  background  : #7e0417;
 }
 
 div {
@@ -71,17 +77,77 @@ div {
 
 ion-item ion-img {
   position: absolute;
-  top     :10%;
-  right   : 0px;
-  padding : 5px;
-  width   : 35px;
-  cursor  : pointer;
-  color   : #000;
+  top: 1px;
+  right: 0px;
+  padding: 3px 0px 0px 3px;
+  width: 25px;
+  cursor: pointer;
+  color: #000;
 }
 
+
+
 ion-list-header {
-  padding      : 0 5px;
-  margin       : 0px;
-  min-height   : auto;
-  margin-bottom: 10px;
+	padding: 0;
+	margin: 0px;
+	min-height: auto;
+	margin-bottom: 5px;
+}
+
+
+ion-item ion-textarea{
+	--padding-top: 0;
+--padding-end: 0;
+--padding-bottom: 0;
+--padding-start: 0;
+font-family: 'proxima_nova_ltsemibold';
+letter-spacing: 0.5px;
+font-size: 14px !important;
+margin-top: 0px;
+}
+
+
+.btn-blue {
+	color: #02a5e2 !important;
+	font-family: 'proxima_nova_rgbold';
+	font-size: 15px !important;
+	letter-spacing: 0.5px;
+	cursor: pointer;
+}
+.sub_tsk ion-list {
+	padding: 0px !important;
+	padding-top: 6px !important;
+}
+.sub_tsk ion-list ion-item {
+	padding: 0px !important;
+	display: flex;
+	align-items: flex-start !important;
+  margin-bottom: 12px !important;
+  justify-content: space-between;
+}
+
+.sub_tsk ion-list ion-item ion-label {
+	margin: 0px !important;
+	padding: 0px !important;
+	white-space: normal !important;
+	font-family: 'proxima_nova_ltsemibold' !important;
+	font-size: 14px !important;
+	color: #333 !important;
+}
+
+.sub_tsk ion-list ion-item ion-label.date {
+	color: #80657c91 !important;
+	font-family: "proxima_nova_rgregular" !important;
+	padding-left: 5px !important;
+	display: block !important;
+	white-space: nowrap !important;
+  flex: 0 0 auto;
+}
+
+.sub_tsk ion-list ion-item ion-checkbox {
+	min-height: auto !important;
+	margin: 2px 5px 0px 0px !important;
+	width: 15px !important;
+	height: 15px !important;
+  
 }

@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   // @ViewChild('doughnutChart', { static: true }) doughnutChart: Chart;
   @ViewChild('barChart', { static: true }) barChart;
   bars: any;
-  colorArray: any = ["#0c365e", "#d94c49", "#bbcddf",];
+  colorArray: any = ["#02a5e2", "#ed1a3b", "#333333",];
 
   constructor(public store: StorageService, private navigation: NavigationService, public globle: GlobalProvider, public router: Router) {
   }
@@ -63,11 +63,11 @@ export class DashboardComponent implements OnInit {
     console.log("afterinit");
     setTimeout(() => {
       this.createBarChart()
-    }, 2000);
+    }, 1000);
   }
   createBarChart() {
     let ctx = this.barChart.nativeElement;
-    ctx.height = 120;
+    ctx.height = 250;
 
     this.bars = new Chart(ctx, {
       type: 'doughnut',
@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
           backgroundColor: this.colorArray, // array should have same number of elements as number of dataset
           borderColor: this.colorArray,// array should have same number of elements as number of dataset
           fill: false,
-          borderWidth: 1,
+          borderWidth: 0.3,
         }]
       },
       options: {

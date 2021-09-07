@@ -135,8 +135,9 @@ ion-app {
 }
 
 ion-title {
-  color: #333333 !important;
-  font-family: "proxima_nova_rgbold";
+	color: #263238 !important;
+	font-family: "proxima_nova_rgbold";
+	font-size: 18px !important;
 }
 
 ion-label {
@@ -1209,6 +1210,11 @@ input:-webkit-autofill:active {
 
 ion-datetime {
 	--padding-start: 0px !important;
-	font-size: 15px;
-	font-weight: 700;
+	font-size: 14px !important;
+	font-family: 'proxima_nova_ltsemibold';
+	--padding-top: 5px;
+	--padding-end: 0;
+	--padding-bottom: 5px;
+	--padding-start: 16px;
 }
+

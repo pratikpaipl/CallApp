@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
 
   isShowUp = false;
   showWeek = false;
-  selected = 1
+  selected = 2
 
   minDate: any = new Date().toISOString()
   maxDate = moment().add(3, 'y').format('YYYY');
