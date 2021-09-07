@@ -11,6 +11,8 @@ import { StorageService } from 'src/app/shared/StorageService';
 export class TopCardComponent implements OnInit {
 
   @Input()
+  title: String;
+  @Input()
   fromPage: String;
 
   @Input()

@@ -22,17 +22,23 @@ export class SettingsComponent implements OnInit {
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
 
-  constructor(public store: StorageService, private navigation: NavigationService, public globle: GlobalProvider,public router: Router) {
+  constructor(public store: StorageService, private navigation: NavigationService, public global: GlobalProvider,public router: Router) {
   }
 
   async ngOnInit() {
 
   }
+
+  firstLater(){
+    if(this.global !=undefined && this.global.userData !=undefined && this.global.userData.full_name !=undefined)
+    return this.global.userData.full_name.substring(0,1)
+  }
+
   onClick(pageType){
     if(pageType !=3 && pageType != 6 && pageType !=8)
     this.router.navigateByUrl('/'+pageType)
     else
-    this.globle.showToast('Coming soon !!',1000);
+    this.global.showToast('Coming soon !!',1000);
   }
   publishBrand() {
     this.change.emit('publish');
