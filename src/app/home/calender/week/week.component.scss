@@ -12,6 +12,7 @@
   flex         : 0 0 14.28% !important;
   max-width    : 14.28% !important;
 }
+
 [col-1] {
   -webkit-box-flex: 0;
   -webkit-flex    : 0 0 8.33333%;
@@ -20,6 +21,7 @@
   width           : 14.285714285714286%;
   max-width       : 14.285714285714286%;
 }
+
 // ion-col.calendar_heading {
 //   border-right: 0px solid #e7eef5;
 // }
@@ -42,19 +44,21 @@
 .other-month-date {
   color: #bbcddf;
 }
-.week-current{
-  background: #e7f8ff;
-  border-bottom: 3px solid #02a5e2;  
+
+.week-current {
+  background   : #e7f8ff;
+  border-bottom: 3px solid #02a5e2;
 }
+
 .current {
   // background-color: #38536b;
   // border-radius   : 5px;
-  background: transparent;
+  background   : transparent;
   border-bottom: 0px solid #02a5e2;
 }
 
 .sel {
-  background: #e7f8ff;
+  background      : #e7f8ff;
   // border-bottom: 3px solid #02a5e2;
 }
 
@@ -66,29 +70,29 @@
 
 .arrow_box {
   // flex: 0 0 20px;
-  flex: 0 0 20px;
-    background: #4c657c91;
-    padding: 10px;
+  flex      : 0 0 20px;
+  background: #4c657c91;
+  padding   : 10px;
 }
 
 .month_box {
   // flex      : 0 0 100%;
   // max-width : calc(100% - 40px);
-  flex: 0 0 130px;
-  max-width: 130px;
+  flex      : 0 0 130px;
+  max-width : 130px;
   text-align: center;
   background: white;
-  padding: 10px;
+  padding   : 10px;
 }
 
 .month_box ion-label {
- font-family: 'proxima_nova_rgbold' !important;
+  font-family: 'proxima_nova_rgbold' !important;
 }
 
 .calendar-month {
-  align-items    : center;
+  align-items       : center;
   // justify-content: space-between;
-  flex-wrap      : nowrap;
+  flex-wrap         : nowrap;
 }
 
 .arrow_box ion-icon {
@@ -105,7 +109,7 @@
 .gov-due {
   margin-top   : 10px;
   border-radius: 10px 10px 0px 0px;
-    padding: 15px 15px 10px 15px;
+  padding      : 15px 15px 10px 15px;
   background   : white;
 }
 
@@ -158,42 +162,48 @@
   --padding-end      : 0px;
   --min-height       : 25px
 }
+
 ion-item ion-label {
   opacity: 1 !important;
 }
-.titles{
+
+.titles {
   letter-spacing: 0.5px;
-  font-family: 'proxima_nova_rgbold' !important;
+  font-family   : 'proxima_nova_rgbold' !important;
 }
-.viewbtn{
+
+.viewbtn {
   float: right;
   color: #02a5e2 !important;
 }
-ion-label.gray{
-  color: #80657c91 !important;
-  font-size: 13px !important;
-  display: block;
-  line-height: normal;
+
+ion-label.gray {
+  color       : #80657c91 !important;
+  font-size   : 13px !important;
+  display     : block;
+  line-height : normal;
   padding-left: 30px;
 }
+
 ion-checkbox {
-  --background-checked: #333333;
+  --background-checked  : #333333;
   --border-color-checked: #333333;
-  -webkit-margin-end: 10px;
-  margin-inline-end: 10px;
-  margin-right: 10px;
-  margin-top: 8px !important;
-  margin-bottom: 0px !important;
-  border-radius: 0px !important;
-  --border-radius: 0px !important;
-  margin-left: 0px !important;
+  -webkit-margin-end    : 10px;
+  margin-inline-end     : 10px;
+  margin-right          : 10px;
+  margin-top            : 8px !important;
+  margin-bottom         : 0px !important;
+  border-radius         : 0px !important;
+  --border-radius       : 0px !important;
+  margin-left           : 0px !important;
 }
+
 .task-list {
   position: relative;
 }
-.tast_row{
 
-}
+.tast_row {}
+
 .task-list::after {
   content   : "";
   display   : block;
@@ -211,29 +221,29 @@ ion-segment {
 }
 
 ion-segment-button {
-  --ion-color-primary: transparent;
-  background         : transparent;
+  --ion-color-primary: white;
+  background         : white;
   position           : relative;
 }
 
 ion-segment-button ion-label {
-  color         : #96abbe !important;
+  font-family   : 'proxima_nova_rgregular';
+  color         : #333333 !important;
   text-transform: capitalize !important;
 }
 
 ion-segment-button.segment-button-checked ion-label {
-  color         : #003463 !important;
-  text-transform: capitalize !important;
+  font-family: 'proxima_nova_rgbold';
 }
 
 ion-segment-button.segment-button-checked::after {
   content      : "";
   display      : block;
-  background   : #003463;
+  background   : #02a5e2;
   position     : absolute;
   bottom       : 0px;
-  width        : 20px;
-  height       : 5px;
+  width        : 40px;
+  height       : 3px;
   border-radius: 10px;
   left         : 50%;
   transform    : translate(-50%, 0%);
@@ -255,6 +265,7 @@ ion-segment-button.segment-button-checked::after {
   left      : -15px;
   bottom    : 0px;
 }
+
 .tast_row::after {
   content   : "";
   display   : block;

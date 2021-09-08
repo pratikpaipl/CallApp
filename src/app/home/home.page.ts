@@ -22,12 +22,13 @@ export class HomePage implements OnInit {
 
   isShowUp = false;
   showWeek = false;
-  selected = 2
+  selected = 0
 
   minDate: any = new Date().toISOString()
   maxDate = moment().add(3, 'y').format('YYYY');
 
   selectedDate: any = new Date().toISOString()
+  weekSelDate: any = new Date().toISOString()
   constructor(public store: StorageService, public globle: GlobalProvider, public apiService: ApiService, private eventService: EventService, public router: Router) {
 
   }
@@ -65,6 +66,7 @@ export class HomePage implements OnInit {
   }
   changeView(event) {
     console.log('Change View ', event);
+    this.weekSelDate = moment(event.selectedDay)
     this.showWeek = event.changeView;
     this.selMonthYear = event.selDate;
   }
