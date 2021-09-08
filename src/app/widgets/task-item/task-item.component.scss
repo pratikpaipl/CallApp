@@ -9,9 +9,10 @@
 }
 ion-label.gray {
   color: #80657c91 !important;
-  font-size: 13px !important;
-  display: block;
-  line-height: normal;
+font-size: 13px !important;
+line-height: normal;
+display: block;
+margin-bottom: 6px;
 }
 
 .nmLblView{
@@ -29,4 +30,23 @@ ion-label.gray {
   margin: 0 auto;
   line-height: 27px;
   color: white !important;
+}
+
+
+
+.task_box {
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+.task_box .name {
+	font-family: 'proxima_nova_thextrabold';
+	font-size: 15px !important;
+	padding-left: 5px !important;
+}
+
+.task_boxss {
+	justify-content: space-between !important;
+	display: flex !important;
 }

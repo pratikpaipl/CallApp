@@ -151,3 +151,9 @@ margin-top: 0px;
 	height: 15px !important;
   
 }
+
+.bottom-space ion-input {
+	--padding-top: 8px;
+	--padding-end: 0;
+	--padding-bottom: 8px;
+}
