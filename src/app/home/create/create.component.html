@@ -13,14 +13,14 @@
 <ion-content>
 
   <ion-grid class="forms_grids">
-    <!-- <ion-row>
+    <ion-row class="bottom-space">
       <ion-col>
         <ion-label position="floating">Name</ion-label>
         <ion-item class="field">
           <ion-input [(ngModel)]="name"></ion-input>
         </ion-item>
       </ion-col>
-    </ion-row> -->
+    </ion-row>
     <ion-row class="bottom-space">
       <ion-col>
         <ion-label position="floating">Description</ion-label>
@@ -52,7 +52,7 @@
             Set Priority
           </ion-label>
         </ion-list-header>
-        <ion-radio-group [(ngModel)]="selPriority" [value]="selPriority" (ngModelChange)="onSelectedPriority()" >
+        <ion-radio-group [(ngModel)]="selPriority" [value]="selPriority" (ngModelChange)="onSelectedPriority()">
           <ion-item style="margin-right: 5px; padding: 0px !important;" *ngFor="let item of taskPriority">
             <ion-label>{{item.taskpriority}}</ion-label>
             <ion-radio value="{{item.taskpriority_id}}"></ion-radio>
@@ -61,7 +61,7 @@
       </ion-col>
     </ion-row>
     <ion-row class="bottom-space sub_tsk">
-      <ion-col  size="12" *ngIf="subTasks.length >0">
+      <ion-col size="12" *ngIf="subTasks.length >0">
         <ion-list-header>
           <ion-label>Sub Tasks</ion-label>
         </ion-list-header>
@@ -69,7 +69,8 @@
           <ion-item style="--inner-padding-end: 0px !important;" *ngFor="let entry of subTasks">
             <ion-label class="name">{{entry.name}}</ion-label>
             <ion-label class="date">{{this.apiService.getDate(entry.value)}}</ion-label>
-            <ion-checkbox style="margin-inline-end: 0px;--border-radius: 50%;" slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
+            <ion-checkbox style="margin-inline-end: 0px;--border-radius: 50%;" slot="start"
+                          [(ngModel)]="entry.isChecked"></ion-checkbox>
           </ion-item>
         </ion-list>
       </ion-col>
@@ -80,8 +81,9 @@
     </ion-row>
     <ion-row class="bottom-space">
       <ion-col>
-          <!-- <ion-label position="floating">Assign to*</ion-label> -->
-          <ng-select [(ngModel)]="selectedUser" multiple="true"  placeholder="Assign to*" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeUser($event)">
+        <!-- <ion-label position="floating">Assign to*</ion-label> -->
+        <ng-select [(ngModel)]="selectedUser" multiple="true" placeholder="Assign to*"
+                   [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeUser($event)">
           <ng-option *ngFor="let user of userIds" [value]="user.generaluser_id"> {{user.full_name}}</ng-option>
         </ng-select>
       </ion-col>
@@ -90,7 +92,7 @@
       <ion-col>
         <ion-label position="floating">Add Tag</ion-label>
         <ion-item class="field">
-          <ion-input [(ngModel)]="tags" placeholder="enter tags" ></ion-input>
+          <ion-input [(ngModel)]="tags" placeholder="enter tags"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

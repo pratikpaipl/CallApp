@@ -20,7 +20,7 @@
 
 <ion-content #content id="page" [scrollEvents]="true" (ionScroll)="function($event)">
   <month *ngIf="selected == 0 && !showWeek" [selectedDate]="selectedDate" (change)="changeView($event)"></month>
-  <week [selectedDate]="selectedDate" *ngIf="selected == 0 && showWeek"></week>
+  <week [selectedDate]="weekSelDate" *ngIf="selected == 0 && showWeek"></week>
   <dashboard *ngIf="selected == 1 "></dashboard>
   <create-task *ngIf="selected == 2 "></create-task>
   <notification *ngIf="selected == 3 "></notification>

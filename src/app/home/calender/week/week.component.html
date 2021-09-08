@@ -1,6 +1,6 @@
 <div class="calendar-header">
   <ion-row class="calendar-month">
-    <ion-col  class="arrow_box" (click)="previousWeek()">
+    <ion-col class="arrow_box" (click)="previousWeek()">
       <ion-icon name="chevron-back-outline" color="#263238"></ion-icon>
     </ion-col>
     <ion-col class="month_box">
@@ -17,12 +17,12 @@
 </div>
 
 
-<ion-grid style="background: white; margin: 10px;"> 
+<ion-grid style="background: white; margin: 10px;">
   <ion-row class="calendar-weekday">
     <ion-col [ngClass]=" item.isCurrent ? 'current calendar_heading' :item.selected ? 'sel calendar_heading':'other calendar_heading' "
              *ngFor="let item of days;let i = index" (click)="onClick(item,i)">
       <div>
-        <div [ngClass]=" item.isCurrent ? 'week-current' :item.selected ? 'sel ':'other' " >
+        <div [ngClass]=" item.isCurrent ? 'week-current' :item.selected ? 'sel ':'other' ">
           <ion-label class="heading">{{ item.lbl }}</ion-label>
           <ion-label class="date">{{ item.day }}</ion-label>
         </div>
@@ -38,16 +38,16 @@
 <ion-grid class="gov-due">
   <ion-row>
     <ion-col>
-     
+
       <!-- <ion-label class="headig">Gov. Due Dates</ion-label> -->
       <ion-grid class="gov">
-        <ion-row class="due_date_head" >
+        <ion-row class="due_date_head">
           <ion-col style="max-width: calc(100% - 60px); flex: 0 0 100%;">
-                <ion-label class="titles">Govt. Due Dates <span>({{govDueDates.length}})</span></ion-label>
-            </ion-col>
-            <ion-col>
-              <ion-label class="viewbtn">View all</ion-label>
-            </ion-col>
+            <ion-label class="titles">Govt. Due Dates <span>({{govDueDates.length}})</span></ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label class="viewbtn">View all</ion-label>
+          </ion-col>
         </ion-row>
         <ion-row *ngIf="govDueDates.length == 0">
           <ion-col class="text-center">
@@ -55,7 +55,7 @@
             <ion-label>No Gov. Due Date today</ion-label>
           </ion-col>
         </ion-row>
-        
+
 
         <!-- <ion-list class="chklist">  
             <ion-label class="gray">Tax Manager</ion-label>          
@@ -71,27 +71,27 @@
           </ion-list> -->
         <ion-row class="chklist" *ngFor="let item of govDueDates">
           <ion-col>
-            <ion-label class="gray" style="margin-top: 10px;" >{{item.heading}}</ion-label>
-            <ion-item *ngIf="item.is_disabled" >
+            <ion-label class="gray" style="margin-top: 10px;">{{item.heading}}</ion-label>
+            <ion-item *ngIf="item.is_disabled">
               <ion-label style="margin: 0px;">{{item.content}}</ion-label>
               <ion-checkbox slot="start" [disabled]="item.is_disabled" [checked]="item.is_disabled"></ion-checkbox>
             </ion-item>
-            <ion-item *ngIf="!item.is_disabled" >
+            <ion-item *ngIf="!item.is_disabled">
               <ion-label>{{item.content}}</ion-label>
               <ion-checkbox slot="start" [(ngModel)]="item.isCheck"></ion-checkbox>
             </ion-item>
           </ion-col>
         </ion-row>
-        <ion-row  *ngIf="govDueDates.length != 0 && checkAnyOneEnable()" >
+        <ion-row *ngIf="govDueDates.length != 0 && checkAnyOneEnable()">
           <ion-col size="12" class="p-0">
-           <ion-item >
-            <ion-label position="floating">Compliance remarks</ion-label>
-            <ion-input [(ngModel)]="remarks"  ></ion-input>
-           </ion-item>
+            <ion-item>
+              <ion-label position="floating">Compliance remarks</ion-label>
+              <ion-input [(ngModel)]="remarks"></ion-input>
+            </ion-item>
           </ion-col>
           <ion-col class="p-0">
             <ion-button class="complete" (click)="markAsComplete()">
-              <ion-icon name="checkmark-circle-outline" ></ion-icon> Mark as Complete
+              <ion-icon name="checkmark-circle-outline"></ion-icon> Mark as Complete
             </ion-button>
           </ion-col>
         </ion-row>
@@ -120,12 +120,12 @@
               <ion-label class="titles">{{item.taskname}}</ion-label>
               <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
             </ion-col>
-            <ion-col size="12"  *ngIf="item.child_task.length > 0">
+            <ion-col size="12" *ngIf="item.child_task.length > 0">
               <ion-row class="p-0">
                 <ion-col class="p-0">
-              <ion-label class="titles">Sub - Tasks</ion-label>
+                  <ion-label class="titles">Sub - Tasks</ion-label>
                 </ion-col>
-                </ion-row>
+              </ion-row>
               <ion-grid *ngFor="let sub of item.child_task" class="p-0 ">
                 <ion-row class="p-0">
                   <ion-col class="p-0">
@@ -224,8 +224,8 @@
 
                     <ion-grid class="p-0" *ngIf="item.child_task.length > 0">
                       <ion-label style="padding-top: 10px;" class="titles">Sub - Tasks</ion-label>
-                      <ion-row  *ngFor="let sub of item.child_task">
-                        <ion-col size="12" >
+                      <ion-row *ngFor="let sub of item.child_task">
+                        <ion-col size="12">
                           <ion-label class="content">{{sub.taskname}}</ion-label>
                           <ion-label class="contents">{{formateDate(sub.duedate)}}</ion-label>
                         </ion-col>
