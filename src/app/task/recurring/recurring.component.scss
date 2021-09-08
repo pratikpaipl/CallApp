@@ -56,10 +56,9 @@ ion-checkbox {
 	--background: #cad6df;
 	background  : #cad6df;
 }
-
-
-
-
+.date_row{
+	padding: 10px 0px;
+}
 .titles {
 	color: #002e58 !important;
 	font-size: 17px !important;
@@ -104,7 +103,9 @@ ion-checkbox {
 	margin: 0px !important;
 	padding: 10px 0px !important;
 }
-
+.week_box{
+border: 1px solid #cad6df;
+}
 
 
 .weekly_items {

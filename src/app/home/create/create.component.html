@@ -2,7 +2,7 @@
 <ion-content>
 
   <ion-grid class="forms_grids">
-    <ion-row class="bottom-space">
+    <ion-row class="bottom-space" style="margin-top: 10px;">
       <ion-col>
         <ion-label position="floating">Name</ion-label>
         <ion-item class="field">
@@ -77,14 +77,14 @@
         </ng-select>
       </ion-col>
     </ion-row>
-    <ion-row class="bottom-space">
+    <!-- <ion-row class="bottom-space">
       <ion-col>
         <ion-label position="floating">Add Tag</ion-label>
         <ion-item class="field">
           <ion-input [(ngModel)]="tags" placeholder="enter tags"></ion-input>
         </ion-item>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row>
       <ion-col>
         <ion-item>
@@ -98,7 +98,7 @@
       <ion-col>
         <ion-item (click)="setAsRecurring()">
           <ion-label>Mark as recurring</ion-label>
-          <ion-toggle></ion-toggle>
+          <ion-toggle [(ngModel)]="isRecurring"></ion-toggle>
         </ion-item>
       </ion-col>
     </ion-row>

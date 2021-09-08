@@ -29,7 +29,9 @@
 .calendar_heading ion-col {
   margin: 5px;
 }
-
+.dates_slotes {
+  margin-bottom: 5px;
+}
 .col {
   text-align: center;
   padding   : 5px;
@@ -49,13 +51,19 @@
   background   : #e7f8ff;
   border-bottom: 3px solid #02a5e2;
 }
-
-.current {
-  // background-color: #38536b;
-  // border-radius   : 5px;
-  background   : transparent;
-  border-bottom: 0px solid #02a5e2;
+.week-current ion-label.date {
+  padding: 9px 5px !important;
 }
+.other {
+  border-bottom: 1px solid #e7eef5;
+}
+
+// .current {
+//   // background-color: #38536b;
+//   // border-radius   : 5px;
+//   background   : transparent;
+//   border-bottom: 0px solid #02a5e2;
+// }
 
 .sel {
   background      : #e7f8ff;
@@ -341,14 +349,14 @@ ion-icon {
   margin-right: 5px;
 }
 
-.row-border::after {
-  content   : '';
-  display   : block;
-  width     : 2px;
-  height    : 100%;
-  background: #f2f6fa;
-  position  : absolute;
-  left      : 50%;
-  top       : 0px;
-  transform : translate(-50%, 0%);
-}
+// .row-border::after {
+//   content   : '';
+//   display   : block;
+//   width     : 2px;
+//   height    : 100%;
+//   background: #f2f6fa;
+//   position  : absolute;
+//   left      : 50%;
+//   top       : 0px;
+//   transform : translate(-50%, 0%);
+// }

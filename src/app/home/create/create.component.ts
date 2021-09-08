@@ -23,6 +23,8 @@ export class CreateComponent implements OnInit {
   tags: any = '';
   name: any = '';
   desc: any = '';
+  isRecurring:any= false
+  recurringData: any
   selectedUser: any
   subTasks: any = []
   taskPriority = [];
@@ -47,18 +49,23 @@ export class CreateComponent implements OnInit {
       componentProps: {
         startDate: this.startDate,
         endDate: this.dueDate,
-        subTasks: this.subTasks
+        subTasks: this.subTasks,
+        recurringData:this.recurringData
       },
       translucent: true,
       backdropDismiss: false
     });
 
     popover.onDidDismiss().then((result) => {
-      console.log('Recurring ', result['data']);
+      console.log('Recurring ', result);
+      if(result.data.isSub){
+        this.isRecurring=true;
+        this.recurringData = result.data.data
+      }
       // this.viewType = result['data'];
 
     });
-
+    // if(this.isRecurring)
     return await popover.present();
   }
   async addSubTask() {
@@ -138,36 +145,52 @@ export class CreateComponent implements OnInit {
     else if (this.selectedUser == undefined || this.selectedUser.length == 0) {
       this.global.showToast('Please select user ', 1500)
     }
-    else {
-
+    else if(this.isRecurring){
       const postData = new FormData();
-      postData.append('taskname', this.name)
-      postData.append('taskdescription', this.desc)
-      postData.append('taskpriority_id', this.selPriority)
-      postData.append('completionstatus', '1')
-      postData.append('start_date', this.apiService.getDate(this.startDate))
-      postData.append('due_date', this.apiService.getDate(this.dueDate))
-      postData.append('assigned_to', Array.prototype.map.call(this.selectedUser, s => s.generaluser_id).toString())
+      postData.append('recurring_type', this.recurringData.recurring_type)
+      if(this.recurringData.recurring_type == 'weekly')
+      postData.append('weekly_days', this.recurringData.weekly_days.join(','))
+      if(this.recurringData.recurring_type == 'monthly')
+      postData.append('repeate_month', this.recurringData.repeate_month)
+      if(this.recurringData.recurring_type == 'yearly')
+      postData.append('repeate_year', this.recurringData.repeate_year)
 
-      for (let i = 0; i < this.subTasks.length; i++) {
-        const element = this.subTasks[i];
-        if (element.isChecked != undefined && element.isChecked) {
-          postData.append('subtask[' + i + '][taskname]', element.name)
-          postData.append('subtask[' + i + '][start_date]', this.apiService.getDate(element.value))
-        }
-
-      }
-      console.log('Data ', this.subTasks);
-      this.apiService.createTask(postData).subscribe((response) => {
-        let res: any = response;
-        this.messagePop(res.message);
-      },
-        (error: Response) => {
-          let err: any = error;
-          this.global.showToast(err.error.message, 4000);
-        }
-      );
+      this.callCreate(postData);
     }
+    else {
+      const postData = new FormData();
+        this.callCreate(postData);
+    }
+  }
+  callCreate(postData) {
+  
+    postData.append('taskname', this.name)
+    postData.append('taskdescription', this.desc)
+    postData.append('taskpriority_id', this.selPriority)
+    postData.append('completionstatus', '1')
+    postData.append('start_date', this.apiService.getDate(this.startDate))
+    postData.append('due_date', this.apiService.getDate(this.dueDate))
+    postData.append('assigned_to',this.selectedUser.join(','))
+    postData.append('is_recurring', this.isRecurring?'1':'0')
+
+    for (let i = 0; i < this.subTasks.length; i++) {
+      const element = this.subTasks[i];
+      if (element.isChecked != undefined && element.isChecked) {
+        postData.append('subtask[' + i + '][taskname]', element.name)
+        postData.append('subtask[' + i + '][start_date]', this.apiService.getDate(element.value))
+      }
+
+    }
+    console.log('Data ', this.subTasks);
+    this.apiService.createTask(postData).subscribe((response) => {
+      let res: any = response;
+      this.messagePop(res.message);
+    },
+      (error: Response) => {
+        let err: any = error;
+        this.global.showToast(err.error.message, 4000);
+      }
+    );
   }
   messagePop(message: any) {
     console.log('Open Message ', message);
@@ -195,6 +218,8 @@ export class CreateComponent implements OnInit {
       this.dueDate = ''
       this.selectedUser = ''
       this.subTasks = ''
+      this.recurringData=undefined
+      this.isRecurring=false
       this.dueDate = undefined
       if (dataReturned.data == 1) {
         // this.completeDueDate(selIds)
