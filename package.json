@@ -45,8 +45,9 @@
     "@ionic/storage-angular": "^3.0.6",
     "@ng-select/ng-select": "^7.2.0",
     "@types/crypto-js": "^4.0.2",
-      "chart.js": "^2.9.4",
+    "chart.js": "^2.9.4",
     "cordova-browser": "6.0.0",
+    "cordova-ios": "6.2.0",
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-res": "^0.15.2",
     "crypto-js": "^4.0.0",
@@ -72,8 +73,6 @@
     "codelyzer": "^6.0.0",
     "cordova-android": "^10.1.0",
     "cordova-androidx-build": "^1.0.4",
-    "cordova-plugin-badge": "^0.8.8",
-    "cordova-plugin-calendar": "^5.1.5",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -89,7 +88,6 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "onesignal-cordova-plugin": "^2.11.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
@@ -106,21 +104,16 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-badge": {},
-      "onesignal-cordova-plugin": {},
       "cordova-plugin-camera": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "cordova-plugin-network-information": {},
-      "cordova-plugin-networkinterface": {},
-      "cordova-plugin-calendar": {
-        "CALENDAR_USAGE_DESCRIPTION": " ",
-        "CONTACTS_USAGE_DESCRIPTION": " "
-      }
+      "cordova-plugin-networkinterface": {}
     },
     "platforms": [
       "browser",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

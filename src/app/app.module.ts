@@ -4,12 +4,10 @@ import { Network } from '@ionic-native/network/ngx';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { Badge } from '@ionic-native/badge/ngx';
 import { Camera } from '@ionic-native/Camera/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,16 +22,14 @@ import { AuthGuard } from './shared/authguard.service';
 import { Storage } from '@ionic/storage-angular';
 import { GlobalProvider } from './shared/GlobalProvider';
 import { LoginGuard } from './shared/loginguard.service';
-import { Calendar } from '@ionic-native/calendar/ngx';
-import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
   entryComponents: [],
   imports: [BrowserModule, FormsModule,
     IonicModule.forRoot({ mode: 'md', rippleEffect: false }), HttpClientModule, AppRoutingModule],
-  providers: [Storage, GlobalProvider, StatusBar, Network, Badge, OneSignal, Camera, NetworkInterface, AuthGuard, LoginGuard, Keyboard,
-    SplashScreen, Calendar, InAppBrowser, EventService, NavigationService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  providers: [Storage, GlobalProvider, StatusBar, Network, Camera, NetworkInterface, AuthGuard, LoginGuard, Keyboard,
+    SplashScreen, InAppBrowser, EventService, NavigationService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptorService, multi: true },
   ],
