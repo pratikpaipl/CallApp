@@ -147,3 +147,53 @@ ion-item ion-label {
 	float: right;
 	color: #02a5e2 !important;
 }
+
+
+
+ion-segment {
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: -11px;
+	text-align: center !important;
+}
+
+ion-segment-button {
+	text-transform: capitalize;
+	font-family: "proxima_nova_rgregular";
+	color: #333333 !important;
+	--padding-top: 0;
+	--padding-end: 0 !important;
+	--padding-bottom: 0;
+	--padding-start: 0px !important;
+	--border: none !important;
+	min-height: auto !important;
+	--ion-color-primary: transparent !important;
+	margin-bottom: 0px !important;
+}
+
+ion-segment-button ion-label {
+	margin-top: 10px !important;
+	margin-bottom: 0 !important;
+	display: inline-block !important;
+	width: auto !important;
+	position: relative;
+	padding-bottom: 4px;
+}
+
+ion-segment-button ion-label::after {
+	width: 100%;
+	height: 2px;
+	position: absolute;
+	left: 0;
+	bottom: 0px;
+	display: none !important;
+	content: "";
+	background: #02a5e2;
+	
+}
+ion-segment-button.segment-button-checked ion-label {
+	font-family: 'proxima_nova_thextrabold';
+}
+ion-segment-button.segment-button-checked ion-label::after {
+	display: block !important;
+}

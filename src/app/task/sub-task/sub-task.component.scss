@@ -1,40 +1,70 @@
-ion-grid {
-	padding      : 20px;
-// 	background   : white !important;
-// 	--background : white !important;
-// 	border-radius: 15px 15px 0 0;
-// 	padding-top  : 110px;
+.model_blocks ion-grid {
+	margin: 0px;
+	padding: 15px !important;
+}
+.model_headers ion-img {
+	position: relative;
+	width: 20px;
+	float: right;
+	display: block;
 }
 
-// .model_blocks img {
-// 	display      : block;
-// 	position     : relative;
-// 	width        : 100%;
-// 	max-width    : 190px;
-// 	margin       : 0 auto;
-// 	margin-bottom: -100px;
-// }
-
-
-.buttons_box {
-	padding-top: 10px;
+.model_headers .shaprator {
+	background: #33657c91;
+	width: 40px;
+	height: 2px;
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	top: -6px;
 }
-
 
 .titles {
-	display    : block;
-	padding    : 0px;
-	font-weight: 700;
-	color      : #003463;
-	font-size  : 18px !important;
+	font-family: 'proxima_nova_rgbold';
+	font-size: 16px !important;
+	letter-spacing: 0.5px;
+}
+.input_box {
+	margin-top: 15px;
+}
+.input_box ion-input {
+	border: 1px solid #657c91;
+	width: 100% !important;
+	display: block !important;
+	color: #333 !important;
+	font-size: 14px !important;
+	font-family: "proxima_nova_ltsemibold";
+	padding: 0px !important;
+	--padding-top: 12px !important;
+	--padding-end: 10px !important;
+	--padding-bottom: 12px !important;
+	--padding-start: 10px !important;
 }
 
-.contents {
-	line-height: 17px;
-	display    : block;
-	font-size  : 15px !important;
-
+.input_box ion-datetime {
+	border: 1px solid #657c91;
+	width: 100% !important;
+	display: block !important;
+	color: #333 !important;
+	font-size: 14px !important;
+	font-family: "proxima_nova_ltsemibold";
+	padding: 13px 40px 13px 11px !important;
 }
+
+.input_box ion-label {
+	display: block !important;
+	padding-bottom: 10px !important;
+}
+.input_box.inputgrop {
+	position: relative;
+}
+.input_box.inputgrop ion-img {
+	position: absolute;
+	top: 39px;
+	right: 9px;
+	width: 24px;
+}
+
 
 ion-item ion-img {
 	filter  : invert(100%);
@@ -48,37 +78,26 @@ ion-item ion-img {
 }
 
 .subtask_block {
-	max-height: 270px;
+	max-height: 280px;
 	overflow  : hidden;
 	overflow-y: auto;
 }
 .btn-blue  {
     color: #02a5e2 !important;
-    font-family: "proxima_nova_rgbold";
-    font-size: 15px !important;
-    letter-spacing: 0.5px;
-    cursor: pointer;
+	font-family: "proxima_nova_rgbold";
+	font-size: 15px !important;
+	letter-spacing: 0.5px;
+	cursor: pointer;
+	display: block;
+	padding: 10px 0px 20px 0px !important;
 }
 .list_element {
 	position     : relative;
-	padding-right: 30px;
 }
 .remove_filds{
     font-size: 20px;
-    color: red;
-    width: 20px;
-    // position: absolute;
-    right: 0px;
-    margin: 5px;
+	color: red;
+	width: 20px;
+	right: 0px;
+	margin: 5px 0;
  }
-// .remove_filds {
-// 	font-size: 20px;
-// 	color    : red;
-// 	width    : 20px;
-// 	position : absolute;
-// 	top      : 50%;
-// 	z-index  : 11;
-// 	right    : 0px;
-// 	transform: translate(0%, -50%);
-// 	padding  : 0px;
-// }
