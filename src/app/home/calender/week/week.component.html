@@ -4,10 +4,6 @@
       <ion-icon name="chevron-back-outline" color="#263238"></ion-icon>
     </ion-col>
     <ion-col class="month_box">
-      <!-- <ion-item style="--background: transparent; color: white;">
-        <ion-datetime displayFormat="MMMM YYYY" [(ngModel)]="selMonthYear" [min]="cDate" (ionChange)="changeSelDate()"></ion-datetime>
-         &nbsp;Week-{{weekNo}}
-      </ion-item> -->
       <ion-label>{{date.format("MMM ")}}- {{weekNo}} Week</ion-label>
     </ion-col>
     <ion-col class="arrow_box" (click)="nextWeek()">
@@ -111,12 +107,15 @@
                   <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
                 </div>
               </ion-item>
-              <ion-item *ngIf="!item.completionstatus">
+              <ion-item *ngIf="!item.completionstatus" style="position: relative;">
                 <ion-checkbox slot="start" [(ngModel)]="item.isCheck" (ionChange)="tasksMark($event,item)">
                 </ion-checkbox>
                 <div>
                   <ion-label class="titles">{{item.taskname}}</ion-label>
                   <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
+                </div>
+                <div class="delete">
+                  <ion-icon name="trash"></ion-icon>
                 </div>
               </ion-item>
               <!-- <ion-label class="titles">{{item.taskname}}</ion-label> -->
