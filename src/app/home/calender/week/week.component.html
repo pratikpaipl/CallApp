@@ -115,8 +115,11 @@
                   <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
                 </div>
                 <div class="delete">
-                  <ion-icon name="trash"></ion-icon>
+                  <ion-icon name="trash" (click)="deleteTask(item)" ></ion-icon>
                 </div>
+                <!-- <div class="edit">
+                  <ion-icon name="create" (click)="updateTask(item)" ></ion-icon>
+                </div> -->
               </ion-item>
               <!-- <ion-label class="titles">{{item.taskname}}</ion-label> -->
             </ion-col>

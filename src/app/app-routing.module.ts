@@ -33,10 +33,6 @@ const routes: Routes = [
     path: 'verify-code',
     loadChildren: () => import('./auth/forgot-password/verification-code/verification-code.module').then(m => m.VerificationCodePageModule)
   },
-  // {
-  //   path: 'create', canActivate: [AuthGuard],
-  //   loadChildren: () => import('./home/create/create.module').then(m => m.CreatePageModule)
-  // },
   {
     path: 'task-list/:type', canActivate: [AuthGuard],
     loadChildren: () => import('./task/list/list.module').then(m => m.ListPageModule)

@@ -9,6 +9,7 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { SuccessPage } from 'src/app/modals/success/success.page';
 import { UserModel } from 'src/app/models/Users';
 import { SubTaskComponent } from 'src/app/task/sub-task/sub-task.compnent';
+import * as moment from 'moment';
 
 @Component({
   selector: 'create-task',
@@ -25,7 +26,7 @@ export class CreateComponent implements OnInit {
   desc: any = '';
   isRecurring:any= false
   recurringData: any
-  selectedUser: any
+  selectedUser: any=[]
   subTasks: any = []
   taskPriority = [];
   selPriority: any;
@@ -33,10 +34,11 @@ export class CreateComponent implements OnInit {
   startDate: any = new Date().toISOString();
   dueDate: any;
   minDate: any = new Date().toISOString();
+  maxDate: any = moment().add(50, 'y').format('YYYY');
   constructor(public global: GlobalProvider, public apiService: ApiService, private popoverCtrl: PopoverController, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
 
   }
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.getTaskPriority();
     this.getUsers();
@@ -113,10 +115,11 @@ export class CreateComponent implements OnInit {
   }
   getUsers() {
     this.apiService.genUserList().subscribe(
-      async (response) => {
+       (response) => {
         let res: any = response;
         if (res.success) {
-          this.userIds = await res.data
+          this.userIds = res.data
+          console.log(' this.userIds ',this.userIds);
         }
       },
       (error: Response) => {
