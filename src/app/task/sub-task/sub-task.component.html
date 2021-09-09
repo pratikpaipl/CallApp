@@ -1,59 +1,60 @@
 <div class="model_blocks">
-    <!-- <img src="../../../assets/images/success.png" /> -->
-    <ion-icon name="close" class="model-close" (click)="closeModal()" ></ion-icon>
-    <ion-grid>
-      <ion-row class="model_headers">
+  <!-- <img src="../../../assets/images/success.png" /> -->
+  <ion-icon name="close" class="model-close" (click)="closeModal()"></ion-icon>
+  <ion-grid>
+    <!-- <ion-row class="model_headers">
           <ion-col size="12"><span class="shaprator"></span></ion-col>
           <ion-col size="12">
               <ion-img src="../../../assets/images/close.png" (click)="closeModal()"></ion-img>
           </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12">
-             <ion-label class="titles">Add Sub Tasks</ion-label>
-        </ion-col>
-        <ion-col size="12">
-            <form [formGroup]="form" (submit)="submit()">
-                <div class="subtask_block">
-                    <div class="list_element" formArrayName="contacts">
-                        <div class="col-6" *ngFor="let contact of contactFormGroup.controls; let i = index;">
-                          
+      </ion-row> -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label class="titles">Add Sub Tasks</ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <form [formGroup]="form" (submit)="submit()">
+          <div class="subtask_block">
+            <div class="list_element" formArrayName="contacts">
+              <div class="col-6" *ngFor="let contact of contactFormGroup.controls; let i = index;">
 
 
 
 
 
-                          <div [formGroupName]="i" class="row">
-                              <ion-row>
-                                  <ion-col class="input_box">
-                                      <ion-label>Sub Task *</ion-label>
-                                      <ion-input formControlName="name"></ion-input>
-                                  </ion-col>
-                              </ion-row>
-                              <ion-row>
-                                  <ion-col class="input_box inputgrop">
-                                      <ion-label>Start Date *</ion-label>
-                                      <ion-datetime [min]="startDate" [max]="endDate" formControlName="value"></ion-datetime>
-                                      <ion-img src="../../../assets/images/t_calendar.png"></ion-img>
-                                  </ion-col>
-                              </ion-row>
-                              <ion-icon *ngIf="i != 0" class="remove_filds" name="remove-circle-outline" (click)="removeContact(i)"></ion-icon>
-                          </div>
-                        </div>
-                    </div>
-                    <ion-row>
-                      <ion-col style="flex: 0 0 140px; max-width: 140px; margin-top: 10px;">
-                        <ion-label class="btn-blue" (click)="addContact()">+ Add Another</ion-label>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-col text-center class="buttons_box">
-                        <ion-button  [disabled]="!form.valid" type="submit">Submit</ion-button>
-                      </ion-col>
-                    </ion-row>
+
+                <div [formGroupName]="i" class="row">
+                  <ion-row>
+                    <ion-col class="input_box">
+                      <ion-label>Sub Task *</ion-label>
+                      <ion-input formControlName="name"></ion-input>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col class="input_box inputgrop">
+                      <ion-label>Start Date *</ion-label>
+                      <ion-datetime [min]="startDate" [max]="endDate" formControlName="value"></ion-datetime>
+                      <ion-img src="../../../assets/images/t_calendar.png"></ion-img>
+                    </ion-col>
+                  </ion-row>
+                  <ion-icon *ngIf="i != 0" class="remove_filds" name="remove-circle-outline" (click)="removeContact(i)">
+                  </ion-icon>
                 </div>
-            </form>
-        </ion-col>
-      </ion-row>  
-    </ion-grid>
+              </div>
+            </div>
+            <ion-row>
+              <ion-col style="flex: 0 0 140px; max-width: 140px; margin-top: 10px;">
+                <ion-label class="btn-blue" (click)="addContact()">+ Add Another</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-center class="buttons_box">
+                <ion-button [disabled]="!form.valid" type="submit">Submit</ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </div>

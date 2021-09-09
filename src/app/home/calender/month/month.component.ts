@@ -44,8 +44,7 @@ export class MonthComponent implements OnInit {
 
   constructor(
     public store: StorageService,
-    private apiService: ApiService,
-    private calendar: Calendar, public modalController: ModalController,
+    private apiService: ApiService, public modalController: ModalController,
     private navigation: NavigationService,
     public globle: GlobalProvider
   ) {
@@ -74,7 +73,7 @@ export class MonthComponent implements OnInit {
         isSub: true,
         msg: 'Go back to Login and enter your New Password'
       },
-      backdropDismiss:false
+      backdropDismiss: false
     });
 
     modal.onDidDismiss().then((dataReturned) => {

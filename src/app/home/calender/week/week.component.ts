@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Calendar } from '@ionic-native/calendar/ngx';
 import { NavigationService } from 'src/app/services/NavigationService';
 import { GlobalProvider } from 'src/app/shared/GlobalProvider';
 import { StorageService } from 'src/app/shared/StorageService';
@@ -43,7 +42,7 @@ export class WeekComponent implements OnInit {
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
-  constructor(public store: StorageService, private apiService: ApiService, public modalController: ModalController, private calendar: Calendar, private navigation: NavigationService, public global: GlobalProvider) {
+  constructor(public store: StorageService, private apiService: ApiService, public modalController: ModalController, private navigation: NavigationService, public global: GlobalProvider) {
   }
   deleteEvent(ev) {
 
@@ -144,7 +143,7 @@ export class WeekComponent implements OnInit {
   formateDate(date) {
     return moment(date).format('DD MMM yyyy');
   }
-  checkAnyOneEnable(){
+  checkAnyOneEnable() {
     return this.govDueDates.find(x => x.is_disabled == 0)
   }
   markAsComplete() {

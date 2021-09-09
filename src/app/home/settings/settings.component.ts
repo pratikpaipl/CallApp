@@ -26,6 +26,7 @@ export class SettingsComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.global.userData = localStorage.getItem('user-data') != undefined ? JSON.parse(localStorage.getItem('user-data')) : {}
 
   }
 
