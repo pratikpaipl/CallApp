@@ -105,7 +105,7 @@ export class WeekComponent implements OnInit {
             this.days[i].total_task = res.data[element].total_task;
             this.days[i].govDate = res.data[element].gov_due_data;
             this.days[i].task = res.data[element].task_data;
-            console.log('Gov Due Date ', res.data[element])
+            // console.log('Gov Due Date ', res.data[element])
             if (this.days[i].day == moment(this.selectedDate).format("DD")) {
               this.days[i].selected = true
               this.tasks = res.data[element].task_data
@@ -161,17 +161,57 @@ export class WeekComponent implements OnInit {
     } else if (this.remarks.trim() == '') {
       this.global.showToast('Please enter compliance remarks', 1500)
     } else {
-      this.openModal(selIds)
+      this.openModal(selIds, 'Are you sure you want to complete <br /> checked gov due dates?', '0')
     }
     console.log('selIds ', selIds)
   }
 
-  async openModal(selIds) {
+  tasksMark(event, item) {
+    console.log('event ', event.detail.checked)
+    // console.log('item ', item)
+    for (let i = 0; i < item.child_task.length; i++) {
+      const element = item.child_task[i];
+      if (!element.completionstatus) {
+        item.child_task[i].isCheck = event.detail.checked;
+      }
+    }
+
+  }
+
+  markAsCompleteTask(item) {
+    console.log('item ', item)
+    let selIds = [];
+    if (item.isCheck != undefined && item.isCheck) {
+      selIds.push(item.generaluser_taskdetails_id)
+    }
+    // let selIds = [];
+    for (let i = 0; i < item.child_task.length; i++) {
+      const element = item.child_task[i];
+      if (item.isCheck != undefined && item.isCheck) {
+        selIds.push(element.generaluser_taskdetails_id)
+      } else {
+        if (element.isCheck != undefined && element.isCheck) {
+          selIds.push(element.generaluser_taskdetails_id)
+        }
+      }
+    }
+
+    if (selIds.length == 0) {
+      this.global.showToast('Please select at least one tasks ', 1500)
+      // } else if (this.remarks.trim() == '') {
+      //   this.global.showToast('Please enter compliance remarks', 1500)
+    } else {
+      this.openModal(selIds, 'Are you sure you want to complete <br /> checked task?', '1')
+    }
+    // console.log('selIds ', selIds)
+  }
+
+  async openModal(selIds, msg, type) {
     const modal = await this.modalController.create({
       component: ConfirmationPage,
       cssClass: 'alert-success',
       componentProps: {
-        msg: 'Are you sure you want to complete <br /> checked gov due dates?'
+        msg: msg
       }
     });
 
@@ -179,7 +219,11 @@ export class WeekComponent implements OnInit {
 
       console.log('data returned ', selIds)
       if (dataReturned.data == 1) {
-        this.completeDueDate(selIds)
+        if (type == 0)
+          this.completeDueDate(selIds)
+        else if (type == 1) {
+          this.completeTaskDate(selIds)
+        }
       }
     });
 
@@ -187,6 +231,23 @@ export class WeekComponent implements OnInit {
   }
   completeDueDate(seiId) {
     this.apiService.dueDateMarkCompletes(seiId, this.remarks).subscribe(
+      async (response) => {
+        let res: any = response;
+        if (res.success) {
+          this.remarks = ''
+          this.selectedDate = this.date
+          this.getWeeks(this.date);
+        }
+        this.global.showToast(res.message, 4000);
+      },
+      (error: Response) => {
+        let err: any = error;
+        this.global.showToast(err.error.message, 4000);
+      }
+    );
+  }
+  completeTaskDate(seiId) {
+    this.apiService.taskMarkCompletes(seiId, this.remarks).subscribe(
       async (response) => {
         let res: any = response;
         if (res.success) {

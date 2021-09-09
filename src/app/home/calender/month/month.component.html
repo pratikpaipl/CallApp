@@ -5,17 +5,23 @@
     </ion-col>
     <ion-col>
       <span>
-        <ion-label><div class="compliance"></div>&nbsp;Compliance</ion-label>
+        <ion-label>
+          <div class="compliance"></div>&nbsp;Compliance
+        </ion-label>
       </span>
     </ion-col>
     <ion-col>
       <span style="background:#e7e7e7;">
-        <ion-label> <div class="extention"></div>&nbsp;Extention</ion-label>
+        <ion-label>
+          <div class="extention"></div>&nbsp;Extention
+        </ion-label>
       </span>
     </ion-col>
     <ion-col>
       <span>
-        <ion-label><div class="task"></div>&nbsp;Tasks</ion-label>
+        <ion-label>
+          <div class="task"></div>&nbsp;Tasks
+        </ion-label>
       </span>
     </ion-col>
   </ion-row>
@@ -23,7 +29,7 @@
 
 <div class="calendar-body">
   <ion-grid style="background: white; margin: 15px;">
-    
+
     <ion-row class="calendar-weekday">
       <ion-col class="calendar_heading">
         <ion-label>Sun</ion-label>
@@ -58,12 +64,13 @@
       <ion-col col-1 *ngFor="let day of daysInThisMonth" (click)="selectDate(day.day)">
 
 
-        <ion-label style="background: #e7f8ff; border-bottom: 3px solid #02a5e2;" class="dates" *ngIf="currentDate === day.day; else otherDate">
-          <span class="date_number" >{{day.day}}</span>
+        <ion-label style="background: #e7f8ff; border-bottom: 3px solid #02a5e2;" class="dates"
+                   *ngIf="currentDate === day.day; else otherDate">
+          <span class="date_number">{{day.day}}</span>
           <!-- <span *ngIf="day.task !=0 " class="date_number" [ngClass]="day.day === day.startdate || day.day === day.duedate ? 'selecteds_dates' : ''">{{day.day}}</span>
           <span *ngIf="day.task ==0 " class="date_number" >{{day.day}}</span> -->
-
-          <div class="dates_slotes" style="margin-top: 10px;" *ngIf="day.gTotal != 0 || day.total_task != 0">
+          <!-- style="margin-top: 10px;"-->
+          <div class="dates_slotes" *ngIf="day.gTotal != 0 || day.total_task != 0">
             <span class="cricle" *ngIf="day.gTotal !=undefined && day.gTotal != 0">{{day.gTotal}}</span>
             <span class="squre" *ngIf="day.total_task !=undefined && day.total_task != 0">{{day.total_task}}</span>
           </div>
@@ -76,7 +83,7 @@
         </ion-label>
         <ng-template #otherDate class="otherDate">
           <ion-label class="dates">
-            <span class="date_number" >{{day.day}}</span>
+            <span class="date_number">{{day.day}}</span>
             <!-- <span *ngIf="day.task !=0 " class="date_number"
                   [ngClass]="day.day === day.startdate || day.day === day.duedate ? 'selecteds_dates' : ''">{{day.day}}</span>
             <span *ngIf="day.task ==0 " class="date_number">{{day.day}}</span> -->
@@ -86,7 +93,7 @@
               <span class="squre" *ngIf="day.total_task !=undefined && day.total_task != 0">{{day.total_task}}</span>
             </div>
 
-           
+
             <!-- <div *ngIf="day.task !=0 ">
                 <div class="selected_dates_slotes" [ngClass]="day.day === getDay(day.taskData[0].startdate) ? 'first' :day.day === getDay(day.taskData[0].duedate) ?'last': ''"
                     *ngIf="day.day >= getDay(day.taskData[0].startdate) && day.day <=getDay(day.taskData[0].duedate)">

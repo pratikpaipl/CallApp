@@ -18,25 +18,32 @@ export class ApiService {
     return this.callGet("get-Jwt-token");
   }
 
-  getDate(date){
+  getDate(date) {
     return moment(date).format('DD-MM-yyyy')
   }
 
-  allDueDates(startDate,endDate): any {
+  allDueDates(startDate, endDate): any {
     const postData = new FormData();
-      postData.append('start_date',this.getDate(startDate))
-      postData.append('end_date',this.getDate(endDate))
-    return this.callPost("get-all-due-dates",postData);
+    postData.append('start_date', this.getDate(startDate))
+    postData.append('end_date', this.getDate(endDate))
+    return this.callPost("get-all-due-dates", postData);
   }
-  dueDateMarkCompletes(ids,remark): any {
+  dueDateMarkCompletes(ids, remark): any {
     const postData = new FormData();
-      postData.append('legislationact_forms_id',ids.join(','))
-      postData.append('compliancestatus',"1")
-      postData.append('complianceremarks',remark)
-    return this.callPost("duedate-mark-complete",postData);
+    postData.append('legislationact_forms_id', ids.join(','))
+    postData.append('compliancestatus', "1")
+    postData.append('complianceremarks', remark)
+    return this.callPost("duedate-mark-complete", postData);
+  }
+  taskMarkCompletes(ids, remark): any {
+    const postData = new FormData();
+    postData.append('generaluser_taskdetails_id', ids.join(','))
+    // postData.append('compliancestatus',"1")
+    // postData.append('complianceremarks',remark)
+    return this.callPost("task-mark-as-complete", postData);
   }
   createSubTask(postData): any {
-    return this.callPost("create-subtask",postData);
+    return this.callPost("create-subtask", postData);
   }
   genUserList(): any {
     return this.callGet("get-gen-user-list");
@@ -45,8 +52,8 @@ export class ApiService {
     return this.callGet("task-priority");
   }
   createTask(postData): any {
-    
-    return this.callPost("task-create",postData);
+
+    return this.callPost("task-create", postData);
   }
   callPost(endPoint, postData) {
     postData.append('LanguageCode', 'eng')
@@ -59,7 +66,7 @@ export class ApiService {
     if (isDownload == undefined) {
       return this.http.get(environment.BaseUrl + endPoint + params);
     }
-   
+
   }
 
   dataURItoBlob(dataURI) {

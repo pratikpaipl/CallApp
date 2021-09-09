@@ -29,9 +29,11 @@
 .calendar_heading ion-col {
   margin: 5px;
 }
+
 .dates_slotes {
   margin-bottom: 5px;
 }
+
 .col {
   text-align: center;
   padding   : 5px;
@@ -51,9 +53,11 @@
   background   : #e7f8ff;
   border-bottom: 3px solid #02a5e2;
 }
+
 .week-current ion-label.date {
   padding: 9px 5px !important;
 }
+
 .other {
   border-bottom: 1px solid #e7eef5;
 }
@@ -204,6 +208,15 @@ ion-checkbox {
   border-radius         : 0px !important;
   --border-radius       : 0px !important;
   margin-left           : 0px !important;
+}
+
+.tasks ion-checkbox {
+  margin-top: -15px !important;
+}
+
+.tasks ion-item {
+  --padding-start    : 0px;
+  --inner-padding-end: 0px;
 }
 
 .task-list {
