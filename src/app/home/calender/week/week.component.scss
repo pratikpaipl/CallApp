@@ -363,6 +363,7 @@ ion-icon {
 	color: red;
 	font-size: 20px;
 	display: block;
+  z-index: 111;
 }
 
 
@@ -470,17 +471,17 @@ ion-icon {
 	text-align: center !important;
   position: relative;
 }
-.button_boxs::after {
-	content: "";
-	background: #f2f2f2;
-	width: 2px;
-	height: 100%;
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 51%;
-	transform: translate(-50%, 0);
-}
+// .button_boxs::after {
+// 	content: "";
+// 	background: #f2f2f2;
+// 	width: 2px;
+// 	height: 100%;
+// 	display: block;
+// 	position: absolute;
+// 	top: 0;
+// 	left: 51%;
+// 	transform: translate(-50%, 0);
+// }
 .button_boxs .complete, 
 .button_boxs .complete ion-icon{
 	color: #02a5e2 !important;

@@ -123,7 +123,7 @@
                     <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
                   </div>
                   <div class="delete">
-                      <ion-icon name="trash"></ion-icon>
+                      <ion-icon name="trash" (click)="deleteTask(item)"></ion-icon>
                   </div>
                   <!-- <div class="edit">
                     <ion-icon name="create" (click)="updateTask(item)" ></ion-icon>
@@ -179,78 +179,25 @@
                     </ion-col>
                   </ion-row>
                   <ion-row class="button_boxs">
-                    <ion-col size="6" class="p-0" *ngIf="!item.completionstatus">
+                    <ion-col size="12" class="p-0" *ngIf="!item.completionstatus">
                       <ion-button class="complete" (click)="markAsCompleteTask(item)">
                         <ion-icon name="checkmark"></ion-icon> Mark as Complete
                       </ion-button>
                     </ion-col>
-                    <ion-col size="6" class="p-0">
+                    <!-- <ion-col size="6" class="p-0">
                       <ion-button class="reject">
                         <ion-icon name="close-circle-outline"></ion-icon>Reject
                       </ion-button>
-                    </ion-col>
+                    </ion-col> -->
                   </ion-row>
                 </ion-grid>
               </ion-col>
             </ion-row>
           </div>
-sasa
+          
           <div class="grid_content" *ngIf="tasks != undefined && selectedTaskTab =='byYou'">
             <no-task *ngIf="assignedByYou.length == 0"></no-task>
             <ion-row class="tast_row" *ngFor="let item of assignedByYou">
-                            <ion-col size="12" class="tasks_cols">
-                <ion-item *ngIf="item.completionstatus">
-                  <ion-checkbox slot="start" [disabled]="item.completionstatus" [checked]="item.completionstatus">
-                  </ion-checkbox>
-                  <div>
-                    <ion-label class="titles">{{item.taskname}}</ion-label>
-                    <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
-                  </div>
-                </ion-item>
-                <ion-item *ngIf="!item.completionstatus">
-                  <ion-checkbox slot="start" [(ngModel)]="item.isCheck" (ionChange)="tasksMark($event,item)">
-                  </ion-checkbox>
-                  <div>
-                    <ion-label class="titles">{{item.taskname}}</ion-label>
-                    <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
-                  </div>
-                  <div class="delete">
-                      <ion-icon name="trash"></ion-icon>
-                  </div>
-                  <!-- <div class="edit">
-                    <ion-icon name="create" (click)="updateTask(item)" ></ion-icon>
-                  </div> -->
-                </ion-item>
-                <!-- <ion-label class="titles">{{item.taskname}}</ion-label> -->
-              </ion-col>
-              <ion-col size="12" *ngIf="item.child_task.length > 0">
-                <ion-grid class="sub_tasks_blocks">
-                    <ion-row class="p-0 ">
-                      <ion-col class="p-0">
-                        <ion-label class="titles">Sub - Tasks</ion-label>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row  *ngFor="let sub of item.child_task" class="p-0 sub_tasks_listas">
-                      <ion-col class="p-0">
-                        <ion-item *ngIf="sub.completionstatus">
-                          <ion-checkbox slot="start" [disabled]="sub.completionstatus" [checked]="sub.completionstatus">
-                          </ion-checkbox>
-                          <div>
-                            <ion-label class="titles">{{sub.taskname}}</ion-label>
-                            <ion-label class="contents">{{ formateDate(sub.due_date)}}</ion-label>
-                          </div>
-                        </ion-item>
-                        <ion-item *ngIf="!sub.completionstatus">
-                          <ion-checkbox slot="start" [(ngModel)]="sub.isCheck"></ion-checkbox>
-                          <div>
-                            <ion-label class="titles">{{sub.taskname}}</ion-label>
-                            <ion-label class="contents">{{ formateDate(sub.due_date)}}</ion-label>
-                          </div>
-                        </ion-item>
-                      </ion-col>
-                    </ion-row>
-                  </ion-grid>
-              </ion-col>
               <ion-col size="12">
                 <ion-grid class="p-0" *ngIf="item.assigned_user_details != undefined">
                   <ion-row class="assigned_row">
@@ -284,6 +231,60 @@ sasa
                   </ion-row> -->
                 </ion-grid>
               </ion-col>
+              <ion-col size="12" class="tasks_cols">
+                <ion-item *ngIf="item.completionstatus">
+                  <!-- <ion-checkbox slot="start" [disabled]="item.completionstatus" [checked]="item.completionstatus">
+                  </ion-checkbox> -->
+                  <div>
+                    <ion-label class="titles">{{item.taskname}}</ion-label>
+                    <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
+                  </div>
+                </ion-item>
+                <ion-item *ngIf="!item.completionstatus">
+                  <!-- <ion-checkbox slot="start" [(ngModel)]="item.isCheck" (ionChange)="tasksMark($event,item)">
+                  </ion-checkbox> -->
+                  <div>
+                    <ion-label class="titles">{{item.taskname}}</ion-label>
+                    <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
+                  </div>
+                  <!-- <div class="delete">
+                      <ion-icon name="trash"></ion-icon>
+                  </div> -->
+                  <!-- <div class="edit">
+                    <ion-icon name="create" (click)="updateTask(item)" ></ion-icon>
+                  </div> -->
+                </ion-item>
+                <!-- <ion-label class="titles">{{item.taskname}}</ion-label> -->
+              </ion-col>
+              <ion-col size="12" *ngIf="item.child_task.length > 0">
+                <ion-grid class="sub_tasks_blocks">
+                    <ion-row class="p-0 ">
+                      <ion-col class="p-0">
+                        <ion-label class="titles">Sub - Tasks</ion-label>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row  *ngFor="let sub of item.child_task" class="p-0 sub_tasks_listas">
+                      <ion-col class="p-0">
+                        <ion-item *ngIf="sub.completionstatus">
+                          <!-- <ion-checkbox slot="start" [disabled]="sub.completionstatus" [checked]="sub.completionstatus">
+                          </ion-checkbox> -->
+                          <div>
+                            <ion-label class="titles">{{sub.taskname}}</ion-label>
+                            <ion-label class="contents">{{ formateDate(sub.due_date)}}</ion-label>
+                          </div>
+                        </ion-item>
+                        <ion-item *ngIf="!sub.completionstatus">
+                          <!-- <ion-checkbox slot="start" [(ngModel)]="sub.isCheck"></ion-checkbox> -->
+                          <div>
+                            <ion-label class="titles">{{sub.taskname}}</ion-label>
+                            <ion-label class="contents">{{ formateDate(sub.due_date)}}</ion-label>
+                          </div>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+              </ion-col>
+              
             </ion-row>
           </div>
 
