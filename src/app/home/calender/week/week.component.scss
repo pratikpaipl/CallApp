@@ -135,16 +135,22 @@
 }
 
 .task-list {
-  margin-top   : 3px;
+  margin-top: 0;
   border-radius: 0px 0px 0px 0px;
-  padding      : 15px 15px 0px 15px;
-  background   : white;
+  padding: 0;
+  background: transparent !important;
 }
 
 .text-center {
   text-align: center;
 }
 
+
+.task_box_hed {
+	padding: 15px 15px 0px 15px;
+	background: #fff !important;
+	margin-top: 8px;
+}
 
 
 .task-note-bottom {
@@ -225,17 +231,7 @@ ion-checkbox {
 
 
 
-.task-list::after {
-  content: "";
-  display: block;
-  background: #f2f6fa;
-  position: absolute;
-  width: 100%;
-  height: 3px;
-  left: 0;
-  top: 83px;
-  z-index: 2;
-}
+
 
 ion-segment {
   z-index: 2;
@@ -272,32 +268,13 @@ ion-segment-button.segment-button-checked::after {
 
 
 .tasks_cols {
-  padding : 10px 0px;
+  padding: 8px;
   position: relative;
-  margin-bottom: 12px;
+  background: #fff;
+  margin-bottom: 10px;
 }
 
-.tasks_cols::after {
-  content   : "";
-  display   : block;
-  position  : absolute;
-  background: #f2f6fa;
-  width     : calc(100% + 30px);
-  height    : 2px;
-  left      : -15px;
-  bottom    : 0px;
-}
 
-.tast_row::after {
-  content   : "";
-  display   : block;
-  position  : absolute;
-  background: #f2f6fa;
-  width     : calc(100% + 30px);
-  height    : 5px;
-  left      : -15px;
-  bottom    : 0px;
-}
 
 .grid_content .titles {
   font-weight  : bold;
@@ -363,17 +340,6 @@ ion-icon {
   margin-right: 5px;
 }
 
-// .row-border::after {
-//   content   : '';
-//   display   : block;
-//   width     : 2px;
-//   height    : 100%;
-//   background: #f2f6fa;
-//   position  : absolute;
-//   left      : 50%;
-//   top       : 0px;
-//   transform : translate(-50%, 0%);
-// }
 
 
 
@@ -387,3 +353,25 @@ ion-icon {
 }
 
 
+
+
+
+.title {
+	font-family: 'proxima_nova_thextrabold';
+	font-size: 16px !important;
+}
+
+.title span {
+	font-family: 'proxima_nova_rgregular';
+}
+
+.btn_ink {
+	color: #02a5e2 !important;
+	font-size: 14px !important;
+}
+
+
+.tast_row {
+	background: transparent;
+	padding: 8px;
+}
