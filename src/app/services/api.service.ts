@@ -42,6 +42,11 @@ export class ApiService {
     // postData.append('complianceremarks',remark)
     return this.callPost("task-mark-as-complete", postData);
   }
+  taskDelete(id): any {
+    const postData = new FormData();
+    postData.append('generaluser_taskdetails_id', id)
+    return this.callPost("delete-task", postData);
+  }
   createSubTask(postData): any {
     return this.callPost("create-subtask", postData);
   }

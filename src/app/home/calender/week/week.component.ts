@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NavigationService } from 'src/app/services/NavigationService';
 import { GlobalProvider } from 'src/app/shared/GlobalProvider';
@@ -42,7 +43,7 @@ export class WeekComponent implements OnInit {
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
-  constructor(public store: StorageService, private apiService: ApiService, public modalController: ModalController, private navigation: NavigationService, public global: GlobalProvider) {
+  constructor(public store: StorageService,public router: Router, private apiService: ApiService, public modalController: ModalController, private navigation: NavigationService, public global: GlobalProvider) {
   }
   deleteEvent(ev) {
 
@@ -205,6 +206,29 @@ export class WeekComponent implements OnInit {
     }
     // console.log('selIds ', selIds)
   }
+  updateTask(item){
+    this.router.navigateByUrl('/home/update/'+item.generaluser_taskdetails_id);
+  }
+  async deleteTask(item){
+    const modal = await this.modalController.create({
+      component: ConfirmationPage,
+      cssClass: 'alert-success',
+      componentProps: {
+        msg: 'are you sure you want to delete '+item.taskname+'?'
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+
+      console.log('data returned ', item)
+      if (dataReturned.data == 1) {
+          this.deleteItem(item)
+        
+      }
+    });
+
+    return await modal.present();
+  }
 
   async openModal(selIds, msg, type) {
     const modal = await this.modalController.create({
@@ -252,6 +276,28 @@ export class WeekComponent implements OnInit {
         let res: any = response;
         if (res.success) {
           this.remarks = ''
+          this.selectedDate = this.date
+          this.getWeeks(this.date);
+        }
+        this.global.showToast(res.message, 4000);
+      },
+      (error: Response) => {
+        let err: any = error;
+        this.global.showToast(err.error.message, 4000);
+      }
+    );
+  }
+  deleteItem(item) {
+    this.apiService.taskDelete(item.generaluser_taskdetails_id).subscribe(
+      async (response) => {
+        let res: any = response;
+        if (res.success) {
+          // this.remarks = ''
+          let index = this.tasks.indexOf(item);
+          console.log(' index ',index);
+          // if(index > -1){
+          //   this.tasks.splice(index, 1);
+          // }
           this.selectedDate = this.date
           this.getWeeks(this.date);
         }
