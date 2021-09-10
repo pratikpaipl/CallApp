@@ -48,5 +48,70 @@ margin-bottom: 6px;
 
 .task_boxss {
 	justify-content: space-between !important;
-	display: flex !important;
+display: flex !important;
+position: relative;
+margin-bottom: 10px;
+}
+.task_boxss::after {
+	content: "";
+	display: block;
+	width: calc(100% + 20px);
+	position: absolute;
+	left: -10px;
+	bottom: 0px;
+	background: #f2f2f2;
+	height: 1px;
+}
+
+.task_boxss ion-col {
+	flex: 0 0;
+	white-space: nowrap !important;
+	padding: 5px 0 10px 0px;
+}
+
+
+.content {
+	display: block;
+	line-height: 18px;
+	margin-bottom: 10px;
+}
+
+.content.txtred {
+	color: #ed1a3b !important;
+}
+
+.subtasks {
+	background: #f8f8f8 !important;
+	width: calc(100% + 20px);
+	left: -10px;
+	position: relative;
+	padding: 10px;
+	margin-bottom: -10px;
+	padding-bottom: 10px;
+}
+
+.title {
+	font-family: 'proxima_nova_ltsemibold' !important;
+	display: block;
+}
+
+
+.tsk_date {
+	padding: 6px;
+	justify-content: space-between;
+	background: #e7e7e7;
+	margin: 5px 0;
+}
+
+.tsk_date .content {
+	margin: 0px;
+}
+
+.tsk_date ion-col:last-child {
+	flex: 0 0;
+	white-space: nowrap;
+	color: #80657c91;
+}
+.tsk_date ion-col:last-child ion-label{
+	color: #80657c91 !important;
 }

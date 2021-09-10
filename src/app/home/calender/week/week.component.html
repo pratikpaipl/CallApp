@@ -107,7 +107,7 @@
                   <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
                 </div>
               </ion-item>
-              <ion-item *ngIf="!item.completionstatus" style="position: relative;">
+              <ion-item *ngIf="!item.completionstatus">
                 <ion-checkbox slot="start" [(ngModel)]="item.isCheck" (ionChange)="tasksMark($event,item)">
                 </ion-checkbox>
                 <div>
@@ -115,7 +115,7 @@
                   <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
                 </div>
                 <div class="delete">
-                  <ion-icon name="trash"></ion-icon>
+                    <ion-icon name="trash"></ion-icon>
                 </div>
               </ion-item>
               <!-- <ion-label class="titles">{{item.taskname}}</ion-label> -->
