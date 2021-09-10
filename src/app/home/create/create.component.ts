@@ -34,7 +34,6 @@ export class CreateComponent implements OnInit {
   startDate: any = new Date().toISOString();
   dueDate: any;
   minDate: any = new Date().toISOString();
-  maxDate: any = moment().add(50, 'y').format('YYYY');
   constructor(public global: GlobalProvider, public apiService: ApiService, private popoverCtrl: PopoverController, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
 
   }

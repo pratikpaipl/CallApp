@@ -22,14 +22,14 @@
       <ion-col size="6" style="padding-right: 8px;">
         <ion-label position="floating">Start Date</ion-label>
         <ion-item class="field">
-          <ion-datetime [(ngModel)]="startDate" [min]="minDate" [max]="maxDate"></ion-datetime>
+          <ion-datetime [(ngModel)]="startDate" [min]="minDate" [max]="global.maxDate"></ion-datetime>
           <ion-img src="../../../assets/images/t_calendar.png"></ion-img>
         </ion-item>
       </ion-col>
       <ion-col size="6" style="padding-left: 8px;">
         <ion-label position="floating">Due Date</ion-label>
         <ion-item class="field">
-          <ion-datetime [min]="startDate" [max]="maxDate" [(ngModel)]="dueDate"></ion-datetime>
+          <ion-datetime [min]="startDate" [max]="global.maxDate" [(ngModel)]="dueDate"></ion-datetime>
           <ion-img src="../../../assets/images/t_calendar.png"></ion-img>
         </ion-item>
       </ion-col>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
@@ -10,9 +10,12 @@ export class FilterPage implements OnInit {
   // btnLbl:string='Back to Login';
   // msg: string='Go back to Login and enter your New Password';
   FilterOption=[]
+  all=false
+  income=false
+  gst=false
   constructor(
     private modalController: ModalController,
-    private navParams: NavParams
+    private ngZone: NgZone
   ) { 
 
    
@@ -33,5 +36,32 @@ export class FilterPage implements OnInit {
     const onClosedData: string = "Wrapped Up!";
     await this.modalController.dismiss(onClosedData);
   }
+  check(event, type){
+    console.log('Type ',type)
+    console.log('Event ',event.detail.checked)
 
+    this.ngZone.run(() => {
+      // if(event.detail.checked){
+        this.gst = event.detail.checked
+        this.income = event.detail.checked
+      // }
+    })
+
+   
+  }
+  checkGst(event, type){
+    
+    // if(this.income && event.detail.checked)
+    //   this.all = true
+    //   else
+    //   this.all = false
+  }
+  checkIncome(event, type){
+    console.log('Type ',type)
+    console.log('Event ',event.detail.checked)
+    // if(this.gst && event.detail.checked)
+    // this.all = true
+    // else
+    // this.all = false
+  }
 }

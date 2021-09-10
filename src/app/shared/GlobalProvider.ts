@@ -3,6 +3,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Network } from '@ionic-native/network/ngx';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
+import * as moment from 'moment';
 import { EventService } from '../services/EventService';
 import { NavigationService } from '../services/NavigationService';
 
@@ -16,7 +17,7 @@ export class GlobalProvider {
     regWeb: any;
     public alertPresented: any;
     public alertPresentedToken: any;
-
+    maxDate: any = moment().add(50, 'y').format('YYYY');
     constructor(public alertController: AlertController, private eventService: EventService, public modalController: ModalController, private sanitizer: DomSanitizer, public router: Router, private navigation: NavigationService, public toastController: ToastController, public network: Network) {
         this.alertPresented = false
         this.alertPresentedToken = false

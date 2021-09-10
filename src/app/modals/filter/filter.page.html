@@ -16,15 +16,15 @@
   <ion-list>
     <ion-item >
       <ion-label>All</ion-label>
-      <ion-checkbox slot="start" ></ion-checkbox>
+      <ion-checkbox slot="start" [(ngModel)]="all" [checked]="all" (ionChange)="check($event,'all')" ></ion-checkbox>
     </ion-item>
     <ion-item >
       <ion-label>Income Tax</ion-label>
-      <ion-checkbox slot="start" ></ion-checkbox>
+      <ion-checkbox slot="start" [(ngModel)]="income" [checked]="income" (ionChange)="checkIncome($event,'income')"  ></ion-checkbox>
     </ion-item>
     <ion-item >
       <ion-label>GST</ion-label>
-      <ion-checkbox slot="start" ></ion-checkbox>
+      <ion-checkbox slot="start" [(ngModel)]="gst" [checked]="gst" (ionChange)="checkGst($event,'gst')"  ></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content>

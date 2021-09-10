@@ -25,11 +25,11 @@ export class HomePage implements OnInit {
   selected = 0
 
   minDate: any = new Date().toISOString()
-  maxDate = moment().add(3, 'y').format('YYYY');
+  // maxDate = moment().add(3, 'y').format('YYYY');
 
   selectedDate: any = new Date().toISOString()
   weekSelDate: any = new Date().toISOString()
-  constructor(public store: StorageService, public globle: GlobalProvider, public apiService: ApiService, private eventService: EventService, public router: Router) {
+  constructor(public store: StorageService, public global: GlobalProvider, public apiService: ApiService, private eventService: EventService, public router: Router) {
 
   }
   ngOnInit(): void {
