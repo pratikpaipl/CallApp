@@ -30,11 +30,6 @@ export class SettingsComponent implements OnInit {
 
   }
 
-  firstLater(){
-    if(this.global !=undefined && this.global.userData !=undefined && this.global.userData.full_name !=undefined)
-    return this.global.userData.full_name.substring(0,1)
-  }
-
   onClick(pageType){
     if(pageType !=3 && pageType != 6 && pageType !=8)
     this.router.navigateByUrl('/'+pageType)

@@ -29,6 +29,16 @@ export class GlobalProvider {
 
     }
 
+    firstLater(){
+        if(this.userData !=undefined && this.userData.full_name !=undefined)
+        return this.userData.full_name.substring(0,1)
+      }
+    
+    oneLater(name){
+        if(name !=undefined && name !='')
+        return name.substring(0,1)
+      }
+    
 
 
     msgDisplay(arg0: boolean) {
