@@ -127,8 +127,13 @@ ion-app {
   width   : 30px;
   z-index : 1111;
 }
-.model-close{
-  color:#0085fc; right: 0px; position: absolute; font-size: 35px; margin: 5px;z-index: 111;
+.model-close {
+	color: #0085fc;
+	right: 0px;
+	position: absolute;
+	font-size: 25px;
+	margin: 5px;
+	z-index: 111;
 }
 .heading {
   color: #333333 !important;
@@ -1220,3 +1225,15 @@ ion-datetime {
 	--padding-start: 16px;
 }
 
+
+
+
+
+
+.model_blocks ion-radio-group ion-item ion-label {
+	overflow: visible !important;
+	font-size: 13px !important;
+	display: block !important;
+	margin: 0px !important;
+	padding: 0px !important;
+}

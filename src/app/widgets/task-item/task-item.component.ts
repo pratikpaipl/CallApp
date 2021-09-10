@@ -17,7 +17,7 @@ import { StorageService } from 'src/app/shared/StorageService';
   @Input()
   time:string;
   @Input()
-  type: number;
+  type: string;
 
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();
