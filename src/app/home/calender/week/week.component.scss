@@ -221,12 +221,27 @@ ion-checkbox {
 }
 
 .tasks ion-item {
-  --padding-start    : 0px;
-  --inner-padding-end: 0px;
+	--padding-start: 0px;
+	--inner-padding-end: 0px;
+	margin: 0px !important;
+	--min-height: auto !important;
+	background: transparent !important;
+	--background: transparent !important;
 }
 
 .task-list {
   position: relative;
+}
+
+
+.head {
+	justify-content: space-between;
+	align-items: center;
+}
+
+.head ion-col:last-child {
+	flex: 0 0;
+	white-space: nowrap;
 }
 
 
@@ -268,16 +283,14 @@ ion-segment-button.segment-button-checked::after {
 
 
 .tasks_cols {
-  padding: 8px;
+  padding: 8px 10px;
   position: relative;
   background: #fff;
-  margin-bottom: 10px;
 }
 
 
 
 .grid_content .titles {
-  font-weight  : bold;
   display      : block;
   line-height  : 15px;
   margin-bottom: 7px;
@@ -373,5 +386,114 @@ ion-icon {
 
 .tast_row {
 	background: transparent;
-	padding: 8px;
+	padding: 8px 5px;
+}
+
+.sub_tasks_blocks{
+	background: #f7f8f9;
+	padding: 10px 5px 8px 5px;
+}
+
+.p-0.sub_tasks_listas {
+	background: #e8ecef !important;
+	padding: 5px !important;
+	margin-bottom: 5px;
+}
+
+.names_box {
+	display: flex;
+	align-items: center;
+	margin: 0px;
+}
+
+.names_box .icons {
+	text-align: center !important;
+	flex: 0 0 22px;
+	height: 22px;
+	display: block;
+	background: #7e0417;
+	border-radius: 3px;
+	line-height: 21px;
+	color: #fff;
+	margin-right: 6px;
+}
+
+.names_box .titles{
+	margin-bottom: 0px;
+}
+
+.center {
+	text-align: center !important;
+}
+
+.center .contents:last-child {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center;
+	margin: 0px;
+}
+
+.center .contents i {
+	width: 6px;
+	height: 6px;
+	background: #ed1a3b;
+	border-radius: 50%;
+	margin-right: 3px;
+	display: block;
+}
+
+.assigned_row .contents {
+	margin-bottom: 7px;
+}
+
+.right {
+  flex: 0 0;
+  white-space: nowrap;
+}
+
+.assigned_row .right .titles ion-img {
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+}
+
+.assigned_row {
+	background: #fff;
+	padding: 10px 5px;
+	margin-bottom: 2px;
+}
+
+.button_boxs {
+	background: #fff;
+	padding: 8px 5px;
+	text-align: center !important;
+  position: relative;
+}
+.button_boxs::after {
+	content: "";
+	background: #f2f2f2;
+	width: 2px;
+	height: 100%;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 51%;
+	transform: translate(-50%, 0);
+}
+.button_boxs .complete, 
+.button_boxs .complete ion-icon{
+	color: #02a5e2 !important;
+}
+
+.button_boxs ion-button {
+	margin: 0;
+	height: 35px;
+	text-transform: inherit !important;
+	font-size: 14px !important;
+  letter-spacing: 0px;
+}
+
+.button_boxs ion-button ion-icon {
+	margin-right: 2px;
+	font-size: 20px !important;
 }

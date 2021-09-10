@@ -161,39 +161,34 @@
               </ion-col>
               <ion-col size="12">
                 <ion-grid class="p-0" *ngIf="item.assigned_by_user_details != undefined">
-                  <ion-row style="padding: 10px 0px 0px 0px;">
-                    <ion-col style="flex: 0 0 40px;">
-                      <ion-img style="width: 30px; filter: invert(1);" src="../../../../assets/images/settings.png">
-                      </ion-img>
-                    </ion-col>
+                  <ion-row class="assigned_row">
                     <ion-col>
-                      <ion-label class="titles">Assigned to you </ion-label>
-                      <ion-label class="content">{{item.assigned_by_user_details.full_name}}</ion-label>
+                      <ion-label class="contents">Assigned to you </ion-label>
+                      <div class="names_box">
+                          <span class="icons">R</span>
+                          <ion-label class="titles">{{item.assigned_by_user_details.full_name}}</ion-label>
+                      </div>                      
                     </ion-col>
-                    <ion-col>
-                      <ion-label class="titles">Priority</ion-label>
-                      <ion-label class="content">{{item.task_priority}}</ion-label>
+                    <ion-col class="center">
+                      <ion-label class="contents">Priority</ion-label>
+                      <ion-label class="contents"><i></i><i></i><i></i> {{item.task_priority}}</ion-label>
                     </ion-col>
-                    <ion-col>
-                      <ion-label class="titles">Attachment</ion-label>
-                      <ion-label class="content">02</ion-label>
-                    </ion-col>
-                    <ion-col style="flex: 0 0 25px;">
-                      <ion-img style="width: 20px; filter: invert(1);" src="../../../../assets/images/settings.png">
-                      </ion-img>
+                    <ion-col class="right">
+                      <ion-label class="contents">Attachment</ion-label>
+                      <ion-label class="titles"><ion-img src="../../../../assets/icon/attachment_2.webp"></ion-img> 02</ion-label>
                     </ion-col>
                   </ion-row>
-                  <ion-row class="row-border">
-                    <ion-col size="12" class="p-0" *ngIf="!item.completionstatus">
+                  <ion-row class="button_boxs">
+                    <ion-col size="6" class="p-0" *ngIf="!item.completionstatus">
                       <ion-button class="complete" (click)="markAsCompleteTask(item)">
-                        <ion-icon name="checkmark-circle-outline"></ion-icon> Mark as Complete
+                        <ion-icon name="checkmark"></ion-icon> Mark as Complete
                       </ion-button>
                     </ion-col>
-                    <!-- <ion-col size="6" class="p-0">
+                    <ion-col size="6" class="p-0">
                       <ion-button class="reject">
                         <ion-icon name="close-circle-outline"></ion-icon>Reject
                       </ion-button>
-                    </ion-col> -->
+                    </ion-col>
                   </ion-row>
                 </ion-grid>
 
