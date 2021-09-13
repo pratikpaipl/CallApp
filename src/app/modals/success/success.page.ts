@@ -27,7 +27,7 @@ export class SuccessPage implements OnInit {
   }
 
   async closeModal() {
-    const onClosedData: string = "Wrapped Up!";
+    const onClosedData: string = '1';
     await this.modalController.dismiss(onClosedData);
   }
 

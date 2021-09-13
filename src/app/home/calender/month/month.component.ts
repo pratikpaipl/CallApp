@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { Calendar } from "@ionic-native/calendar/ngx";
 import { ApiService } from "src/app/services/api.service";
 import { NavigationService } from "src/app/services/NavigationService";
 import { GlobalProvider } from "src/app/shared/GlobalProvider";

@@ -7,6 +7,7 @@ import * as moment from 'moment-timezone';
 import { ApiService } from 'src/app/services/api.service';
 import { ModalController } from '@ionic/angular';
 import { ConfirmationPage } from 'src/app/modals/confirmation/confirmation.page';
+import { EventService } from 'src/app/services/EventService';
 @Component({
   selector: 'week',
   templateUrl: './week.component.html',
@@ -43,7 +44,13 @@ export class WeekComponent implements OnInit {
   @Output()
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
-  constructor(public store: StorageService,public router: Router, private apiService: ApiService, public modalController: ModalController, private navigation: NavigationService, public global: GlobalProvider) {
+  constructor(public store: StorageService,public router: Router, public eventService:EventService, private apiService: ApiService, public modalController: ModalController, private navigation: NavigationService, public global: GlobalProvider) {
+
+    this.eventService.formRefresh$.subscribe((item: any) => {
+      console.log('Task Update ',item)
+      this.getWeeks(this.date);
+    });
+
   }
   deleteEvent(ev) {
 

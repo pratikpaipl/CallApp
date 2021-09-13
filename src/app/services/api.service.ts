@@ -57,8 +57,10 @@ export class ApiService {
     return this.callGet("task-priority");
   }
   createTask(postData): any {
-
     return this.callPost("task-create", postData);
+  }
+  updateTask(postData): any {
+    return this.callPost("update-task", postData);
   }
   callPost(endPoint, postData) {
     postData.append('LanguageCode', 'eng')

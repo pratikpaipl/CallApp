@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { SubTaskComponent } from '../../task/sub-task/sub-task.component';
 import { RecurringComponent } from './../../task/recurring/recurring.component';
 import { EventService } from '../../services/EventService';
@@ -20,14 +21,14 @@ export class CreateComponent implements OnInit {
 
 
   @Input()
-  data:any;
+  taskData:any;
 
   public userIds: any[] = [];
   public selected: UserModel[] = [];
   tags: any = '';
-  @Input()
+  // @Input()
   name: any = '';
-  @Input()
+  // @Input()
   desc: any = '';
   isRecurring:any= false
   recurringData: any
@@ -36,35 +37,50 @@ export class CreateComponent implements OnInit {
   taskPriority = [];
   selPriority: any;
   showSub = false;
-  @Input()
+  // @Input()
   startDate: any = new Date().toISOString();
-  @Input()
+  // @Input()
   dueDate: any;
   minDate: any = new Date().toISOString();
+  maxDate: any ;
   constructor(public global: GlobalProvider, public apiService: ApiService, private popoverCtrl: PopoverController, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
-
+this.maxDate = global.maxDate;
   }
-  ngOnInit() {
+  async ngOnInit() {
 
+    await this.getTaskPriority();
+    await this.getUsers();
    this.setData();
-   console.log('Data ',this.data);
-    this.getTaskPriority();
-    this.getUsers();
     // this.options.placeholder = 'Type user name to search..';
   }
   setData() {
-    if(this.data !=undefined){
-      this.name= this.data.taskname;
-      this.startDate= moment(this.data.start_date);
-      this.dueDate= moment(this.data.due_date);
-      this.desc= this.data.taskdescription;
+    if(this.taskData !=undefined){
+      this.name= this.taskData.taskname;
+      this.startDate= moment(this.taskData.start_date).toISOString();
+      this.dueDate= moment(this.taskData.due_date).toISOString();
+      this.desc= this.taskData.taskdescription;
 
-      for (let i = 0; i < this.data.child_task.length; i++) {
-        const element = this.data.child_task[i];
+      for (let i = 0; i < this.taskPriority.length; i++) {
+        const element = this.taskPriority[i];      
+        if(element.taskpriority === this.taskData.task_priority){
+            this.selPriority = element.taskpriority_id;
+          break;
+        }
+      }
+      
+      for (let i = 0; i < this.taskData.child_task.length; i++) {
+        const element = this.taskData.child_task[i];
         this.subTasks.push({name:element.taskname,value:moment(element.startdate)})
       }
+      // var maxDate=this.subTasks.sort(function(a, b){return (b.value >a.value)?1:-1 ;});
+      // if(maxDate.length>0){
+      //   this.maxDate = maxDate[0].value.toISOString()
+      //   this.minDate = maxDate[(maxDate.length-1)].value.toISOString()
+      // }
+      // console.log('maxDate --> ',maxDate);  // max Date
+
       // this.selectedUser = 
-       this.isRecurring = false
+      //  this.isRecurring = false
       // { "parentId": null, "contacts": [ { "name": "cxcx", "value": "2021-09-12T13:08:47.177+05:30" } ] }
     // = this.data.taskdescription;
     }
@@ -126,8 +142,18 @@ export class CreateComponent implements OnInit {
         let res: any = response;
         if (res.success) {
           this.taskPriority = await res.data
-          if (this.taskPriority.length > 0)
+          if (this.taskPriority.length > 0){
             this.selPriority = '' + this.taskPriority[0].taskpriority_id
+            if(this.taskData != undefined){
+              for (let i = 0; i < this.taskPriority.length; i++) {
+                const element = this.taskPriority[i];      
+                if(element.taskpriority === this.taskData.task_priority){
+                    this.selPriority = '' + element.taskpriority_id;
+                  break;
+                }
+              }
+            }
+          }
           console.log('getTaskPriority list ', this.taskPriority)
           console.log('getTaskPriority ', this.selPriority)
         }
@@ -170,7 +196,7 @@ export class CreateComponent implements OnInit {
     else if (this.dueDate == undefined) {
       this.global.showToast('Please select due date ', 1500)
     }
-    else if (this.selectedUser == undefined || this.selectedUser.length == 0) {
+    else if ((this.selectedUser == undefined || this.selectedUser.length == 0) && this.taskData == undefined) {
       this.global.showToast('Please select user ', 1500)
     }
     else if(this.isRecurring){
@@ -195,30 +221,48 @@ export class CreateComponent implements OnInit {
     postData.append('taskname', this.name)
     postData.append('taskdescription', this.desc)
     postData.append('taskpriority_id', this.selPriority)
+    if(this.taskData == undefined)
     postData.append('completionstatus', '1')
     postData.append('start_date', this.apiService.getDate(this.startDate))
     postData.append('due_date', this.apiService.getDate(this.dueDate))
+    if(this.taskData == undefined)
     postData.append('assigned_to',this.selectedUser.join(','))
+    if(this.taskData == undefined)
     postData.append('is_recurring', this.isRecurring?'1':'0')
-
-    for (let i = 0; i < this.subTasks.length; i++) {
-      const element = this.subTasks[i];
-      if (element.isChecked != undefined && element.isChecked) {
-        postData.append('subtask[' + i + '][taskname]', element.name)
-        postData.append('subtask[' + i + '][start_date]', this.apiService.getDate(element.value))
+    if(this.taskData == undefined){
+      for (let i = 0; i < this.subTasks.length; i++) {
+        const element = this.subTasks[i];
+        if (element.isChecked != undefined && element.isChecked) {
+          postData.append('subtask[' + i + '][taskname]', element.name)
+          postData.append('subtask[' + i + '][start_date]', this.apiService.getDate(element.value))
+        }
       }
-
     }
-    console.log('Data ', this.subTasks);
-    this.apiService.createTask(postData).subscribe((response) => {
-      let res: any = response;
-      this.messagePop(res.message);
-    },
+    if(this.taskData == undefined){
+      this.apiService.createTask(postData).subscribe((response) => {
+        let res: any = response;
+        this.messagePop(res.message);
+     
+      },
       (error: Response) => {
         let err: any = error;
         this.global.showToast(err.error.message, 4000);
       }
-    );
+      );
+    }else{
+      postData.append('generaluser_taskdetails_id', this.taskData.generaluser_taskdetails_id)
+      this.apiService.updateTask(postData).subscribe((response) => {
+        let res: any = response;
+        this.eventService.publishFormRefresh(true);
+        this.messagePop(res.message);
+      },
+        (error: Response) => {
+          let err: any = error;
+          this.global.showToast(err.error.message, 4000);
+        }
+      );
+
+    }
   }
   messagePop(message: any) {
     console.log('Open Message ', message);
@@ -241,6 +285,7 @@ export class CreateComponent implements OnInit {
     modal.onDidDismiss().then((dataReturned) => {
 
       console.log('data returned ', dataReturned)
+      if(this.taskData ==undefined){
       this.name = ''
       this.desc = ''
       this.dueDate = ''
@@ -249,7 +294,11 @@ export class CreateComponent implements OnInit {
       this.recurringData=undefined
       this.isRecurring=false
       this.dueDate = undefined
-      if (dataReturned.data == 1) {
+      }
+      if (dataReturned.data == '1') {
+        if(this.taskData !=undefined){
+          // this.global.backPage();
+        }
         // this.completeDueDate(selIds)
       }
     });

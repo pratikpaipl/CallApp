@@ -236,7 +236,7 @@ export class GlobalProvider {
                         handler: () => {
                             vm.alertPresentedToken = false
                             if (status == 401) {
-                                localStorage.removeItem('token');
+                                localStorage.removeItem('access_token');
                                 this.eventService.publishFormRefresh(false);
                                 setTimeout(() => {
                                     this.router.navigateByUrl('/login',{replaceUrl:true});
