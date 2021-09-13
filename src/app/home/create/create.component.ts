@@ -1,3 +1,4 @@
+import { SubTaskComponent } from '../../task/sub-task/sub-task.component';
 import { RecurringComponent } from './../../task/recurring/recurring.component';
 import { EventService } from '../../services/EventService';
 import { Component, Input, OnInit } from '@angular/core';
@@ -8,7 +9,6 @@ import { StorageService } from '../../shared/StorageService';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { SuccessPage } from 'src/app/modals/success/success.page';
 import { UserModel } from 'src/app/models/Users';
-import { SubTaskComponent } from 'src/app/task/sub-task/sub-task.compnent';
 import * as moment from 'moment';
 
 @Component({
@@ -25,7 +25,9 @@ export class CreateComponent implements OnInit {
   public userIds: any[] = [];
   public selected: UserModel[] = [];
   tags: any = '';
+  @Input()
   name: any = '';
+  @Input()
   desc: any = '';
   isRecurring:any= false
   recurringData: any
@@ -34,18 +36,20 @@ export class CreateComponent implements OnInit {
   taskPriority = [];
   selPriority: any;
   showSub = false;
+  @Input()
   startDate: any = new Date().toISOString();
+  @Input()
   dueDate: any;
   minDate: any = new Date().toISOString();
   constructor(public global: GlobalProvider, public apiService: ApiService, private popoverCtrl: PopoverController, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
 
   }
- async ngOnInit() {
+  ngOnInit() {
 
-   await this.getTaskPriority();
-   await this.getUsers();
    this.setData();
    console.log('Data ',this.data);
+    this.getTaskPriority();
+    this.getUsers();
     // this.options.placeholder = 'Type user name to search..';
   }
   setData() {

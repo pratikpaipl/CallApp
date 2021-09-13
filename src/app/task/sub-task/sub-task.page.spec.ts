@@ -1,4 +1,4 @@
-import { SubTaskComponent } from './sub-task.compnent';
+import { SubTaskComponent } from './sub-task.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 

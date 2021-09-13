@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
 import { MenuItemComponent } from '../widgets/menu-item/menu-item.component';
 import { ExpandComponent } from '../widgets/expand/expand.component';
 import { RecurringComponent } from '../task/recurring/recurring.component';
-import { SubTaskComponent } from '../task/sub-task/sub-task.compnent';
+import { SubTaskComponent } from '../task/sub-task/sub-task.component';
 import { NoTaskComponent } from '../widgets/no-task/no-task.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CreateComponent } from '../home/create/create.component';
