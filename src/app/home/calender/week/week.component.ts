@@ -207,7 +207,12 @@ export class WeekComponent implements OnInit {
     // console.log('selIds ', selIds)
   }
   updateTask(item){
-    this.router.navigateByUrl('/home/update/'+item.generaluser_taskdetails_id);
+    this.router.navigate(['/edit-task'],{
+      queryParams: {
+         value : JSON.stringify(item)
+        },
+      });
+    // this.router.navigateByUrl('/edit-task/'+item.generaluser_taskdetails_id);
   }
   async deleteTask(item){
     const modal = await this.modalController.create({

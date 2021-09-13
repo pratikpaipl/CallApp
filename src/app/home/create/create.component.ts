@@ -1,6 +1,6 @@
 import { RecurringComponent } from './../../task/recurring/recurring.component';
 import { EventService } from '../../services/EventService';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { GlobalProvider } from '../../shared/GlobalProvider';
@@ -18,6 +18,9 @@ import * as moment from 'moment';
 })
 export class CreateComponent implements OnInit {
 
+
+  @Input()
+  data:any;
 
   public userIds: any[] = [];
   public selected: UserModel[] = [];
@@ -37,11 +40,30 @@ export class CreateComponent implements OnInit {
   constructor(public global: GlobalProvider, public apiService: ApiService, private popoverCtrl: PopoverController, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
 
   }
-  ngOnInit() {
+ async ngOnInit() {
 
-    this.getTaskPriority();
-    this.getUsers();
+   await this.getTaskPriority();
+   await this.getUsers();
+   this.setData();
+   console.log('Data ',this.data);
     // this.options.placeholder = 'Type user name to search..';
+  }
+  setData() {
+    if(this.data !=undefined){
+      this.name= this.data.taskname;
+      this.startDate= moment(this.data.start_date);
+      this.dueDate= moment(this.data.due_date);
+      this.desc= this.data.taskdescription;
+
+      for (let i = 0; i < this.data.child_task.length; i++) {
+        const element = this.data.child_task[i];
+        this.subTasks.push({name:element.taskname,value:moment(element.startdate)})
+      }
+      // this.selectedUser = 
+       this.isRecurring = false
+      // { "parentId": null, "contacts": [ { "name": "cxcx", "value": "2021-09-12T13:08:47.177+05:30" } ] }
+    // = this.data.taskdescription;
+    }
   }
 
   async setAsRecurring() {
