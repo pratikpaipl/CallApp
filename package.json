@@ -50,7 +50,7 @@
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-res": "^0.15.2",
     "crypto-js": "^4.0.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "moment-timezone": "^0.5.32",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

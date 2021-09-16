@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { ModalController } from '@ionic/angular';
 import { ConfirmationPage } from 'src/app/modals/confirmation/confirmation.page';
 import { EventService } from 'src/app/services/EventService';
+
 @Component({
   selector: 'week',
   templateUrl: './week.component.html',
@@ -15,16 +16,25 @@ import { EventService } from 'src/app/services/EventService';
 })
 export class WeekComponent implements OnInit {
   eventList: any = []
-  govDueDates = [];
   upcomingDate: any;
+  tasksCount=0;
   tasks = [];
+  govDueDates = [];
   assignedToYou = [];
   assignedByYou = [];
+  
+  govDueDatesMain = [];
+  assignedToYouMain = [];
+  assignedByYouMain = [];
+  
   selectedTaskTab = 'toYou'
-
+  
   selMonthYear: any;
-
+  
   remarks = ''
+  
+  @Input()
+  searchTerm: any='';
 
   @Input()
   selectedDate: any;
@@ -58,6 +68,42 @@ export class WeekComponent implements OnInit {
   segmentChanged(event) {
 
   }
+  ngOnChanges() {
+    console.log('Search items ',this.searchTerm)
+   if (this.searchTerm && this.searchTerm.trim() != '') {
+    this.assignedByYou = this.assignedByYou.filter((item) => {
+      return ((item.taskname.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) || (item.assigned_by_user_details.full_name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1));
+    })
+    this.assignedToYou = this.assignedToYou.filter((item) => {
+      return ((item.taskname.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) || (item.assigned_user_details.full_name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1));
+    })
+    this.govDueDates = this.govDueDates.filter((item) => {
+      return ((item.heading.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) || (item.content.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1));
+    })
+    this.tasksCount = this.getCount();
+  }else{
+    this.govDueDates = this.govDueDatesMain
+    this.assignedToYou = this.assignedToYouMain
+    this.assignedByYou = this.assignedByYouMain
+    this.tasksCount =this.tasks.length;
+  }
+
+  }
+  getCount(): number {
+    var tempArray = []
+    for (let i = 0; i < this.assignedByYou.length; i++) {
+      const element = this.assignedByYou[i];
+      tempArray.push(element)
+  }
+    for (let i = 0; i < this.assignedToYou.length; i++) {
+      const element = this.assignedToYou[i];
+      tempArray.push(element)
+  }
+  const unique =  tempArray.map(e => e.generaluser_taskdetails_id)
+                  .map((e, i, final) => final.indexOf(e) === i && i)
+                 .filter((e) => tempArray[e]).map(e => tempArray[e]);
+    return unique.length;
+  }
   async ngOnInit() {
     this.date = moment(this.selectedDate);
     this.selMonthYear = this.date.format("DD MMMM YYYY")
@@ -76,11 +122,13 @@ export class WeekComponent implements OnInit {
     this.date = this.date.add(1, 'weeks');
     this.selectedDate = this.date
     this.getWeeks(this.date);
+    this.changeWeek();
   }
   previousWeek() {
     this.date = this.date.subtract(1, 'weeks');
     this.selectedDate = this.date
     this.getWeeks(this.date);
+    this.changeWeek();
   }
   public getWeeks(currentDate) {
     this.days = [];
@@ -103,6 +151,7 @@ export class WeekComponent implements OnInit {
       async (response) => {
         let res: any = response;
         this.govDueDates = [];
+        this.govDueDatesMain = [];
         this.tasks = [];
         // console.log('Response ',res);
         if (res.success) {
@@ -117,16 +166,14 @@ export class WeekComponent implements OnInit {
             if (this.days[i].day == moment(this.selectedDate).format("DD")) {
               this.days[i].selected = true
               this.tasks = res.data[element].task_data
+              this.tasksCount = this.tasks.length;
               this.govDueDates = res.data[element].gov_due_data;
+              this.govDueDatesMain = res.data[element].gov_due_data;
               this.setData()
             } else {
               this.days[i].selected = false
             }
           }
-
-          // if (this.govDueDates.length == 0) {
-          //   this.govDueDates = this.days[0].govDate;
-          // }
         }
       },
       (error: Response) => {
@@ -138,13 +185,17 @@ export class WeekComponent implements OnInit {
   setData() {
     this.assignedToYou = [];
     this.assignedByYou = [];
+    this.assignedToYouMain = [];
+    this.assignedByYouMain = [];
     for (let k = 0; k < this.tasks.length; k++) {
       const element = this.tasks[k];
       if (element.is_assigned_to_you == 1) {
         this.assignedToYou.push(element)
+        this.assignedToYouMain.push(element)
       }
       if (element.is_assigned_by_you == 1) {
         this.assignedByYou.push(element)
+        this.assignedByYouMain.push(element)
       }
     }
   }
@@ -340,8 +391,8 @@ export class WeekComponent implements OnInit {
     }
 
   }
-  publishBrand() {
-    this.change.emit('publish');
+  changeWeek() {
+    this.change.emit({type:1});
   }
   back() {
     this.navigation.back();

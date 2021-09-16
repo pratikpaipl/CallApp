@@ -11,6 +11,8 @@ import { StorageService } from 'src/app/shared/StorageService';
   export class MenuItemComponent implements OnInit {
 
   @Input()
+  action: String;
+  @Input()
   lblValue: String;
 
   @Input()
@@ -24,15 +26,16 @@ import { StorageService } from 'src/app/shared/StorageService';
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
 
-  constructor(public store: StorageService, private navigation: NavigationService, public globle: GlobalProvider) {
+  constructor(public store: StorageService, private navigation: NavigationService, public global: GlobalProvider) {
   }
 
   async ngOnInit() {
 
   }
 
-  publishBrand() {
-    this.change.emit('publish');
+  actionClick(nm) {
+    console.log('menu item ',nm)
+    this.change.emit({type:nm});
   }
   back() {
     this.navigation.back();

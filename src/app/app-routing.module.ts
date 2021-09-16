@@ -26,10 +26,6 @@ const routes: Routes = [
     loadChildren: () => import('./auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
   },
   {
-    path: 'forgot-password',
-    loadChildren: () => import('./auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
-  },
-  {
     path: 'reset-pass',
     loadChildren: () => import('./auth/forgot-password/reset-pass/reset-pass.module').then(m => m.ResetPasswordPageModule)
   },

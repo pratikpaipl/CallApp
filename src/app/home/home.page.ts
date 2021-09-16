@@ -20,6 +20,8 @@ export class HomePage implements OnInit {
 
   selMonthYear: any = new Date().toISOString();
 
+  public toggled: boolean = false;
+  searchTerm: String = '';
   isShowUp = false;
   showWeek = false;
   selected = 0
@@ -30,7 +32,7 @@ export class HomePage implements OnInit {
   selectedDate: any = new Date().toISOString()
   weekSelDate: any = new Date().toISOString()
   constructor(public store: StorageService, public global: GlobalProvider, public apiService: ApiService, private eventService: EventService, public router: Router) {
-
+    this.toggled = false;
   }
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
@@ -39,6 +41,23 @@ export class HomePage implements OnInit {
     localStorage.removeItem('access_token')
     this.router.navigateByUrl('/login', { replaceUrl: true });
   }
+  public toggleSearch(): void {
+    this.toggled = !this.toggled;
+    this.searchTerm =  '';
+ }
+ triggerInput( ev: any ) {
+  // Reset items back to all of the items
+  // this.initializeItems();
+  // set val to the value of the searchbar
+  this.searchTerm =  ev.target.value
+  console.log('Search items ',this.searchTerm)
+  // if the value is an empty string don't filter the items
+  // if (val && val.trim() != '') {
+  //   this.items = this.items.filter((item) => {
+  //     return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+  //   })
+  // }  
+}
   list() {
     this.router.navigateByUrl('/task-list');
   }
@@ -65,9 +84,16 @@ export class HomePage implements OnInit {
     }
   }
   changeView(event) {
-    console.log('Change View ', event);
+    // console.log('Change View ', event);
     this.weekSelDate = moment(event.selectedDay)
     this.showWeek = event.changeView;
     this.selMonthYear = event.selDate;
+  }
+  changeWeek(event){
+    console.log('Change Week ', event);
+    if(event.type !=undefined && event.type == 1){
+      this.searchTerm=''
+      this.toggled=false;
+    }
   }
 }

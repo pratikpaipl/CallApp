@@ -29,13 +29,29 @@ export class SettingsComponent implements OnInit {
     this.global.userData = localStorage.getItem('user-data') != undefined ? JSON.parse(localStorage.getItem('user-data')) : {}
 
   }
-
+openProfile(){
+  this.router.navigateByUrl('/0')
+}
   onClick(pageType){
-    if(pageType !=3 && pageType != 6 && pageType !=8)
-    this.router.navigateByUrl('/'+pageType)
-    else
-    this.global.showToast('Coming soon !!',1000);
+    if(pageType.type != undefined){
+      console.log('Click ',pageType.type);
+      if(pageType.type == '9'){
+        console.log('Click 1 ',pageType.type);
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('user-data')
+        this.router.navigateByUrl('/login', { replaceUrl: true });    
+      }
+      else if(pageType.type !='3' && pageType.type != '6' && pageType.type !='8'){
+        console.log('Click 2 ',pageType.type);
+        this.router.navigateByUrl('/'+pageType.type)
+      }
+      else{
+        console.log('Click 3 ',pageType.type);
+        this.global.showToast('Coming soon !!',1000);
+      }
+    }
   }
+
   publishBrand() {
     this.change.emit('publish');
   }

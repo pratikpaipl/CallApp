@@ -4,7 +4,7 @@
       <ion-img src="{{imgPath}}"> </ion-img>
     </ion-col>
     <ion-col class="menucontent">
-      <ion-label>{{lblValue}}</ion-label>
+      <ion-label (click)="actionClick(action)" >{{lblValue}}</ion-label>
     </ion-col>
   </ion-row>
 </ion-grid>
