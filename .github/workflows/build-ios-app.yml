@@ -14,12 +14,12 @@ jobs:
     - name: Use coturiv/setup-ionic
       uses: coturiv/setup-ionic@v1
       with:
-        cordova-version: 8
+        cordova-version: 10
     - name: Build
       run: |
           ionic cordova platform rm ios
           ionic cordova platform add ios
-          ionic cordova prepare ios
+          ionic cordova prepare ios --prod
           cd platforms/ios
           ls -R
           #xcodebuild clean test -project "BDO Calendar.xcodeproj" -scheme "Ionic Conference App" -destination "platform=iOS Simulator,name=iPhone 11 Pro"

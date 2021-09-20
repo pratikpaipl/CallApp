@@ -26,7 +26,7 @@ jobs:
       run: |
           ionic cordova platform rm android
           ionic cordova platform add android
-          ionic cordova prepare android
+          ionic cordova prepare android --prod
     - name: Upload app
       uses: actions/upload-artifact@v1
       with:
