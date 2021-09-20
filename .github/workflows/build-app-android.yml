@@ -1,0 +1,31 @@
+name: Build Android app
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install @angular/cli
+      run: npm i -D -E @angular/cli
+    - name: Use coturiv/setup-ionic
+      uses: coturiv/setup-ionic@v1
+      with:
+        cordova-version: 8
+#    - name: Cache NPM dependencies
+#      uses: actions/cache@v1
+#      with:
+#        path: node_modules
+#        key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package.json') }}
+#        restore-keys: |
+#          ${{ runner.OS }}-npm-cache-
+    - name: Build
+      run: ionic cordova build android
+    - name: Upload app
+      uses: actions/upload-artifact@v1
+      with:
+        name: app
+        path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
