@@ -49,19 +49,21 @@
                         <ion-radio value="{{item.taskpriority_id}}"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
-                <img class="Priority_icons" src="../../../assets/images/spam-line.svg" />
+                <img class="Priority_icons" *ngIf="iconUrl != undefined" [src]="iconUrl" />
             </ion-col>
         </ion-row>
         <ion-row class="bottom-space sub_tsk" *ngIf="taskData == undefined">
             <ion-col size="12" *ngIf="subTasks.length >0">
                 <ion-list-header>
-                    <ion-label style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">Sub Tasks</ion-label>
+                    <ion-label style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">Sub Tasks
+                    </ion-label>
                 </ion-list-header>
                 <ion-list>
                     <ion-item style="--inner-padding-end: 0px !important;" *ngFor="let entry of subTasks; let i = index;">
                         <div style="display: block; width: 100%;">
                             <ion-label class="name">{{entry.name}}</ion-label>
-                            <ion-label class="date" style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">{{this.apiService.getDate(entry.value)}}</ion-label>
+                            <ion-label class="date" style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">
+                                {{this.apiService.getDate(entry.value)}}</ion-label>
                         </div>
                         <ion-icon class="remove_filds" name="close" (click)="removeSubTask(i)">
                         </ion-icon>

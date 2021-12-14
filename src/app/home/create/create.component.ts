@@ -23,6 +23,8 @@ export class CreateComponent implements OnInit {
   @Input()
   taskData: any;
 
+  iconUrl: any;
+
   public userIds: any[] = [];
   public selected: UserModel[] = [];
   tags: any = '';
@@ -77,30 +79,35 @@ export class CreateComponent implements OnInit {
 
   async setAsRecurring() {
     if (this.isRecurring) {
+      if (this.startDate != undefined && this.dueDate != undefined) {
+        const popover = await this.popoverCtrl.create({
+          component: RecurringComponent,
+          componentProps: {
+            startDate: this.startDate,
+            endDate: this.dueDate,
+            subTasks: this.subTasks,
+            recurringData: this.recurringData
+          },
+          translucent: true,
+          backdropDismiss: false
+        });
 
-      const popover = await this.popoverCtrl.create({
-        component: RecurringComponent,
-        componentProps: {
-          startDate: this.startDate,
-          endDate: this.dueDate,
-          subTasks: this.subTasks,
-          recurringData: this.recurringData
-        },
-        translucent: true,
-        backdropDismiss: false
-      });
+        popover.onDidDismiss().then((result) => {
+          console.log('Recurring ', result.data.isSub != 0);
+          this.isRecurring = result.data.isSub != 0;
+          if (result.data.isSub != 0) {
+            this.recurringData = result.data.data
+          }
+          // this.viewType = result['data'];
 
-      popover.onDidDismiss().then((result) => {
-        console.log('Recurring ', result.data.isSub != 0);
-        this.isRecurring = result.data.isSub != 0;
-        if (result.data.isSub != 0) {
-          this.recurringData = result.data.data
-        }
-        // this.viewType = result['data'];
+        });
+        // if(this.isRecurring)
+        return await popover.present();
+      } else {
+        this.isRecurring = false
+        this.global.showToast('Please select start and due dates ', 1500)
+      }
 
-      });
-      // if(this.isRecurring)
-      return await popover.present();
     }
   }
   removeSubTask(index) {
@@ -185,7 +192,15 @@ export class CreateComponent implements OnInit {
     console.log('onChangeUser ', event);
   }
   onSelectedPriority() {
-    console.log('onSelectedPriority ', this.selPriority)
+    console.log('onSelectedPriority 0 ', this.selPriority)
+    console.log('onSelectedPriority 1 ', this.taskPriority)
+    let obj = this.taskPriority.find(x => x.taskpriority_id === parseInt(this.selPriority))
+    const index = this.taskPriority.findIndex(x => x.taskpriority_id === this.selPriority);
+    console.log('onSelectedPriority ', obj)
+    console.log('onSelectedPriority ', this.taskPriority[index])
+    if (obj != undefined)
+      this.iconUrl = obj.icon_url
+
   }
 
   createTask() {

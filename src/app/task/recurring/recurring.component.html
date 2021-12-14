@@ -33,7 +33,7 @@
             </ion-col>
         </ion-row>
 
-        <ion-row class="date_row">
+        <ion-row class="date_row plr-5">
             <ion-col style="flex: 0 0 80px;">
                 <ion-label class="content">Starts on</ion-label>
             </ion-col>
@@ -42,15 +42,15 @@
             </ion-col>
         </ion-row>
 
-        <ion-row class="date_row">
+        <ion-row class="date_row plr-5">
             <ion-col style="flex: 0 0 80px;">
                 <ion-label class="content">Ends on</ion-label>
             </ion-col>
             <ion-col style="text-align: right;">
-                <ion-label class="content date">{{startDate | date : "MMM dd, yyyy hh:mm a"}}</ion-label>
+                <ion-label class="content date">{{endDate | date : "MMM dd, yyyy hh:mm a"}}</ion-label>
             </ion-col>
         </ion-row>
-        <ion-row *ngIf="isRecurring == 'weekly'">
+        <ion-row class="plr-5" *ngIf="isRecurring == 'weekly'">
             <ion-col>
                 <ion-item class="weekly_items">
                     <ion-label>Repeat every week</ion-label>
@@ -58,12 +58,12 @@
                 </ion-item>
             </ion-col>
         </ion-row>
-        <ion-row *ngIf="isRecurring == 'weekly'">
+        <ion-row class="plr-5" *ngIf="isRecurring == 'weekly'">
             <ion-col>
                 <ion-label>Repeat on</ion-label>
             </ion-col>
         </ion-row>
-        <ion-row class="week_block" *ngIf="isRecurring == 'weekly'">
+        <ion-row class="week_block plr-5" *ngIf="isRecurring == 'weekly'">
             <ion-col class="week_cols" *ngFor="let entry of day">
                 <ion-item class="week_box" style="width: 100%; position: relative;">
                     <ion-label style=" text-align: center;">{{entry.day}}</ion-label>
@@ -72,7 +72,7 @@
             </ion-col>
         </ion-row>
 
-        <ion-row *ngIf="isRecurring == 'monthly' || isRecurring == 'yearly'">
+        <ion-row class="plr-5" *ngIf="isRecurring == 'monthly' || isRecurring == 'yearly'">
             <ion-col class="monthly_boxs">
                 <ion-label>Repeat every </ion-label>
             </ion-col>
