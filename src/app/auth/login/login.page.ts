@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
     }
   }
   ngOnInit() {
-
+    this.email ='akram501@gmail.com'
   }
   checkMail(email): boolean {
     return (email == '' || !this.regEmail.test(email))

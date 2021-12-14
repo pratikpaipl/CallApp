@@ -53,16 +53,25 @@ ion-img {
 
 
 .titles {
-  display    : block;
-  padding    : 20px 0;
-  font-weight: 700;
-  color      : #003463;
-  font-size  : 18px !important;
+	display: block;
+	padding: 20px 0;
+	font-weight: 700;
+	color: #19de80;
+	font-size: 18px !important;
+	text-align: left;
+	font-family: 'proxima_nova_rgbold';
+	letter-spacing: 0.5px;
 }
 
 .contents {
   line-height: 17px;
   display    : block;
-  font-size  : 15px !important;
+  font-size  : 14px !important;
+  text-align: left;
 
+}
+
+.model-close {
+	right: 5px;
+	top: 90px;
 }

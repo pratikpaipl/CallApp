@@ -129,7 +129,7 @@ ion-app {
 }
 
 .model-close {
-    color: #0085fc;
+    color: #a9b5c1;
     right: 0px;
     position: absolute;
     font-size: 25px;
@@ -1208,4 +1208,32 @@ ion-datetime {
     display: block !important;
     margin: 0px !important;
     padding: 0px !important;
+}
+
+
+.radio_with_icons ion-radio-group {
+	width: calc(100% - 40px);
+	float: left;
+}
+.Priority_icons {
+	float: right;
+	width: 30px;
+	padding: 2px 0px 2px 4px;
+}
+
+
+.remove_filds {
+    z-index: 2;
+color: #a9b5c1;
+font-size: 25px;
+}
+
+.date_row ion-label.content.date {
+	font-family: 'proxima_nova_ltsemibold';
+}
+
+ion-toggle {
+	--background-checked: #02a5e2 !important;
+	--handle-background: #ffffff !important;
+	--handle-background-checked: #fff !important;
 }

@@ -140,8 +140,10 @@ ion-item ion-input {
     padding: 0px !important;
     white-space: normal !important;
     font-family: 'proxima_nova_ltsemibold' !important;
-    font-size: 14px !important;
+    font-size: 16px !important;
     color: #333 !important;
+    line-height: 18px;
+    margin-bottom: 5px !important;
 }
 
 .sub_tsk ion-list ion-item ion-label.date {
@@ -156,8 +158,9 @@ ion-item ion-input {
 .sub_tsk ion-list ion-item ion-checkbox {
     min-height: auto !important;
     margin: 2px 5px 0px 0px !important;
-    width: 15px !important;
-    height: 15px !important;
+    margin: 1px 10px 0px 0px !important;
+width: 18px !important;
+height: 18px !important;
 }
 
 .bottom-space ion-input {

@@ -36,9 +36,9 @@
             </ion-col>
         </ion-row>
         <ion-row class="bottom-space">
-            <ion-col class="border">
+            <ion-col class="border radio_with_icons">
                 <ion-list-header>
-                    <ion-label style="color: #80657c91 !important;">
+                    <ion-label style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">
                         Set Priority *
                     </ion-label>
                 </ion-list-header>
@@ -49,20 +49,21 @@
                         <ion-radio value="{{item.taskpriority_id}}"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
+                <img class="Priority_icons" src="../../../assets/images/spam-line.svg" />
             </ion-col>
         </ion-row>
         <ion-row class="bottom-space sub_tsk" *ngIf="taskData == undefined">
             <ion-col size="12" *ngIf="subTasks.length >0">
                 <ion-list-header>
-                    <ion-label>Sub Tasks</ion-label>
+                    <ion-label style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">Sub Tasks</ion-label>
                 </ion-list-header>
                 <ion-list>
                     <ion-item style="--inner-padding-end: 0px !important;" *ngFor="let entry of subTasks; let i = index;">
                         <div style="display: block; width: 100%;">
                             <ion-label class="name">{{entry.name}}</ion-label>
-                            <ion-label class="date">{{this.apiService.getDate(entry.value)}}</ion-label>
+                            <ion-label class="date" style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">{{this.apiService.getDate(entry.value)}}</ion-label>
                         </div>
-                        <ion-icon class="remove_filds" style="z-index: 2;" name="remove-circle-outline" (click)="removeSubTask(i)">
+                        <ion-icon class="remove_filds" name="close" (click)="removeSubTask(i)">
                         </ion-icon>
                         <ion-checkbox style="margin-inline-end: 0px;--border-radius: 50%;" slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
                     </ion-item>
