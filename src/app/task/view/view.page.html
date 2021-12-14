@@ -1,8 +1,11 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="secondary">
-    <ion-title>
-      Task Details
-    </ion-title>
+<ion-header>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row style="align-items: center;">
+        <ion-col style="flex: 0 0 30px;"> <ion-img style="padding:5px" src="../../../assets/images/back.png" (click)="globle.backPage()"></ion-img> </ion-col>
+        <ion-col>Task Details</ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
@@ -21,50 +24,47 @@
       <ion-col>
         <ion-item>
           <ion-label position="floating">Start Date</ion-label>
-          <ion-input></ion-input>
+          <ion-datetime></ion-datetime>
+          <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label position="floating">Due Date</ion-label>
-          <ion-input></ion-input>
+          <ion-datetime></ion-datetime>
+          <ion-img src="../../../assets/images/calendar.png"></ion-img>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <ion-radio-group>
-          <ion-list-header>
-            <ion-label>
-              Set Priority
-            </ion-label>
-          </ion-list-header>
-
-          <ion-item>
+      <ion-col class="border">
+        <ion-list-header>
+          <ion-label>
+            Set Priority
+          </ion-label>
+        </ion-list-header>
+        <ion-radio-group [(ngModel)]="priority">
+          <!-- <ion-item>
             <ion-label>Critical</ion-label>
-            <ion-radio value="cord"></ion-radio>
+            <ion-radio value="critical"></ion-radio>
           </ion-item>
 
           <ion-item>
             <ion-label>High</ion-label>
-            <ion-radio value="duesenberg"></ion-radio>
-          </ion-item>
+            <ion-radio value="high"></ion-radio>
+          </ion-item> -->
 
           <ion-item>
             <ion-label>Medium</ion-label>
-            <ion-radio value="hudson"></ion-radio>
+            <ion-radio value="medium"></ion-radio>
           </ion-item>
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>Low</ion-label>
-            <ion-radio value="packard"></ion-radio>
-          </ion-item>
+            <ion-radio value="low"></ion-radio>
+          </ion-item> -->
 
         </ion-radio-group>
-        <!-- <ion-item>
-          <ion-label position="floating">Set Priority</ion-label>
-          <ion-input></ion-input>
-        </ion-item> -->
       </ion-col>
     </ion-row>
     <ion-row>
@@ -75,7 +75,7 @@
               <ion-col>
                 <ion-label>Upload the New outward data first</ion-label>                
               </ion-col>
-              <ion-col>
+              <ion-col style="flex: 0 0 ;">
                 <ion-label>18/07/2021</ion-label>                
               </ion-col>
             </ion-row>
@@ -89,7 +89,9 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-img style="width: 50px;" src="../../../assets/images/uncheck.png"></ion-img>
+              <ion-img class="assign-img" style="margin-left: -0px;" src="../../../assets/images/calendar.png"></ion-img>
+              <ion-img class="assign-img"style="margin-left: -20px;" src="../../../assets/images/settings.png"></ion-img>
+              <ion-img class="assign-img" style="margin-left: -20px;" src="../../../assets/images/notification.png"></ion-img>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -100,16 +102,16 @@
       <ion-col>
         <ion-item>
           <ion-label>Set Reminder</ion-label>
+          <ion-toggle ></ion-toggle>
         </ion-item>
       </ion-col>
     </ion-row>
-
     <ion-row>
       <ion-col>
         <ion-label>Mark as recuring</ion-label>
       </ion-col>
-      <ion-col>
-        <ion-label>Recuring every week</ion-label>
+      <ion-col style="text-align: right;">
+        <ion-label>Recurring every week</ion-label>
       </ion-col>
     </ion-row>
     <ion-row>

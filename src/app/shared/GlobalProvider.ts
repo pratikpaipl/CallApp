@@ -3,19 +3,21 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Network } from '@ionic-native/network/ngx';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
+import * as moment from 'moment';
 import { EventService } from '../services/EventService';
 import { NavigationService } from '../services/NavigationService';
 
 @Injectable()
 export class GlobalProvider {
 
+    userData: any = {}
     CountryCodes = [];
     CountryCodes_0 = [];
     regEmail: any;
     regWeb: any;
     public alertPresented: any;
     public alertPresentedToken: any;
-
+    maxDate: any = moment().add(50, 'y').format('YYYY');
     constructor(public alertController: AlertController, private eventService: EventService, public modalController: ModalController, private sanitizer: DomSanitizer, public router: Router, private navigation: NavigationService, public toastController: ToastController, public network: Network) {
         this.alertPresented = false
         this.alertPresentedToken = false
@@ -23,6 +25,19 @@ export class GlobalProvider {
         this.regEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
         this.regWeb = /^((http|ftp|https):\/\/)?([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?$/
 
+
+        this.userData = localStorage.getItem('user-data') != undefined ? JSON.parse(localStorage.getItem('user-data')) : {}
+
+    }
+
+    firstLater() {
+        if (this.userData != undefined && this.userData.full_name != undefined)
+            return this.userData.full_name.substring(0, 1)
+    }
+
+    oneLater(name) {
+        if (name != undefined && name != '')
+            return name.substring(0, 1)
     }
 
 
@@ -221,10 +236,10 @@ export class GlobalProvider {
                         handler: () => {
                             vm.alertPresentedToken = false
                             if (status == 401) {
-                                localStorage.removeItem('token');
+                                localStorage.removeItem('access_token');
                                 this.eventService.publishFormRefresh(false);
                                 setTimeout(() => {
-                                    this.router.navigateByUrl('/auth#login');
+                                    this.router.navigateByUrl('/login', { replaceUrl: true });
                                 }, 200);
                                 // this.router.navigateByUrl('/explore#all', { replaceUrl: true });
                             }

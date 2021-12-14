@@ -1,0 +1,126 @@
+<div class="model_blocks">
+    <ion-icon name="close" class="model-close" (click)="closeModal()"></ion-icon>
+    <ion-grid>
+        <ion-row class="menurow">
+            <ion-col>
+                <ion-label class="titles">Mark as Recurring Task</ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="border">
+                <ion-radio-group [(ngModel)]="isRecurring">
+                    <ion-item>
+                        <ion-label>Daily</ion-label>
+                        <ion-radio value="daily"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Weekly</ion-label>
+                        <ion-radio value="weekly"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Monthly</ion-label>
+                        <ion-radio value="monthly"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Yearly</ion-label>
+                        <ion-radio value="yearly"></ion-radio>
+                    </ion-item>
+
+                </ion-radio-group>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="date_row">
+            <ion-col style="flex: 0 0 80px;">
+                <ion-label class="content">Starts on</ion-label>
+            </ion-col>
+            <ion-col style="text-align: right;">
+                <ion-label class="content">{{startDate | date : "MMM dd, yyyy hh:mm a"}}</ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="isRecurring == 'weekly'">
+            <ion-col>
+                <ion-item class="weekly_items">
+                    <ion-label>Repeat every week </ion-label>
+                    <ion-toggle></ion-toggle>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="isRecurring == 'weekly'">
+            <ion-col>
+                <ion-label>Repeat On </ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row class="week_block" *ngIf="isRecurring == 'weekly'">
+            <ion-col class="week_cols" *ngFor="let entry of day">
+                <ion-item class="week_box" style="width: 100%; position: relative;">
+                    <ion-label style=" text-align: center;">{{entry.day}}</ion-label>
+                    <ion-checkbox slot="end" [(ngModel)]="entry.isCheck"></ion-checkbox>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="isRecurring == 'monthly' || isRecurring == 'yearly'">
+            <ion-col class="monthly_boxs">
+                <ion-label>Repeat every </ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row class="monthly_boxs" *ngIf="isRecurring == 'monthly'">
+            <ion-col class="border">
+                <ion-radio-group [(ngModel)]="selectedMonth">
+                    <ion-item>
+                        <ion-label>Month</ion-label>
+                        <ion-radio value="1"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>3 Months</ion-label>
+                        <ion-radio value="3"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>6 Months</ion-label>
+                        <ion-radio value="6"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>9 Months</ion-label>
+                        <ion-radio value="9"></ion-radio>
+                    </ion-item>
+
+                </ion-radio-group>
+            </ion-col>
+        </ion-row>
+        <ion-row class="monthly_boxs" *ngIf="isRecurring == 'yearly'">
+            <ion-col class="border">
+                <ion-radio-group [(ngModel)]="selectedYear">
+                    <ion-item>
+                        <ion-label>Year</ion-label>
+                        <ion-radio value="1"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>2 Year</ion-label>
+                        <ion-radio value="2"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>5 Year</ion-label>
+                        <ion-radio value="5"></ion-radio>
+                    </ion-item>
+
+
+                </ion-radio-group>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="set()">Set</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

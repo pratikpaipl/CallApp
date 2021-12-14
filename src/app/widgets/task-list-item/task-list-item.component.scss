@@ -1,0 +1,19 @@
+.main-row{
+  background: white;
+  padding: 10px;
+  margin: 10px;
+}
+.avatar{
+  flex: 0 0;
+  align-items: center;
+}
+.avatar ion-img{
+  width: 50px;padding: 5px; filter: invert(100%);
+}
+.content{
+  display: contents;
+}
+.right-lbl{
+  flex: 0 0 85px;
+    text-align: right;
+}

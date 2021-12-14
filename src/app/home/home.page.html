@@ -1,35 +1,30 @@
-<ion-toolbar>
-  <ion-title>
-    {{selected ==0?"Calendar":selected==1?"Dashboard":selected==2?"Notifications":"Settings"}}
-  </ion-title>
-  <ion-buttons slot="primary">
-    <ion-button >
-      <ion-icon slot="icon-only" name="search"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-  <!-- <ion-searchbar placeholder="Search Favorites"></ion-searchbar> -->
-</ion-toolbar>
-<!-- <ion-header>
-    <ion-toolbar>
-    <ion-title>
-      BDO Calendar
+<ion-toolbar *ngIf="selected!=4">
+    <ion-title *ngIf="!toggled" (click)="titleClick()">
+        <!-- [min]="minDate"  -->
+        <ion-datetime *ngIf="selected ==0" [max]="global.maxDate" #datePicker text-center displayFormat="MMM YYYY" [(ngModel)]="selectedDate">
+        </ion-datetime>
+        {{selected==1?"Dashboard":selected==2?"Create Task":selected==3?"Notification":selected==4?"Settings":''}}
     </ion-title>
-  </ion-toolbar>
-</ion-header> -->
+    <ion-searchbar *ngIf="toggled" [(ngModel)]="searchTerm" [showCancelButton]="true" (ionCancel)="toggleSearch()" (ionInput)="triggerInput($event)"></ion-searchbar>
+    <ion-buttons *ngIf="selected ==0 && showWeek && !toggled" slot="primary" (click)="toggleSearch()">
+        <ion-button style="    --color: #333333 !important;">
+            <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+    <!-- <ion-buttons slot="primary">
+    <ion-button (click)="logout()">
+      <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons> -->
+</ion-toolbar>
 
 <ion-content #content id="page" [scrollEvents]="true" (ionScroll)="function($event)">
-  <!-- <ion-grid>
-    <ion-row style="align-items: center;">
-      <ion-col style="flex: 0 0 30px;">
-        <ion-img style="padding:5px" src="../../../assets/images/back.png" (click)="globle.backPage()"></ion-img>
-      </ion-col>
-      <ion-col>{{selected}}</ion-col>
-    </ion-row>
-  </ion-grid> -->
-
-  <calender *ngIf="selected == 0 "></calender>
-  <dashboard *ngIf="selected == 1 "></dashboard>
-  <notification *ngIf="selected == 2 "></notification>
-  <settings *ngIf="selected == 3 "></settings>
+    <month *ngIf="selected == 0 && !showWeek" [selectedDate]="selectedDate" (change)="changeView($event)"></month>
+    <week [selectedDate]="weekSelDate" [searchTerm]="searchTerm" *ngIf="selected == 0 && showWeek" (change)="changeWeek($event)"></week>
+    <dashboard *ngIf="selected == 1 "></dashboard>
+    <create-task *ngIf="selected == 2 "></create-task>
+    <notification *ngIf="selected == 3 "></notification>
+    <settings *ngIf="selected == 4 "></settings>
 </ion-content>
 <app-page-footer style="position: relative;" [selected]="selected" (change)="selectedPage($event)"></app-page-footer>

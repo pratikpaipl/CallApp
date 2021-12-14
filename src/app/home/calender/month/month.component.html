@@ -1,0 +1,96 @@
+<div class="calendar-header">
+    <ion-row>
+        <ion-col>
+            <ion-img (click)="openFilter()" src="../../../../assets/images/filter.png"></ion-img>
+        </ion-col>
+        <ion-col>
+            <span>
+                <ion-label>
+                    <div class="compliance"></div>&nbsp;Compliance
+                </ion-label>
+            </span>
+        </ion-col>
+        <ion-col>
+            <span style="background:#e7e7e7;">
+                <ion-label>
+                    <div class="extention"></div>&nbsp;Extention
+                </ion-label>
+            </span>
+        </ion-col>
+        <ion-col>
+            <span>
+                <ion-label>
+                    <div class="task"></div>&nbsp;Tasks
+                </ion-label>
+            </span>
+        </ion-col>
+    </ion-row>
+</div>
+<div class="calendar-body">
+    <ion-grid style="background: white; margin: 15px;">
+        <ion-row class="calendar-weekday">
+            <ion-col class="calendar_heading">
+                <ion-label>Sun</ion-label>
+            </ion-col>
+            <ion-col class="calendar_heading">
+                <ion-label>Mon</ion-label>
+            </ion-col>
+            <ion-col class="calendar_heading">
+                <ion-label>Tue</ion-label>
+            </ion-col>
+            <ion-col class="calendar_heading">
+                <ion-label>Wed</ion-label>
+            </ion-col>
+            <ion-col class="calendar_heading">
+                <ion-label>Thu</ion-label>
+            </ion-col>
+            <ion-col class="calendar_heading">
+                <ion-label>Fri</ion-label>
+            </ion-col>
+            <ion-col class="calendar_heading">
+                <ion-label>Sat</ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row class="calendar-date">
+            <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month" (click)="goToLastMonth()">
+                <ion-label class="dates">
+                    <span class="date_number other-month-date">{{lastDay.day}}</span>
+                </ion-label>
+            </ion-col>
+            <ion-col col-1 *ngFor="let day of daysInThisMonth" (click)="selectDate(day.day)">
+                <ion-label style="background: #e7f8ff; border-bottom: 3px solid #02a5e2;" class="dates" *ngIf="currentDate === day.day; else otherDate">
+                    <span class="date_number">{{day.day}}</span>
+                    <div class="dates_slotes" *ngIf="day.total_due_date != 0 || day.total_task != 0 || day.total_extensions != 0">
+                        <span class="cricle" *ngIf="day.total_due_date !=undefined && day.total_due_date != 0">{{day.total_due_date}}</span>
+                        <span class="squre" *ngIf="day.total_task !=undefined && day.total_task != 0">{{day.total_task}}</span>
+                        <span class="extention" *ngIf="day.total_extensions !=undefined && day.total_extensions != 0">{{day.total_extensions}}</span>
+                    </div>
+                </ion-label>
+                <ng-template #otherDate class="otherDate">
+                    <ion-label class="dates">
+                        <span class="date_number">{{day.day}}</span>
+                        <div class="dates_slotes" *ngIf="day.total_due_date != 0 || day.total_task != 0|| day.total_extensions != 0">
+                            <span class="cricle" *ngIf="day.total_due_date !=undefined && day.total_due_date != 0">{{day.total_due_date}}</span>
+                            <span class="squre" *ngIf="day.total_task !=undefined && day.total_task != 0">{{day.total_task}}</span>
+                            <span class="extention" *ngIf="day.total_extensions !=undefined && day.total_extensions != 0">{{day.total_extensions}}</span>
+                        </div>
+                    </ion-label>
+                </ng-template>
+            </ion-col>
+            <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month" (click)="goToNextMonth()">
+                <ion-label class="dates">
+                    <span class="date_number other-month-date">{{nextDay.day}}</span>
+                </ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+<div class="selected-event" *ngIf="isSelected">
+    <ion-list>
+        <ion-item *ngFor="let se of selectedEvent">
+            <h2>{{se.title}}</h2>
+            <h3>{{se.message}}</h3>
+            <p>Start Date: {{se.startDate}}<br> Start Date: {{se.endDate}}</p>
+        </ion-item>
+    </ion-list>
+</div>

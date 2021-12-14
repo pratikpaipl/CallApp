@@ -1,0 +1,29 @@
+<ion-content class="ion-padding">
+  <div class="model_blocks">
+    <img src="assets/images/success.png" />
+    <ion-grid>
+      <!-- <ion-row>
+        <ion-col text-center>
+          <ion-label class="titles"> Successful!</ion-label>
+        </ion-col>
+      </ion-row> -->
+      <ion-row>
+        <ion-col text-center>
+          <ion-label class="contents" [innerHtml]="msg"> </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center class="buttons_box">
+          <ion-button expand="round" class="btn-2" (click)="action(1)">Yes</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center >
+          <ion-button expand="round" (click)="action(0)">No</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+</ion-content>

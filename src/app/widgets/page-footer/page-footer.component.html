@@ -1,36 +1,63 @@
 <div class="footer_panels"></div>
-  <div class="create-btn">
+<!-- <div class="create-btn">
     <ion-img  (click)="this.create()" src="../../../assets/images/plus.png"></ion-img>
-  </div>
+  </div> -->
 <div id="footer">
-  <ion-radio-group id="footer_menu" [(ngModel)]="selected" (ionChange)="changeMenu($event)">
-    <ion-item>
-      <ion-radio value="0"></ion-radio>
-      <div>
-        <ion-img src="assets/images/calendar.png"></ion-img>
-        <ion-label> Calender</ion-label>
+    <ion-segment [(ngModel)]="selected" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="0">
+            <div>
+                <ion-img src="assets/images/calendar.png"></ion-img>
+                <ion-label> Calendar</ion-label>
+            </div>
+        </ion-segment-button>
+        <ion-segment-button value="1">
+            <div>
+                <ion-img class="select-menu" src="assets/images/dashboard.png"></ion-img>
+                <ion-label>Dashboard</ion-label>
+            </div>
+        </ion-segment-button>
+        <ion-segment-button value="2">
+            <div style="margin: 0px 0px 8px 0px;">
+                <ion-img class="select-menu" style="width: 40px !important;" src="assets/images/plus.png"></ion-img>
+                <!-- <ion-label style="opacity: 0;" >Create</ion-label> -->
+            </div>
+        </ion-segment-button>
+        <ion-segment-button value="3">
+            <div>
+                <ion-img src="assets/images/notification.png"></ion-img>
+                <ion-label> Notification</ion-label>
+            </div>
+        </ion-segment-button>
+        <ion-segment-button value="4">
+            <div>
+                <ion-img class="select-menu" src="assets/images/settings.png"></ion-img>
+                <ion-label>Settings</ion-label>
+            </div>
+        </ion-segment-button>
+    </ion-segment>
+    <!-- <ion-segment style="color: #333;" scrollable value="heart">
+    <ion-segment-button value="home">
+      <ion-img src="assets/images/calendar.png"></ion-img>
+      <div style="margin-top: -20px !important; ">
+        Calendar
       </div>
-    </ion-item>
-    <ion-item>
-      <ion-radio value="1"> </ion-radio>
-      <div>
-        <ion-img class="select-menu" src="assets/images/dashboard.png"></ion-img>
-        <ion-label>Dashboard</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="heart">
+      <ion-img class="select-menu" src="assets/images/dashboard.png"></ion-img>
+      <div style="margin-top: -20px !important; ">
+        Dashboard
       </div>
-    </ion-item>
-    <ion-item>
-      <ion-radio value="2"> </ion-radio>
-      <div>
-        <ion-img src="assets/images/notification.png"></ion-img>
-        <ion-label>Notification</ion-label>
-      </div>
-    </ion-item>
-    <ion-item>
-      <ion-radio value="3"> </ion-radio>
-      <div>
-        <ion-img src="assets/images/settings.png"></ion-img>
-        <ion-label>Settings</ion-label>
-      </div>
-    </ion-item>
-  </ion-radio-group>
+    </ion-segment-button>
+    <ion-segment-button value="pin">
+      <ion-img class="select-menu" style="width: 40px !important;" src="assets/images/plus.png"></ion-img>
+    </ion-segment-button>
+    <ion-segment-button value="star">
+      <ion-img src="assets/images/notification.png"></ion-img>
+      <ion-label>Notification</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="call">
+      <ion-img src="assets/images/settings.png"></ion-img>
+      <ion-label>Settings</ion-label>
+    </ion-segment-button>
+  </ion-segment> -->
 </div>

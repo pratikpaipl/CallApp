@@ -1,30 +1,131 @@
-<ion-row class="p-5-20">
-  <ion-col class="fchild">
-    <div>
-      <ion-img src="../../../assets/images/settings.png"> </ion-img>
-    </div>
-  </ion-col>
-  <ion-col>
-    <ion-row>
-      <ion-col>
-        <ion-label>{{heading}}</ion-label>
-      </ion-col>
-      <ion-col class="time">
-        <ion-label>{{time}}</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row *ngIf="type==1" >
-      <ion-col>
-        <ion-label>{{subheading}}</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row *ngIf="type==1">
-      <ion-col>
-          <ion-button>Mark as Complete</ion-button>
-      </ion-col>
-      <ion-col>
-          <ion-button>Reject</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-col>
-</ion-row>
+<ion-grid class="notifull bg border-r">
+  <ion-row class="notyhead">
+    <ion-col size="12">
+      <ion-label class="text-gray">Today</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="noti_card">
+    <ion-col class="icons">
+      <ion-img [src]="imgPath"> </ion-img>
+    </ion-col>
+    <ion-col class="contents">
+      <ion-label>Task assigned by Ashwin Kumar from BDO is due tomorrow</ion-label>
+      <ion-label class="time text-gray">10 mins ago</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid class="notifull sub_card">
+  <ion-row class="noti_card">
+    <ion-col class="icons">
+      <ion-img [src]="imgPath"> </ion-img>
+    </ion-col>
+    <ion-col class="contents">
+      <ion-label>Aditya Rathod has assigned you a new task</ion-label>
+      <ion-label class="time text-gray">50 mins ago</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="button_box">
+    <ion-col size="6" class="p-0">
+      <ion-button class="complete">
+        <ion-icon name="checkmark-circle-outline"></ion-icon> Mark as complete
+      </ion-button>
+    </ion-col>
+    <ion-col size="6" class="p-0">
+      <ion-button class="reject">
+        <ion-icon name="close-circle-outline"></ion-icon>Reject
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid class="notifull bg">
+  <ion-row class="noti_card">
+    <ion-col class="icons">
+      <ion-img src="../../../assets/images/compliance.png"></ion-img>
+    </ion-col>
+    <ion-col class="contents">
+      <ion-label>10 Days remaining to file GSTR1 for the month of April</ion-label>
+      <ion-label class="time text-gray">10 mins ago</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid class="notifull bg mt-10">
+  <ion-row class="notyhead">
+    <ion-col size="12">
+      <ion-label class="text-gray">Previous</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="noti_card">
+    <ion-col class="icons">
+      <ion-img src="../../../assets/images/compliance.png"> </ion-img>
+    </ion-col>
+    <ion-col class="contents">
+      <ion-label>10 Days remaining to file GSTR1 for the month of April</ion-label>
+      <ion-label class="time text-gray">10 mins ago</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid class="notifull ">
+  <ion-row class="noti_card nobg">
+    <ion-col class="icons">
+      <ion-img src="../../../assets/images/compliance_extension.png"> </ion-img>
+    </ion-col>
+    <ion-col class="contents">
+      <ion-label>10 Days remaining to file GSTR1 for the month of April</ion-label>
+      <ion-label class="time text-gray">10 mins ago</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid class="notifull bg">
+  <ion-row class="noti_card">
+    <ion-col class="icons">
+      <ion-img src="../../../assets/images/task.png"> </ion-img>
+    </ion-col>
+    <ion-col class="contents">
+      <ion-label>10 Days remaining to file GSTR1 for the month of April</ion-label>
+      <ion-label class="time text-gray">10 mins ago</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+<!-- 
+<ion-grid   [ngStyle]="{'border-radius': brRadius}" >
+  <ion-row class="p-5-20">
+    <ion-col class="fchild">
+      <div>
+        <ion-img [src]="imgPath"> </ion-img>
+      </div>
+    </ion-col>
+    <ion-col>
+      <ion-row>
+        <ion-col>
+          <ion-label>{{heading}}</ion-label>
+        </ion-col>
+        <ion-col class="time">
+          <ion-label>{{time}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="type==1" >
+        <ion-col>
+          <ion-label>{{subheading}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="row-border" *ngIf="type==1">
+    <ion-col size="6" class="p-0">
+      <ion-button class="complete">
+        <ion-icon name="checkmark-circle-outline"></ion-icon> Mark as Complete
+      </ion-button>
+    </ion-col>
+    <ion-col size="6" class="p-0">
+      <ion-button class="reject">
+        <ion-icon name="close-circle-outline"></ion-icon>Reject
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>  -->

@@ -6,12 +6,18 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AuthGuard } from './authguard.service';
 import { DatePipe } from '@angular/common';
+import { MenuItemComponent } from '../widgets/menu-item/menu-item.component';
+import { ExpandComponent } from '../widgets/expand/expand.component';
+import { RecurringComponent } from '../task/recurring/recurring.component';
+import { SubTaskComponent } from '../task/sub-task/sub-task.component';
+import { NoTaskComponent } from '../widgets/no-task/no-task.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { CreateComponent } from '../home/create/create.component';
 
 @NgModule({
-  declarations: [           TopCardComponent,PageFooterComponent,],
-  imports: [CommonModule, IonicModule, FormsModule, ReactiveFormsModule],
-  exports: [CommonModule, IonicModule, TopCardComponent,PageFooterComponent, ReactiveFormsModule,  ],
-  providers: [AuthGuard, DatePipe],
+  declarations: [MenuItemComponent, TopCardComponent, PageFooterComponent, NoTaskComponent,CreateComponent, RecurringComponent, SubTaskComponent, ExpandComponent],
+  imports: [CommonModule, IonicModule, FormsModule,NgSelectModule, ReactiveFormsModule],
+  exports: [CommonModule, IonicModule, TopCardComponent, PageFooterComponent, ReactiveFormsModule, MenuItemComponent, NoTaskComponent,CreateComponent, RecurringComponent, SubTaskComponent, ExpandComponent],  providers: [AuthGuard, DatePipe],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

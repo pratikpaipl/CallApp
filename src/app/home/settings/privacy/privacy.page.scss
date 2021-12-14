@@ -1,0 +1,21 @@
+ion-toolbar {
+  color: #215e80;
+  background: #fff;
+  --background: #fff;
+}
+ion-content{
+  background: #fff;
+  --background: #fff;
+  // --padding-bottom: 25px;
+}
+ion-list-header{ 
+  padding-inline-start :0px}
+ion-list-header ion-label{ 
+  font-weight: bold;
+  font-size: 15px !important;
+  color: #002e58 !important;
+}
+ ion-label{ 
+  color: #15446d !important;
+}
+ion-row{padding: 5px 15px;}

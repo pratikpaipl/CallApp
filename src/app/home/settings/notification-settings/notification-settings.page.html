@@ -1,0 +1,49 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="home"></ion-back-button>
+  </ion-buttons>
+  <ion-title>
+    Notification Settings
+  </ion-title>
+</ion-toolbar>
+
+<ion-content #content id="page" [scrollEvents]="true" >
+  <ion-item>
+    <ion-label>Government Due Date</ion-label>
+    <ion-toggle [(ngModel)]="govDueDate"></ion-toggle>
+  </ion-item>  
+<ion-list-header><ion-label>Task</ion-label></ion-list-header>
+  <ion-list>
+    <ion-item>
+      <ion-label>New Task</ion-label>
+      <ion-toggle [(ngModel)]="newTask"></ion-toggle>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Completed Task</ion-label>
+      <ion-toggle [(ngModel)]="complete" ></ion-toggle> <!--disabled="true"-->
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Assigned Task</ion-label>
+      <ion-toggle [(ngModel)]="assigned"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <ion-list-header><ion-label>Event</ion-label></ion-list-header>
+  <ion-list>
+    <ion-item>
+      <ion-label>Desktop Notification</ion-label>
+      <ion-toggle [(ngModel)]="desktop"></ion-toggle>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Mobile Notification</ion-label>
+      <ion-toggle [(ngModel)]="mobile" ></ion-toggle> <!--disabled="true"-->
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Email Notification</ion-label>
+      <ion-toggle [(ngModel)]="email"></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

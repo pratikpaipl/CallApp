@@ -1,0 +1,6 @@
+export const environment = {
+  // BaseUrl: 'https://qa.pi2.life/api/',
+  // shareUrl: 'https://qa.pi2.life/',
+  BaseUrl: '#{apiHost}#',
+  production: true
+};

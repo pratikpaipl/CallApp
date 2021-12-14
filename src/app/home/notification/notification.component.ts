@@ -21,7 +21,7 @@ export class NotificationComponent implements OnInit {
   change: EventEmitter<Object> = new EventEmitter<Object>();
 
 
-  constructor(public store: StorageService, private navigation: NavigationService, public globle: GlobalProvider) {
+  constructor(public store: StorageService, private navigation: NavigationService, public global: GlobalProvider) {
   }
 
   async ngOnInit() {

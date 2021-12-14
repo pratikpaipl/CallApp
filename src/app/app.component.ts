@@ -1,14 +1,10 @@
-import { EventService } from './services/EventService';
 import { Network } from '@ionic-native/network/ngx';
-import { ApiService } from './services/api.service';
 import { Router } from '@angular/router';
-import { Badge } from '@ionic-native/badge/ngx';
-import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 
 import { Platform, IonRouterOutlet, ToastController, ModalController, LoadingController, MenuController, ActionSheetController, PopoverController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { GlobalProvider } from './shared/GlobalProvider';
 import { StorageService } from './shared/StorageService';
 declare const removeMenu: any;
@@ -18,17 +14,17 @@ declare const pageToTop: any;
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent  {
+export class AppComponent {
 
   @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
 
   lastTimeBackPress = 0;
   timePeriodToExit = 2000;
   navigate: any;
-  constructor(public modalController: ModalController, public store: StorageService, public globle: GlobalProvider, private eventService: EventService, private apiService: ApiService, private menu: MenuController, public router: Router, private popoverCtrl: PopoverController, private actionSheetCtrl: ActionSheetController, private toastController: ToastController, public modalCtrl: ModalController, private platform: Platform, public network: Network, public loadingController: LoadingController, private splashScreen: SplashScreen, private badge: Badge, private statusBar: StatusBar, private oneSignal: OneSignal,) {
+  constructor(public modalController: ModalController, public store: StorageService, public globle: GlobalProvider, private menu: MenuController, public router: Router, private popoverCtrl: PopoverController, private actionSheetCtrl: ActionSheetController, private toastController: ToastController, public modalCtrl: ModalController, private platform: Platform, public network: Network, public loadingController: LoadingController, private splashScreen: SplashScreen, private statusBar: StatusBar,) {
     this.initializeApp();
     this.backButtonEvent();
-    
+
   }
 
   async initializeApp() {
@@ -37,26 +33,26 @@ export class AppComponent  {
       this.statusBar.overlaysWebView(false);
       this.statusBar.show();
       this.splashScreen.hide();
-        // this.callOneSignal();
+      // this.callOneSignal();
     });
   }
 
   callOneSignal() {
-    this.oneSignal.startInit('app-key', 'pro-id');
-    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-    this.oneSignal.handleNotificationReceived().subscribe(() => {
-      // do something when notification is received
-      this.badge.increase(1);
-      //  this.badge.set(1);
-    });
-    this.oneSignal.handleNotificationOpened().subscribe(() => {
-      // do something when a notification is opened
-    });
+    // this.oneSignal.startInit('app-key', 'pro-id');
     // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-    this.oneSignal.endInit();
-    this.oneSignal.getIds().then((id) => {
-      this.store.saveData('PlayerID', id.userId);
-    });
+    // this.oneSignal.handleNotificationReceived().subscribe(() => {
+    //   // do something when notification is received
+    //   this.badge.increase(1);
+    //   //  this.badge.set(1);
+    // });
+    // this.oneSignal.handleNotificationOpened().subscribe(() => {
+    //   // do something when a notification is opened
+    // });
+    // // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+    // this.oneSignal.endInit();
+    // this.oneSignal.getIds().then((id) => {
+    //   this.store.saveData('PlayerID', id.userId);
+    // });
   }
 
   backButtonEvent() {

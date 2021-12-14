@@ -13,12 +13,12 @@ export class AuthGuard implements CanActivate {
     if (this.loggedIn()) {
       return true;
     }
-    this.router.navigateByUrl('/auth#login', { replaceUrl: true });
+    this.router.navigateByUrl('/login', { replaceUrl: true });
     return false;
   }
 
   loggedIn() {
-    if (localStorage.getItem('token') === null || localStorage.getItem('token') === '') {
+    if (localStorage.getItem('access_token') === null || localStorage.getItem('access_token') === '') {
       return false;
     }
     return true;
