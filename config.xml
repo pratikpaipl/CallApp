@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.bdo.calander" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>BDO Calendar</name>
+<widget android-versionCode="3" id="in.bdo.taxcalendar" ios-CFBundleVersion="1.0.0" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>TAX CALENDAR by BDO India</name>
     <description>BDO Tax Calendar and Task Management Tool Mobile App.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -29,6 +29,7 @@
             <application android:allowBackup="false" />
         </edit-config>
         <allow-intent href="market:*" />
+        <preference name="android-targetSdkVersion" value="30" />
         <preference name="AndroidPersistentFileLocation" value="Internal" />
         <preference name="AndroidPersistentFileLocation" value="Compatibility" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
