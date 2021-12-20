@@ -225,7 +225,7 @@ export class WeekComponent implements OnInit {
     this.tasksCount = this.tasks.length;
   }
   formateDate(date) {
-    return moment(date).format('DD MMM yyyy');
+    return moment(date).format('DD MMM');
   }
   checkAnyOneEnable() {
     return (this.govDueDates.find(x => x.is_disabled == 0) || this.extensions.find(x => x.is_disabled == 0))

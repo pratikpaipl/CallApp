@@ -154,6 +154,15 @@
     padding: 15px;
     background: white;
 }
+.shaprator {
+	flex: 0 0 6px;
+	display: block;
+	height: 40px;
+	margin-top: 12px;
+	margin-right: 10px;
+	max-width: 6px;
+}
+
 
 // .gov ion-row {
 //   margin: 10px 0 0 0;
@@ -190,11 +199,11 @@ ion-item ion-label {
 }
 
 ion-label.gray {
-    color: #80657c91 !important;
-    font-size: 13px !important;
+    color: rgba(101, 124, 145, 0.5) !important;
+    font-size: 12px !important;
     display: block;
     line-height: normal;
-    padding-left: 30px;
+    padding-left: 28px;
 }
 
 ion-checkbox {

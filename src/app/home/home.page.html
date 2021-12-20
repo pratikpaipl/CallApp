@@ -1,4 +1,4 @@
-<ion-toolbar *ngIf="selected!=4">
+<ion-toolbar *ngIf="selected!=4"  >
     <ion-title *ngIf="!toggled" (click)="titleClick()">
         <!-- [min]="minDate"  -->
         <ion-datetime *ngIf="selected ==0" [max]="global.maxDate" #datePicker text-center displayFormat="MMM YYYY" [(ngModel)]="selectedDate">
