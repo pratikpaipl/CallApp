@@ -182,6 +182,7 @@ export class WeekComponent implements OnInit {
             this.days[i].total_due_date = res.data[element].total_due_date;
             this.days[i].total_task = res.data[element].total_task;
             this.days[i].govDate = res.data[element].gov_due_data;
+            this.days[i].extensions = res.data[element].extensions;
             this.days[i].task = res.data[element].task_data;
             // console.log('Gov Due Date ', res.data[element])
             if (this.days[i].day == moment(this.selectedDate).format("DD")) {
@@ -403,8 +404,10 @@ export class WeekComponent implements OnInit {
     );
   }
   onClick(item, i) {
+    console.log('extensions ', item)
     this.tasks = item.task;
     this.govDueDates = item.govDate;
+    this.extensions = item.extensions;
     this.setData();
     // this.days[i].selected=true
     for (let k = 0; k < this.days.length; k++) {
