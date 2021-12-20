@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<ion-toolbar *ngIf="selected!=4"  >
-=======
 <ion-toolbar *ngIf="selected!=4" [ngStyle]="{'background': selected == 1 ? '#fff ' : '#f2f2f2' }">
->>>>>>> 2751be95e3a83d896d524f84f985352690ac8fff
     <ion-title *ngIf="!toggled" (click)="titleClick()">
         <!-- [min]="minDate"  -->
         <ion-datetime *ngIf="selected ==0" [max]="global.maxDate" #datePicker text-center displayFormat="MMM YYYY"
@@ -13,7 +9,7 @@
     <ion-searchbar *ngIf="toggled" [(ngModel)]="searchTerm" [showCancelButton]="true" (ionCancel)="toggleSearch()"
                    (ionInput)="triggerInput($event)"></ion-searchbar>
     <ion-buttons *ngIf="selected ==0 && showWeek && !toggled" slot="primary" (click)="toggleSearch()">
-        <ion-button style="    --color: #333333 !important;">
+        <ion-button style="--color: #333333 !important;">
             <ion-icon slot="icon-only" name="search"></ion-icon>
         </ion-button>
     </ion-buttons>

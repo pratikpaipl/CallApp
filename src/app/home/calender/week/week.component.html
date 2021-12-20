@@ -135,7 +135,7 @@
                                 </ion-checkbox>
                                 <div>
                                     <ion-label class="titles">{{item.taskname}}</ion-label>
-                                    <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
+                                    <ion-label class="contents">{{ formateDatemain(item.due_date)}}</ion-label>
                                 </div>
                             </ion-item>
                             <ion-item *ngIf="!item.completionstatus">
@@ -144,7 +144,7 @@
                                 </ion-checkbox>
                                 <div>
                                     <ion-label class="titles">{{item.taskname}}</ion-label>
-                                    <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
+                                    <ion-label class="contents">{{ formateDatemain(item.due_date)}}</ion-label>
                                 </div>
 
                             </ion-item>
@@ -261,7 +261,7 @@
                             <ion-item *ngIf="item.completionstatus">
                                 <div>
                                     <ion-label class="titles">{{item.taskname}}</ion-label>
-                                    <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
+                                    <ion-label class="contents">{{ formateDatemain(item.due_date)}}</ion-label>
                                 </div>
                                 <div class="delete">
                                     <ion-icon name="trash" (click)="deleteTask(item)"></ion-icon>
@@ -274,7 +274,7 @@
                             <ion-item *ngIf="!item.completionstatus">
                                 <div>
                                     <ion-label class="titles">{{item.taskname}}</ion-label>
-                                    <ion-label class="contents">{{ formateDate(item.due_date)}}</ion-label>
+                                    <ion-label class="contents">{{ formateDatemain(item.due_date)}}</ion-label>
                                 </div>
                                 <div class="delete">
                                     <!-- <ion-icon name="trash" (click)="deleteTask(item)"></ion-icon> -->

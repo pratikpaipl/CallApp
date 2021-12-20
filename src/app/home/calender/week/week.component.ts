@@ -224,6 +224,10 @@ export class WeekComponent implements OnInit {
     }
     this.tasksCount = this.tasks.length;
   }
+  formateDatemain(date) {
+    return moment(date).format('DD MMM yyyy');
+  }
+
   formateDate(date) {
     return moment(date).format('DD MMM');
   }
