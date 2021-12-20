@@ -193,10 +193,14 @@
                                     </ion-col>
                                     <ion-col class="center">
                                         <ion-label class="contents">Priority</ion-label>
-                                        <ion-label class="contents"><i
-                                               [style.background]="item.task_priority_color"></i><i
-                                               [style.background]="item.task_priority_color"></i><i
-                                               [style.background]="item.task_priority_color"></i> {{item.task_priority}}
+                                        <ion-label class="contents">
+                                            <i
+                                               [ngStyle]="{'background': item.number_of_dots > 0 ? item.task_priority_color : '' }"></i>
+                                            <i
+                                               [ngStyle]="{'background': item.number_of_dots > 1 ? item.task_priority_color : '' }"></i>
+                                            <i
+                                               [ngStyle]="{'background': item.number_of_dots > 2 ? item.task_priority_color : '' }"></i>
+                                            {{item.task_priority}}
                                         </ion-label>
                                     </ion-col>
                                     <ion-col class="right">
@@ -207,7 +211,7 @@
                                         </ion-label>
                                     </ion-col>
                                 </ion-row>
-                                <ion-row class="button_boxs"  *ngIf="!item.completionstatus">
+                                <ion-row class="button_boxs" *ngIf="!item.completionstatus">
                                     <ion-col size="12" class="p-0">
                                         <ion-button class="complete" (click)="markAsCompleteTask(item)">
                                             <ion-icon name="checkmark"></ion-icon> Mark as complete
@@ -238,9 +242,9 @@
                                         <!-- <ion-label class="contents"><i></i><i></i><i></i> {{item.task_priority}}
                                         </ion-label> -->
                                         <ion-label class="contents"><i
-                                               [style.background]="item.task_priority_color"></i><i
-                                               [style.background]="item.task_priority_color"></i><i
-                                               [style.background]="item.task_priority_color"></i> {{item.task_priority}}
+                                            [ngStyle]="{'background': item.number_of_dots > 0 ? item.task_priority_color : '' }"></i><i
+                                            [ngStyle]="{'background': item.number_of_dots > 1 ? item.task_priority_color : '' }"></i><i
+                                            [ngStyle]="{'background': item.number_of_dots > 2 ? item.task_priority_color : '' }"></i> {{item.task_priority}}
                                         </ion-label>
                                     </ion-col>
                                     <ion-col class="right">
