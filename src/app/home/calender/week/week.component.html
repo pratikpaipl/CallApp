@@ -146,9 +146,12 @@
                                     <ion-label class="titles">{{item.taskname}}</ion-label>
                                     <ion-label class="contents">{{ formateDatemain(item.due_date)}}</ion-label>
                                 </div>
-
                             </ion-item>
+                            <div class="nitification_io">
+                                <ion-img src="../../../../assets/images/m_notification.png"></ion-img>
+                            </div>
                         </ion-col>
+
                         <ion-col size="12" *ngIf="item.child_task.length > 0">
                             <ion-grid class="sub_tasks_blocks">
                                 <ion-row class="p-0 ">
@@ -158,7 +161,7 @@
                                 </ion-row>
                                 <ion-row *ngFor="let sub of item.child_task" class="p-0 sub_tasks_listas"
                                          style="align-items: center;">
-                                    <ion-col style="max-width: calc(100% - 75px);">
+                                    <ion-col class="auto_cols">
                                         <ion-item *ngIf="sub.completionstatus">
                                             <ion-checkbox [disabled]="sub.completionstatus"
                                                           [checked]="sub.completionstatus">
@@ -173,7 +176,7 @@
                                             </ion-label>
                                         </ion-item>
                                     </ion-col>
-                                    <ion-col style="flex: 0 0 75px;">
+                                    <ion-col style="flex: 0 0; white-space: nowrap;">
                                         <ion-label class="contents">{{ formateDate(sub.due_date)}}</ion-label>
                                     </ion-col>
                                 </ion-row>
@@ -262,29 +265,17 @@
                                 <div>
                                     <ion-label class="titles">{{item.taskname}}</ion-label>
                                     <ion-label class="contents">{{ formateDatemain(item.due_date)}}</ion-label>
-                                </div>
-                                <div class="delete">
-                                    <ion-icon name="trash" (click)="deleteTask(item)"></ion-icon>
-                                </div>
-                                <div class="edit">
-                                    <ion-label (click)="updateTask(item)">Remove</ion-label>
-                                    <!-- <ion-icon name="create" (click)="updateTask(item)"></ion-icon> -->
-                                </div>
+                                </div>                                
                             </ion-item>
                             <ion-item *ngIf="!item.completionstatus">
                                 <div>
                                     <ion-label class="titles">{{item.taskname}}</ion-label>
                                     <ion-label class="contents">{{ formateDatemain(item.due_date)}}</ion-label>
                                 </div>
-                                <div class="delete">
-                                    <!-- <ion-icon name="trash" (click)="deleteTask(item)"></ion-icon> -->
-                                    <ion-label (click)="deleteTask(item)">Remove</ion-label>
-                                </div>
-                                <div class="edit">
-                                    <ion-label (click)="updateTask(item)">Edit</ion-label>
-                                    <!-- <ion-icon name="create" (click)="updateTask(item)"></ion-icon> -->
-                                </div>
                             </ion-item>
+                            <div class="edit_task" (click)="updateTask(item)">
+                                <ion-img src="../../../../assets/images/Edit.svg"></ion-img>
+                            </div>
                         </ion-col>
                         <ion-col size="12" *ngIf="item.child_task.length > 0">
                             <ion-grid class="sub_tasks_blocks">
@@ -293,27 +284,24 @@
                                         <ion-label class="titles">Sub tasks</ion-label>
                                     </ion-col>
                                 </ion-row>
-                                <ion-row *ngFor="let sub of item.child_task" class="p-0 sub_tasks_listas"
+                                <ion-row  *ngFor="let sub of item.child_task" class="p-0 sub_tasks_listas deletewith"
                                          style="align-items: center;">
 
-                                    <ion-col style="max-width: calc(100% - 75px);">
+                                    <ion-col class="auto_cols">
                                         <ion-item *ngIf="sub.completionstatus">
-                                            <!-- <ion-checkbox [disabled]="sub.completionstatus"
-                                                              [checked]="sub.completionstatus">
-                                                </ion-checkbox> -->
                                             <ion-label class="titles" style="white-space: normal;">{{sub.taskname}}
                                             </ion-label>
                                         </ion-item>
                                         <ion-item *ngIf="!sub.completionstatus">
-                                            <!-- <ion-checkbox [(ngModel)]="sub.isCheck">
-                                                </ion-checkbox> -->
-                                            <ion-label class="titles">{{sub.taskname}}
-                                            </ion-label>
+                                            <ion-label class="titles">{{sub.taskname}}</ion-label>
                                         </ion-item>
                                     </ion-col>
-                                    <ion-col style="flex: 0 0 75px;">
+                                    <ion-col style="flex: 0 0; white-space: nowrap;">
                                         <ion-label class="contents">{{ formateDate(sub.due_date)}}</ion-label>
                                     </ion-col>
+                                    <div class="delete">
+                                        <ion-label (click)="deleteTask(item)">Remove</ion-label>
+                                    </div>
                                 </ion-row>
                             </ion-grid>
                         </ion-col>
