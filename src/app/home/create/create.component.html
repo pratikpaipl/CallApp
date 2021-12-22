@@ -44,7 +44,7 @@
                 </ion-list-header>
                 <ion-radio-group [(ngModel)]="selPriority" [disabled]="from == 'view'" [value]="selPriority" (ngModelChange)="onSelectedPriority()">
                     <ion-item style="margin-right: 5px; padding: 0px !important;" [style.color]="selPriority == item.taskpriority_id ? 'white' : 'black'" [style.background]="selPriority == item.taskpriority_id ? item.color_code : ''" *ngFor="let item of taskPriority">
-                        <ion-label [style.color]="selPriority == item.taskpriority_id ? 'white' : 'black'" [style.background-color]="selPriority == item.taskpriority_id ? item.color_code : ''">
+                        <ion-label [style.color]="selPriority == item.taskpriority_id ? '#fff' : '#999'" [style.background-color]="selPriority == item.taskpriority_id ? item.color_code : ''">
                             {{item.taskpriority}}</ion-label>
                         <ion-radio value="{{item.taskpriority_id}}"></ion-radio>
                     </ion-item>
@@ -61,16 +61,16 @@
                 <ion-list>
                     <ion-item style="--inner-padding-end: 0px !important;" *ngFor="let entry of subTasks; let i = index;">
                         <div style="display: block; width: 100%;">
-                            <ion-label class="name">{{entry.name}}</ion-label>
+                            <ion-label class="name">{{entry.name}} </ion-label>
                             <ion-label class="date" style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">
                                 {{this.apiService.getDate(entry.value)}}</ion-label>
                         </div>
                         <ion-icon *ngIf="from != 'view'" class="remove_filds" name="close" (click)="removeSubTask(i)">
                         </ion-icon>
-                        <ion-checkbox [disabled]="from == 'view'" style="margin-inline-end: 0px;--border-radius: 50%;" slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                        <ion-checkbox [disabled]="(from == 'view' && entry.completionstatus )" style="margin-inline-end: 0px;--border-radius: 50%;" slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
                     </ion-item>
                 </ion-list>
-                <ion-list>
+                <!-- <ion-list>
                     <ion-item style="--inner-padding-end: 0px !important;" *ngFor="let entry of taskData.child_task; let i = index;">
                         <div style="display: block; width: 100%;">
                             <ion-label class="name">{{entry.taskname}}</ion-label>
@@ -79,20 +79,18 @@
                         </div>
                         <ion-checkbox [disabled]="from != 'view'" style="margin-inline-end: 0px;--border-radius: 50%;" slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
                     </ion-item>
-                </ion-list>
+                </ion-list> -->
             </ion-col>
             <ion-col *ngIf="from != 'view'">
                 <ion-button class="btn-2" (click)="addSubTask()">+ Add Sub Tasks</ion-button>
             </ion-col>
         </ion-row>
         <ion-row class="bottom-space">
-            <ion-col>
-                <!-- <ion-label position="floating">Assign to*</ion-label> -->
-                <!-- <ng-select [(ngModel)]="selectedUser" multiple="true" placeholder="Assign to*" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeUser($event)">
-                    <ng-option *ngFor="let user of userIds" [value]="user.generaluser_id"> {{user.full_name}}
-                    </ng-option>
-                </ng-select> -->
-                <ng-select [items]="userIds" [disabled]="true" multiple="true" bindLabel="full_name" bindValue="generaluser_id" placeholder="Assign To *" [(ngModel)]="selectedUser" [ngModelOptions]="{standalone: true}">
+            <ion-col class="customng-select">
+                <ion-label style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">
+                    Assign to *
+                </ion-label>
+                <ng-select [items]="userIds" [disabled]="true" multiple="true" bindLabel="full_name" bindValue="generaluser_id"  [(ngModel)]="selectedUser" [ngModelOptions]="{standalone: true}">
                 </ng-select>
             </ion-col>
         </ion-row>

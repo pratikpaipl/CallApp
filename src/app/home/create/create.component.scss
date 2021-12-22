@@ -44,7 +44,7 @@ ion-radio {
     border: none !important;
 }
 
-.item-radio-checked {
+.forms_grids ion-radio-group .item-radio-checked ion-label  {
     //   --background: #7e0417;
     //   background  : #7e0417;
     color: white !important;
@@ -110,8 +110,9 @@ ion-item ion-input {
     --padding-start: 0;
     font-family: 'proxima_nova_ltsemibold';
     letter-spacing: 0.5px;
-    font-size: 14px !important;
+    font-size: 16px !important;
     margin-top: 0px;
+    color: #333 !important;
 }
 
 .btn-blue {
@@ -131,7 +132,7 @@ ion-item ion-input {
     padding: 0px !important;
     display: flex;
     align-items: flex-start !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 2px !important;
     justify-content: space-between;
 }
 
@@ -168,3 +169,9 @@ ion-item ion-input {
     --padding-end: 0;
     --padding-bottom: 8px;
 }
+
+.bottom-space.sub_tsk {
+	margin-bottom: 5px;
+}
+
+

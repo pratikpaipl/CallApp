@@ -73,7 +73,7 @@ export class CreateComponent implements OnInit {
 
       for (let i = 0; i < this.taskData.child_task.length; i++) {
         const element = this.taskData.child_task[i];
-        this.subTasks.push({ name: element.taskname, value: moment(element.startdate) })
+        this.subTasks.push({ name: element.taskname, value: moment(element.startdate),isChecked:element.completionstatus != undefined?element.completionstatus:0,completionstatus:element.completionstatus != undefined?element.completionstatus:0 })
       }
     }
   }

@@ -1236,3 +1236,59 @@ ion-toggle {
     --handle-background: #ffffff !important;
     --handle-background-checked: #fff !important;
 }
+
+
+.customng-select .ng-select {
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	border: 1px solid #657c91;
+	padding: 0px 6px !important;
+    margin-top: 5px;
+}
+
+.customng-select .ng-select .ng-select-container {
+	min-height: 48px;
+}
+
+.customng-select .ng-select  .ng-select-container .ng-value-container .ng-value {
+	background: transparent !important;
+	border-radius: 0px !important;
+    padding: 0px !important;
+	margin: 0px !important;
+}
+.customng-select .ng-select .ng-select-container .ng-value-container {
+	align-items: stretch;
+	padding: 0px !important;
+	border-top: 0px !important;
+}
+.customng-select .ng-select .ng-select-container::after {
+	display: none !important;
+}
+
+.customng-select span.ng-value-label {
+	color: #000 !important;
+}
+
+.customng-select .ng-select .ng-select-container .ng-arrow-wrapper {
+    border-top: 0px !important;
+}
+
+
+
+.item-interactive-disabled:not(.item-multiple-inputs) .sc-ion-label-md-h {
+    opacity: 1 !important;
+}
+
+ion-list ion-item div ion-label {
+    opacity: 1 !important;
+}
+
+.native-input[disabled], .native-textarea[disabled], ion-datetime {
+	opacity: 1 !important;
+    font-family: 'proxima_nova_ltsemibold';
+    letter-spacing: 0.5px;
+    font-size: 14px !important;
+    margin-top: 0px;
+    color: #333 !important;
+}
