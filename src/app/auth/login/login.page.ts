@@ -1,11 +1,12 @@
 import { EventService } from '../../services/EventService';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActionSheetController, IonInfiniteScroll, MenuController, ModalController } from '@ionic/angular';
+import { ActionSheetController, IonInfiniteScroll, MenuController, ModalController, Platform } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { GlobalProvider } from '../../shared/GlobalProvider';
 import { StorageService } from '../../shared/StorageService';
 import { SuccessPage } from 'src/app/modals/success/success.page';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 declare const getActionsFromMessage
 @Component({
   selector: 'app-login',
@@ -39,10 +40,16 @@ export class LoginPage implements OnInit {
   fnameErr = ''
   regEmail: any;
 
-  constructor(public global: GlobalProvider, public actionSheetController: ActionSheetController, public modalController: ModalController, public store: StorageService, public apiService: ApiService, private route: ActivatedRoute, public router: Router, private menu: MenuController, private eventService: EventService,) {
+  version: any
+
+  constructor(public global: GlobalProvider, private platform: Platform, private appVersion: AppVersion, public actionSheetController: ActionSheetController, public modalController: ModalController, public store: StorageService, public apiService: ApiService, private route: ActivatedRoute, public router: Router, private menu: MenuController, private eventService: EventService,) {
     this.eventService.publishFormShowContact(false);
     this.regEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
-
+    // if (this.platform.is('android') || this.platform.is('ios'))
+    this.appVersion.getVersionNumber().then((data => {
+      console.log('getVersionNumber', data)
+      this.version = data
+    }))
   }
 
   hideShowPassword() {
@@ -55,7 +62,19 @@ export class LoginPage implements OnInit {
     }
   }
   ngOnInit() {
-    this.email ='akram501@gmail.com'
+    console.log('Version ', this.appVersion)
+    // if (this.platform.is('android') || this.platform.is('ios'))
+    this.appVersion.getVersionNumber().then((data => {
+      console.log('getVersionNumber', data)
+      this.version = data
+    }))
+
+    setTimeout(() => {
+      this.appVersion.getVersionNumber().then((data => {
+        console.log('getVersionNumber', data)
+        this.version = data
+      }))
+    }, 200);
   }
   checkMail(email): boolean {
     return (email == '' || !this.regEmail.test(email))

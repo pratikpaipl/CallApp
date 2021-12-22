@@ -30,6 +30,10 @@ export class GlobalProvider {
 
     }
 
+    getUserData() {
+        this.userData = localStorage.getItem('user-data') != undefined ? JSON.parse(localStorage.getItem('user-data')) : {}
+    }
+
     firstLater() {
         if (this.userData != undefined && this.userData.full_name != undefined)
             return this.userData.full_name.substring(0, 1)

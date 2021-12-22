@@ -19,10 +19,11 @@ export class RecurringComponent implements OnInit {
 
   data: any;
   startDate: any;
+  endDate: any;
   recurringData: any;
   day = []
 
-  constructor(public store: StorageService, private navigation: NavigationService,public popover:PopoverController,public navParams: NavParams , public globle: GlobalProvider) {
+  constructor(public store: StorageService, private navigation: NavigationService, public popover: PopoverController, public navParams: NavParams, public globle: GlobalProvider) {
 
 
     const today = moment().format("ddd")
@@ -31,7 +32,7 @@ export class RecurringComponent implements OnInit {
     //   const isCurrent = (day == today);
     //   this.day.push({ day: day, isCheck: isCurrent });
     // };
-    
+
     this.day.push({ day: 'Sun', isCheck: ('Sun' == today) })
     this.day.push({ day: 'Mon', isCheck: ('Mon' == today) })
     this.day.push({ day: 'Tue', isCheck: ('Tue' == today) })
@@ -49,41 +50,42 @@ export class RecurringComponent implements OnInit {
 
   async ngOnInit() {
     this.data = this.navParams.data;
-    this.startDate=this.data.startDate;
-    this.recurringData=this.data.recurringData;
-    if(this.recurringData !=undefined){
-      this.isRecurring= this.recurringData.recurring_type
+    this.startDate = this.data.startDate;
+    this.endDate = this.data.endDate;
+    this.recurringData = this.data.recurringData;
+    if (this.recurringData != undefined) {
+      this.isRecurring = this.recurringData.recurring_type
     }
   }
 
   set() {
     let days = [];
-    let data:any={recurring_type:'',weekly_days:'',repeate_month:'',repeate_year:''};
-    data.recurring_type=this.isRecurring
-    if(this.isRecurring == 'daily'){
-    }else if(this.isRecurring == 'weekly'){
-      days=[]
+    let data: any = { recurring_type: '', weekly_days: '', repeate_month: '', repeate_year: '' };
+    data.recurring_type = this.isRecurring
+    if (this.isRecurring == 'daily') {
+    } else if (this.isRecurring == 'weekly') {
+      days = []
       for (let i = 0; i < this.day.length; i++) {
         const element = this.day[i];
         if (element.isCheck != undefined && element.isCheck) {
           days.push(element.day)
         }
       }
-      data.weekly_days=days
-      if(days.length ==0){
-        this.globle.showToast('Please at least one day ',1500);
+      data.weekly_days = days
+      if (days.length == 0) {
+        this.globle.showToast('Please at least one day ', 1500);
         return
       }
-    }else if(this.isRecurring == 'monthly'){
-      data.repeate_month=this.selectedMonth
-      
-    }else if(this.isRecurring == 'yearly'){
-      data.repeate_year=this.selectedYear
+    } else if (this.isRecurring == 'monthly') {
+      data.repeate_month = this.selectedMonth
+
+    } else if (this.isRecurring == 'yearly') {
+      data.repeate_year = this.selectedYear
     }
-    
-    this.popover.dismiss({ isSub:1,data:data});
+
+    this.popover.dismiss({ isSub: 1, data: data });
   }
   closeModal() {
-    this.popover.dismiss({ isSub:0});
+    this.popover.dismiss({ isSub: 0 });
   }
 }

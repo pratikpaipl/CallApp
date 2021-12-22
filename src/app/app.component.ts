@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { GlobalProvider } from './shared/GlobalProvider';
 import { StorageService } from './shared/StorageService';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 declare const removeMenu: any;
 declare const pageToTop: any;
 @Component({
@@ -21,10 +22,14 @@ export class AppComponent {
   lastTimeBackPress = 0;
   timePeriodToExit = 2000;
   navigate: any;
-  constructor(public modalController: ModalController, public store: StorageService, public globle: GlobalProvider, private menu: MenuController, public router: Router, private popoverCtrl: PopoverController, private actionSheetCtrl: ActionSheetController, private toastController: ToastController, public modalCtrl: ModalController, private platform: Platform, public network: Network, public loadingController: LoadingController, private splashScreen: SplashScreen, private statusBar: StatusBar,) {
+  constructor(public modalController: ModalController, private appVersion: AppVersion, public store: StorageService, public globle: GlobalProvider, private menu: MenuController, public router: Router, private popoverCtrl: PopoverController, private actionSheetCtrl: ActionSheetController, private toastController: ToastController, public modalCtrl: ModalController, private platform: Platform, public network: Network, public loadingController: LoadingController, private splashScreen: SplashScreen, private statusBar: StatusBar,) {
     this.initializeApp();
     this.backButtonEvent();
+    if (this.platform.is('android') || this.platform.is('ios'))
+      this.appVersion.getVersionNumber().then((data => {
+        console.log('getVersionNumber', data)
 
+      }))
   }
 
   async initializeApp() {

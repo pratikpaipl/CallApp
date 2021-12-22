@@ -1210,30 +1210,29 @@ ion-datetime {
     padding: 0px !important;
 }
 
-
 .radio_with_icons ion-radio-group {
-	width: calc(100% - 40px);
-	float: left;
-}
-.Priority_icons {
-	float: right;
-	width: 30px;
-	padding: 2px 0px 2px 4px;
+    width: calc(100% - 40px);
+    float: left;
 }
 
+.Priority_icons {
+    float: right;
+    width: 30px;
+    padding: 2px 0px 2px 4px;
+}
 
 .remove_filds {
     z-index: 2;
-color: #a9b5c1;
-font-size: 25px;
+    color: #a9b5c1;
+    font-size: 25px;
 }
 
 .date_row ion-label.content.date {
-	font-family: 'proxima_nova_ltsemibold';
+    font-family: 'proxima_nova_ltsemibold';
 }
 
 ion-toggle {
-	--background-checked: #02a5e2 !important;
-	--handle-background: #ffffff !important;
-	--handle-background-checked: #fff !important;
+    --background-checked: #02a5e2 !important;
+    --handle-background: #ffffff !important;
+    --handle-background-checked: #fff !important;
 }

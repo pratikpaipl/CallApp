@@ -21,7 +21,8 @@
             <ion-col size="6" style="padding-right: 8px;">
                 <ion-label position="floating">Start Date *</ion-label>
                 <ion-item class="field">
-                    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="startDate" placeholder="DD/MM/YYYY" [min]="minDate" [max]="global.maxDate">
+                    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="startDate" placeholder="DD/MM/YYYY"
+                                  [min]="minDate" [max]="global.maxDate">
                     </ion-datetime>
                     <ion-img src="../../../assets/images/t_calendar.png"></ion-img>
                 </ion-item>
@@ -29,7 +30,8 @@
             <ion-col size="6" style="padding-left: 8px;">
                 <ion-label position="floating">Due Date *</ion-label>
                 <ion-item class="field">
-                    <ion-datetime displayFormat="DD/MM/YYYY" [min]="startDate" [max]="maxDate" placeholder="DD/MM/YYYY" [(ngModel)]="dueDate">
+                    <ion-datetime displayFormat="DD/MM/YYYY" [min]="startDate" [max]="maxDate" placeholder="DD/MM/YYYY"
+                                  [(ngModel)]="dueDate">
                     </ion-datetime>
                     <ion-img src="../../../assets/images/t_calendar.png"></ion-img>
                 </ion-item>
@@ -43,8 +45,12 @@
                     </ion-label>
                 </ion-list-header>
                 <ion-radio-group [(ngModel)]="selPriority" [value]="selPriority" (ngModelChange)="onSelectedPriority()">
-                    <ion-item style="margin-right: 5px; padding: 0px !important;" [style.color]="selPriority == item.taskpriority_id ? 'white' : 'black'" [style.background]="selPriority == item.taskpriority_id ? item.color_code : ''" *ngFor="let item of taskPriority">
-                        <ion-label [style.color]="selPriority == item.taskpriority_id ? 'white' : 'black'" [style.background-color]="selPriority == item.taskpriority_id ? item.color_code : ''">
+                    <ion-item style="margin-right: 5px; padding: 0px !important;"
+                              [style.color]="selPriority == item.taskpriority_id ? 'white' : 'black'"
+                              [style.background]="selPriority == item.taskpriority_id ? item.color_code : ''"
+                              *ngFor="let item of taskPriority">
+                        <ion-label [style.color]="selPriority == item.taskpriority_id ? 'white' : 'black'"
+                                   [style.background-color]="selPriority == item.taskpriority_id ? item.color_code : ''">
                             {{item.taskpriority}}</ion-label>
                         <ion-radio value="{{item.taskpriority_id}}"></ion-radio>
                     </ion-item>
@@ -59,15 +65,18 @@
                     </ion-label>
                 </ion-list-header>
                 <ion-list>
-                    <ion-item style="--inner-padding-end: 0px !important;" *ngFor="let entry of subTasks; let i = index;">
+                    <ion-item style="--inner-padding-end: 0px !important;"
+                              *ngFor="let entry of subTasks; let i = index;">
                         <div style="display: block; width: 100%;">
                             <ion-label class="name">{{entry.name}}</ion-label>
-                            <ion-label class="date" style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">
+                            <ion-label class="date"
+                                       style="color: rgba(101, 124, 145, 0.5) !important; font-size: 13px !important;">
                                 {{this.apiService.getDate(entry.value)}}</ion-label>
                         </div>
                         <ion-icon class="remove_filds" name="close" (click)="removeSubTask(i)">
                         </ion-icon>
-                        <ion-checkbox style="margin-inline-end: 0px;--border-radius: 50%;" slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                        <ion-checkbox style="margin-inline-end: 0px;--border-radius: 50%;" slot="start"
+                                      [(ngModel)]="entry.isChecked"></ion-checkbox>
                     </ion-item>
                 </ion-list>
             </ion-col>
@@ -84,7 +93,9 @@
                     <ng-option *ngFor="let user of userIds" [value]="user.generaluser_id"> {{user.full_name}}
                     </ng-option>
                 </ng-select> -->
-                <ng-select [items]="userIds" [disabled]="true" multiple="true" bindLabel="full_name" bindValue="generaluser_id" placeholder="Assign To *" [(ngModel)]="selectedUser" [ngModelOptions]="{standalone: true}">
+                <ng-select [items]="userIds" [disabled]="true" multiple="true" bindLabel="full_name"
+                           bindValue="generaluser_id" placeholder="Assign To *" [(ngModel)]="selectedUser"
+                           [ngModelOptions]="{standalone: true}">
                 </ng-select>
             </ion-col>
         </ion-row>

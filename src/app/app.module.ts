@@ -21,6 +21,7 @@ import { AuthGuard } from './shared/authguard.service';
 import { Storage } from '@ionic/storage-angular';
 import { GlobalProvider } from './shared/GlobalProvider';
 import { LoginGuard } from './shared/loginguard.service';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
@@ -28,7 +29,7 @@ import { LoginGuard } from './shared/loginguard.service';
   imports: [BrowserModule, FormsModule,
     IonicModule.forRoot({ mode: 'md', rippleEffect: false }), HttpClientModule, AppRoutingModule],
   providers: [Storage, GlobalProvider, StatusBar, Network, NetworkInterface, AuthGuard, LoginGuard, Keyboard,
-    SplashScreen, InAppBrowser, EventService, NavigationService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SplashScreen, InAppBrowser, EventService, NavigationService, AppVersion, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptorService, multi: true },
   ],

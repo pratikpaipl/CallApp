@@ -50,7 +50,7 @@ export class CreateComponent implements OnInit {
     this.maxDate = global.maxDate;
   }
   ngOnInit() {
-
+    this.global.getUserData()
     this.getTaskPriority();
 
     // this.options.placeholder = 'Type user name to search..';
@@ -195,9 +195,9 @@ export class CreateComponent implements OnInit {
     console.log('onSelectedPriority 0 ', this.selPriority)
     console.log('onSelectedPriority 1 ', this.taskPriority)
     let obj = this.taskPriority.find(x => x.taskpriority_id === parseInt(this.selPriority))
-    const index = this.taskPriority.findIndex(x => x.taskpriority_id === this.selPriority);
-    console.log('onSelectedPriority ', obj)
-    console.log('onSelectedPriority ', this.taskPriority[index])
+    // const index = this.taskPriority.findIndex(x => x.taskpriority_id === this.selPriority);
+    // console.log('onSelectedPriority ', obj)
+    // console.log('onSelectedPriority ', this.taskPriority[index])
     if (obj != undefined)
       this.iconUrl = obj.icon_url
 

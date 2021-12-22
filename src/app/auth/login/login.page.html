@@ -10,7 +10,8 @@
             <ion-col>
                 <ion-label position="floating">Email ID</ion-label>
                 <ion-item class="field">
-                    <ion-input class="input_fild" [(ngModel)]="email" placeholder="yourregisteremail@company.com"></ion-input>
+                    <ion-input class="input_fild" [(ngModel)]="email" placeholder="yourregisteremail@company.com">
+                    </ion-input>
                 </ion-item>
                 <ion-note *ngIf="(email =='' || !this.regEmail.test(email) ) && emailErr !=''">{{emailErr}}</ion-note>
             </ion-col>
@@ -19,7 +20,8 @@
             <ion-col>
                 <ion-label position="floating">Password</ion-label>
                 <ion-item class="field">
-                    <ion-input class="input_fild" [type]="passwordTypeL" minLength="6" [(ngModel)]="password" placeholder="Enter your password"></ion-input>
+                    <ion-input class="input_fild" [type]="passwordTypeL" minLength="6" [(ngModel)]="password"
+                               placeholder="Enter your password"></ion-input>
                     <ion-icon item-end [name]="passwordIconL" class="passwordIcon" (click)='hideShowPassword()'>
                     </ion-icon>
                 </ion-item>
@@ -43,19 +45,21 @@
                 <ion-button expand="round" class="btn-2" (click)="openModal()">Login with BDO LLP India</ion-button>
             </ion-col>
         </ion-row>
-        <!-- <ion-row>
-      <ion-col style="text-align: center;">
-        <ion-label style="cursor: pointer;" (click)="home()">Skip</ion-label>
-      </ion-col>
-    </ion-row> -->
+        <ion-row>
+            <ion-col style="text-align: center; margin-top: 15px;">
+                <ion-label style="cursor: pointer;">Version : {{version}}</ion-label>
+            </ion-col>
+        </ion-row>
     </ion-grid>
 </ion-content>
 <ion-footer>
     <ion-grid>
         <ion-row>
             <ion-col style="text-align: center;    padding: 18px;">
-                <ion-label>Don't have and account? <span style="font-family: 'proxima_nova_rgbold'; cursor: pointer; color: #02a5e2;" (click)="signup()">Sign
-            Up</span></ion-label>
+                <ion-label>Don't have and account? <span
+                          style="font-family: 'proxima_nova_rgbold'; cursor: pointer; color: #02a5e2;"
+                          (click)="signup()">Sign
+                        Up</span></ion-label>
             </ion-col>
         </ion-row>
     </ion-grid>

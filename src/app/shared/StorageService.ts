@@ -38,54 +38,9 @@ export class StorageService {
       name: 'permissionStorage',
       storeName: '_permissionStorage',
     });
-    // this.getTextList();
-    // this.getPermissionList();
     this.kmList = [];
-    // this.kmList.push({ lbl: '5 km', val: '5' })
-    // this.kmList.push({ lbl: '10 km', val: '10' })
-    // this.kmList.push({ lbl: '25 km', val: '25' })
-    // this.kmList.push({ lbl: '50 km', val: '50' })
-    // this.kmList.push({ lbl: '100 km', val: '100' })
-    // this.kmList.push({ lbl: 'World wide', val: '50000' })
-  }
-  getTextList() {
-    console.log('getTextList ', environment.BaseUrl);
-    this.http.get(environment.BaseUrl + 'text/list?LanguageCode=eng').subscribe(response => {
-      let res: any = response;
-      console.log('response ', res);
-      if (res.success) {
-        this.labelList = res.data.list;
-        this.searchMsg = this.getVal('could_not_find_any_stores_for_selected_criteria_note') + ' <a style="cursor: pointer !important;" class="contactUsMenu">' + this.getVal('contact_us') + '</a>.'
-        this.eventService.publishUpdateLabel();
-      }
-    }, (error: Response) => {
-      let err: any = error;
-      console.log('err ', err);
-    });
-  }
-  getPermissionList() {
-    this.http.get(environment.BaseUrl + 'role_permission/permission_list?LanguageCode=eng').subscribe(response => {
-      let res: any = response;
-      if (res.success) {
-        this.permissionList = res.data.list;
-      }
-    }, (error: Response) => {
-      let err: any = error;
-    });
   }
 
-  getLabels() {
-    var promise = new Promise((resolve, reject) => {
-      this.labelStorage.create().then(async (data) => {
-        this.labelStorage.forEach((value, key, index) => {
-          this.labelList.push(this.decryptData(value));
-        }).then((d) => {
-          resolve(this.labelList);
-        });
-      });
-    });
-    return promise;
-  }
   async savePemission(key: string, value: any, isJson?) {
     await this.permissionStorage.create().then(async (data) => {
       await this.permissionStorage?.set(key, this.encryptData(value));
@@ -136,14 +91,6 @@ export class StorageService {
       });
     } else if (type == 1) {
       return this.decryptData(localStorage.getItem(id));
-      // return this.labelStorage.create().then((data) => {
-      //     return this.labelStorage.get(id).then((data) => {
-      //         if (data != null)
-      //             return this.decryptData(data)
-      //     }).catch((err) => {
-      //         console.log('error ', err);
-      //     });
-      // });
     } else if (type == 2) {
       return this.permissionStorage.create().then((data) => {
         return this.permissionStorage.get(id).then((data) => {
