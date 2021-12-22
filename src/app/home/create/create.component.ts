@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { SubTaskComponent } from '../../task/sub-task/sub-task.component';
 import { RecurringComponent } from './../../task/recurring/recurring.component';
 import { EventService } from '../../services/EventService';
@@ -11,6 +10,7 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { SuccessPage } from 'src/app/modals/success/success.page';
 import { UserModel } from 'src/app/models/Users';
 import * as moment from 'moment';
+import { ConfirmationPage } from 'src/app/modals/confirmation/confirmation.page';
 
 @Component({
   selector: 'create-task',
@@ -22,6 +22,8 @@ export class CreateComponent implements OnInit {
 
   @Input()
   taskData: any;
+  @Input()
+  from: any;
 
   iconUrl: any;
 
@@ -46,14 +48,13 @@ export class CreateComponent implements OnInit {
   dueDate: any;
   minDate: any = new Date().toISOString();
   maxDate: any;
+
   constructor(public global: GlobalProvider, public apiService: ApiService, private popoverCtrl: PopoverController, public store: StorageService, public modalController: ModalController, public router: Router, private eventService: EventService,) {
     this.maxDate = global.maxDate;
   }
   ngOnInit() {
     this.global.getUserData()
     this.getTaskPriority();
-
-    // this.options.placeholder = 'Type user name to search..';
   }
   setData() {
     if (this.taskData != undefined) {
@@ -324,5 +325,69 @@ export class CreateComponent implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  markAsCompleteTask(item) {
+    console.log('item ', item)
+    let selIds = [];
+    if (item.isCheck != undefined && item.isCheck) {
+      selIds.push(item.generaluser_taskdetails_id)
+    }
+    // let selIds = [];
+    for (let i = 0; i < item.child_task.length; i++) {
+      const element = item.child_task[i];
+      if (item.isCheck != undefined && item.isCheck) {
+        selIds.push(element.generaluser_taskdetails_id)
+      } else {
+        if (element.isCheck != undefined && element.isCheck) {
+          selIds.push(element.generaluser_taskdetails_id)
+        }
+      }
+    }
+
+    if (selIds.length == 0) {
+      this.global.showToast('Please select at least one tasks ', 1500)
+      // } else if (this.remarks.trim() == '') {
+      //   this.global.showToast('Please enter compliance remarks', 1500)
+    } else {
+      this.openModalComplete(selIds, 'Are you sure you want to complete <br /> checked task?')
+    }
+    // console.log('selIds ', selIds)
+  }
+  async openModalComplete(selIds, msg) {
+    const modal = await this.modalController.create({
+      component: ConfirmationPage,
+      cssClass: 'alert-success',
+      componentProps: {
+        msg: msg
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+
+      console.log('data returned ', selIds)
+      if (dataReturned.data == 1) {
+        this.completeTaskDate(selIds)
+      }
+    });
+
+    return await modal.present();
+  }
+  completeTaskDate(seiId) {
+    this.apiService.taskMarkCompletes(seiId, '').subscribe(
+      async (response) => {
+        let res: any = response;
+        if (res.success) {
+          // this.remarks = ''
+          // this.selectedDate = this.date
+          // this.getWeeks(this.date);
+        }
+        this.global.showToast(res.message, 4000);
+      },
+      (error: Response) => {
+        let err: any = error;
+        this.global.showToast(err.error.message, 4000);
+      }
+    );
   }
 }

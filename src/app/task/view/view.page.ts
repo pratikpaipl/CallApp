@@ -1,9 +1,6 @@
 import { EventService } from '../../services/EventService';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApiService } from '../../services/api.service';
-import { GlobalProvider } from '../../shared/GlobalProvider';
-import { StorageService } from '../../shared/StorageService';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view',
@@ -12,11 +9,15 @@ import { StorageService } from '../../shared/StorageService';
 })
 export class ViewPage implements OnInit {
 
-  priority='medium'
-
-  constructor(public globle: GlobalProvider, public store: StorageService, public apiService: ApiService, public router: Router, private eventService: EventService,) {
-   
+  data: any;
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.route.queryParams.subscribe((res) => {
+      this.data = JSON.parse(res.value)
+      console.log('data ', this.data);
+    });
   }
-  ngOnInit(): void {
+
+  ngOnInit() {
+
   }
 }

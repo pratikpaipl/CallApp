@@ -15,21 +15,16 @@
 
 <ion-grid style="background: white; margin: 10px;">
     <ion-row class="calendar-weekday">
-        <ion-col [ngClass]=" item.selected ? 'current calendar_heading' :'other calendar_heading' "
-                 *ngFor="let item of days;let i = index" (click)="onClick(item,i)">
+        <ion-col [ngClass]=" item.selected ? 'current calendar_heading' :'other calendar_heading' " *ngFor="let item of days;let i = index" (click)="onClick(item,i)">
             <div>
                 <div [ngClass]=" item.selected ? 'week-current' :'other' ">
                     <ion-label class="heading">{{ item.lbl }}</ion-label>
                     <ion-label class="date">{{ item.day }}</ion-label>
                 </div>
-                <div class="dates_slotes"
-                     *ngIf="item.total_task !=0 || item.total_due_date != 0 || item.total_extensions !=0">
-                    <span class="cricle"
-                          *ngIf="item.total_due_date !=undefined && item.total_due_date != 0">{{item.total_due_date}}</span>
-                    <span class="squre"
-                          *ngIf="item.total_task !=undefined &&  item.total_task !=0">{{item.total_task}}</span>
-                    <span class="extention"
-                          *ngIf="item.total_extensions !=undefined &&  item.total_extensions !=0">{{item.total_extensions}}</span>
+                <div class="dates_slotes" *ngIf="item.total_task !=0 || item.total_due_date != 0 || item.total_extensions !=0">
+                    <span class="cricle" *ngIf="item.total_due_date !=undefined && item.total_due_date != 0">{{item.total_due_date}}</span>
+                    <span class="squre" *ngIf="item.total_task !=undefined &&  item.total_task !=0">{{item.total_task}}</span>
+                    <span class="extention" *ngIf="item.total_extensions !=undefined &&  item.total_extensions !=0">{{item.total_extensions}}</span>
                 </div>
             </div>
         </ion-col>
@@ -50,8 +45,7 @@
                         <ion-label class="viewbtn">View all</ion-label>
                     </ion-col>
                 </ion-row>
-                <no-task lblValue="No Due Date Today" imgPath="assets/images/calendar_bro.png"
-                         *ngIf="govDueDates.length == 0 && extensions.length == 0"></no-task>
+                <no-task lblValue="No Due Date Today" imgPath="assets/images/calendar_bro.png" *ngIf="govDueDates.length == 0 && extensions.length == 0"></no-task>
                 <ion-row class="chklist" *ngFor="let item of govDueDates">
                     <span class="shaprator" style="background-color: #218f8b;"></span>
                     <ion-col>
@@ -112,8 +106,7 @@
                         <ion-label class="btn_ink">View all</ion-label>
                     </ion-col>
                 </ion-row>
-                <ion-segment *ngIf="assignedByYou.length !=0 || assignedToYou.length !=0 " [(ngModel)]="selectedTaskTab"
-                             (ionChange)="segmentChanged($event)">
+                <ion-segment *ngIf="assignedByYou.length !=0 || assignedToYou.length !=0 " [(ngModel)]="selectedTaskTab" (ionChange)="segmentChanged($event)">
                     <ion-segment-button value="toYou">
                         <ion-label>Assigned to you</ion-label>
                     </ion-segment-button>
@@ -124,25 +117,22 @@
             </ion-grid>
             <ion-grid class="p-0 tasks">
                 <div class="grid_content" *ngIf="tasks != undefined && selectedTaskTab =='toYou'">
-                    <no-task lblValue="No Tasks Today" imgPath="assets/images/no_data_cuate.png"
-                             *ngIf="assignedToYou.length == 0">
+                    <no-task lblValue="No Tasks Today" imgPath="assets/images/no_data_cuate.png" *ngIf="assignedToYou.length == 0">
                     </no-task>
                     <ion-row class="tast_row" *ngFor="let item of assignedToYou">
                         <ion-col size="12" class="tasks_cols">
                             <ion-item *ngIf="item.completionstatus">
-                                <ion-checkbox slot="start" [disabled]="item.completionstatus"
-                                              [checked]="item.completionstatus">
+                                <ion-checkbox slot="start" [disabled]="item.completionstatus" [checked]="item.completionstatus">
                                 </ion-checkbox>
-                                <div>
+                                <div style="z-index: 2;" (click)="viewTask(item)">
                                     <ion-label class="titles">{{item.taskname}}</ion-label>
                                     <ion-label class="contents">{{ formateDatemain(item.due_date)}}</ion-label>
                                 </div>
                             </ion-item>
                             <ion-item *ngIf="!item.completionstatus">
-                                <ion-checkbox slot="start" [(ngModel)]="item.isCheck"
-                                              (ionChange)="tasksMark($event,item)">
+                                <ion-checkbox slot="start" [(ngModel)]="item.isCheck" (ionChange)="tasksMark($event,item)">
                                 </ion-checkbox>
-                                <div>
+                                <div style="z-index: 2;" (click)="viewTask(item)">
                                     <ion-label class="titles">{{item.taskname}}</ion-label>
                                     <ion-label class="contents">{{ formateDatemain(item.due_date)}}</ion-label>
                                 </div>
@@ -159,12 +149,10 @@
                                         <ion-label class="titles">Sub tasks</ion-label>
                                     </ion-col>
                                 </ion-row>
-                                <ion-row *ngFor="let sub of item.child_task" class="p-0 sub_tasks_listas"
-                                         style="align-items: center;">
+                                <ion-row *ngFor="let sub of item.child_task" class="p-0 sub_tasks_listas" style="align-items: center;">
                                     <ion-col class="auto_cols">
                                         <ion-item *ngIf="sub.completionstatus">
-                                            <ion-checkbox [disabled]="sub.completionstatus"
-                                                          [checked]="sub.completionstatus">
+                                            <ion-checkbox [disabled]="sub.completionstatus" [checked]="sub.completionstatus">
                                             </ion-checkbox>
                                             <ion-label class="titles" style="white-space: normal;">{{sub.taskname}}
                                             </ion-label>
@@ -188,8 +176,7 @@
                                     <ion-col>
                                         <ion-label class="contents">Assigned by </ion-label>
                                         <div class="names_box">
-                                            <span
-                                                  class="icons">{{global.oneLater(item.assigned_by_user_details.full_name)}}</span>
+                                            <span class="icons">{{global.oneLater(item.assigned_by_user_details.full_name)}}</span>
                                             <ion-label class="titles">{{item.assigned_by_user_details.full_name}}
                                             </ion-label>
                                         </div>
@@ -197,13 +184,9 @@
                                     <ion-col class="center">
                                         <ion-label class="contents">Priority</ion-label>
                                         <ion-label class="contents">
-                                            <i
-                                               [ngStyle]="{'background': item.number_of_dots > 0 ? item.task_priority_color : '' }"></i>
-                                            <i
-                                               [ngStyle]="{'background': item.number_of_dots > 1 ? item.task_priority_color : '' }"></i>
-                                            <i
-                                               [ngStyle]="{'background': item.number_of_dots > 2 ? item.task_priority_color : '' }"></i>
-                                            {{item.task_priority}}
+                                            <i [ngStyle]="{'background': item.number_of_dots > 0 ? item.task_priority_color : '' }"></i>
+                                            <i [ngStyle]="{'background': item.number_of_dots > 1 ? item.task_priority_color : '' }"></i>
+                                            <i [ngStyle]="{'background': item.number_of_dots > 2 ? item.task_priority_color : '' }"></i> {{item.task_priority}}
                                         </ion-label>
                                     </ion-col>
                                     <ion-col class="right">
@@ -234,8 +217,7 @@
                                     <ion-col>
                                         <ion-label class="contents">Assigned to </ion-label>
                                         <div class="names_box">
-                                            <span
-                                                  class="icons">{{global.oneLater(item.assigned_user_details.full_name)}}</span>
+                                            <span class="icons">{{global.oneLater(item.assigned_user_details.full_name)}}</span>
                                             <ion-label class="titles">{{item.assigned_user_details.full_name}}
                                             </ion-label>
                                         </div>
@@ -244,11 +226,7 @@
                                         <ion-label class="contents">Priority</ion-label>
                                         <!-- <ion-label class="contents"><i></i><i></i><i></i> {{item.task_priority}}
                                         </ion-label> -->
-                                        <ion-label class="contents"><i
-                                               [ngStyle]="{'background': item.number_of_dots > 0 ? item.task_priority_color : '' }"></i><i
-                                               [ngStyle]="{'background': item.number_of_dots > 1 ? item.task_priority_color : '' }"></i><i
-                                               [ngStyle]="{'background': item.number_of_dots > 2 ? item.task_priority_color : '' }"></i>
-                                            {{item.task_priority}}
+                                        <ion-label class="contents"><i [ngStyle]="{'background': item.number_of_dots > 0 ? item.task_priority_color : '' }"></i><i [ngStyle]="{'background': item.number_of_dots > 1 ? item.task_priority_color : '' }"></i><i [ngStyle]="{'background': item.number_of_dots > 2 ? item.task_priority_color : '' }"></i>                                            {{item.task_priority}}
                                         </ion-label>
                                     </ion-col>
                                     <ion-col class="right">
@@ -285,8 +263,7 @@
                                         <ion-label class="titles">Sub tasks</ion-label>
                                     </ion-col>
                                 </ion-row>
-                                <ion-row *ngFor="let sub of item.child_task" class="p-0 sub_tasks_listas deletewith"
-                                         style="align-items: center;">
+                                <ion-row *ngFor="let sub of item.child_task" class="p-0 sub_tasks_listas deletewith" style="align-items: center;">
 
                                     <ion-col class="auto_cols">
                                         <ion-item *ngIf="sub.completionstatus">

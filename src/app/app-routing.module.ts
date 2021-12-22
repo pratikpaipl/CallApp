@@ -9,10 +9,7 @@ const routes: Routes = [
     path: 'home', canActivate: [AuthGuard],
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
-  {
-    path: 'edit-task', canActivate: [AuthGuard],
-    loadChildren: () => import('./task/edit-task/edit-task.module').then(m => m.EditTaskPageModule)
-  },
+
   {
     path: 'login',
     loadChildren: () => import('./auth/login/login.module').then(m => m.LoginPageModule)
@@ -36,6 +33,10 @@ const routes: Routes = [
   {
     path: 'task-list/:type', canActivate: [AuthGuard],
     loadChildren: () => import('./task/list/list.module').then(m => m.ListPageModule)
+  },
+  {
+    path: 'edit-task', canActivate: [AuthGuard],
+    loadChildren: () => import('./task/edit-task/edit-task.module').then(m => m.EditTaskPageModule)
   },
   {
     path: 'view', canActivate: [AuthGuard],

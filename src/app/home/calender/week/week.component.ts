@@ -299,6 +299,13 @@ export class WeekComponent implements OnInit {
     }
     // console.log('selIds ', selIds)
   }
+  viewTask(item) {
+    this.router.navigate(['/view'], {
+      queryParams: {
+        value: JSON.stringify(item)
+      },
+    });
+  }
   updateTask(item) {
     this.router.navigate(['/edit-task'], {
       queryParams: {

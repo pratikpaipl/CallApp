@@ -1,4 +1,16 @@
-<ion-header>
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        Task Details
+    </ion-title>
+</ion-toolbar>
+
+<ion-content #content id="page" [scrollEvents]="true">
+    <create-task [taskData]="data" from='view'></create-task>
+</ion-content>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-grid>
       <ion-row style="align-items: center;">
@@ -44,25 +56,11 @@
           </ion-label>
         </ion-list-header>
         <ion-radio-group [(ngModel)]="priority">
-          <!-- <ion-item>
-            <ion-label>Critical</ion-label>
-            <ion-radio value="critical"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>High</ion-label>
-            <ion-radio value="high"></ion-radio>
-          </ion-item> -->
-
+         
           <ion-item>
             <ion-label>Medium</ion-label>
             <ion-radio value="medium"></ion-radio>
           </ion-item>
-
-          <!-- <ion-item>
-            <ion-label>Low</ion-label>
-            <ion-radio value="low"></ion-radio>
-          </ion-item> -->
 
         </ion-radio-group>
       </ion-col>
@@ -122,4 +120,4 @@
 
   </ion-grid>
 
-</ion-content>
+</ion-content> -->

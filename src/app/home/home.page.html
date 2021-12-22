@@ -1,13 +1,11 @@
 <ion-toolbar *ngIf="selected!=4" [ngStyle]="{'background': selected == 1 ? '#fff ' : '#f2f2f2' }">
     <ion-title *ngIf="!toggled" (click)="titleClick()">
         <!-- [min]="minDate"  -->
-        <ion-datetime *ngIf="selected ==0" [max]="global.maxDate" #datePicker text-center displayFormat="MMM YYYY"
-                      [(ngModel)]="selectedDate">
+        <ion-datetime *ngIf="selected ==0" [max]="global.maxDate" #datePicker text-center displayFormat="MMM YYYY" [(ngModel)]="selectedDate">
         </ion-datetime>
         {{selected==1?"Dashboard":selected==2?"Create Task":selected==3?"Notification":selected==4?"Settings":''}}
     </ion-title>
-    <ion-searchbar *ngIf="toggled" [(ngModel)]="searchTerm" [showCancelButton]="true" (ionCancel)="toggleSearch()"
-                   (ionInput)="triggerInput($event)"></ion-searchbar>
+    <ion-searchbar *ngIf="toggled" [(ngModel)]="searchTerm" [showCancelButton]="true" (ionCancel)="toggleSearch()" (ionInput)="triggerInput($event)"></ion-searchbar>
     <ion-buttons *ngIf="selected ==0 && showWeek && !toggled" slot="primary" (click)="toggleSearch()">
         <ion-button style="--color: #333333 !important;">
             <ion-icon slot="icon-only" name="search"></ion-icon>
@@ -23,10 +21,9 @@
 
 <ion-content #content id="page" [scrollEvents]="true" (ionScroll)="function($event)">
     <month *ngIf="selected == 0 && !showWeek" [selectedDate]="selectedDate" (change)="changeView($event)"></month>
-    <week [selectedDate]="weekSelDate" [searchTerm]="searchTerm" *ngIf="selected == 0 && showWeek"
-          (change)="changeWeek($event)"></week>
+    <week [selectedDate]="weekSelDate" [searchTerm]="searchTerm" *ngIf="selected == 0 && showWeek" (change)="changeWeek($event)"></week>
     <dashboard *ngIf="selected == 1 "></dashboard>
-    <create-task *ngIf="selected == 2 "></create-task>
+    <create-task from='create' *ngIf="selected == 2 "></create-task>
     <notification *ngIf="selected == 3 "></notification>
     <settings *ngIf="selected == 4 "></settings>
 </ion-content>
